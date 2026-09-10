@@ -1,197 +1,240 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Henry English</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henry English</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #1f2937;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
 
-        .app {
-            max-width: 1100px;
-            margin: auto;
-            padding: 30px 20px;
-        }
+.app {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 20px;
+}
 
-        header {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-        }
+header {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
 
-        .logo {
-            font-size: 32px;
-            font-weight: bold;
-            color: #2563eb;
-        }
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #2563eb;
+}
 
-        .subtitle {
-            margin-top: 8px;
-            color: #64748b;
-            font-size: 16px;
-        }
+.subtitle {
+    color: #64748b;
+    margin-top: 6px;
+}
 
-        .welcome {
-            margin-top: 25px;
-        }
+h1 {
+    margin-top: 25px;
+    font-size: 28px;
+}
 
-        .welcome h1 {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
+.welcome {
+    color: #64748b;
+    margin-top: 8px;
+}
 
-        .welcome p {
-            color: #64748b;
-        }
+.menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 25px;
+}
 
-        .section-title {
-            font-size: 24px;
-            margin: 25px 0 15px;
-        }
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
+.card:hover {
+    transform: translateY(-4px);
+}
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            cursor: pointer;
-            transition: 0.2s;
-        }
+.icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
 
-        .card:hover {
-            transform: translateY(-4px);
-        }
+.card h2 {
+    margin-bottom: 8px;
+}
 
-        .icon {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
+.card p {
+    color: #64748b;
+}
 
-        .card h2 {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
+.page {
+    display: none;
+}
 
-        .card p {
-            color: #64748b;
-            font-size: 14px;
-        }
+.back {
+    background: #e5e7eb;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
 
-        .start {
-            margin-top: 25px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 15px 28px;
-            border-radius: 12px;
-            font-size: 17px;
-            cursor: pointer;
-        }
+.lesson {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 12px 0;
+    cursor: pointer;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
 
-        .start:hover {
-            background: #1d4ed8;
-        }
+.lesson h3 {
+    color: #2563eb;
+    margin-bottom: 6px;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 35px;
-            color: #94a3b8;
-            font-size: 14px;
-        }
+footer {
+    text-align: center;
+    margin-top: 35px;
+    color: #94a3b8;
+}
 
-        @media (max-width: 650px) {
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .welcome h1 {
-                font-size: 25px;
-            }
-        }
-    </style>
+@media(max-width:650px) {
+    .menu {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <div class="app">
 
-    <header>
-        <div class="logo">Henry English</div>
-        <div class="subtitle">Learn English. Speak with confidence.</div>
+<header>
+    <div class="logo">Henry English</div>
+    <div class="subtitle">Learn English. Speak with confidence.</div>
+</header>
 
-        <div class="welcome">
-            <h1>Welcome to Henry English 👋</h1>
-            <p>Your English learning journey starts here.</p>
+<!-- HOME -->
 
-            <button class="start" onclick="startLearning()">
-                Start Learning
-            </button>
-        </div>
-    </header>
+<div id="home">
 
-    <h2 class="section-title">What do you want to learn?</h2>
+    <h1>Welcome to Henry English 👋</h1>
 
-    <div class="cards">
+    <p class="welcome">
+        Choose what you want to learn today.
+    </p>
 
-        <div class="card" onclick="openLesson('Lessons')">
+    <div class="menu">
+
+        <div class="card" onclick="showPage('lessons')">
             <div class="icon">📚</div>
             <h2>Lessons</h2>
-            <p>Learn English through structured lessons.</p>
+            <p>Learn English step by step.</p>
         </div>
 
-        <div class="card" onclick="openLesson('Speaking')">
+        <div class="card">
             <div class="icon">🗣️</div>
             <h2>Speaking</h2>
-            <p>Practice speaking and improve your reflex.</p>
+            <p>Practice speaking and reflex.</p>
         </div>
 
-        <div class="card" onclick="openLesson('Vocabulary')">
+        <div class="card">
             <div class="icon">📖</div>
             <h2>Vocabulary</h2>
-            <p>Learn useful words and expressions.</p>
+            <p>Learn useful English words.</p>
         </div>
 
-        <div class="card" onclick="openLesson('Quiz')">
+        <div class="card">
             <div class="icon">🎯</div>
             <h2>Quiz</h2>
-            <p>Test your English and check your progress.</p>
+            <p>Test your English knowledge.</p>
         </div>
 
     </div>
 
-    <footer>
-        © 2026 Henry English
-    </footer>
+</div>
+
+
+<!-- LESSONS -->
+
+<div id="lessons" class="page">
+
+    <button class="back" onclick="showPage('home')">
+        ← Back
+    </button>
+
+    <h1>📚 Lessons</h1>
+
+    <div class="lesson">
+        <h3>Lesson 1: Greetings & Introductions</h3>
+        <p>Hello, Hi, My name is..., Nice to meet you.</p>
+    </div>
+
+    <div class="lesson">
+        <h3>Lesson 2: Family & Relationships</h3>
+        <p>Talk about your family and friends.</p>
+    </div>
+
+    <div class="lesson">
+        <h3>Lesson 3: My Home & Neighborhood</h3>
+        <p>Describe your home and neighborhood.</p>
+    </div>
+
+    <div class="lesson">
+        <h3>Lesson 4: Places & Getting Around</h3>
+        <p>Talk about places and transportation.</p>
+    </div>
+
+    <div class="lesson">
+        <h3>Lesson 5: Weather</h3>
+        <p>Describe the weather and seasons.</p>
+    </div>
+
+    <div class="lesson">
+        <h3>Lesson 6: Daily Routine</h3>
+        <p>Talk about your everyday activities.</p>
+    </div>
 
 </div>
 
+
+<footer>
+    © 2026 Henry English
+</footer>
+
+</div>
+
+
 <script>
 
-function startLearning() {
-    alert("Welcome to Henry English! Let's start learning.");
-}
+function showPage(page) {
 
-function openLesson(name) {
-    alert(name + " section is coming soon!");
+    document.getElementById("home").style.display = "none";
+    document.getElementById("lessons").style.display = "none";
+
+    document.getElementById(page).style.display = "block";
 }
 
 </script>
