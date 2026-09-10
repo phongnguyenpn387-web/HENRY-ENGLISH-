@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Henry English</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -21,8 +23,10 @@ body {
 .app {
     max-width: 1100px;
     margin: auto;
-    padding: 25px 20px;
+    padding: 20px;
 }
+
+/* HEADER */
 
 header {
     background: white;
@@ -33,7 +37,7 @@ header {
 }
 
 .logo {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: bold;
     color: #2563eb;
 }
@@ -43,27 +47,28 @@ header {
     margin-top: 6px;
 }
 
+/* HOME */
+
 h1 {
-    margin-top: 25px;
-    font-size: 28px;
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
-.welcome {
+.description {
     color: #64748b;
-    margin-top: 8px;
+    margin-bottom: 25px;
 }
 
 .menu {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
-    margin-top: 25px;
 }
 
 .card {
     background: white;
-    padding: 25px;
-    border-radius: 18px;
+    padding: 30px;
+    border-radius: 20px;
     cursor: pointer;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     transition: 0.2s;
@@ -74,8 +79,8 @@ h1 {
 }
 
 .icon {
-    font-size: 38px;
-    margin-bottom: 12px;
+    font-size: 45px;
+    margin-bottom: 15px;
 }
 
 .card h2 {
@@ -86,6 +91,8 @@ h1 {
     color: #64748b;
 }
 
+/* PAGE */
+
 .page {
     display: none;
 }
@@ -93,37 +100,155 @@ h1 {
 .back {
     background: #e5e7eb;
     border: none;
-    padding: 10px 18px;
+    padding: 11px 18px;
     border-radius: 10px;
     cursor: pointer;
     margin-bottom: 20px;
+    font-size: 16px;
 }
 
-.lesson {
+/* GRADE */
+
+.grade-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.grade {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.grade-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.grade h2 {
+    margin-bottom: 8px;
+}
+
+.grade p {
+    color: #64748b;
+}
+
+/* UNITS */
+
+.units {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.unit {
     background: white;
     padding: 20px;
-    border-radius: 15px;
-    margin: 12px 0;
+    border-radius: 16px;
     cursor: pointer;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.lesson h3 {
-    color: #2563eb;
-    margin-bottom: 6px;
+.unit:hover {
+    transform: translateY(-3px);
 }
+
+.unit-number {
+    color: #2563eb;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.unit-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* VOCABULARY */
+
+.vocabulary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.word-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.word-card:hover {
+    transform: translateY(-4px);
+}
+
+.word-image {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background: #eef2ff;
+}
+
+.word-content {
+    padding: 18px;
+    text-align: center;
+}
+
+.word {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.listen {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #64748b;
+}
+
+/* FOOTER */
 
 footer {
     text-align: center;
-    margin-top: 35px;
+    margin-top: 40px;
     color: #94a3b8;
 }
 
-@media(max-width:650px) {
-    .menu {
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .menu,
+    .grade-container,
+    .units {
         grid-template-columns: 1fr;
     }
+
+    .vocabulary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logo {
+        font-size: 27px;
+    }
+
 }
+
+@media(max-width:450px) {
+
+    .vocabulary {
+        grid-template-columns: 1fr;
+    }
+
+}
+
 </style>
 </head>
 
@@ -132,47 +257,85 @@ footer {
 <div class="app">
 
 <header>
-    <div class="logo">Henry English</div>
-    <div class="subtitle">Learn English. Speak with confidence.</div>
+
+<div class="logo">
+Henry English
+</div>
+
+<div class="subtitle">
+Learn English. Speak with confidence.
+</div>
+
 </header>
+
 
 <!-- HOME -->
 
 <div id="home">
 
-    <h1>Welcome to Henry English 👋</h1>
+<h1>
+Welcome to Henry English 👋
+</h1>
 
-    <p class="welcome">
-        Choose what you want to learn today.
-    </p>
+<p class="description">
+Choose a learning activity.
+</p>
 
-    <div class="menu">
 
-        <div class="card" onclick="showPage('lessons')">
-            <div class="icon">📚</div>
-            <h2>Lessons</h2>
-            <p>Learn English step by step.</p>
-        </div>
+<div class="menu">
 
-        <div class="card">
-            <div class="icon">🗣️</div>
-            <h2>Speaking</h2>
-            <p>Practice speaking and reflex.</p>
-        </div>
+<div class="card" onclick="showPage('lessons')">
 
-        <div class="card">
-            <div class="icon">📖</div>
-            <h2>Vocabulary</h2>
-            <p>Learn useful English words.</p>
-        </div>
+<div class="icon">📚</div>
 
-        <div class="card">
-            <div class="icon">🎯</div>
-            <h2>Quiz</h2>
-            <p>Test your English knowledge.</p>
-        </div>
+<h2>Lessons</h2>
 
-    </div>
+<p>
+Learn English step by step.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🗣️</div>
+
+<h2>Speaking</h2>
+
+<p>
+Practice speaking and reflex.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📖</div>
+
+<h2>Vocabulary</h2>
+
+<p>
+Learn useful English words.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🎯</div>
+
+<h2>Quiz</h2>
+
+<p>
+Test your English.
+</p>
+
+</div>
+
+</div>
 
 </div>
 
@@ -181,47 +344,106 @@ footer {
 
 <div id="lessons" class="page">
 
-    <button class="back" onclick="showPage('home')">
-        ← Back
-    </button>
+<button class="back" onclick="showPage('home')">
+← Back
+</button>
 
-    <h1>📚 Lessons</h1>
+<h1>
+📚 Lessons
+</h1>
 
-    <div class="lesson">
-        <h3>Lesson 1: Greetings & Introductions</h3>
-        <p>Hello, Hi, My name is..., Nice to meet you.</p>
-    </div>
+<p class="description">
+Choose your grade.
+</p>
 
-    <div class="lesson">
-        <h3>Lesson 2: Family & Relationships</h3>
-        <p>Talk about your family and friends.</p>
-    </div>
 
-    <div class="lesson">
-        <h3>Lesson 3: My Home & Neighborhood</h3>
-        <p>Describe your home and neighborhood.</p>
-    </div>
+<div class="grade-container">
 
-    <div class="lesson">
-        <h3>Lesson 4: Places & Getting Around</h3>
-        <p>Talk about places and transportation.</p>
-    </div>
 
-    <div class="lesson">
-        <h3>Lesson 5: Weather</h3>
-        <p>Describe the weather and seasons.</p>
-    </div>
+<div class="grade" onclick="showPage('grade1')">
 
-    <div class="lesson">
-        <h3>Lesson 6: Daily Routine</h3>
-        <p>Talk about your everyday activities.</p>
-    </div>
+<div class="grade-icon">
+👦
+</div>
+
+<h2>
+Lớp 1
+</h2>
+
+<p>
+Global Success 1
+</p>
+
+</div>
+
+
+<div class="grade">
+
+<div class="grade-icon">
+👧
+</div>
+
+<h2>
+Lớp 3
+</h2>
+
+<p>
+Coming soon
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- GRADE 1 -->
+
+<div id="grade1" class="page">
+
+<button class="back" onclick="showPage('lessons')">
+← Back
+</button>
+
+<h1>
+👦 Lớp 1
+</h1>
+
+<p class="description">
+Global Success 1
+</p>
+
+
+<div class="units" id="unitList"></div>
+
+</div>
+
+
+<!-- VOCABULARY -->
+
+<div id="vocabulary" class="page">
+
+<button class="back" onclick="showPage('grade1')">
+← Back
+</button>
+
+<h1 id="vocabTitle">
+Vocabulary
+</h1>
+
+<p class="description">
+Tap a word to listen.
+</p>
+
+<div class="vocabulary" id="vocabList"></div>
 
 </div>
 
 
 <footer>
-    © 2026 Henry English
+© 2026 Henry English
 </footer>
 
 </div>
@@ -229,12 +451,294 @@ footer {
 
 <script>
 
+/* UNIT DATA */
+
+const units = [
+
+{
+number: 1,
+title: "In the school playground",
+words: [
+["ball", "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600"],
+["book", "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600"],
+["bike", "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=600"]
+]
+},
+
+{
+number: 2,
+title: "In the dining room",
+words: [
+["cake", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600"],
+["car", "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"],
+["cup", "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600"]
+]
+},
+
+{
+number: 3,
+title: "At the street",
+words: [
+["cat", "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600"],
+["dog", "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600"],
+["door", "https://images.unsplash.com/photo-1531835551805-16d864c8d311?w=600"]
+]
+},
+
+{
+number: 4,
+title: "In the bedroom",
+words: [
+["bed", "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600"],
+["desk", "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600"],
+["chair", "https://images.unsplash.com/photo-1503602642458-232111445657?w=600"]
+]
+},
+
+{
+number: 5,
+title: "At the zoo",
+words: [
+["dog", "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600"],
+["cat", "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600"],
+["duck", "https://images.unsplash.com/photo-1559715541-5daf9e5f8f1d?w=600"]
+]
+},
+
+{
+number: 6,
+title: "In the classroom",
+words: [
+["pen", "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=600"],
+["pencil", "https://images.unsplash.com/photo-1517842645767-c639042777db?w=600"],
+["book", "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600"]
+]
+},
+
+{
+number: 7,
+title: "In the garden",
+words: [
+["garden", "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600"],
+["gate", "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=600"],
+["flower", "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600"]
+]
+},
+
+{
+number: 8,
+title: "At home",
+words: [
+["house", "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600"],
+["room", "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600"],
+["bed", "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600"]
+]
+},
+
+{
+number: 9,
+title: "My family",
+words: [
+["family", "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600"],
+["girl", "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600"],
+["boy", "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600"]
+]
+},
+
+{
+number: 10,
+title: "My body",
+words: [
+["head", "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600"],
+["hand", "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=600"],
+["hair", "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600"]
+]
+},
+
+{
+number: 11,
+title: "My clothes",
+words: [
+["hat", "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600"],
+["shirt", "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600"],
+["dress", "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600"]
+]
+},
+
+{
+number: 12,
+title: "My toys",
+words: [
+["ball", "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600"],
+["car", "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"],
+["bike", "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=600"]
+]
+},
+
+{
+number: 13,
+title: "My school",
+words: [
+["school", "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600"],
+["book", "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600"],
+["pen", "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=600"]
+]
+},
+
+{
+number: 14,
+title: "At the park",
+words: [
+["park", "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600"],
+["tree", "https://images.unsplash.com/photo-1511497584788-876760111969?w=600"],
+["ball", "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600"]
+]
+},
+
+{
+number: 15,
+title: "My favorite things",
+words: [
+["book", "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600"],
+["ball", "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600"],
+["cake", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600"]
+]
+},
+
+{
+number: 16,
+title: "At home",
+words: [
+["house", "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600"],
+["door", "https://images.unsplash.com/photo-1531835551805-16d864c8d311?w=600"],
+["room", "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600"]
+]
+}
+
+];
+
+
+/* CREATE UNITS */
+
+const unitList = document.getElementById("unitList");
+
+units.forEach(unit => {
+
+const div = document.createElement("div");
+
+div.className = "unit";
+
+div.innerHTML = `
+<div class="unit-number">
+UNIT ${unit.number}
+</div>
+
+<div class="unit-title">
+${unit.title}
+</div>
+`;
+
+div.onclick = function() {
+showVocabulary(unit);
+};
+
+unitList.appendChild(div);
+
+});
+
+
+/* SHOW VOCABULARY */
+
+function showVocabulary(unit) {
+
+document.getElementById("grade1").style.display = "none";
+
+document.getElementById("vocabulary").style.display = "block";
+
+document.getElementById("vocabTitle").innerText =
+"Unit " + unit.number + ": " + unit.title;
+
+const list = document.getElementById("vocabList");
+
+list.innerHTML = "";
+
+unit.words.forEach(item => {
+
+const word = item[0];
+const image = item[1];
+
+const card = document.createElement("div");
+
+card.className = "word-card";
+
+card.innerHTML = `
+
+<img
+class="word-image"
+src="${image}"
+alt="${word}"
+>
+
+<div class="word-content">
+
+<div class="word">
+${word}
+</div>
+
+<div class="listen">
+🔊 Tap to listen
+</div>
+
+</div>
+
+`;
+
+card.onclick = function() {
+
+speakWord(word);
+
+};
+
+list.appendChild(card);
+
+});
+
+}
+
+
+/* SPEAK */
+
+function speakWord(word) {
+
+const speech = new SpeechSynthesisUtterance(word);
+
+speech.lang = "en-GB";
+
+speech.rate = 0.8;
+
+speech.pitch = 1;
+
+window.speechSynthesis.cancel();
+
+window.speechSynthesis.speak(speech);
+
+}
+
+
+/* PAGE NAVIGATION */
+
 function showPage(page) {
 
-    document.getElementById("home").style.display = "none";
-    document.getElementById("lessons").style.display = "none";
+document.getElementById("home").style.display = "none";
 
-    document.getElementById(page).style.display = "block";
+document.getElementById("lessons").style.display = "none";
+
+document.getElementById("grade1").style.display = "none";
+
+document.getElementById("vocabulary").style.display = "none";
+
+document.getElementById(page).style.display = "block";
+
 }
 
 </script>
