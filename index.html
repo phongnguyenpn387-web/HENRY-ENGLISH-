@@ -6,44 +6,195 @@
     <title>Henry English</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            text-align: center;
-            padding: 50px 20px;
+            background: #f4f7fb;
+            color: #1f2937;
         }
 
-        h1 {
+        .app {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
             color: #2563eb;
-            font-size: 40px;
         }
 
-        p {
+        .subtitle {
+            margin-top: 8px;
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        .welcome {
+            margin-top: 25px;
+        }
+
+        .welcome h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #64748b;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin: 25px 0 15px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
             font-size: 20px;
-            color: #555;
+            margin-bottom: 8px;
         }
 
-        button {
+        .card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .start {
+            margin-top: 25px;
             background: #2563eb;
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 18px;
+            padding: 15px 28px;
+            border-radius: 12px;
+            font-size: 17px;
             cursor: pointer;
+        }
+
+        .start:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 35px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        @media (max-width: 650px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome h1 {
+                font-size: 25px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Henry English</h1>
+<div class="app">
 
-    <p>Welcome to Henry English App</p>
+    <header>
+        <div class="logo">Henry English</div>
+        <div class="subtitle">Learn English. Speak with confidence.</div>
 
-    <button onclick="alert('Welcome to Henry English!')">
-        Start Learning
-    </button>
+        <div class="welcome">
+            <h1>Welcome to Henry English 👋</h1>
+            <p>Your English learning journey starts here.</p>
+
+            <button class="start" onclick="startLearning()">
+                Start Learning
+            </button>
+        </div>
+    </header>
+
+    <h2 class="section-title">What do you want to learn?</h2>
+
+    <div class="cards">
+
+        <div class="card" onclick="openLesson('Lessons')">
+            <div class="icon">📚</div>
+            <h2>Lessons</h2>
+            <p>Learn English through structured lessons.</p>
+        </div>
+
+        <div class="card" onclick="openLesson('Speaking')">
+            <div class="icon">🗣️</div>
+            <h2>Speaking</h2>
+            <p>Practice speaking and improve your reflex.</p>
+        </div>
+
+        <div class="card" onclick="openLesson('Vocabulary')">
+            <div class="icon">📖</div>
+            <h2>Vocabulary</h2>
+            <p>Learn useful words and expressions.</p>
+        </div>
+
+        <div class="card" onclick="openLesson('Quiz')">
+            <div class="icon">🎯</div>
+            <h2>Quiz</h2>
+            <p>Test your English and check your progress.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 Henry English
+    </footer>
+
+</div>
+
+<script>
+
+function startLearning() {
+    alert("Welcome to Henry English! Let's start learning.");
+}
+
+function openLesson(name) {
+    alert(name + " section is coming soon!");
+}
+
+</script>
 
 </body>
 </html>
