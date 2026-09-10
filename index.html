@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,736 +9,2280 @@
 
 <style>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f7fb;
-    color: #1f2937;
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f6fb;
+    color:#222;
 }
 
-.app {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
+button{
+    font-family:inherit;
+    cursor:pointer;
 }
 
-/* HEADER */
-
-header {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+.page{
+    min-height:100vh;
+    padding:25px;
 }
 
-.logo {
-    font-size: 32px;
-    font-weight: bold;
-    color: #2563eb;
+.container{
+    max-width:1100px;
+    margin:auto;
 }
 
-.subtitle {
-    color: #64748b;
-    margin-top: 6px;
+/* =========================
+WELCOME
+========================= */
+
+#welcome{
+    min-height:100vh;
+    background:#000055;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
 }
 
-/* HOME */
-
-h1 {
-    font-size: 30px;
-    margin-bottom: 10px;
+.welcome-title{
+    color:#FF6600;
+    font-size:42px;
+    font-weight:800;
+    line-height:1.3;
+    margin-bottom:45px;
 }
 
-.description {
-    color: #64748b;
-    margin-bottom: 25px;
+.grade-buttons{
+    display:flex;
+    gap:25px;
+    justify-content:center;
 }
 
-.menu {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+.grade-button{
+    width:230px;
+    padding:25px;
+    background:white;
+    color:#000055;
+    border:none;
+    border-radius:20px;
+    font-size:25px;
+    font-weight:bold;
+    transition:.2s;
 }
 
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    transition: 0.2s;
+.grade-button:hover{
+    transform:translateY(-5px);
 }
 
-.card:hover {
-    transform: translateY(-4px);
+/* =========================
+HEADER
+========================= */
+
+.header{
+    background:#000055;
+    color:white;
+    padding:22px;
+    border-radius:20px;
+    margin-bottom:25px;
 }
 
-.icon {
-    font-size: 45px;
-    margin-bottom: 15px;
+.header h1{
+    color:#FF6600;
+    font-size:30px;
 }
 
-.card h2 {
-    margin-bottom: 8px;
+.header p{
+    margin-top:7px;
 }
 
-.card p {
-    color: #64748b;
+.back{
+    border:none;
+    background:#e5e7eb;
+    padding:11px 18px;
+    border-radius:10px;
+    margin-bottom:20px;
+    font-size:16px;
 }
 
-/* PAGE */
+/* =========================
+MAIN MENU
+========================= */
 
-.page {
-    display: none;
+.main-menu{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.back {
-    background: #e5e7eb;
-    border: none;
-    padding: 11px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    font-size: 16px;
+.menu{
+    min-height:210px;
+    border-radius:22px;
+    padding:30px 20px;
+    border:3px solid;
+    text-align:center;
+    transition:.2s;
 }
 
-/* GRADE */
-
-.grade-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+.menu:hover{
+    transform:translateY(-5px);
 }
 
-.grade {
-    background: white;
-    padding: 35px;
-    border-radius: 20px;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+.menu-icon{
+    font-size:55px;
+    margin-bottom:15px;
 }
 
-.grade-icon {
-    font-size: 55px;
-    margin-bottom: 15px;
+.menu h2{
+    font-size:26px;
+    margin-bottom:8px;
 }
 
-.grade h2 {
-    margin-bottom: 8px;
+.vocab-menu{
+    background:#fff3e8;
+    border-color:#FF6600;
 }
 
-.grade p {
-    color: #64748b;
+.memory-menu{
+    background:#eaf1ff;
+    border-color:#2563eb;
 }
 
-/* UNITS */
-
-.units {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+.reflex-menu{
+    background:#eaffed;
+    border-color:#16a34a;
 }
 
-.unit {
-    background: white;
-    padding: 20px;
-    border-radius: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+/* =========================
+UNITS
+========================= */
+
+.units{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
-.unit:hover {
-    transform: translateY(-3px);
+.unit{
+    background:white;
+    border:none;
+    border-radius:18px;
+    padding:22px;
+    text-align:left;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+    transition:.2s;
 }
 
-.unit-number {
-    color: #2563eb;
-    font-weight: bold;
-    margin-bottom: 7px;
+.unit:hover{
+    transform:translateY(-3px);
 }
 
-.unit-title {
-    font-size: 18px;
-    font-weight: bold;
+.unit-number{
+    color:#FF6600;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
-/* VOCABULARY */
-
-.vocabulary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+.unit-title{
+    color:#000055;
+    font-size:19px;
+    font-weight:bold;
 }
 
-.word-card {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-    cursor: pointer;
-    transition: 0.2s;
+/* =========================
+VOCAB
+========================= */
+
+.vocab-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.word-card:hover {
-    transform: translateY(-4px);
+.vocab-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    cursor:pointer;
+    transition:.2s;
 }
 
-.word-image {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    background: #eef2ff;
+.vocab-card:hover{
+    transform:translateY(-4px);
 }
 
-.word-content {
-    padding: 18px;
-    text-align: center;
+.vocab-card img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    background:#eee;
 }
 
-.word {
-    font-size: 25px;
-    font-weight: bold;
-    color: #2563eb;
+.vocab-content{
+    padding:18px;
+    text-align:center;
 }
 
-.listen {
-    margin-top: 10px;
-    font-size: 15px;
-    color: #64748b;
+.vocab-word{
+    color:#000055;
+    font-size:31px;
+    font-weight:800;
 }
 
-/* FOOTER */
-
-footer {
-    text-align: center;
-    margin-top: 40px;
-    color: #94a3b8;
+.vocab-ipa{
+    color:#FF6600;
+    font-size:21px;
+    margin-top:8px;
 }
 
-/* MOBILE */
+.vocab-meaning{
+    color:#555;
+    font-size:17px;
+    margin-top:8px;
+}
 
-@media(max-width:700px) {
+.listen{
+    color:#2563eb;
+    font-weight:bold;
+    margin-top:12px;
+}
 
-    .menu,
-    .grade-container,
-    .units {
-        grid-template-columns: 1fr;
+/* =========================
+RANGE
+========================= */
+
+.range-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.range{
+    background:white;
+    border:none;
+    border-radius:20px;
+    padding:35px;
+    color:#000055;
+    font-size:24px;
+    font-weight:bold;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+/* =========================
+MEMORY
+========================= */
+
+.memory-box,
+.quiz-box{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+}
+
+.memory-image,
+.quiz-image{
+    width:100%;
+    max-width:550px;
+    height:330px;
+    object-fit:cover;
+    border-radius:25px;
+    background:#eee;
+}
+
+.memory-word{
+    color:#000055;
+    font-size:48px;
+    font-weight:800;
+    margin-top:20px;
+}
+
+.memory-ipa{
+    color:#FF6600;
+    font-size:27px;
+    margin-top:10px;
+}
+
+.memory-status{
+    color:#555;
+    font-size:20px;
+    margin-top:20px;
+}
+
+.progress{
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.start{
+    background:#FF6600;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:14px;
+    font-size:19px;
+    font-weight:bold;
+    margin-top:25px;
+}
+
+/* =========================
+QUIZ
+========================= */
+
+.quiz-question{
+    color:#000055;
+    font-size:30px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.option{
+    background:white;
+    border:3px solid #ddd;
+    border-radius:18px;
+    padding:15px;
+    font-size:23px;
+    font-weight:bold;
+    min-height:80px;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:#FF6600;
+}
+
+.option img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.correct{
+    background:#dcfce7!important;
+    border-color:#16a34a!important;
+    color:#166534;
+}
+
+.wrong{
+    background:#fee2e2!important;
+    border-color:#dc2626!important;
+    color:#991b1b;
+}
+
+.feedback{
+    min-height:35px;
+    margin-top:20px;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.next{
+    background:#000055;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    border-radius:14px;
+    font-size:18px;
+    margin-top:20px;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:750px){
+
+    .welcome-title{
+        font-size:30px;
     }
 
-    .vocabulary {
-        grid-template-columns: repeat(2, 1fr);
+    .grade-buttons{
+        flex-direction:column;
     }
 
-    .logo {
-        font-size: 27px;
+    .grade-button{
+        width:100%;
+    }
+
+    .main-menu{
+        grid-template-columns:1fr;
+    }
+
+    .units{
+        grid-template-columns:1fr;
+    }
+
+    .vocab-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .options{
+        grid-template-columns:1fr;
     }
 
 }
 
-@media(max-width:450px) {
+@media(max-width:450px){
 
-    .vocabulary {
-        grid-template-columns: 1fr;
+    .vocab-grid{
+        grid-template-columns:1fr;
+    }
+
+    .memory-word{
+        font-size:38px;
     }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="app">
 
-<header>
+<!-- =====================================================
+WELCOME
+===================================================== -->
 
-<div class="logo">
-Henry English
-</div>
+<section id="welcome">
 
-<div class="subtitle">
-Learn English. Speak with confidence.
-</div>
+<div>
 
-</header>
+<div class="welcome-title">
 
-
-<!-- HOME -->
-
-<div id="home">
-
-<h1>
-Welcome to Henry English 👋
-</h1>
-
-<p class="description">
-Choose a learning activity.
-</p>
-
-
-<div class="menu">
-
-<div class="card" onclick="showPage('lessons')">
-
-<div class="icon">📚</div>
-
-<h2>Lessons</h2>
-
-<p>
-Learn English step by step.
-</p>
+CHÀO MỪNG BẠN ĐẾN VỚI<br>
+LỚP TIẾNG ANH HENRY ENGLISH
 
 </div>
 
+<div class="grade-buttons">
 
-<div class="card">
-
-<div class="icon">🗣️</div>
-
-<h2>Speaking</h2>
-
-<p>
-Practice speaking and reflex.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">📖</div>
-
-<h2>Vocabulary</h2>
-
-<p>
-Learn useful English words.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">🎯</div>
-
-<h2>Quiz</h2>
-
-<p>
-Test your English.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- LESSONS -->
-
-<div id="lessons" class="page">
-
-<button class="back" onclick="showPage('home')">
-← Back
+<button class="grade-button"
+onclick="selectGrade(1)">
+LỚP 1
 </button>
 
-<h1>
-📚 Lessons
-</h1>
-
-<p class="description">
-Choose your grade.
-</p>
-
-
-<div class="grade-container">
-
-
-<div class="grade" onclick="showPage('grade1')">
-
-<div class="grade-icon">
-👦
-</div>
-
-<h2>
-Lớp 1
-</h2>
-
-<p>
-Global Success 1
-</p>
-
-</div>
-
-
-<div class="grade">
-
-<div class="grade-icon">
-👧
-</div>
-
-<h2>
-Lớp 3
-</h2>
-
-<p>
-Coming soon
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- GRADE 1 -->
-
-<div id="grade1" class="page">
-
-<button class="back" onclick="showPage('lessons')">
-← Back
+<button class="grade-button"
+onclick="selectGrade(3)">
+LỚP 3
 </button>
 
-<h1>
-👦 Lớp 1
-</h1>
-
-<p class="description">
-Global Success 1
-</p>
-
-
-<div class="units" id="unitList"></div>
+</div>
 
 </div>
 
+</section>
 
-<!-- VOCABULARY -->
 
-<div id="vocabulary" class="page">
+<!-- =====================================================
+MAIN
+===================================================== -->
 
-<button class="back" onclick="showPage('grade1')">
-← Back
+<section id="mainPage" class="page" style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="goHome()">
+← Chọn lớp khác
 </button>
 
-<h1 id="vocabTitle">
-Vocabulary
-</h1>
+<div class="header">
 
-<p class="description">
-Tap a word to listen.
-</p>
+<h1 id="gradeTitle"></h1>
 
-<div class="vocabulary" id="vocabList"></div>
+<p>Henry English</p>
 
 </div>
 
+<div class="main-menu">
 
-<footer>
-© 2026 Henry English
-</footer>
+<button class="menu vocab-menu"
+onclick="openVocabUnits()">
+
+<div class="menu-icon">📚</div>
+
+<h2>Từ vựng</h2>
+
+<p>Vocabulary</p>
+
+</button>
+
+
+<button class="menu memory-menu"
+onclick="openMemoryMenu()">
+
+<div class="menu-icon">🧠</div>
+
+<h2>Ghi nhớ</h2>
+
+<p>Phát âm và chữ viết</p>
+
+</button>
+
+
+<button class="menu reflex-menu"
+onclick="openReflexMenu()">
+
+<div class="menu-icon">⚡</div>
+
+<h2>Luyện phản xạ</h2>
+
+<p>Nhìn hình chọn từ</p>
+
+</button>
 
 </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+VOCAB UNIT
+===================================================== -->
+
+<section id="vocabUnitsPage"
+class="page"
+style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="openMain()">
+← Quay lại
+</button>
+
+<div class="header">
+
+<h1>📚 TỪ VỰNG</h1>
+
+<p>Chọn Unit</p>
+
+</div>
+
+<div id="vocabUnits"
+class="units"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+VOCABULARY
+===================================================== -->
+
+<section id="vocabPage"
+class="page"
+style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="openVocabUnits()">
+← Danh sách Unit
+</button>
+
+<div class="header">
+
+<h1 id="vocabTitle"></h1>
+
+<p>Chạm vào từ để nghe</p>
+
+</div>
+
+<div id="vocabList"
+class="vocab-grid"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+MEMORY MENU
+===================================================== -->
+
+<section id="memoryMenu"
+class="page"
+style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="openMain()">
+← Quay lại
+</button>
+
+<div class="header">
+
+<h1>🧠 GHI NHỚ</h1>
+
+<p>Chọn hoạt động</p>
+
+</div>
+
+<div class="range-grid">
+
+<button class="range"
+onclick="openPronunciation()">
+
+🔊 PHÁT ÂM
+
+</button>
+
+<button class="range"
+onclick="openWriting()">
+
+✏️ CHỮ VIẾT
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+PRONUNCIATION MENU
+===================================================== -->
+
+<section id="pronunciationMenu"
+class="page"
+style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="openMemoryMenu()">
+← Quay lại
+</button>
+
+<div class="header">
+
+<h1>🔊 PHÁT ÂM</h1>
+
+<p>Nghe 3 lần và đọc lại</p>
+
+</div>
+
+<div class="range-grid">
+
+<button class="range"
+onclick="startMemory(1,7)">
+
+UNIT 1 → 7
+
+</button>
+
+<button class="range"
+onclick="startMemory(8,14)">
+
+UNIT 8 → 14
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+MEMORY
+===================================================== -->
+
+<section id="memoryPage"
+class="page"
+style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="openPronunciation()">
+← Quay lại
+</button>
+
+<div class="header">
+
+<h1>🔊 GHI NHỚ PHÁT ÂM</h1>
+
+<p id="memoryRange"></p>
+
+</div>
+
+<div class="memory-box">
+
+<img id="memoryImage"
+class="memory-image">
+
+<div id="memoryWord"
+class="memory-word"></div>
+
+<div id="memoryIpa"
+class="memory-ipa"></div>
+
+<div id="memoryStatus"
+class="memory-status"></div>
+
+<div id="memoryProgress"
+class="progress"></div>
+
+<button id="memoryStart"
+class="start"
+onclick="runMemory()">
+
+▶ BẮT ĐẦU
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+WRITING MENU
+===================================================== -->
+
+<section id="writingMenu"
+class="page"
+style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="openMemoryMenu()">
+← Quay lại
+</button>
+
+<div class="header">
+
+<h1>✏️ CHỮ VIẾT</h1>
+
+<p>Nhìn chữ và chọn hình</p>
+
+</div>
+
+<div class="range-grid">
+
+<button class="range"
+onclick="startWriting(1,7)">
+
+UNIT 1 → 7
+
+</button>
+
+<button class="range"
+onclick="startWriting(8,14)">
+
+UNIT 8 → 14
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+WRITING QUIZ
+===================================================== -->
+
+<section id="writingPage"
+class="page"
+style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="openWriting()">
+← Quay lại
+</button>
+
+<div class="header">
+
+<h1>✏️ CHỮ VIẾT</h1>
+
+<p id="writingRange"></p>
+
+</div>
+
+<div class="quiz-box">
+
+<div id="writingQuestion"
+class="quiz-question"></div>
+
+<div id="writingOptions"
+class="options"></div>
+
+<div id="writingFeedback"
+class="feedback"></div>
+
+<button id="writingNext"
+class="next"
+style="display:none"
+onclick="nextWriting()">
+
+CÂU TIẾP THEO →
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+REFLEX MENU
+===================================================== -->
+
+<section id="reflexMenu"
+class="page"
+style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="openMain()">
+← Quay lại
+</button>
+
+<div class="header">
+
+<h1>⚡ LUYỆN PHẢN XẠ</h1>
+
+<p>Nhìn hình và chọn từ</p>
+
+</div>
+
+<div class="range-grid">
+
+<button class="range"
+onclick="startReflex(1,7)">
+
+UNIT 1 → 7
+
+</button>
+
+<button class="range"
+onclick="startReflex(8,14)">
+
+UNIT 8 → 14
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+REFLEX
+===================================================== -->
+
+<section id="reflexPage"
+class="page"
+style="display:none">
+
+<div class="container">
+
+<button class="back"
+onclick="openReflexMenu()">
+← Quay lại
+</button>
+
+<div class="header">
+
+<h1>⚡ LUYỆN PHẢN XẠ</h1>
+
+<p id="reflexRange"></p>
+
+</div>
+
+<div class="quiz-box">
+
+<img id="reflexImage"
+class="quiz-image">
+
+<div class="quiz-question">
+What is this?
+</div>
+
+<div id="reflexOptions"
+class="options"></div>
+
+<div id="reflexFeedback"
+class="feedback"></div>
+
+<button id="reflexNext"
+class="next"
+style="display:none"
+onclick="nextReflex()">
+
+CÂU TIẾP THEO →
+
+</button>
+
+</div>
+
+</div>
+
+</section>
 
 
 <script>
 
-/* UNIT DATA */
+/* =====================================================
+GRADE 1
+===================================================== */
 
-const units = [
+const grade1 = [
 
 {
-number: 1,
-title: "In the school playground",
-words: [
-["ball", "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600"],
-["book", "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600"],
-["bike", "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=600"]
+unit:1,
+title:"IN THE SCHOOL PLAYGROUND",
+words:[
+["Bill","/bɪl/","Bill"],
+["ball","/bɔːl/","quả bóng"],
+["bike","/baɪk/","xe đạp"],
+["book","/bʊk/","quyển sách"]
 ]
 },
 
 {
-number: 2,
-title: "In the dining room",
-words: [
-["cake", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600"],
-["car", "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"],
-["cup", "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600"]
+unit:2,
+title:"IN THE DINING ROOM",
+words:[
+["cake","/keɪk/","bánh"],
+["car","/kɑː/","ô tô"],
+["cat","/kæt/","con mèo"],
+["cup","/kʌp/","cái cốc"]
 ]
 },
 
 {
-number: 3,
-title: "At the street",
-words: [
-["cat", "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600"],
-["dog", "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600"],
-["door", "https://images.unsplash.com/photo-1531835551805-16d864c8d311?w=600"]
+unit:3,
+title:"AT THE STREET MARKET",
+words:[
+["apple","/ˈæpəl/","quả táo"],
+["bag","/bæɡ/","cái túi"],
+["can","/kæn/","cái lon"],
+["hat","/hæt/","cái mũ"]
 ]
 },
 
 {
-number: 4,
-title: "In the bedroom",
-words: [
-["bed", "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600"],
-["desk", "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600"],
-["chair", "https://images.unsplash.com/photo-1503602642458-232111445657?w=600"]
+unit:4,
+title:"IN THE BEDROOM",
+words:[
+["desk","/desk/","bàn học"],
+["dog","/dɒɡ/","con chó"],
+["door","/dɔː/","cánh cửa"],
+["duck","/dʌk/","con vịt"]
 ]
 },
 
 {
-number: 5,
-title: "At the zoo",
-words: [
-["dog", "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600"],
-["cat", "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600"],
-["duck", "https://images.unsplash.com/photo-1559715541-5daf9e5f8f1d?w=600"]
+unit:5,
+title:"AT THE FISH AND CHIP SHOP",
+words:[
+["chicken","/ˈtʃɪkɪn/","thịt gà"],
+["chips","/tʃɪps/","khoai tây chiên"],
+["fish","/fɪʃ/","cá"],
+["milk","/mɪlk/","sữa"]
 ]
 },
 
 {
-number: 6,
-title: "In the classroom",
-words: [
-["pen", "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=600"],
-["pencil", "https://images.unsplash.com/photo-1517842645767-c639042777db?w=600"],
-["book", "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600"]
+unit:6,
+title:"IN THE CLASSROOM",
+words:[
+["bell","/bel/","cái chuông"],
+["pen","/pen/","bút mực"],
+["pencil","/ˈpensəl/","bút chì"],
+["red","/red/","màu đỏ"]
 ]
 },
 
 {
-number: 7,
-title: "In the garden",
-words: [
-["garden", "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600"],
-["gate", "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=600"],
-["flower", "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600"]
+unit:7,
+title:"IN THE GARDEN",
+words:[
+["garden","/ˈɡɑːdən/","khu vườn"],
+["gate","/ɡeɪt/","cái cổng"],
+["girl","/ɡɜːl/","cô gái"],
+["goat","/ɡəʊt/","con dê"]
 ]
 },
 
 {
-number: 8,
-title: "At home",
-words: [
-["house", "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600"],
-["room", "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600"],
-["bed", "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600"]
+unit:8,
+title:"IN THE PARK",
+words:[
+["hair","/heə/","tóc"],
+["hand","/hænd/","bàn tay"],
+["head","/hed/","đầu"],
+["horse","/hɔːs/","con ngựa"]
 ]
 },
 
 {
-number: 9,
-title: "My family",
-words: [
-["family", "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600"],
-["girl", "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600"],
-["boy", "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600"]
+unit:9,
+title:"IN THE SHOP",
+words:[
+["clock","/klɒk/","đồng hồ"],
+["lock","/lɒk/","ổ khóa"],
+["mop","/mɒp/","cây lau nhà"],
+["pot","/pɒt/","cái nồi"]
 ]
 },
 
 {
-number: 10,
-title: "My body",
-words: [
-["head", "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600"],
-["hand", "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=600"],
-["hair", "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600"]
+unit:10,
+title:"AT THE ZOO",
+words:[
+["mango","/ˈmæŋɡəʊ/","quả xoài"],
+["monkey","/ˈmʌŋki/","con khỉ"],
+["mother","/ˈmʌðə/","mẹ"],
+["mouse","/maʊs/","con chuột"]
 ]
 },
 
 {
-number: 11,
-title: "My clothes",
-words: [
-["hat", "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600"],
-["shirt", "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600"],
-["dress", "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600"]
+unit:11,
+title:"AT THE BUS STOP",
+words:[
+["bus","/bʌs/","xe buýt"],
+["running","/ˈrʌnɪŋ/","đang chạy"],
+["sun","/sʌn/","mặt trời"],
+["truck","/trʌk/","xe tải"]
 ]
 },
 
 {
-number: 12,
-title: "My toys",
-words: [
-["ball", "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600"],
-["car", "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"],
-["bike", "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=600"]
+unit:12,
+title:"AT THE LAKE",
+words:[
+["lake","/leɪk/","hồ"],
+["leaf","/liːf/","chiếc lá"],
+["lemons","/ˈlemənz/","những quả chanh"],
+["lamp","/læmp/","đèn"]
 ]
 },
 
 {
-number: 13,
-title: "My school",
-words: [
-["school", "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600"],
-["book", "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600"],
-["pen", "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=600"]
+unit:13,
+title:"IN THE SCHOOL CANTEEN",
+words:[
+["bananas","/bəˈnɑːnəz/","những quả chuối"],
+["Nick","/nɪk/","Nick"],
+["noodles","/ˈnuːdlz/","mì"],
+["nuts","/nʌts/","các loại hạt"]
 ]
 },
 
 {
-number: 14,
-title: "At the park",
-words: [
-["park", "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600"],
-["tree", "https://images.unsplash.com/photo-1511497584788-876760111969?w=600"],
-["ball", "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600"]
+unit:14,
+title:"IN THE TOY SHOP",
+words:[
+["teddy bear","/ˈtedi beə/","gấu bông"],
+["tiger","/ˈtaɪɡə/","con hổ"],
+["top","/tɒp/","con quay"],
+["turtle","/ˈtɜːtl/","con rùa"]
 ]
 },
 
 {
-number: 15,
-title: "My favorite things",
-words: [
-["book", "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600"],
-["ball", "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600"],
-["cake", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600"]
+unit:15,
+title:"AT THE FOOTBALL MATCH",
+words:[
+["face","/feɪs/","khuôn mặt"],
+["father","/ˈfɑːðə/","bố"],
+["foot","/fʊt/","bàn chân"],
+["football","/ˈfʊtbɔːl/","bóng đá"]
 ]
 },
 
 {
-number: 16,
-title: "At home",
-words: [
-["house", "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600"],
-["door", "https://images.unsplash.com/photo-1531835551805-16d864c8d311?w=600"],
-["room", "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600"]
+unit:16,
+title:"AT HOME",
+words:[
+["washing","/ˈwɒʃɪŋ/","đang rửa"],
+["water","/ˈwɔːtə/","nước"],
+["window","/ˈwɪndəʊ/","cửa sổ"],
+["Wendy","/ˈwendi/","Wendy"]
 ]
 }
 
 ];
 
 
-/* CREATE UNITS */
+/* =====================================================
+GRADE 3
+===================================================== */
 
-const unitList = document.getElementById("unitList");
+const grade3 = [
 
-units.forEach(unit => {
+{
+unit:1,
+title:"HELLO",
+words:[
+["hello","/həˈləʊ/","xin chào"],
+["hi","/haɪ/","chào"],
+["morning","/ˈmɔːnɪŋ/","buổi sáng"],
+["afternoon","/ˌɑːftəˈnuːn/","buổi chiều"],
+["goodbye","/ˌɡʊdˈbaɪ/","tạm biệt"],
+["nice","/naɪs/","tốt, vui"],
+["meet","/miːt/","gặp"],
+["friend","/frend/","bạn"]
+]
+},
 
-const div = document.createElement("div");
+{
+unit:2,
+title:"OUR NAMES",
+words:[
+["name","/neɪm/","tên"],
+["my","/maɪ/","của tôi"],
+["your","/jɔː/","của bạn"],
+["his","/hɪz/","của anh ấy"],
+["her","/hɜː/","của cô ấy"],
+["this","/ðɪs/","này"],
+["that","/ðæt/","kia"],
+["new","/njuː/","mới"]
+]
+},
 
-div.className = "unit";
+{
+unit:3,
+title:"OUR FRIENDS",
+words:[
+["friend","/frend/","bạn"],
+["boy","/bɔɪ/","bạn nam"],
+["girl","/ɡɜːl/","bạn nữ"],
+["he","/hiː/","anh ấy"],
+["she","/ʃiː/","cô ấy"],
+["tall","/tɔːl/","cao"],
+["short","/ʃɔːt/","thấp"],
+["young","/jʌŋ/","trẻ"]
+]
+},
 
-div.innerHTML = `
-<div class="unit-number">
-UNIT ${unit.number}
-</div>
+{
+unit:4,
+title:"OUR BODIES",
+words:[
+["body","/ˈbɒdi/","cơ thể"],
+["head","/hed/","đầu"],
+["face","/feɪs/","mặt"],
+["eye","/aɪ/","mắt"],
+["ear","/ɪə/","tai"],
+["nose","/nəʊz/","mũi"],
+["mouth","/maʊθ/","miệng"],
+["hand","/hænd/","bàn tay"]
+]
+},
 
-<div class="unit-title">
-${unit.title}
-</div>
-`;
+{
+unit:5,
+title:"MY HOUSE",
+words:[
+["house","/haʊs/","ngôi nhà"],
+["room","/ruːm/","phòng"],
+["living room","/ˈlɪvɪŋ ruːm/","phòng khách"],
+["bedroom","/ˈbedruːm/","phòng ngủ"],
+["bathroom","/ˈbɑːθruːm/","phòng tắm"],
+["kitchen","/ˈkɪtʃɪn/","nhà bếp"],
+["door","/dɔː/","cửa"],
+["window","/ˈwɪndəʊ/","cửa sổ"]
+]
+},
 
-div.onclick = function() {
-showVocabulary(unit);
-};
+{
+unit:6,
+title:"MY SCHOOL",
+words:[
+["school","/skuːl/","trường học"],
+["classroom","/ˈklɑːsruːm/","lớp học"],
+["teacher","/ˈtiːtʃə/","giáo viên"],
+["pupil","/ˈpjuːpəl/","học sinh"],
+["library","/ˈlaɪbrəri/","thư viện"],
+["playground","/ˈpleɪɡraʊnd/","sân chơi"],
+["school bag","/skuːl bæɡ/","cặp sách"],
+["desk","/desk/","bàn học"]
+]
+},
 
-unitList.appendChild(div);
+{
+unit:7,
+title:"MY SCHOOL THINGS",
+words:[
+["book","/bʊk/","sách"],
+["notebook","/ˈnəʊtbʊk/","vở"],
+["pen","/pen/","bút mực"],
+["pencil","/ˈpensəl/","bút chì"],
+["ruler","/ˈruːlə/","thước"],
+["eraser","/ɪˈreɪzə/","cục tẩy"],
+["pencil case","/ˈpensəl keɪs/","hộp bút"],
+["school bag","/skuːl bæɡ/","cặp sách"]
+]
+},
 
-});
+{
+unit:8,
+title:"MY SCHOOL DAYS",
+words:[
+["Monday","/ˈmʌndeɪ/","thứ Hai"],
+["Tuesday","/ˈtjuːzdeɪ/","thứ Ba"],
+["Wednesday","/ˈwenzdeɪ/","thứ Tư"],
+["Thursday","/ˈθɜːzdeɪ/","thứ Năm"],
+["Friday","/ˈfraɪdeɪ/","thứ Sáu"],
+["Saturday","/ˈsætədeɪ/","thứ Bảy"],
+["Sunday","/ˈsʌndeɪ/","Chủ nhật"],
+["today","/təˈdeɪ/","hôm nay"]
+]
+},
+
+{
+unit:9,
+title:"OUR SPORTS DAY",
+words:[
+["sports","/spɔːts/","thể thao"],
+["football","/ˈfʊtbɔːl/","bóng đá"],
+["basketball","/ˈbɑːskɪtbɔːl/","bóng rổ"],
+["badminton","/ˈbædmɪntən/","cầu lông"],
+["running","/ˈrʌnɪŋ/","chạy"],
+["swimming","/ˈswɪmɪŋ/","bơi"],
+["playing","/ˈpleɪɪŋ/","chơi"],
+["match","/mætʃ/","trận đấu"]
+]
+},
+
+{
+unit:10,
+title:"OUR SCHOOL TRIP",
+words:[
+["trip","/trɪp/","chuyến đi"],
+["zoo","/zuː/","sở thú"],
+["museum","/mjuˈziːəm/","bảo tàng"],
+["park","/pɑːk/","công viên"],
+["bus","/bʌs/","xe buýt"],
+["visit","/ˈvɪzɪt/","thăm"],
+["see","/siː/","nhìn, xem"],
+["go","/ɡəʊ/","đi"]
+]
+},
+
+{
+unit:11,
+title:"MY FAMILY",
+words:[
+["family","/ˈfæməli/","gia đình"],
+["father","/ˈfɑːðə/","bố"],
+["mother","/ˈmʌðə/","mẹ"],
+["brother","/ˈbrʌðə/","anh/em trai"],
+["sister","/ˈsɪstə/","chị/em gái"],
+["grandfather","/ˈɡrænfɑːðə/","ông"],
+["grandmother","/ˈɡrænmʌðə/","bà"],
+["parents","/ˈpeərənts/","bố mẹ"]
+]
+},
+
+{
+unit:12,
+title:"OUR PETS",
+words:[
+["pet","/pet/","thú cưng"],
+["dog","/dɒɡ/","chó"],
+["cat","/kæt/","mèo"],
+["bird","/bɜːd/","chim"],
+["fish","/fɪʃ/","cá"],
+["rabbit","/ˈræbɪt/","thỏ"],
+["parrot","/ˈpærət/","vẹt"],
+["hamster","/ˈhæmstə/","chuột hamster"]
+]
+},
+
+{
+unit:13,
+title:"MY HOUSE",
+words:[
+["house","/haʊs/","ngôi nhà"],
+["flat","/flæt/","căn hộ"],
+["floor","/flɔː/","tầng"],
+["bedroom","/ˈbedruːm/","phòng ngủ"],
+["kitchen","/ˈkɪtʃɪn/","nhà bếp"],
+["bathroom","/ˈbɑːθruːm/","phòng tắm"],
+["garden","/ˈɡɑːdən/","khu vườn"],
+["yard","/jɑːd/","sân"]
+]
+},
+
+{
+unit:14,
+title:"MY BEDROOM",
+words:[
+["bedroom","/ˈbedruːm/","phòng ngủ"],
+["bed","/bed/","giường"],
+["table","/ˈteɪbəl/","bàn"],
+["chair","/tʃeə/","ghế"],
+["lamp","/læmp/","đèn"],
+["picture","/ˈpɪktʃə/","bức tranh"],
+["toy","/tɔɪ/","đồ chơi"],
+["wardrobe","/ˈwɔːdrəʊb/","tủ quần áo"]
+]
+},
+
+{
+unit:15,
+title:"MY HOBBIES",
+words:[
+["hobby","/ˈhɒbi/","sở thích"],
+["reading","/ˈriːdɪŋ/","đọc sách"],
+["drawing","/ˈdrɔːɪŋ/","vẽ"],
+["singing","/ˈsɪŋɪŋ/","hát"],
+["dancing","/ˈdɑːnsɪŋ/","nhảy múa"],
+["swimming","/ˈswɪmɪŋ/","bơi"],
+["cycling","/ˈsaɪklɪŋ/","đạp xe"],
+["cooking","/ˈkʊkɪŋ/","nấu ăn"]
+]
+},
+
+{
+unit:16,
+title:"MY DREAM HOUSE",
+words:[
+["dream","/driːm/","mơ ước"],
+["future","/ˈfjuːtʃə/","tương lai"],
+["house","/haʊs/","ngôi nhà"],
+["big","/bɪɡ/","lớn"],
+["small","/smɔːl/","nhỏ"],
+["beautiful","/ˈbjuːtɪfəl/","đẹp"],
+["garden","/ˈɡɑːdən/","khu vườn"],
+["swimming pool","/ˈswɪmɪŋ puːl/","hồ bơi"]
+]
+}
+
+];
 
 
-/* SHOW VOCABULARY */
+/* =====================================================
+STATE
+===================================================== */
 
-function showVocabulary(unit) {
+let currentGrade=1;
+let data=grade1;
 
-document.getElementById("grade1").style.display = "none";
+let memoryWords=[];
+let memoryIndex=0;
 
-document.getElementById("vocabulary").style.display = "block";
+let writingWords=[];
+let writingIndex=0;
 
-document.getElementById("vocabTitle").innerText =
-"Unit " + unit.number + ": " + unit.title;
+let reflexWords=[];
+let reflexIndex=0;
 
-const list = document.getElementById("vocabList");
 
-list.innerHTML = "";
+/* =====================================================
+SOUND
+===================================================== */
 
-unit.words.forEach(item => {
+function speak(text){
 
-const word = item[0];
-const image = item[1];
+    speechSynthesis.cancel();
 
-const card = document.createElement("div");
+    const u =
+        new SpeechSynthesisUtterance(text);
 
-card.className = "word-card";
+    u.lang="en-GB";
+    u.rate=.8;
+    u.pitch=1;
 
-card.innerHTML = `
-
-<img
-class="word-image"
-src="${image}"
-alt="${word}"
->
-
-<div class="word-content">
-
-<div class="word">
-${word}
-</div>
-
-<div class="listen">
-🔊 Tap to listen
-</div>
-
-</div>
-
-`;
-
-card.onclick = function() {
-
-speakWord(word);
-
-};
-
-list.appendChild(card);
-
-});
+    speechSynthesis.speak(u);
 
 }
 
 
-/* SPEAK */
+/* CORRECT SOUND */
 
-function speakWord(word) {
+function correctSound(){
 
-const speech = new SpeechSynthesisUtterance(word);
+    const ctx =
+        new (window.AudioContext ||
+        window.webkitAudioContext)();
 
-speech.lang = "en-GB";
+    const osc =
+        ctx.createOscillator();
 
-speech.rate = 0.8;
+    const gain =
+        ctx.createGain();
 
-speech.pitch = 1;
+    osc.frequency.value=700;
 
-window.speechSynthesis.cancel();
+    osc.connect(gain);
 
-window.speechSynthesis.speak(speech);
+    gain.connect(ctx.destination);
+
+    gain.gain.value=.15;
+
+    osc.start();
+
+    setTimeout(()=>{
+        osc.frequency.value=1000;
+    },100);
+
+    setTimeout(()=>{
+        osc.stop();
+        ctx.close();
+    },220);
 
 }
 
 
-/* PAGE NAVIGATION */
+/* WRONG SOUND */
 
-function showPage(page) {
+function wrongSound(){
 
-document.getElementById("home").style.display = "none";
+    const ctx =
+        new (window.AudioContext ||
+        window.webkitAudioContext)();
 
-document.getElementById("lessons").style.display = "none";
+    const osc =
+        ctx.createOscillator();
 
-document.getElementById("grade1").style.display = "none";
+    const gain =
+        ctx.createGain();
 
-document.getElementById("vocabulary").style.display = "none";
+    osc.frequency.value=220;
 
-document.getElementById(page).style.display = "block";
+    osc.connect(gain);
+
+    gain.connect(ctx.destination);
+
+    gain.gain.value=.15;
+
+    osc.start();
+
+    setTimeout(()=>{
+        osc.frequency.value=150;
+    },180);
+
+    setTimeout(()=>{
+        osc.stop();
+        ctx.close();
+    },350);
+
+}
+
+
+/* NEXT QUESTION SOUND */
+
+function nextSound(){
+
+    const ctx =
+        new (window.AudioContext ||
+        window.webkitAudioContext)();
+
+    const osc =
+        ctx.createOscillator();
+
+    const gain =
+        ctx.createGain();
+
+    osc.frequency.value=500;
+
+    osc.connect(gain);
+
+    gain.connect(ctx.destination);
+
+    gain.gain.value=.08;
+
+    osc.start();
+
+    setTimeout(()=>{
+        osc.stop();
+        ctx.close();
+    },100);
+
+}
+
+
+/* =====================================================
+IMAGE
+===================================================== */
+
+function imageURL(word){
+
+    const clean =
+        word
+        .toLowerCase()
+        .replace(/ /g,",")
+        .replace(/[^a-z0-9,]/g,"");
+
+    return "https://loremflickr.com/600/400/" +
+        clean +
+        "?lock=" +
+        Math.floor(Math.random()*999999);
+
+}
+
+
+/* =====================================================
+PAGE
+===================================================== */
+
+function hideAll(){
+
+    document.querySelectorAll(".page")
+    .forEach(x=>{
+        x.style.display="none";
+    });
+
+    document.getElementById("welcome")
+    .style.display="none";
+
+}
+
+
+function selectGrade(grade){
+
+    currentGrade=grade;
+
+    data =
+        grade===1
+        ? grade1
+        : grade3;
+
+    hideAll();
+
+    document.getElementById("mainPage")
+    .style.display="block";
+
+    document.getElementById("gradeTitle")
+    .innerText=
+        "GLOBAL SUCCESS " + grade;
+
+}
+
+
+function goHome(){
+
+    hideAll();
+
+    document.getElementById("welcome")
+    .style.display="flex";
+
+}
+
+
+function openMain(){
+
+    hideAll();
+
+    document.getElementById("mainPage")
+    .style.display="block";
+
+}
+
+
+/* =====================================================
+VOCAB
+===================================================== */
+
+function openVocabUnits(){
+
+    hideAll();
+
+    document.getElementById("vocabUnitsPage")
+    .style.display="block";
+
+    const box =
+        document.getElementById("vocabUnits");
+
+    box.innerHTML="";
+
+    data.forEach(unit=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className="unit";
+
+        button.innerHTML=`
+
+            <div class="unit-number">
+                UNIT ${unit.unit}
+            </div>
+
+            <div class="unit-title">
+                ${unit.title}
+            </div>
+
+        `;
+
+        button.onclick=()=>{
+            openVocab(unit);
+        };
+
+        box.appendChild(button);
+
+    });
+
+}
+
+
+function openVocab(unit){
+
+    hideAll();
+
+    document.getElementById("vocabPage")
+    .style.display="block";
+
+    document.getElementById("vocabTitle")
+    .innerText=
+        "UNIT " +
+        unit.unit +
+        " · " +
+        unit.title;
+
+    const box =
+        document.getElementById("vocabList");
+
+    box.innerHTML="";
+
+    unit.words.forEach(word=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className="vocab-card";
+
+        card.innerHTML=`
+
+            <img
+                src="${imageURL(word[0])}"
+                alt="${word[0]}"
+                onerror="this.src='https://placehold.co/600x400?text=${encodeURIComponent(word[0])}'"
+            >
+
+            <div class="vocab-content">
+
+                <div class="vocab-word">
+                    ${word[0]}
+                </div>
+
+                <div class="vocab-ipa">
+                    ${word[1]}
+                </div>
+
+                <div class="vocab-meaning">
+                    ${word[2]}
+                </div>
+
+                <div class="listen">
+                    🔊 CHẠM ĐỂ NGHE
+                </div>
+
+            </div>
+
+        `;
+
+        card.onclick=()=>{
+            speak(word[0]);
+        };
+
+        box.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+MEMORY MENU
+===================================================== */
+
+function openMemoryMenu(){
+
+    hideAll();
+
+    document.getElementById("memoryMenu")
+    .style.display="block";
+
+}
+
+
+function openPronunciation(){
+
+    hideAll();
+
+    document.getElementById("pronunciationMenu")
+    .style.display="block";
+
+}
+
+
+function openWriting(){
+
+    hideAll();
+
+    document.getElementById("writingMenu")
+    .style.display="block";
+
+}
+
+
+function openReflexMenu(){
+
+    hideAll();
+
+    document.getElementById("reflexMenu")
+    .style.display="block";
+
+}
+
+
+/* =====================================================
+MEMORY
+===================================================== */
+
+function startMemory(start,end){
+
+    memoryWords=[];
+
+    for(let i=start;i<=end;i++){
+
+        const unit =
+            data.find(x=>x.unit===i);
+
+        if(unit){
+
+            unit.words.forEach(word=>{
+                memoryWords.push(word);
+            });
+
+        }
+
+    }
+
+    memoryIndex=0;
+
+    hideAll();
+
+    document.getElementById("memoryPage")
+    .style.display="block";
+
+    document.getElementById("memoryRange")
+    .innerText=
+        "UNIT " +
+        start +
+        " → UNIT " +
+        end;
+
+    document.getElementById("memoryStart")
+    .style.display="inline-block";
+
+}
+
+
+function runMemory(){
+
+    document.getElementById("memoryStart")
+    .style.display="none";
+
+    showMemory();
+
+}
+
+
+function showMemory(){
+
+    if(memoryIndex>=memoryWords.length){
+
+        document.getElementById("memoryWord")
+        .innerText="🎉 HOÀN THÀNH!";
+
+        document.getElementById("memoryIpa")
+        .innerText="";
+
+        document.getElementById("memoryStatus")
+        .innerText=
+            "Bạn đã hoàn thành!";
+
+        return;
+
+    }
+
+    const word =
+        memoryWords[memoryIndex];
+
+    document.getElementById("memoryImage")
+    .src=imageURL(word[0]);
+
+    document.getElementById("memoryWord")
+    .innerText=word[0];
+
+    document.getElementById("memoryIpa")
+    .innerText=word[1];
+
+    document.getElementById("memoryProgress")
+    .innerText=
+        "Từ " +
+        (memoryIndex+1) +
+        " / " +
+        memoryWords.length;
+
+    document.getElementById("memoryStatus")
+    .innerText=
+        "Đang đọc 3 lần...";
+
+    readThreeTimes(word[0]);
+
+}
+
+
+function readThreeTimes(word){
+
+    let count=0;
+
+    function read(){
+
+        if(count<3){
+
+            speak(word);
+
+            count++;
+
+            setTimeout(read,1800);
+
+        }else{
+
+            document.getElementById("memoryStatus")
+            .innerText=
+                "👉 Đến lượt bạn đọc";
+
+            setTimeout(()=>{
+
+                memoryIndex++;
+
+                nextSound();
+
+                showMemory();
+
+            },4000);
+
+        }
+
+    }
+
+    read();
+
+}
+
+
+/* =====================================================
+WRITING
+===================================================== */
+
+function startWriting(start,end){
+
+    writingWords=[];
+
+    for(let i=start;i<=end;i++){
+
+        const unit =
+            data.find(x=>x.unit===i);
+
+        if(unit){
+
+            unit.words.forEach(word=>{
+                writingWords.push(word);
+            });
+
+        }
+
+    }
+
+    shuffle(writingWords);
+
+    writingIndex=0;
+
+    hideAll();
+
+    document.getElementById("writingPage")
+    .style.display="block";
+
+    document.getElementById("writingRange")
+    .innerText=
+        "UNIT " +
+        start +
+        " → UNIT " +
+        end;
+
+    showWriting();
+
+}
+
+
+function showWriting(){
+
+    if(writingIndex>=writingWords.length){
+
+        document.getElementById("writingQuestion")
+        .innerText="🎉 HOÀN THÀNH!";
+
+        document.getElementById("writingOptions")
+        .innerHTML="";
+
+        return;
+
+    }
+
+    const answer =
+        writingWords[writingIndex];
+
+    document.getElementById("writingQuestion")
+    .innerText=
+        answer[0];
+
+    document.getElementById("writingFeedback")
+    .innerText="";
+
+    document.getElementById("writingNext")
+    .style.display="none";
+
+    const options =
+        getOptions(answer);
+
+    const box =
+        document.getElementById("writingOptions");
+
+    box.innerHTML="";
+
+    options.forEach(option=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className="option";
+
+        button.innerHTML=`
+
+            <img
+                src="${imageURL(option[0])}"
+                onerror="this.src='https://placehold.co/400x300?text=${encodeURIComponent(option[0])}'"
+            >
+
+        `;
+
+        button.onclick=()=>{
+            answerWriting(
+                button,
+                option,
+                answer
+            );
+        };
+
+        box.appendChild(button);
+
+    });
+
+}
+
+
+function answerWriting(button,selected,answer){
+
+    document.querySelectorAll(
+        "#writingOptions .option"
+    ).forEach(x=>{
+        x.disabled=true;
+    });
+
+    if(selected[0]===answer[0]){
+
+        button.classList.add("correct");
+
+        document.getElementById("writingFeedback")
+        .innerText="✓ CHÍNH XÁC!";
+
+        correctSound();
+
+        speak(answer[0]);
+
+    }else{
+
+        button.classList.add("wrong");
+
+        document.getElementById("writingFeedback")
+        .innerText=
+            "✗ ĐÁP ÁN: " +
+            answer[0];
+
+        wrongSound();
+
+        speak(answer[0]);
+
+    }
+
+    document.getElementById("writingNext")
+    .style.display="inline-block";
+
+}
+
+
+function nextWriting(){
+
+    writingIndex++;
+
+    nextSound();
+
+    showWriting();
+
+}
+
+
+/* =====================================================
+REFLEX
+===================================================== */
+
+function startReflex(start,end){
+
+    reflexWords=[];
+
+    for(let i=start;i<=end;i++){
+
+        const unit =
+            data.find(x=>x.unit===i);
+
+        if(unit){
+
+            unit.words.forEach(word=>{
+                reflexWords.push(word);
+            });
+
+        }
+
+    }
+
+    shuffle(reflexWords);
+
+    reflexIndex=0;
+
+    hideAll();
+
+    document.getElementById("reflexPage")
+    .style.display="block";
+
+    document.getElementById("reflexRange")
+    .innerText=
+        "UNIT " +
+        start +
+        " → UNIT " +
+        end;
+
+    showReflex();
+
+}
+
+
+function showReflex(){
+
+    if(reflexIndex>=reflexWords.length){
+
+        document.getElementById("reflexImage")
+        .style.display="none";
+
+        document.getElementById("reflexOptions")
+        .innerHTML="";
+
+        document.getElementById("reflexFeedback")
+        .innerText="🎉 HOÀN THÀNH!";
+
+        return;
+
+    }
+
+    const answer =
+        reflexWords[reflexIndex];
+
+    document.getElementById("reflexImage")
+    .style.display="block";
+
+    document.getElementById("reflexImage")
+    .src=imageURL(answer[0]);
+
+    document.getElementById("reflexFeedback")
+    .innerText="";
+
+    document.getElementById("reflexNext")
+    .style.display="none";
+
+    const options =
+        getOptions(answer);
+
+    const box =
+        document.getElementById("reflexOptions");
+
+    box.innerHTML="";
+
+    options.forEach(option=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className="option";
+
+        button.innerText=
+            option[0];
+
+        button.onclick=()=>{
+
+            answerReflex(
+                button,
+                option,
+                answer
+            );
+
+        };
+
+        box.appendChild(button);
+
+    });
+
+}
+
+
+function answerReflex(button,selected,answer){
+
+    document.querySelectorAll(
+        "#reflexOptions .option"
+    ).forEach(x=>{
+        x.disabled=true;
+    });
+
+    if(selected[0]===answer[0]){
+
+        button.classList.add("correct");
+
+        document.getElementById("reflexFeedback")
+        .innerText="✓ CORRECT!";
+
+        correctSound();
+
+        speak(answer[0]);
+
+    }else{
+
+        button.classList.add("wrong");
+
+        document.getElementById("reflexFeedback")
+        .innerText=
+            "✗ ĐÁP ÁN ĐÚNG: " +
+            answer[0];
+
+        wrongSound();
+
+        speak(answer[0]);
+
+    }
+
+    document.getElementById("reflexNext")
+    .style.display="inline-block";
+
+}
+
+
+function nextReflex(){
+
+    reflexIndex++;
+
+    nextSound();
+
+    showReflex();
+
+}
+
+
+/* =====================================================
+OPTIONS
+===================================================== */
+
+function getOptions(answer){
+
+    let all =
+        data.flatMap(unit=>unit.words);
+
+    all =
+        all.filter(x=>x[0]!==answer[0]);
+
+    shuffle(all);
+
+    let options=[
+        answer,
+        all[0],
+        all[1]
+    ];
+
+    shuffle(options);
+
+    return options;
+
+}
+
+
+/* =====================================================
+SHUFFLE
+===================================================== */
+
+function shuffle(array){
+
+    for(
+        let i=array.length-1;
+        i>0;
+        i--
+    ){
+
+        const j=
+            Math.floor(Math.random()*(i+1));
+
+        [
+            array[i],
+            array[j]
+        ]=[
+            array[j],
+            array[i]
+        ];
+
+    }
+
+    return array;
 
 }
 
