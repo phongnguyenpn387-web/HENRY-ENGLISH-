@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry English</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 430px;
+            min-height: 100vh;
+            background: white;
+            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+            color: #2563eb;
+        }
+
+        .logo p {
+            margin-top: 8px;
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-size: 24px;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #64748b;
+        }
+
+        .input {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #dbe1ea;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input:focus {
+            border-color: #2563eb;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: #2563eb;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .login-button:hover {
+            background: #1d4ed8;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app">
+
+        <div class="logo">
+            <h1>HENRY ENGLISH</h1>
+            <p>Learn. Practice. Improve.</p>
+        </div>
+
+        <div class="welcome">
+            <h2>Welcome back! 👋</h2>
+            <p>Let's learn English together.</p>
+        </div>
+
+        <input
+            class="input"
+            type="text"
+            placeholder="Student name"
+        >
+
+        <input
+            class="input"
+            type="password"
+            placeholder="Password"
+        >
+
+        <button class="login-button" onclick="login()">
+            LOGIN
+        </button>
+
+        <div class="footer">
+            Henry English © 2026
+        </div>
+
+    </div>
+
+    <script>
+        function login() {
+            alert("Welcome to Henry English!");
+        }
+    </script>
+
+</body>
+</html>
