@@ -1,115 +1,248 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Henry English</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Henry English Class</title>
 <style>
-:root{--navy:#000055;--orange:#FF6600;--blue:#2563eb;--purple:#7c3aed;--green:#16a34a;--red:#dc2626;--bg:#f4f7fb;--text:#111827}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-button{font-family:inherit;cursor:pointer;border:0}.screen{min-height:100vh}
-.home{background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;padding:28px 16px}.home-box{width:min(900px,100%);text-align:center}
-.home-title{color:var(--orange);font-size:clamp(30px,6vw,64px);font-weight:900;line-height:1.12;margin:0 0 28px;text-transform:uppercase}.welcome-sub{font-size:18px;margin-bottom:22px;opacity:.95}
-.lang-row,.grade-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}.lang-btn,.grade-btn{background:#fff;color:var(--navy);font-weight:900;border-radius:18px;padding:16px 28px;font-size:20px;min-width:170px;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:.15s}.lang-btn:hover,.grade-btn:hover,.menu-btn:hover,.unit-btn:hover,.pair-btn:hover{transform:translateY(-2px)}.lang-btn.active{outline:5px solid var(--orange)}
-.app{min-height:100vh;background:var(--bg)}.header{background:var(--navy);color:#fff;padding:14px 18px;position:sticky;top:0;z-index:10}.header-inner{max-width:1100px;margin:auto;display:flex;align-items:center;gap:12px}.back{background:#fff;color:var(--navy);font-weight:800;border-radius:12px;padding:10px 14px}.header-title{font-size:20px;font-weight:900;flex:1}
-.container{width:min(1100px,94%);margin:0 auto;padding:28px 0 50px}.page-title{font-size:clamp(28px,5vw,44px);font-weight:900;margin:0 0 8px;color:var(--navy)}.page-sub{margin:0 0 24px;color:#64748b;font-size:16px}
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.menu-btn{min-height:150px;border-radius:24px;color:#fff;font-size:25px;font-weight:900;box-shadow:0 10px 25px rgba(0,0,0,.12);padding:24px;transition:.15s}.menu-vocab{background:var(--orange)}.menu-memory{background:var(--purple)}.menu-speak{background:var(--green)}
-.unit-grid,.pair-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.unit-btn,.pair-btn{background:#fff;border:3px solid #e5e7eb;border-radius:18px;padding:20px;font-size:18px;font-weight:900;text-align:left;box-shadow:0 5px 15px rgba(0,0,0,.06);transition:.15s}.unit-btn span,.pair-btn span{display:block;color:#64748b;font-size:13px;margin-top:6px;font-weight:700}
-.memory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.memory-btn{min-height:145px;border-radius:22px;color:#fff;font-size:24px;font-weight:900;padding:22px;box-shadow:0 10px 22px rgba(0,0,0,.12)}.memory-pron{background:#2563eb}.memory-write{background:#9333ea}.memory-reflex{background:#dc2626}
-.word-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.word-card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.09);border:1px solid #e5e7eb}.word-card img{width:100%;height:190px;object-fit:cover;background:#e5e7eb;display:block}.word-info{padding:18px;text-align:center}.word{font-size:30px;font-weight:900;color:var(--navy);line-height:1.1}.ipa{font-size:18px;color:#7c3aed;margin-top:8px;font-weight:700}.meaning{font-size:16px;color:#475569;margin-top:7px}.speak-word{margin-top:12px;background:var(--navy);color:#fff;border-radius:12px;padding:10px 14px;font-weight:900}
-.pron-box,.quiz-box,.speak-box{background:#fff;border-radius:26px;box-shadow:0 10px 28px rgba(0,0,0,.1);padding:22px;text-align:center}.progress{font-weight:900;color:#64748b;margin-bottom:14px}.pron-box img,.quiz-image{width:min(620px,100%);height:310px;object-fit:cover;border-radius:20px;margin:auto;display:block;background:#e5e7eb}.pron-word{font-size:clamp(36px,7vw,60px);font-weight:900;color:var(--navy);margin:16px 0 5px}.pron-ipa{font-size:22px;color:#7c3aed;font-weight:800}.status{font-size:20px;font-weight:900;color:var(--orange);margin:18px 0}.action-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.action{padding:13px 18px;border-radius:14px;font-weight:900;font-size:16px}.skip{background:#f59e0b;color:#fff}.stop{background:#111827;color:#fff}
-.options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.option{background:#f8fafc;border:3px solid #e2e8f0;border-radius:18px;min-height:150px;padding:10px;font-weight:900;transition:.15s}.option:hover{transform:translateY(-2px)}.option img{width:100%;height:125px;object-fit:cover;border-radius:12px}.option-text{font-size:24px;color:var(--navy);display:flex;align-items:center;justify-content:center;min-height:120px}.option.correct{background:#bbf7d0;border-color:#16a34a}.option.wrong{background:#fecaca;border-color:#dc2626}.quiz-prompt{font-size:clamp(38px,7vw,62px);font-weight:900;color:var(--navy);margin:15px 0}.quiz-ipa{font-size:20px;color:#7c3aed;font-weight:800}.timer{font-size:18px;font-weight:900;color:var(--orange);min-height:25px;margin-top:12px}
-.done{text-align:center;background:#fff;padding:40px 20px;border-radius:26px;box-shadow:0 10px 28px rgba(0,0,0,.1)}.done h2{font-size:40px;color:var(--green);margin:0 0 12px}.primary{background:var(--navy);color:#fff;padding:14px 22px;border-radius:14px;font-weight:900;font-size:17px;margin-top:16px}.speak-question{font-size:clamp(28px,5vw,48px);font-weight:900;color:var(--navy);margin:18px 0}.speak-answer{font-size:24px;font-weight:800;color:var(--green);min-height:34px}.small-note{color:#64748b;margin-top:12px}.hidden{display:none!important}
-@media(max-width:650px){.options{grid-template-columns:1fr}.option img{height:180px}.pron-box img,.quiz-image{height:230px}.word-card img{height:180px}}
+:root{--navy:#000055;--orange:#FF6600;--green:#20a464;--red:#e53935;--bg:#f4f7fb;--card:#fff;--ink:#152238}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+button{font:inherit;border:0;cursor:pointer}.screen{min-height:100vh;padding:24px;display:none}.screen.active{display:block}
+.welcome{background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;text-align:center}
+.welcome h1{font-size:clamp(32px,7vw,68px);margin:0 0 28px;color:var(--orange);font-weight:900;text-shadow:0 4px 0 rgba(0,0,0,.15)}
+.welcome p{font-size:20px;opacity:.9}.pulse{animation:pulse 1.2s infinite}@keyframes pulse{50%{transform:scale(1.03)}}
+.wrap{max-width:1100px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+.logo{font-weight:900;color:var(--navy);font-size:24px}.small{font-size:13px;color:#667}
+.btn{padding:13px 18px;border-radius:14px;background:var(--navy);color:#fff;font-weight:800;box-shadow:0 5px 14px #0002;transition:.15s}.btn:hover{transform:translateY(-2px)}
+.btn.light{background:#fff;color:var(--navy)}.btn.orange{background:var(--orange)}.btn.green{background:var(--green)}.btn.red{background:var(--red)}
+.hero{background:linear-gradient(135deg,var(--navy),#101078);color:#fff;border-radius:26px;padding:28px;margin-bottom:22px}
+.hero h2{margin:0 0 8px;font-size:34px}.hero p{margin:0;opacity:.9}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{background:var(--card);border-radius:22px;padding:22px;box-shadow:0 8px 28px #00000012}
+.choice{min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:24px;font-weight:900}
+.grade{background:#fff;border:4px solid var(--navy);color:var(--navy);min-height:150px}.grade:hover{background:#fff7f0;border-color:var(--orange)}
+.mode-vocab{border-top:8px solid #ff9f1c}.mode-memory{border-top:8px solid #7b61ff}.mode-speak{border-top:8px solid #18a558}
+.unit{background:#fff;min-height:120px;border-radius:20px;padding:18px;text-align:left;box-shadow:0 6px 22px #00000010}.unit strong{display:block;font-size:20px;color:var(--navy);margin-bottom:7px}.unit span{font-size:14px;color:#667}
+.wordcard{text-align:center;background:#fff;border-radius:28px;padding:25px;box-shadow:0 10px 30px #0002}.pic{height:220px;border-radius:22px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-size:110px;margin-bottom:20px}.word{font-size:42px;font-weight:900;color:var(--navy);cursor:pointer}.ipa{font-size:23px;color:#7b61ff;margin:8px}.meaning{font-size:23px}.progress{height:10px;background:#ddd;border-radius:99px;overflow:hidden;margin:15px 0}.progress i{display:block;height:100%;background:var(--orange);width:0}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}.quiz{text-align:center}.quiz .pic{height:240px}.options{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.option{background:#fff;border:3px solid #dde3ee;border-radius:18px;padding:18px;font-size:22px;font-weight:800;min-height:75px}.option.correct{background:#d9f7e5;border-color:var(--green)}.option.wrong{background:#ffe0e0;border-color:var(--red)}
+.question{font-size:30px;font-weight:900;color:var(--navy);margin:14px}.timer{font-size:18px;font-weight:800;color:var(--orange);min-height:25px}
+.speak-card{background:#fff;border-radius:24px;padding:28px;text-align:center;box-shadow:0 8px 25px #0001}.q{font-size:30px;font-weight:900}.answer{font-size:23px;color:var(--green);margin:18px}.hidden{display:none!important}
+@media(max-width:650px){.screen{padding:15px}.options{grid-template-columns:1fr}.pic{height:180px}.word{font-size:34px}.question,.q{font-size:24px}}
 </style>
 </head>
-<body><div id="app"></div>
+<body>
+
+<section id="welcome" class="screen welcome active">
+ <div><h1 class="pulse">WELCOME TO HENRY ENGLISH CLASS</h1><p>Learn • Listen • Speak • Remember</p><button class="btn orange" onclick="go('language')">START / BẮT ĐẦU</button></div>
+</section>
+
+<section id="language" class="screen"><div class="wrap">
+ <div class="hero"><h2 id="langTitle">Choose your language</h2><p id="langSub">Chọn ngôn ngữ cho hệ thống</p></div>
+ <div class="grid">
+  <button class="card choice" onclick="setLang('vi')">🇻🇳<br>TIẾNG VIỆT</button>
+  <button class="card choice" onclick="setLang('en')">🇬🇧<br>ENGLISH</button>
+ </div>
+</div></section>
+
+<section id="grades" class="screen"><div class="wrap">
+ <div class="top"><div class="logo">HENRY ENGLISH CLASS</div><button class="btn light" onclick="go('language')">🌐</button></div>
+ <div class="hero"><h2 id="gradeTitle"></h2><p id="gradeSub"></p></div>
+ <div class="grid">
+  <button class="card choice grade" onclick="selectGrade(1)">📘<br><span id="g1">LỚP 1</span></button>
+  <button class="card choice grade" onclick="selectGrade(3)">📗<br><span id="g3">LỚP 3</span></button>
+ </div>
+</div></section>
+
+<section id="modes" class="screen"><div class="wrap">
+ <div class="top"><div class="logo">HENRY ENGLISH CLASS</div><button class="btn light" onclick="go('grades')">←</button></div>
+ <div class="hero"><h2 id="modeTitle"></h2><p id="modeSub"></p></div>
+ <div class="grid">
+  <button class="card choice mode-vocab" onclick="showUnits('vocab')">📚<br><span id="mv"></span></button>
+  <button class="card choice mode-memory" onclick="showMemory()">🧠<br><span id="mm"></span></button>
+  <button class="card choice mode-speak" onclick="showUnits('speak')">🗣️<br><span id="ms"></span></button>
+ </div>
+</div></section>
+
+<section id="units" class="screen"><div class="wrap">
+ <div class="top"><div class="logo" id="unitsLogo"></div><button class="btn light" onclick="go('modes')">←</button></div>
+ <div class="hero"><h2 id="unitsTitle"></h2><p id="unitsSub"></p></div>
+ <div id="unitGrid" class="grid"></div>
+</div></section>
+
+<section id="memory" class="screen"><div class="wrap">
+ <div class="top"><div class="logo">🧠 <span id="memoryTop"></span></div><button class="btn light" onclick="go('modes')">←</button></div>
+ <div class="grid" id="memoryGrid"></div>
+</div></section>
+
+<section id="learn" class="screen"><div class="wrap">
+ <div class="top"><div class="logo" id="learnTitle"></div><button class="btn light" onclick="stopSession();go('units')">←</button></div>
+ <div class="wordcard">
+  <div class="progress"><i id="bar"></i></div>
+  <div id="pic" class="pic">📘</div>
+  <div id="word" class="word" onclick="speakCurrent()"></div>
+  <div id="ipa" class="ipa"></div><div id="meaning" class="meaning"></div>
+  <div class="actions"><button class="btn" onclick="speakCurrent()">🔊 SPEAK</button><button class="btn orange" onclick="skipCurrent()">⏭️ SKIP</button><button class="btn light" onclick="stopSession();go('units')">EXIT</button></div>
+  <p class="small" id="learnHint"></p>
+ </div>
+</div></section>
+
+<section id="quiz" class="screen"><div class="wrap">
+ <div class="top"><div class="logo" id="quizTitle"></div><button class="btn light" onclick="stopSession();go('units')">←</button></div>
+ <div class="card quiz">
+  <div class="progress"><i id="qbar"></i></div>
+  <div id="qpic" class="pic">🖼️</div>
+  <div id="question" class="question"></div><div id="timer" class="timer"></div>
+  <div id="options" class="options"></div>
+  <div class="actions"><button class="btn light" onclick="stopSession();go('units')">EXIT</button></div>
+ </div>
+</div></section>
+
 <script>
-const G1=[["IN THE SCHOOL PLAYGROUND",[["Bill","/bɪl/","Bill"],["ball","/bɔːl/","quả bóng"],["bike","/baɪk/","xe đạp"],["book","/bʊk/","quyển sách"]]],["IN THE DINING ROOM",[["cake","/keɪk/","bánh"],["car","/kɑː/","ô tô"],["cat","/kæt/","con mèo"],["cup","/kʌp/","cái cốc"]]],["AT THE STREET MARKET",[["apple","/ˈæpəl/","quả táo"],["bag","/bæɡ/","cái túi"],["can","/kæn/","cái lon"],["hat","/hæt/","cái mũ"]]],["IN THE BEDROOM",[["desk","/desk/","bàn học"],["dog","/dɒɡ/","con chó"],["door","/dɔː/","cánh cửa"],["duck","/dʌk/","con vịt"]]],["AT THE FISH AND CHIP SHOP",[["chicken","/ˈtʃɪkɪn/","thịt gà"],["chips","/tʃɪps/","khoai tây chiên"],["fish","/fɪʃ/","cá"],["milk","/mɪlk/","sữa"]]],["IN THE CLASSROOM",[["bell","/bel/","cái chuông"],["pen","/pen/","bút mực"],["pencil","/ˈpensəl/","bút chì"],["red","/red/","màu đỏ"]]],["IN THE GARDEN",[["garden","/ˈɡɑːdən/","khu vườn"],["gate","/ɡeɪt/","cái cổng"],["girl","/ɡɜːl/","cô gái"],["goat","/ɡəʊt/","con dê"]]],["IN THE PARK",[["hair","/heə/","tóc"],["hand","/hænd/","bàn tay"],["head","/hed/","đầu"],["horse","/hɔːs/","con ngựa"]]],["IN THE SHOP",[["clock","/klɒk/","đồng hồ"],["lock","/lɒk/","ổ khóa"],["mop","/mɒp/","cây lau nhà"],["pot","/pɒt/","cái nồi"]]],["AT THE ZOO",[["mango","/ˈmæŋɡəʊ/","quả xoài"],["monkey","/ˈmʌŋki/","con khỉ"],["mother","/ˈmʌðə/","mẹ"],["mouse","/maʊs/","con chuột"]]],["AT THE BUS STOP",[["bus","/bʌs/","xe buýt"],["running","/ˈrʌnɪŋ/","đang chạy"],["sun","/sʌn/","mặt trời"],["truck","/trʌk/","xe tải"]]],["AT THE LAKE",[["lake","/leɪk/","hồ"],["leaf","/liːf/","chiếc lá"],["lemons","/ˈlemənz/","những quả chanh"],["lamp","/læmp/","đèn"]]],["IN THE SCHOOL CANTEEN",[["bananas","/bəˈnɑːnəz/","những quả chuối"],["Nick","/nɪk/","Nick"],["noodles","/ˈnuːdlz/","mì"],["nuts","/nʌts/","các loại hạt"]]],["IN THE TOY SHOP",[["teddy      bear","/ˈtedi beə/","gấu bông"],["tiger","/ˈtaɪɡə/","con hổ"],["top","/tɒp/","con quay"],["turtle","/ˈtɜːtl/","con rùa"]]],["AT THE FOOTBALL MATCH",[["face","/feɪs/","khuôn mặt"],["father","/ˈfɑːðə/","bố"],["foot","/fʊt/","bàn chân"],["football","/ˈfʊtbɔːl/","bóng đá"]]],["AT HOME",[["washing","/ˈwɒʃɪŋ/","đang rửa"],["water","/ˈwɔːtə/","nước"],["window","/ˈwɪndəʊ/","cửa sổ"],["Wendy","/ˈwendi/","Wendy"]]]];
-const G3=[["HELLO",[["hello","/həˈləʊ/","xin chào"],["hi","/haɪ/","chào"],["goodbye","/ˌɡʊdˈbaɪ/","tạm biệt"],["how","/haʊ/","như thế nào"],["I","/aɪ/","tôi"],["you","/juː/","bạn"],["fine","/faɪn/","khỏe, ổn"],["thank you","/ˈθæŋk juː/","cảm ơn"]]],["OUR NAMES",[["my","/maɪ/","của tôi"],["name","/neɪm/","tên"],["old","/əʊld/","tuổi, cũ"],["what","/wɒt/","cái gì"]]],["OUR FRIENDS",[["friend","/frend/","bạn"],["Mr","/ˈmɪstə(r)/","ông, ngài"],["Ms","/mɪz/","cô, bà"],["teacher","/ˈtiːtʃə(r)/","giáo viên"],["it","/ɪt/","nó"],["yes","/jes/","vâng, có"],["no","/nəʊ/","không"],["this","/ðɪs/","cái này, đây"],["that","/ðæt/","cái kia, đó"]]],["OUR BODIES",[["ear","/ɪə(r)/","tai"],["eye","/aɪ/","mắt"],["face","/feɪs/","mặt"],["hair","/heə(r)/","tóc"],["hand","/hænd/","bàn tay"],["mouth","/maʊθ/","miệng"],["nose","/nəʊz/","mũi"],["touch","/tʌtʃ/","chạm"],["open","/ˈəʊpən/","mở"]]],["MY HOBBIES",[["cooking","/ˈkʊkɪŋ/","nấu ăn"],["dancing","/ˈdɑːnsɪŋ/","nhảy múa"],["drawing","/ˈdrɔːɪŋ/","vẽ"],["painting","/ˈpeɪntɪŋ/","vẽ, tô màu"],["running","/ˈrʌnɪŋ/","chạy"],["singing","/ˈsɪŋɪŋ/","hát"],["swimming","/ˈswɪmɪŋ/","bơi"],["walking","/ˈwɔːkɪŋ/","đi bộ"]]],["OUR SCHOOL",[["art room","/ɑːt ruːm/","phòng mỹ thuật"],["classroom","/ˈklɑːsruːm/","phòng học"],["computer room","/kəmˈpjuːtə ruːm/","phòng máy tính"],["gym","/dʒɪm/","phòng thể dục"],["library","/ˈlaɪbrəri/","thư viện"],["music room","/ˈmjuːzɪk ruːm/","phòng âm nhạc"],["playground","/ˈpleɪɡraʊnd/","sân chơi"],["school","/skuːl/","trường học"]]],["CLASSROOM INSTRUCTIONS",[["close","/kləʊz/","đóng"],["come in","/kʌm ɪn/","vào"],["go out","/ɡəʊ aʊt/","ra ngoài"],["sit down","/sɪt daʊn/","ngồi xuống"],["speak","/spiːk/","nói"],["stand up","/stænd ʌp/","đứng lên"]]],["MY SCHOOL THINGS",[["book","/bʊk/","sách"],["eraser","/ɪˈreɪzə(r)/","cục tẩy"],["notebook","/ˈnəʊtbʊk/","vở"],["pen","/pen/","bút mực"],["pencil","/ˈpensl/","bút chì"],["pencil case","/ˈpensl keɪs/","hộp bút"],["ruler","/ˈruːlə(r)/","thước kẻ"],["school bag","/skuːl bæɡ/","cặp sách"]]],["COLOURS",[["colour","/ˈkʌlə(r)/","màu sắc"],["they","/ðeɪ/","họ, chúng"],["black","/blæk/","màu đen"],["blue","/bluː/","màu xanh dương"],["brown","/braʊn/","màu nâu"],["green","/ɡriːn/","màu xanh lá"],["orange","/ˈɒrɪndʒ/","màu cam"],["red","/red/","màu đỏ"],["white","/waɪt/","màu trắng"],["yellow","/ˈjeləʊ/","màu vàng"]]],["BREAK TIME ACTIVITIES",[["break time","/breɪk taɪm/","giờ giải lao"],["chat","/tʃæt/","trò chuyện"],["do word puzzles","/duː wɜːd ˈpʌzəlz/","chơi ô chữ"],["play badminton","/pleɪ ˈbædmɪntən/","chơi cầu lông"],["play basketball","/pleɪ ˈbɑːskɪtbɔːl/","chơi bóng rổ"],["play chess","/pleɪ tʃes/","chơi cờ vua"],["play football","/pleɪ ˈfʊtbɔːl/","chơi bóng đá"],["play table tennis","/pleɪ ˈteɪbl ˌtenɪs/","chơi bóng bàn"],["play volleyball","/pleɪ ˈvɒlibɔːl/","chơi bóng chuyền"]]],["MY FAMILY",[["father","/ˈfɑːðə(r)/","bố"],["mother","/ˈmʌðə(r)/","mẹ"],["brother","/ˈbrʌðə(r)/","anh, em trai"],["sister","/ˈsɪstə(r)/","chị, em gái"]]],["JOBS",[["cook","/kʊk/","đầu bếp"],["doctor","/ˈdɒktə(r)/","bác sĩ"],["driver","/ˈdraɪvə(r)/","tài xế"],["farmer","/ˈfɑːmə(r)/","nông dân"],["nurse","/nɜːs/","y tá"],["singer","/ˈsɪŋə(r)/","ca sĩ"],["teacher","/ˈtiːtʃə(r)/","giáo viên"],["worker","/ˈwɜːkə(r)/","công nhân"],["job","/dʒɒb/","nghề nghiệp"]]],["MY HOUSE",[["house","/haʊs/","ngôi nhà"],["bathroom","/ˈbɑːθruːm/","phòng tắm"],["bedroom","/ˈbedruːm/","phòng ngủ"],["kitchen","/ˈkɪtʃɪn/","nhà bếp"],["living room","/ˈlɪvɪŋ ruːm/","phòng khách"],["chair","/tʃeə(r)/","ghế"],["lamp","/læmp/","đèn"],["table","/ˈteɪbl/","bàn"],["here","/hɪə(r)/","ở đây"],["there","/ðeə(r)/","ở kia"],["in","/ɪn/","trong"],["on","/ɒn/","trên"]]],["MY BEDROOM",[["bed","/bed/","giường"],["big","/bɪɡ/","to"],["desk","/desk/","bàn học"],["door","/dɔː(r)/","cửa"],["new","/njuː/","mới"],["old","/əʊld/","cũ"],["room","/ruːm/","phòng"],["small","/smɔːl/","nhỏ"],["window","/ˈwɪndəʊ/","cửa sổ"]]],["AT THE DINING TABLE",[["bean","/biːn/","đậu"],["bread","/bred/","bánh mì"],["chicken","/ˈtʃɪkɪn/","thịt gà"],["egg","/eɡ/","trứng"],["fish","/fɪʃ/","cá"],["juice","/dʒuːs/","nước ép"],["meat","/miːt/","thịt"],["milk","/mɪlk/","sữa"],["rice","/raɪs/","cơm, gạo"],["water","/ˈwɔːtə(r)/","nước"]]],["MY PETS",[["bird","/bɜːd/","chim"],["cat","/kæt/","mèo"],["dog","/dɒɡ/","chó"],["goldfish","/ˈɡəʊldfɪʃ/","cá vàng"],["parrot","/ˈpærət/","vẹt"],["rabbit","/ˈræbɪt/","thỏ"],["many","/ˈmeni/","nhiều"],["some","/sʌm/","một vài"]]],["OUR TOYS",[["bus","/bʌs/","xe buýt"],["car","/kɑː(r)/","ô tô"],["kite","/kaɪt/","diều"],["plane","/pleɪn/","máy bay"],["ship","/ʃɪp/","tàu thủy"],["teddy bear","/ˈtedi beə(r)/","gấu bông"],["toy","/tɔɪ/","đồ chơi"],["train","/treɪn/","tàu hỏa"],["truck","/trʌk/","xe tải"]]],["PLAYING AND DOING",[["dancing","/ˈdɑːnsɪŋ/","nhảy múa"],["drawing a picture","/ˈdrɔːɪŋ ə ˈpɪktʃə(r)/","vẽ tranh"],["listening to music","/ˈlɪsənɪŋ tə ˈmjuːzɪk/","nghe nhạc"],["reading","/ˈriːdɪŋ/","đọc sách"],["singing","/ˈsɪŋɪŋ/","hát"],["watching TV","/ˈwɒtʃɪŋ ˌtiː ˈviː/","xem TV"],["writing","/ˈraɪtɪŋ/","viết"]]],["OUTDOOR ACTIVITIES",[["cycling","/ˈsaɪklɪŋ/","đạp xe"],["flying a kite","/ˈflaɪɪŋ ə kaɪt/","thả diều"],["painting","/ˈpeɪntɪŋ/","vẽ, tô màu"],["running","/ˈrʌnɪŋ/","chạy"],["skating","/ˈskeɪtɪŋ/","trượt patin"],["skipping","/ˈskɪpɪŋ/","nhảy dây"]]],["AT THE ZOO",[["zoo","/zuː/","sở thú"],["animal","/ˈænɪməl/","động vật"],["elephant","/ˈelɪfənt/","con voi"],["horse","/hɔːs/","con ngựa"],["monkey","/ˈmʌŋki/","con khỉ"],["peacock","/ˈpiːkɒk/","con công"],["tiger","/ˈtaɪɡə(r)/","con hổ"],["count","/kaʊnt/","đếm"],["climb","/klaɪm/","trèo, leo"],["swing","/swɪŋ/","đung đưa"]]]];
+const VOCAB = [{"grade":1,"unit":1,"title":"IN THE SCHOOL PLAYGROUND","words":[{"word":"Bill","ipa":"/bɪl/","meaning":"Bill"},{"word":"ball","ipa":"/bɔːl/","meaning":"quả bóng"},{"word":"bike","ipa":"/baɪk/","meaning":"xe đạp"},{"word":"book","ipa":"/bʊk/","meaning":"quyển sách"}]},{"grade":1,"unit":2,"title":"IN THE DINING ROOM","words":[{"word":"cake","ipa":"/keɪk/","meaning":"bánh"},{"word":"car","ipa":"/kɑː/","meaning":"ô tô"},{"word":"cat","ipa":"/kæt/","meaning":"con mèo"},{"word":"cup","ipa":"/kʌp/","meaning":"cái cốc"}]},{"grade":1,"unit":3,"title":"AT THE STREET MARKET","words":[{"word":"apple","ipa":"/ˈæpəl/","meaning":"quả táo"},{"word":"bag","ipa":"/bæɡ/","meaning":"cái túi"},{"word":"can","ipa":"/kæn/","meaning":"cái lon"},{"word":"hat","ipa":"/hæt/","meaning":"cái mũ"}]},{"grade":1,"unit":4,"title":"IN THE BEDROOM","words":[{"word":"desk","ipa":"/desk/","meaning":"bàn học"},{"word":"dog","ipa":"/dɒɡ/","meaning":"con chó"},{"word":"door","ipa":"/dɔː/","meaning":"cánh cửa"},{"word":"duck","ipa":"/dʌk/","meaning":"con vịt"}]},{"grade":1,"unit":5,"title":"AT THE FISH AND CHIP SHOP","words":[{"word":"chicken","ipa":"/ˈtʃɪkɪn/","meaning":"thịt gà"},{"word":"chips","ipa":"/tʃɪps/","meaning":"khoai tây chiên"},{"word":"fish","ipa":"/fɪʃ/","meaning":"cá"},{"word":"milk","ipa":"/mɪlk/","meaning":"sữa"}]},{"grade":1,"unit":6,"title":"IN THE CLASSROOM","words":[{"word":"bell","ipa":"/bel/","meaning":"cái chuông"},{"word":"pen","ipa":"/pen/","meaning":"bút mực"},{"word":"pencil","ipa":"/ˈpensəl/","meaning":"bút chì"},{"word":"red","ipa":"/red/","meaning":"màu đỏ"}]},{"grade":1,"unit":7,"title":"IN THE GARDEN","words":[{"word":"garden","ipa":"/ˈɡɑːdən/","meaning":"khu vườn"},{"word":"gate","ipa":"/ɡeɪt/","meaning":"cái cổng"},{"word":"girl","ipa":"/ɡɜːl/","meaning":"cô gái"},{"word":"goat","ipa":"/ɡəʊt/","meaning":"con dê"}]},{"grade":1,"unit":8,"title":"IN THE PARK","words":[{"word":"hair","ipa":"/heə/","meaning":"tóc"},{"word":"hand","ipa":"/hænd/","meaning":"bàn tay"},{"word":"head","ipa":"/hed/","meaning":"đầu"},{"word":"horse","ipa":"/hɔːs/","meaning":"con ngựa"}]},{"grade":1,"unit":9,"title":"IN THE SHOP","words":[{"word":"clock","ipa":"/klɒk/","meaning":"đồng hồ"},{"word":"lock","ipa":"/lɒk/","meaning":"ổ khóa"},{"word":"mop","ipa":"/mɒp/","meaning":"cây lau nhà"},{"word":"pot","ipa":"/pɒt/","meaning":"cái nồi"}]},{"grade":1,"unit":10,"title":"AT THE ZOO","words":[{"word":"mango","ipa":"/ˈmæŋɡəʊ/","meaning":"quả xoài"},{"word":"monkey","ipa":"/ˈmʌŋki/","meaning":"con khỉ"},{"word":"mother","ipa":"/ˈmʌðə/","meaning":"mẹ"},{"word":"mouse","ipa":"/maʊs/","meaning":"con chuột"}]},{"grade":1,"unit":11,"title":"AT THE BUS STOP","words":[{"word":"bus","ipa":"/bʌs/","meaning":"xe buýt"},{"word":"running","ipa":"/ˈrʌnɪŋ/","meaning":"đang chạy"},{"word":"sun","ipa":"/sʌn/","meaning":"mặt trời"},{"word":"truck","ipa":"/trʌk/","meaning":"xe tải"}]},{"grade":1,"unit":12,"title":"AT THE LAKE","words":[{"word":"lake","ipa":"/leɪk/","meaning":"hồ"},{"word":"leaf","ipa":"/liːf/","meaning":"chiếc lá"},{"word":"lemons","ipa":"/ˈlemənz/","meaning":"những quả chanh"},{"word":"lamp","ipa":"/læmp/","meaning":"đèn"}]},{"grade":1,"unit":13,"title":"IN THE SCHOOL CANTEEN","words":[{"word":"bananas","ipa":"/bəˈnɑːnəz/","meaning":"những quả chuối"},{"word":"Nick","ipa":"/nɪk/","meaning":"Nick"},{"word":"noodles","ipa":"/ˈnuːdlz/","meaning":"mì"},{"word":"nuts","ipa":"/nʌts/","meaning":"các loại hạt"}]},{"grade":1,"unit":14,"title":"IN THE TOY SHOP","words":[{"word":"teddy      bear","ipa":"/ˈtedi beə/","meaning":"gấu bông"},{"word":"tiger","ipa":"/ˈtaɪɡə/","meaning":"con hổ"},{"word":"top","ipa":"/tɒp/","meaning":"con quay"},{"word":"turtle","ipa":"/ˈtɜːtl/","meaning":"con rùa"}]},{"grade":1,"unit":15,"title":"AT THE FOOTBALL MATCH","words":[{"word":"face","ipa":"/feɪs/","meaning":"khuôn mặt"},{"word":"father","ipa":"/ˈfɑːðə/","meaning":"bố"},{"word":"foot","ipa":"/fʊt/","meaning":"bàn chân"},{"word":"football","ipa":"/ˈfʊtbɔːl/","meaning":"bóng đá"}]},{"grade":1,"unit":16,"title":"AT HOME","words":[{"word":"washing","ipa":"/ˈwɒʃɪŋ/","meaning":"đang rửa"},{"word":"water","ipa":"/ˈwɔːtə/","meaning":"nước"},{"word":"window","ipa":"/ˈwɪndəʊ/","meaning":"cửa sổ"},{"word":"Wendy","ipa":"/ˈwendi/","meaning":"Wendy"}]},{"grade":3,"unit":10,"title":"BREAK TIME ACTIVITIES","words":[{"word":"break time","ipa":"/breɪk taɪm/","meaning":"giờ giải lao"},{"word":"chat","ipa":"/tʃæt/","meaning":"trò chuyện"},{"word":"do word puzzles","ipa":"/duː wɜːd ˈpʌzəlz/","meaning":"chơi ô chữ"},{"word":"play badminton","ipa":"/pleɪ ˈbædmɪntən/","meaning":"chơi cầu lông"},{"word":"play basketball","ipa":"/pleɪ ˈbɑːskɪtbɔːl/","meaning":"chơi bóng rổ"},{"word":"play chess","ipa":"/pleɪ tʃes/","meaning":"chơi cờ vua"},{"word":"play football","ipa":"/pleɪ ˈfʊtbɔːl/","meaning":"chơi bóng đá"},{"word":"play table tennis","ipa":"/pleɪ ˈteɪbl ˌtenɪs/","meaning":"chơi bóng bàn"},{"word":"play volleyball","ipa":"/pleɪ ˈvɒlibɔːl/","meaning":"chơi bóng chuyền"}]},{"grade":3,"unit":11,"title":"MY FAMILY","words":[{"word":"father","ipa":"/ˈfɑːðə(r)/","meaning":"bố"},{"word":"mother","ipa":"/ˈmʌðə(r)/","meaning":"mẹ"},{"word":"brother","ipa":"/ˈbrʌðə(r)/","meaning":"anh, em trai"},{"word":"sister","ipa":"/ˈsɪstə(r)/","meaning":"chị, em gái"}]},{"grade":3,"unit":12,"title":"JOBS","words":[{"word":"cook","ipa":"/kʊk/","meaning":"đầu bếp"},{"word":"doctor","ipa":"/ˈdɒktə(r)/","meaning":"bác sĩ"},{"word":"driver","ipa":"/ˈdraɪvə(r)/","meaning":"tài xế"},{"word":"farmer","ipa":"/ˈfɑːmə(r)/","meaning":"nông dân"},{"word":"nurse","ipa":"/nɜːs/","meaning":"y tá"},{"word":"singer","ipa":"/ˈsɪŋə(r)/","meaning":"ca sĩ"},{"word":"teacher","ipa":"/ˈtiːtʃə(r)/","meaning":"giáo viên"},{"word":"worker","ipa":"/ˈwɜːkə(r)/","meaning":"công nhân"},{"word":"job","ipa":"/dʒɒb/","meaning":"nghề nghiệp"}]},{"grade":3,"unit":13,"title":"MY HOUSE","words":[{"word":"house","ipa":"/haʊs/","meaning":"ngôi nhà"},{"word":"bathroom","ipa":"/ˈbɑːθruːm/","meaning":"phòng tắm"},{"word":"bedroom","ipa":"/ˈbedruːm/","meaning":"phòng ngủ"},{"word":"kitchen","ipa":"/ˈkɪtʃɪn/","meaning":"nhà bếp"},{"word":"living room","ipa":"/ˈlɪvɪŋ ruːm/","meaning":"phòng khách"},{"word":"chair","ipa":"/tʃeə(r)/","meaning":"ghế"},{"word":"lamp","ipa":"/læmp/","meaning":"đèn"},{"word":"table","ipa":"/ˈteɪbl/","meaning":"bàn"},{"word":"here","ipa":"/hɪə(r)/","meaning":"ở đây"},{"word":"there","ipa":"/ðeə(r)/","meaning":"ở kia"},{"word":"in","ipa":"/ɪn/","meaning":"trong"},{"word":"on","ipa":"/ɒn/","meaning":"trên"}]},{"grade":3,"unit":14,"title":"MY BEDROOM","words":[{"word":"bed","ipa":"/bed/","meaning":"giường"},{"word":"big","ipa":"/bɪɡ/","meaning":"to"},{"word":"desk","ipa":"/desk/","meaning":"bàn học"},{"word":"door","ipa":"/dɔː(r)/","meaning":"cửa"},{"word":"new","ipa":"/njuː/","meaning":"mới"},{"word":"old","ipa":"/əʊld/","meaning":"cũ"},{"word":"room","ipa":"/ruːm/","meaning":"phòng"},{"word":"small","ipa":"/smɔːl/","meaning":"nhỏ"},{"word":"window","ipa":"/ˈwɪndəʊ/","meaning":"cửa sổ"}]},{"grade":3,"unit":15,"title":"AT THE DINING TABLE","words":[{"word":"bean","ipa":"/biːn/","meaning":"đậu"},{"word":"bread","ipa":"/bred/","meaning":"bánh mì"},{"word":"chicken","ipa":"/ˈtʃɪkɪn/","meaning":"thịt gà"},{"word":"egg","ipa":"/eɡ/","meaning":"trứng"},{"word":"fish","ipa":"/fɪʃ/","meaning":"cá"},{"word":"juice","ipa":"/dʒuːs/","meaning":"nước ép"},{"word":"meat","ipa":"/miːt/","meaning":"thịt"},{"word":"milk","ipa":"/mɪlk/","meaning":"sữa"},{"word":"rice","ipa":"/raɪs/","meaning":"cơm, gạo"},{"word":"water","ipa":"/ˈwɔːtə(r)/","meaning":"nước"}]},{"grade":3,"unit":16,"title":"MY PETS","words":[{"word":"bird","ipa":"/bɜːd/","meaning":"chim"},{"word":"cat","ipa":"/kæt/","meaning":"mèo"},{"word":"dog","ipa":"/dɒɡ/","meaning":"chó"},{"word":"goldfish","ipa":"/ˈɡəʊldfɪʃ/","meaning":"cá vàng"},{"word":"parrot","ipa":"/ˈpærət/","meaning":"vẹt"},{"word":"rabbit","ipa":"/ˈræbɪt/","meaning":"thỏ"},{"word":"many","ipa":"/ˈmeni/","meaning":"nhiều"},{"word":"some","ipa":"/sʌm/","meaning":"một vài"}]},{"grade":3,"unit":17,"title":"OUR TOYS","words":[{"word":"bus","ipa":"/bʌs/","meaning":"xe buýt"},{"word":"car","ipa":"/kɑː(r)/","meaning":"ô tô"},{"word":"kite","ipa":"/kaɪt/","meaning":"diều"},{"word":"plane","ipa":"/pleɪn/","meaning":"máy bay"},{"word":"ship","ipa":"/ʃɪp/","meaning":"tàu thủy"},{"word":"teddy bear","ipa":"/ˈtedi beə(r)/","meaning":"gấu bông"},{"word":"toy","ipa":"/tɔɪ/","meaning":"đồ chơi"},{"word":"train","ipa":"/treɪn/","meaning":"tàu hỏa"},{"word":"truck","ipa":"/trʌk/","meaning":"xe tải"}]},{"grade":3,"unit":18,"title":"PLAYING AND DOING","words":[{"word":"dancing","ipa":"/ˈdɑːnsɪŋ/","meaning":"nhảy múa"},{"word":"drawing a picture","ipa":"/ˈdrɔːɪŋ ə ˈpɪktʃə(r)/","meaning":"vẽ tranh"},{"word":"listening to music","ipa":"/ˈlɪsənɪŋ tə ˈmjuːzɪk/","meaning":"nghe nhạc"},{"word":"reading","ipa":"/ˈriːdɪŋ/","meaning":"đọc sách"},{"word":"singing","ipa":"/ˈsɪŋɪŋ/","meaning":"hát"},{"word":"watching TV","ipa":"/ˈwɒtʃɪŋ ˌtiː ˈviː/","meaning":"xem TV"},{"word":"writing","ipa":"/ˈraɪtɪŋ/","meaning":"viết"}]},{"grade":3,"unit":19,"title":"OUTDOOR ACTIVITIES","words":[{"word":"cycling","ipa":"/ˈsaɪklɪŋ/","meaning":"đạp xe"},{"word":"flying a kite","ipa":"/ˈflaɪɪŋ ə kaɪt/","meaning":"thả diều"},{"word":"painting","ipa":"/ˈpeɪntɪŋ/","meaning":"vẽ, tô màu"},{"word":"running","ipa":"/ˈrʌnɪŋ/","meaning":"chạy"},{"word":"skating","ipa":"/ˈskeɪtɪŋ/","meaning":"trượt patin"},{"word":"skipping","ipa":"/ˈskɪpɪŋ/","meaning":"nhảy dây"}]},{"grade":3,"unit":20,"title":"AT THE ZOO","words":[{"word":"zoo","ipa":"/zuː/","meaning":"sở thú"},{"word":"animal","ipa":"/ˈænɪməl/","meaning":"động vật"},{"word":"elephant","ipa":"/ˈelɪfənt/","meaning":"con voi"},{"word":"horse","ipa":"/hɔːs/","meaning":"con ngựa"},{"word":"monkey","ipa":"/ˈmʌŋki/","meaning":"con khỉ"},{"word":"peacock","ipa":"/ˈpiːkɒk/","meaning":"con công"},{"word":"tiger","ipa":"/ˈtaɪɡə(r)/","meaning":"con hổ"},{"word":"count","ipa":"/kaʊnt/","meaning":"đếm"},{"word":"climb","ipa":"/klaɪm/","meaning":"trèo, leo"},{"word":"swing","ipa":"/swɪŋ/","meaning":"đung đưa"}]}];
+const SPEAK1 = {"1":[["Hi, I’m Bill.","Hi, I’m + tên."],["Bye, Bill.","Bye, + tên."],["How are you?","I’m fine, thank you."]],"2":[["I have a car.","I have a + đồ vật."],["What do you have?","I have a + đồ vật."]],"3":[["This is my bag.","This is my + đồ vật."],["What is this?","It’s my + đồ vật."]],"4":[["What is this?","This is a dog."],["This is a dog.","This is a + đồ vật."]],"5":[["I like milk.","I like + đồ ăn / thức uống."],["Do you like milk?","Yes, I do. / No, I don’t."]],"6":[["It’s a red pen.","It’s a + màu sắc + đồ vật."],["What colour is it?","It’s red."]],"7":[["There’s a garden.","There’s a + danh từ."],["What’s there?","There’s a garden."]],"8":[["Touch your hair.","Touch your + bộ phận cơ thể."],["What should I touch?","Touch your hair."]],"9":[["How many clocks?","Two clocks."],["How many + danh từ số nhiều?","Số lượng."]],"10":[["What’s that?","That’s a monkey."],["What’s that?","That’s a + con vật."]],"11":[["What is he doing?","He’s running."],["What is she doing?","She’s running."],["He’s / She’s + V-ing",""]],"12":[["Look at the lemons.","Look at the + đồ vật."],["What can you see?","I can see lemons."]],"13":[["What is she having?","She’s having noodles."],["What is he having?","He’s having noodles."],["He’s / She’s having + đồ ăn.",""]],"14":[["What can you see?","I can see a tiger."],["Can you see a tiger?","Yes, I can. / No, I can’t."]]};
+const SPEAK3 = {"1":[["How are you?","I’m fine, thank you."],["What’s your name?","My name’s + tên."]],"2":[["What’s your name?","My name’s + tên."],["How do you spell your name?","B I L L."]],"3":[["Who’s that?","He’s/She’s + tên."],["Is he/she your friend?","Yes, he/she is. / No, he/she isn’t."]],"4":[["What’s this?","It’s my + bộ phận cơ thể."],["What are these?","They’re my + bộ phận cơ thể."]],"5":[["What’s your hobby?","I like + V-ing."],["Do you like + V-ing?","Yes, I do. / No, I don’t."]],"6":[["What’s the name of your school?","It’s + tên trường."],["Where is your school?","It’s in + địa điểm."]],"7":[["What do you do?","I + động từ."],["Can you + động từ?","Yes, I can. / No, I can’t."]],"8":[["What’s this?","It’s a/an + đồ dùng."],["Do you have a/an + đồ dùng?","Yes, I do. / No, I don’t."]],"9":[["What colour is it?","It’s + màu."],["What colour are they?","They’re + màu."]],"10":[["What do you do at break time?","I + hoạt động."],["Do you + hoạt động?","Yes, I do. / No, I don’t."]],"11":[["Who’s this?","He’s/She’s my + người thân."],["How old is he/she?","He’s/She’s + tuổi."]],"12":[["What’s his/her job?","He’s/She’s a/an + nghề nghiệp."],["Is he/she a/an + nghề nghiệp?","Yes, he/she is. / No, he/she isn’t."]],"13":[["Where is the + phòng?","It’s here/there."],["Where are the + đồ vật?","They’re + vị trí."]],"14":[["What’s in your bedroom?","There’s a/an + đồ vật."],["What are in your bedroom?","There are + số lượng + đồ vật."]],"15":[["Would you like + đồ ăn/thức uống?","Yes, please. / No, thanks."],["What would you like?","I’d like + đồ ăn/thức uống."]],"16":[["Do you have a/an + con vật?","Yes, I do. / No, I don’t."],["How many + con vật + do you have?","I have + số lượng."]],"17":[["What does he/she have?","He/She has + đồ chơi."],["Does he/she have a/an + đồ chơi?","Yes, he/she does. / No, he/she doesn’t."]],"18":[["What are you doing?","I’m + V-ing."],["What is he/she doing?","He’s/She’s + V-ing."]],"19":[["What is he/she doing?","He’s/She’s + V-ing."],["Are you + V-ing?","Yes, I am. / No, I’m not."]],"20":[["What can you see?","I can see + con vật."],["What is the + animal + doing?","It’s + V-ing."]]};
+const PAIRS1 = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14]];
+const PAIRS3 = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]];
 
-const SPEAK_G1={
-1:[["How are you?","I’m fine, thank you.","fine"]],
-2:[["What do you have?","I have a car.","car"]],
-3:[["What is this?","It’s my bag.","bag"]],
-4:[["What is this?","This is a dog.","dog"]],
-5:[["Do you like milk?","Yes, I do.","milk"]],
-6:[["What colour is it?","It’s red.","red"]],
-7:[["What’s there?","There’s a garden.","garden"]],
-8:[["What should I touch?","Touch your hair.","hair"]],
-9:[["How many clocks?","Two clocks.","clock"]],
-10:[["What’s that?","That’s a monkey.","monkey"]],
-11:[["What is he doing?","He’s running.","running"]],
-12:[["What can you see?","I can see lemons.","lemons"]],
-13:[["What is she having?","She’s having noodles.","noodles"]],
-14:[["What can you see?","I can see a tiger.","tiger"]]
+const emojiMap = {
+  ball:"⚽",bike:"🚲",book:"📖",cake:"🍰",car:"🚗",cat:"🐱",cup:"🥤",apple:"🍎",bag:"👜",can:"🥫",hat:"🧢",
+  desk:"🪑",dog:"🐶",door:"🚪",duck:"🦆",chicken:"🍗",chips:"🍟",fish:"🐟",milk:"🥛",bell:"🔔",pen:"🖊️",
+  pencil:"✏️",red:"🔴",garden:"🌳",gate:"🚪",girl:"👧",goat:"🐐",hair:"💇",hand:"✋",head:"🙂",horse:"🐴",
+  clock:"🕐",lock:"🔒",mop:"🧹",pot:"🍲",mango:"🥭",monkey:"🐒",mother:"👩",mouse:"🐭",bus:"🚌",running:"🏃",
+  sun:"☀️",truck:"🚚",lake:"🏞️",leaf:"🍃",lemons:"🍋",lamp:"💡",bananas:"🍌",nick:"👦",noodles:"🍜",nuts:"🥜",
+  "teddy bear":"🧸",tiger:"🐯",top:"🪀",turtle:"🐢",face:"🙂",father:"👨",foot:"🦶",football:"⚽",washing:"🧼",
+  water:"💧",window:"🪟",wendy:"👧",hello:"👋",hi:"👋",goodbye:"👋",friend:"🧑‍🤝‍🧑",teacher:"👩‍🏫",ear:"👂",
+  eye:"👁️",mouth:"👄",nose:"👃",touch:"☝️",open:"🔓",cooking:"🍳",dancing:"💃",drawing:"🎨",painting:"🖌️",
+  singing:"🎤",swimming:"🏊",walking:"🚶","art room":"🎨",classroom:"🏫","computer room":"💻",gym:"🏋️",
+  library:"📚","music room":"🎵",playground:"🛝",school:"🏫",close:"🔒","come in":"🚪","go out":"🚶","sit down":"🪑",
+  "speak":"🗣️","stand up":"🙋",eraser:"🧽",notebook:"📓","pencil case":"🖍️",ruler:"📏","school bag":"🎒",
+  colour:"🎨",they:"👥",black:"⚫",blue:"🔵",brown:"🟤",green:"🟢",orange:"🟠",white:"⚪",yellow:"🟡",
+  "break time":"⏰",chat:"💬","do word puzzles":"🧩","play badminton":"🏸","play basketball":"🏀","play chess":"♟️",
+  "play football":"⚽","play table tennis":"🏓","play volleyball":"🏐",brother:"👦",sister:"👧",cook:"👨‍🍳",
+  doctor:"🧑‍⚕️",driver:"🚗",farmer:"👨‍🌾",nurse:"👩‍⚕️",singer:"🎤",worker:"🧑‍🔧",job:"💼",house:"🏠",
+  bathroom:"🛁",bedroom:"🛏️",kitchen:"🍳","living room":"🛋️",chair:"🪑",table:"🪑",here:"📍",there:"📍",
+  in:"⬇️",on:"⬆️",bed:"🛏️",big:"🔎",to:"➡️",new:"✨",old:"🕰️",room:"🚪",small:"🔹",bean:"🫘",bread:"🍞",
+  egg:"🥚",juice:"🧃",meat:"🥩",rice:"🍚",bird:"🐦",goldfish:"🐠",parrot:"🦜",rabbit:"🐰",many:"🔢",some:"➕",
+  kite:"🪁",plane:"✈️",ship:"🚢",toy:"🧸",train:"🚆",dancing:"💃","drawing a picture":"🎨","listening to music":"🎧",
+  reading:"📚","watching TV":"📺",writing:"✍️",cycling:"🚴","flying a kite":"🪁",skating:"⛸️",skipping:"🪢",
+  zoo:"🦁",animal:"🐾",elephant:"🐘",peacock:"🦚",count:"🔢",climb:"🧗",swing:"🛝",my:"👤",name:"🏷️",old:"🕰️",
+  what:"❓",fine:"🙂","thank you":"🙏",you:"👉",I:"🙋",yes:"✅",no:"❌",this:"👇",that:"👉",Mr:"👨",Ms:"👩",it:"👉"
 };
 
-const SPEAK_G3={
-1:[["How are you?","I’m fine, thank you.","fine"],["What’s your name?","My name’s Bill.","Bill"]],
-2:[["What’s your name?","My name’s Bill.","Bill"],["How do you spell your name?","B I L L.","Bill"]],
-3:[["Who’s that?","He’s my friend.","friend"],["Is he your friend?","Yes, he is.","friend"]],
-4:[["What’s this?","It’s my eye.","eye"],["What are these?","They’re my hands.","hand"]],
-5:[["What’s your hobby?","I like swimming.","swimming"],["Do you like dancing?","Yes, I do.","dancing"]],
-6:[["What’s the name of your school?","It’s my school.","school"],["Where is your school?","It’s here.","school"]],
-7:[["What do you do?","I speak.","speak"],["Can you speak?","Yes, I can.","speak"]],
-8:[["What’s this?","It’s a book.","book"],["Do you have a pencil?","Yes, I do.","pencil"]],
-9:[["What colour is it?","It’s red.","red"],["What colour are they?","They’re blue.","blue"]],
-10:[["What do you do at break time?","I play football.","play football"],["Do you play chess?","Yes, I do.","play chess"]],
-11:[["Who’s this?","She’s my mother.","mother"],["How old is he?","He’s ten.","father"]],
-12:[["What’s his job?","He’s a teacher.","teacher"],["Is she a doctor?","Yes, she is.","doctor"]],
-13:[["Where is the bedroom?","It’s here.","bedroom"],["Where are the chairs?","They’re there.","chair"]],
-14:[["What’s in your bedroom?","There’s a bed.","bed"],["What are in your bedroom?","There are two chairs.","chair"]],
-15:[["Would you like milk?","Yes, please.","milk"],["What would you like?","I’d like juice.","juice"]],
-16:[["Do you have a dog?","Yes, I do.","dog"],["How many pets do you have?","I have two.","dog"]],
-17:[["What does he have?","He has a toy.","toy"],["Does he have a kite?","Yes, he does.","kite"]],
-18:[["What are you doing?","I’m reading.","reading"],["What is she doing?","She’s singing.","singing"]],
-19:[["What is he doing?","He’s cycling.","cycling"],["Are you running?","Yes, I am.","running"]],
-20:[["What can you see?","I can see a tiger.","tiger"],["What is the animal doing?","It’s climbing.","climb"]]
+const T={
+ vi:{choose:"Chọn ngôn ngữ",sub:"Chọn ngôn ngữ cho hệ thống",grade:"Chọn lớp",gradeSub:"Chọn lớp để bắt đầu học",vocab:"TỪ VỰNG",memory:"GHI NHỚ",speak:"LUYỆN NÓI",unit:"Chọn Unit",pair:"Chọn nhóm Unit",repeat:"Bạn lặp lại nhé!",skip:"Bỏ qua",exit:"Thoát",correct:"Đúng!",wrong:"Sai!",answer:"Đáp án đúng",listen:"Nghe",speakTitle:"Luyện nói",question:"Câu hỏi",ready:"Chuẩn bị...",time:"Trả lời trong",finish:"Hoàn thành!"},
+ en:{choose:"Choose your language",sub:"Choose the system language",grade:"Choose a grade",gradeSub:"Choose a grade to start learning",vocab:"VOCABULARY",memory:"MEMORY",speak:"SPEAKING",unit:"Choose a Unit",pair:"Choose a Unit pair",repeat:"Please repeat!",skip:"Skip",exit:"Exit",correct:"Correct!",wrong:"Try again!",answer:"Correct answer",listen:"Listen",speakTitle:"Speaking Practice",question:"Question",ready:"Get ready...",time:"Answer in",finish:"Finished!"}
 };
+let lang="vi", grade=1, mode="vocab", session=[], idx=0, timerId=null, stopped=false, currentQuiz=null;
 
-let grade=null,lang="vi",currentPage="home",quizMode="",quizWords=[],quizIndex=0,pronunciationWords=[],pronIndex=0,pronStop=false,speakQuestions=[],speakIndex=0,audioCtx=null;
+function go(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active"); clickSound();}
+function setLang(l){lang=l; render(); go("grades"); welcomeSound();}
+function selectGrade(g){grade=g; render();go("modes")}
+function render(){
+ const t=T[lang];
+ document.getElementById("langTitle").textContent=t.choose;document.getElementById("langSub").textContent=t.sub;
+ document.getElementById("gradeTitle").textContent=t.grade;document.getElementById("gradeSub").textContent=t.gradeSub;
+ document.getElementById("modeTitle").textContent=grade===1?"GLOBAL SUCCESS 1":"GLOBAL SUCCESS 3";
+ document.getElementById("modeSub").textContent=t.gradeSub;
+ document.getElementById("mv").textContent=t.vocab;document.getElementById("mm").textContent=t.memory;document.getElementById("ms").textContent=t.speak;
+}
+function unitsForGrade(){return VOCAB.filter(x=>x.grade===grade)}
+function pairs(){return grade===1?PAIRS1:PAIRS3}
+function showUnits(m){
+ mode=m; const t=T[lang]; go("units");
+ document.getElementById("unitsLogo").textContent=grade===1?"📘 GLOBAL SUCCESS 1":"📗 GLOBAL SUCCESS 3";
+ document.getElementById("unitsTitle").textContent=m==="vocab"?t.vocab:t.speak;
+ document.getElementById("unitsSub").textContent=t.pair;
+ const list=pairs().map(p=>({p, label:`Unit ${p[0]} + Unit ${p[1]}`}));
+ document.getElementById("unitGrid").innerHTML=list.map(x=>`<button class="unit" onclick="startPair(${x.p[0]},${x.p[1]})"><strong>${x.label}</strong><span>${m==="vocab"?"📚 "+t.vocab:"🗣️ "+t.speak}</span></button>`).join("");
+}
+function showMemory(){
+ go("memory");const t=T[lang];document.getElementById("memoryTop").textContent=t.memory;
+ const items=[["pron","🔊",lang==="vi"?"Phát âm":"Pronunciation"],["write","✍️",lang==="vi"?"Chữ viết":"Writing"],["react","⚡",lang==="vi"?"Phản xạ":"Reaction"]];
+ document.getElementById("memoryGrid").innerHTML=items.map(a=>`<button class="card choice" onclick="memoryMode('${a[0]}')">${a[1]}<br>${a[2]}</button>`).join("");
+}
+function memoryMode(kind){
+ if(kind==="pron")showUnits("vocab");
+ else if(kind==="write")quizByPairs("write");
+ else quizByPairs("react");
+}
+function getWords(a,b){
+ return unitsForGrade().filter(u=>u.unit===a||u.unit===b).flatMap(u=>u.words.map(w=>({...w,unit:u.unit,title:u.title})));
+}
+function startPair(a,b){
+ session=getWords(a,b).sort(()=>Math.random()-.5);idx=0;stopped=false;
+ if(mode==="vocab"){go("learn");renderWord();}else{quizStart(session,"write");}
+}
+function renderWord(){
+ if(stopped)return;if(idx>=session.length){stopSession();alert(T[lang].finish);go("units");return}
+ const w=session[idx];document.getElementById("learnTitle").textContent=`${T[lang].vocab} • Unit ${w.unit}`;
+ document.getElementById("pic").textContent=imageFor(w.word);document.getElementById("word").textContent=w.word;
+ document.getElementById("ipa").textContent=w.ipa;document.getElementById("meaning").textContent=w.meaning;
+ document.getElementById("bar").style.width=(idx/session.length*100)+"%";
+ setTimeout(()=>speakWord(w.word),250);
+}
+function speakCurrent(){if(session[idx])speakWord(session[idx].word)}
+function skipCurrent(){clickSound();idx++;renderWord()}
+function speakWord(s){if(!("speechSynthesis" in window))return;speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(s);u.lang="en-GB";u.rate=.78;u.pitch=1.05;speechSynthesis.speak(u)}
+function speakText(s){if(!("speechSynthesis" in window))return;speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(s);u.lang=lang==="vi"?"vi-VN":"en-GB";u.rate=.82;speechSynthesis.speak(u)}
+function quizStart(words,kind){
+ session=[...words].sort(()=>Math.random()-.5);idx=0;stopped=false;go("quiz");nextQuiz();
+}
+function nextQuiz(){
+ if(stopped)return;if(idx>=session.length){alert(T[lang].finish);stopSession();go("units");return}
+ currentQuiz=session[idx];document.getElementById("quizTitle").textContent=kindTitle();
+ const w=currentQuiz;document.getElementById("qpic").textContent=imageFor(w.word);
+ document.getElementById("question").textContent=mode==="speak"?T[lang].question:w.word;
+ document.getElementById("qbar").style.width=(idx/session.length*100)+"%";
+ let pool=unitsForGrade().flatMap(u=>u.words).filter(x=>x.word!==w.word).sort(()=>Math.random()-.5).slice(0,2);
+ let opts=[w,...pool].sort(()=>Math.random()-.5);
+ document.getElementById("options").innerHTML=opts.map((x,i)=>`<button class="option" onclick="answerQuiz(this,'${esc(x.word)}','${esc(w.word)}')">${mode==="speak"?x.word:imageFor(x.word)+" "+x.word}</button>`).join("");
+ document.getElementById("timer").textContent=T[lang].time+" 4s";
+ clearInterval(timerId);let left=4;timerId=setInterval(()=>{left--;document.getElementById("timer").textContent=T[lang].time+" "+left+"s";if(left<=0){clearInterval(timerId);revealCorrect(w.word)}},1000);
+ speakText(mode==="speak"?makeQuestion(w):w.word);
+}
+function answerQuiz(btn,chosen,correct){
+ clearInterval(timerId);document.querySelectorAll(".option").forEach(b=>b.disabled=true);
+ if(chosen===correct){btn.classList.add("correct");clickSound(true);speakWord(correct);setTimeout(()=>{idx++;nextQuiz()},850)}
+ else{btn.classList.add("wrong");clickSound(false);speakWord(correct);document.getElementById("timer").textContent=T[lang].answer+": "+correct;setTimeout(()=>{idx++;nextQuiz()},1200)}
+}
+function revealCorrect(correct){document.querySelectorAll(".option").forEach(b=>{if(b.textContent.includes(correct))b.classList.add("correct");b.disabled=true});speakWord(correct);setTimeout(()=>{idx++;nextQuiz()},1200)}
+function makeQuestion(w){return lang==="vi"?"Hãy chọn từ đúng.":"Choose the correct word."}
+function kindTitle(){return mode==="vocab"?T[lang].vocab:mode==="speak"?T[lang].speakTitle:T[lang].memory}
+function esc(s){return String(s).replace(/'/g,"\\'")}
+function imageFor(word){return emojiMap[word.toLowerCase()]||emojiMap[word]||"🖼️"}
 
-function data(){return grade===1?G1:G3}
-function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function wait(ms){return new Promise(r=>setTimeout(r,ms))}
-function speak(text,times=1){return new Promise(resolve=>{if(!window.speechSynthesis){resolve();return}speechSynthesis.cancel();let c=0;function one(){if(c>=times){resolve();return}c++;const u=new SpeechSynthesisUtterance(text);u.lang="en-GB";u.rate=.82;u.pitch=1.05;u.onend=()=>setTimeout(one,120);u.onerror=()=>resolve();speechSynthesis.speak(u)}one()})}
-function tone(ok=true){try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.type="sine";o.frequency.value=ok?660:180;g.gain.setValueAtTime(.0001,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.16,audioCtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+(ok?.22:.3));o.start();o.stop(audioCtx.currentTime+(ok?.24:.32));if(ok)setTimeout(()=>tone2(880),90)}catch(e){}}
-function tone2(freq){try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.frequency.value=freq;g.gain.setValueAtTime(.0001,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.12,audioCtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.18);o.start();o.stop(audioCtx.currentTime+.2)}catch(e){}}
-function transitionSound(){tone2(520);setTimeout(()=>tone2(700),100)}
-function imageKeyword(word){const m={"Bill":"boy child","Wendy":"girl child","Nick":"boy child","red":"red colour","colour":"colours","my":"child pointing","your":"child pointing","his":"boy","her":"girl","this":"child pointing","that":"child pointing","fine":"happy child","how":"question child","I":"child","you":"child","old":"old child","new":"new toy","many":"many objects","some":"some objects","top":"spinning top toy","can":"tin can","washing":"washing hands","running":"child running","touch":"touch hand","open":"open door","close":"closing door","come in":"classroom entrance","go out":"classroom door","speak":"child speaking","stand up":"child standing","sit down":"child sitting","do word puzzles":"word puzzle","play badminton":"badminton child","play basketball":"basketball child","play chess":"chess child","play football":"football child","play table tennis":"table tennis child","play volleyball":"volleyball child","drawing a picture":"child drawing","listening to music":"child listening music","watching TV":"child watching tv","flying a kite":"child flying kite","painting":"child painting","skating":"child skating","skipping":"child skipping","goldfish":"goldfish","peacock":"peacock","teddy bear":"teddy bear","school bag":"school bag","pencil case":"pencil case","art room":"art classroom","computer room":"computer room","music room":"music classroom","break time":"school break"};return m[word]||word}
-function img(word,lock){return `https://loremflickr.com/700/500/${encodeURIComponent(imageKeyword(word))}?lock=${lock||Math.floor(Math.random()*9999)}`}
-function imgTag(word,lock,cls=""){return `<img class="${cls}" src="${img(word,lock)}" alt="${word}" onerror="this.onerror=null;this.src='https://placehold.co/700x500/e5e7eb/000055?text=${encodeURIComponent(word)}';">`}
-function header(title,back){return `<div class="header"><div class="header-inner"><button class="back" onclick="${back}">← ${lang==="vi"?"Quay lại":"Back"}</button><div class="header-title">Henry English</div></div></div>`}
-
-function render(){speechSynthesis.cancel();clearTimeout(pronTimer);clearTimeout(speakingTimer);if(currentPage==="home")return renderHome();if(currentPage==="grades")return renderGrades();if(currentPage==="modules")return renderModules();if(currentPage==="vocabUnits")return renderVocabUnits();if(currentPage.startsWith("unit:"))return renderUnit(+currentPage.split(":")[1]);if(currentPage==="memory")return renderMemory();if(currentPage.startsWith("pairs:"))return renderPairs(currentPage.split(":")[1]);if(currentPage==="pron")return renderPronunciationPage();if(currentPage==="quiz")return renderQuiz();if(currentPage==="speakPairs")return renderSpeakPairs();if(currentPage==="speaking")return renderSpeaking()}
-function renderHome(){document.getElementById("app").innerHTML=`<div class="screen home"><div class="home-box"><h1 class="home-title">WELCOME TO HENRY ENGLISH CLASS</h1><div class="welcome-sub">${lang==="vi"?"Học từ vựng • Ghi nhớ • Luyện nói":"Vocabulary • Memory • Speaking"}</div><div class="welcome-sub">${lang==="vi"?"Chọn ngôn ngữ":"Choose your language"}</div><div class="lang-row"><button class="lang-btn ${lang==="vi"?"active":""}" onclick="setLang('vi')">TIẾNG VIỆT</button><button class="lang-btn ${lang==="en"?"active":""}" onclick="setLang('en')">ENGLISH</button></div><div style="height:26px"></div><button class="grade-btn" onclick="goGrades()">${lang==="vi"?"BẮT ĐẦU HỌC":"START LEARNING"}</button></div></div>`;setTimeout(()=>{tone2(620);setTimeout(()=>tone2(820),100);speak("Welcome to Henry English class!",1)},250)}
-function setLang(x){lang=x;render()}function goGrades(){currentPage="grades";render()}function chooseGrade(g){grade=g;tone(true);currentPage="modules";render()}
-function renderGrades(){document.getElementById("app").innerHTML=`${header(lang==="vi"?"Chọn lớp":"Choose a grade","renderHome()")}<div class="container"><h1 class="page-title">${lang==="vi"?"CHỌN LỚP":"CHOOSE A GRADE"}</h1><p class="page-sub">${lang==="vi"?"Chọn lớp để bắt đầu":"Choose a grade to begin"}</p><div class="grade-row"><button class="grade-btn" onclick="chooseGrade(1)">LỚP 1</button><button class="grade-btn" onclick="chooseGrade(3)">LỚP 3</button></div></div>`}
-function renderModules(){document.getElementById("app").innerHTML=`${header("LỚP "+grade,"goGrades()")}<div class="container"><h1 class="page-title">${lang==="vi"?"CHỌN NỘI DUNG":"CHOOSE A MODULE"}</h1><div class="menu-grid"><button class="menu-btn menu-vocab" onclick="currentPage='vocabUnits';render()">📚<br>${lang==="vi"?"TỪ VỰNG":"VOCABULARY"}</button><button class="menu-btn menu-memory" onclick="currentPage='memory';render()">🧠<br>${lang==="vi"?"GHI NHỚ":"MEMORY"}</button><button class="menu-btn menu-speak" onclick="currentPage='speakPairs';render()">🗣️<br>${lang==="vi"?"LUYỆN NÓI":"SPEAKING"}</button></div></div>`}
-function renderVocabUnits(){const d=data();document.getElementById("app").innerHTML=`${header(lang==="vi"?"Từ vựng":"Vocabulary","renderModules()")}<div class="container"><h1 class="page-title">${lang==="vi"?"TỪ VỰNG LỚP "+grade:"GRADE "+grade+" VOCABULARY"}</h1><div class="unit-grid">${d.map((u,i)=>`<button class="unit-btn" onclick="openUnit(${i})">UNIT ${i+1}<span>${u[0]}</span></button>`).join("")}</div></div>`}
-function openUnit(i){tone(true);currentPage="unit:"+i;render()}
-function renderUnit(i){const u=data()[i];document.getElementById("app").innerHTML=`${header("UNIT "+(i+1),"currentPage='vocabUnits';render()")}<div class="container"><h1 class="page-title">UNIT ${i+1}</h1><p class="page-sub">${u[0]}</p><div class="word-grid">${u[1].map((w,j)=>`<div class="word-card" onclick="speak('${w[0].replace(/'/g,"\\'")}')">${imgTag(w[0],i*100+j)}<div class="word-info"><div class="word">${w[0]}</div><div class="ipa">${w[1]}</div><div class="meaning">${w[2]}</div><button class="speak-word" onclick="event.stopPropagation();speak('${w[0].replace(/'/g,"\\'")}')">🔊 ${lang==="vi"?"Nghe":"Listen"}</button></div></div>`).join("")}</div></div>`}
-function renderMemory(){document.getElementById("app").innerHTML=`${header(lang==="vi"?"Ghi nhớ":"Memory","renderModules()")}<div class="container"><h1 class="page-title">${lang==="vi"?"GHI NHỚ":"MEMORY"}</h1><div class="memory-grid"><button class="memory-btn memory-pron" onclick="quizMode='pron';currentPage='pairs:pron';render()">🔊<br>${lang==="vi"?"PHÁT ÂM":"PRONUNCIATION"}</button><button class="memory-btn memory-write" onclick="quizMode='write';currentPage='pairs:write';render()">✍️<br>${lang==="vi"?"CHỮ VIẾT":"WRITING"}</button><button class="memory-btn memory-reflex" onclick="quizMode='reflex';currentPage='pairs:reflex';render()">⚡<br>${lang==="vi"?"PHẢN XẠ":"REFLEX"}</button></div></div>`}
-function pairList(){const max=grade===1?14:20;const arr=[];for(let i=0;i<max;i+=2)arr.push([i,i+1]);return arr}
-function renderPairs(mode){const pairs=pairList();document.getElementById("app").innerHTML=`${header(mode==="pron"?"Phát âm":mode==="write"?"Chữ viết":"Phản xạ","currentPage='memory';render()")}<div class="container"><h1 class="page-title">${mode==="pron"?"PHÁT ÂM":mode==="write"?"CHỮ VIẾT":"PHẢN XẠ"}</h1><p class="page-sub">${lang==="vi"?"Chọn cặp Unit để học":"Choose a Unit pair"}</p><div class="pair-grid">${pairs.map((p,i)=>`<button class="pair-btn" onclick="startMode(${i})">Unit ${p[0]+1} + Unit ${p[1]+1}<span>${data()[p[0]][0]} + ${data()[p[1]][0]}</span></button>`).join("")}</div></div>`}
-function startMode(i){tone(true);const p=pairList()[i];if(quizMode==="pron"){pronunciationWords=getWords(p[0],p[1]);pronIndex=0;pronStop=false;currentPage="pron";render();startPronSequence()}else{quizWords=getWords(p[0],p[1]);if(quizMode==="reflex")quizWords=shuffle(quizWords);quizIndex=0;currentPage="quiz";render()}}
-function getWords(a,b){return [...data()[a][1],...data()[b][1]].map((w,i)=>({word:w[0],ipa:w[1],meaning:w[2],lock:i+a*100+b*1000}))}
-function renderPronunciationPage(){const w=pronunciationWords[pronIndex];document.getElementById("app").innerHTML=`${header("Phát âm","stopPron()")}<div class="container"><div class="pron-box"><div class="progress">WORD ${pronIndex+1} / ${pronunciationWords.length}</div>${imgTag(w.word,w.lock,"quiz-image")}<div class="pron-word">${w.word}</div><div class="pron-ipa">${w.ipa}</div><div class="status" id="pronStatus">${lang==="vi"?"Chuẩn bị...":"Get ready..."}</div><div class="action-row"><button class="action skip" onclick="skipPron()">⏭️ ${lang==="vi"?"Bỏ qua":"Skip"}</button><button class="action stop" onclick="stopPron()">✖ ${lang==="vi"?"Thoát":"Exit"}</button></div></div></div>`}
-async function startPronSequence(){if(pronStop)return;const w=pronunciationWords[pronIndex];if(!w){finish("pron");return}const status=document.getElementById("pronStatus");if(!status)return;for(let i=1;i<=3;i++){if(pronStop)return;status.textContent=lang==="vi"?`Nghe lần ${i} / 3`:`Listen ${i} / 3`;await speak(w.word,1);await wait(180)}for(let s=4;s>0;s--){if(pronStop)return;status.textContent=lang==="vi"?`Bạn lặp lại nhé • ${s}s`:`Repeat please • ${s}s`;await wait(1000)}pronIndex++;if(pronIndex>=pronunciationWords.length){finish("pron");return}transitionSound();render();startPronSequence()}
-function skipPron(){speechSynthesis.cancel();pronIndex++;if(pronIndex>=pronunciationWords.length){finish("pron");return}transitionSound();render();startPronSequence()}
-function stopPron(){pronStop=true;speechSynthesis.cancel();currentPage="pairs:pron";quizMode="pron";render()}
-function renderQuiz(){if(quizIndex>=quizWords.length){finish("quiz");return}const w=quizWords[quizIndex],pool=quizWords.filter(x=>x.word!==w.word),opts=shuffle([w,...shuffle(pool).slice(0,2)]),isWrite=quizMode==="write";document.getElementById("app").innerHTML=`${header(quizMode==="write"?"Chữ viết":"Phản xạ","stopQuiz()")}<div class="container"><div class="quiz-box"><div class="progress">QUESTION ${quizIndex+1} / ${quizWords.length}</div>${isWrite?`<div class="quiz-prompt">${w.word}</div><div class="quiz-ipa">${w.ipa}</div>`:imgTag(w.word,w.lock,"quiz-image")}<div class="small-note">${isWrite?(lang==="vi"?"Chọn hình đúng với từ":"Choose the correct picture"):(lang==="vi"?"Đây là gì? Hãy chọn từ đúng":"What is this? Choose the correct word")}</div><div class="options">${opts.map((o,i)=>isWrite?`<button class="option" data-word="${o.word}" onclick="answerQuiz(${i},'${o.word.replace(/'/g,"\\'")}')">${imgTag(o.word,o.lock+i)}</button>`:`<button class="option option-text" data-word="${o.word}" onclick="answerQuiz(${i},'${o.word.replace(/'/g,"\\'")}')">${o.word}</button>`).join("")}</div><div class="timer" id="quizTimer"></div></div></div>`;window.currentOptions=opts}
-async function answerQuiz(i,chosen){const buttons=[...document.querySelectorAll(".option")];buttons.forEach(b=>b.disabled=true);const correct=quizWords[quizIndex].word;buttons.forEach(b=>{if(b.dataset.word===correct)b.classList.add("correct")});if(chosen!==correct){buttons[i].classList.add("wrong");tone(false)}else tone(true);const timer=document.getElementById("quizTimer");if(timer)timer.textContent=lang==="vi"?"Đáp án: "+correct:"Answer: "+correct;await wait(350);await speak(correct,1);await wait(700);transitionSound();quizIndex++;render()}
-function stopQuiz(){speechSynthesis.cancel();currentPage=`pairs:${quizMode}`;render()}
-function finish(type){speechSynthesis.cancel();const back=type==="pron"?"currentPage='pairs:pron';quizMode='pron';render()":type==="quiz"?`currentPage='pairs:${quizMode}';render()`:"currentPage='modules';render()";document.getElementById("app").innerHTML=`${header("Hoàn thành","currentPage='modules';render()")}<div class="container"><div class="done"><h2>🎉 ${lang==="vi"?"Hoàn thành!":"Completed!"}</h2><p>${lang==="vi"?"Bạn đã hoàn thành toàn bộ nội dung của cặp Unit này.":"You completed this Unit pair."}</p><button class="primary" onclick="${back}">${lang==="vi"?"Học lại":"Study again"}</button></div></div>`}
-function renderSpeakPairs(){const pairs=pairList();document.getElementById("app").innerHTML=`${header(lang==="vi"?"Luyện nói":"Speaking","renderModules()")}<div class="container"><h1 class="page-title">${lang==="vi"?"LUYỆN NÓI":"SPEAKING"}</h1><p class="page-sub">${lang==="vi"?"Mỗi cặp Unit có 15 câu hỏi. Hỏi xong chừa 4 giây rồi đọc đáp án.":"15 questions per Unit pair. Ask, wait 4 seconds, then play the answer."}</p><div class="pair-grid">${pairs.map((p,i)=>`<button class="pair-btn" onclick="startSpeaking(${i})">Unit ${p[0]+1} + Unit ${p[1]+1}<span>15 questions</span></button>`).join("")}</div></div>`}
-function buildSpeaking(pairIndex){const p=pairList()[pairIndex],bank=grade===1?SPEAK_G1:SPEAK_G3;let q=[];[p[0]+1,p[1]+1].forEach(u=>{if(bank[u])q.push(...bank[u])});q=shuffle(q);while(q.length<15)q.push(...shuffle(q));return q.slice(0,15).map((x,i)=>({q:x[0],a:x[1],image:x[2],lock:i+500}))}
-function startSpeaking(i){tone(true);speakQuestions=buildSpeaking(i);speakIndex=0;currentPage="speaking";render();runSpeaking()}
-function renderSpeaking(){const x=speakQuestions[speakIndex];document.getElementById("app").innerHTML=`${header("Luyện nói","stopSpeaking()")}<div class="container"><div class="speak-box"><div class="progress">QUESTION ${speakIndex+1} / 15</div>${imgTag(x.image,x.lock,"quiz-image")}<div class="speak-question">${x.q}</div><div class="timer" id="speakTimer">${lang==="vi"?"Hãy trả lời nhé!":"Your turn!"}</div><div class="speak-answer" id="speakAnswer"></div></div></div>`}
-async function runSpeaking(){if(currentPage!=="speaking")return;const x=speakQuestions[speakIndex];await speak(x.q,1);for(let s=4;s>0;s--){if(currentPage!=="speaking")return;const t=document.getElementById("speakTimer");if(t)t.textContent=lang==="vi"?`Bạn trả lời nhé • ${s}s`:`Your turn • ${s}s`;await wait(1000)}if(currentPage!=="speaking")return;const a=document.getElementById("speakAnswer");if(a)a.textContent=x.a;transitionSound();await wait(250);await speak(x.a,1);await wait(900);if(currentPage!=="speaking")return;speakIndex++;if(speakIndex>=speakQuestions.length){finishSpeaking();return}transitionSound();render();runSpeaking()}
-function stopSpeaking(){speechSynthesis.cancel();currentPage="speakPairs";render()}
-function finishSpeaking(){speechSynthesis.cancel();document.getElementById("app").innerHTML=`${header("Hoàn thành","currentPage='modules';render()")}<div class="container"><div class="done"><h2>🎉 ${lang==="vi"?"Hoàn thành 15 câu!":"15 questions completed!"}</h2><button class="primary" onclick="currentPage='speakPairs';render()">${lang==="vi"?"Học lại":"Study again"}</button></div></div>`}
+let speakList=[], speakIdx=0;
+function showSpeakingPair(a,b){
+ speakList=[...(grade===1?SPEAK1:SPEAK3)][a]||[];
+}
+function startSpeaking(a,b){
+ const src=grade===1?SPEAK1:SPEAK3;
+ let arr=[];[a,b].forEach(n=>{(src[n]||[]).forEach(x=>arr.push({q:x[0],a:x[1]}))});
+ arr=arr.sort(()=>Math.random()-.5);
+ // Repeat to make a classroom-friendly 15-question round.
+ while(arr.length<15)arr.push(arr[arr.length%Math.max(1,arr.length)]);
+ arr=arr.slice(0,15);speakList=arr;speakIdx=0;go("quiz");nextSpeaking();
+}
+function nextSpeaking(){
+ if(speakIdx>=speakList.length){alert(T[lang].finish);go("units");return}
+ const x=speakList[speakIdx];document.getElementById("quizTitle").textContent=T[lang].speakTitle;
+ document.getElementById("qpic").textContent="🗣️";document.getElementById("question").textContent=x.q;
+ document.getElementById("qbar").style.width=(speakIdx/speakList.length*100)+"%";
+ document.getElementById("options").innerHTML=`<div class="speak-card" style="grid-column:1/-1"><div class="timer" id="sTimer">${T[lang].time} 4s</div><div class="answer hidden" id="sAns">${x.a}</div><button class="btn orange" onclick="showSpeakingAnswer()">🔊 ${T[lang].answer}</button></div>`;
+ speakText(x.q);let left=4;clearInterval(timerId);timerId=setInterval(()=>{left--;document.getElementById("sTimer").textContent=T[lang].time+" "+left+"s";if(left<=0){clearInterval(timerId);showSpeakingAnswer()}},1000)
+}
+function showSpeakingAnswer(){clearInterval(timerId);let a=document.getElementById("sAns");a.classList.remove("hidden");speakText(speakList[speakIdx].a);setTimeout(()=>{speakIdx++;nextSpeaking()},2200)}
+function quizByPairs(kind){
+ mode=kind==="react"?"react":"write";showUnits("vocab"); // unit picker remains consistent
+ const old=window.startPair;window.startPair=(a,b)=>{if(kind==="write"){session=getWords(a,b).sort(()=>Math.random()-.5);quizStart(session,"write")}else{mode="react";session=getWords(a,b).sort(()=>Math.random()-.5);quizStart(session,"react")}};
+}
+function startPair(a,b){if(mode==="speak"){startSpeaking(a,b);return}session=getWords(a,b).sort(()=>Math.random()-.5);idx=0;stopped=false;if(mode==="vocab"){go("learn");renderWord()}else quizStart(session,mode)}
+function stopSession(){stopped=true;clearInterval(timerId);if("speechSynthesis"in window)speechSynthesis.cancel()}
+function clickSound(correct=true){
+ try{let c=new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.frequency.value=correct?660:220;o.type="sine";g.gain.setValueAtTime(.001,c.currentTime);g.gain.exponentialRampToValueAtTime(.08,c.currentTime+.01);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.16);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.18)}catch(e){}
+}
+function welcomeSound(){try{let c=new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.type="triangle";o.frequency.setValueAtTime(440,c.currentTime);o.frequency.exponentialRampToValueAtTime(880,c.currentTime+.5);g.gain.setValueAtTime(.001,c.currentTime);g.gain.exponentialRampToValueAtTime(.12,c.currentTime+.03);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.65);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.7)}catch(e){}}
 render();
-</script></body></html>
+</script>
+</body>
+</html>
