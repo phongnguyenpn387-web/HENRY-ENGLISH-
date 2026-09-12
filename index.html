@@ -1,556 +1,1641 @@
 <!doctype html>
 <html lang="vi">
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+>
+
+<meta
+  name="theme-color"
+  content="#000055"
+>
+
 <title>Henry English Class – Grade 1</title>
 
+
 <style>
-:root{
-  --navy:#000055;
-  --orange:#FF6600;
-  --green:#16a34a;
-  --red:#dc2626;
-  --bg:#f4f7fb;
-  --ink:#182033;
-  --card:#fff;
-  --muted:#667085;
-  --line:#d9deea
+
+/* =========================================================
+   RESET + RESPONSIVE FOUNDATION
+========================================================= */
+
+html{
+  width:100%;
+  min-width:0;
+  overflow-x:hidden;
 }
 
-*{box-sizing:border-box}
-
 body{
+  width:100%;
+  min-width:0;
+  max-width:100%;
   margin:0;
-  font-family:Arial,sans-serif;
-  background:var(--bg);
-  color:var(--ink)
+  padding:0;
+  overflow-x:hidden;
+}
+
+*{
+  box-sizing:border-box;
+  max-width:100%;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
 }
 
 button{
-  font:inherit;
   cursor:pointer;
-  border:0
 }
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+  --navy:#000055;
+  --orange:#ff6600;
+  --green:#16a34a;
+  --red:#dc2626;
+
+  --bg:#f4f7fb;
+  --ink:#182033;
+  --card:#ffffff;
+  --muted:#667085;
+  --line:#d9deea;
+
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body{
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:var(--bg);
+  color:var(--ink);
+
+}
+
+
+/* =========================================================
+   SCREEN
+========================================================= */
 
 .screen{
   display:none;
-  min-height:100vh
+  width:100%;
+  min-height:100vh;
+  min-height:100dvh;
 }
 
-.active{
-  display:flex
+.screen.active{
+  display:flex;
 }
+
+
+/* =========================================================
+   WELCOME SCREEN
+========================================================= */
 
 .welcome{
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  background:var(--navy)
-}
 
-.welcome .box{
-  width:min(900px,100%);
-  text-align:center;
-  background:transparent;
-  border-radius:28px;
-  padding:48px 28px;
-  box-shadow:none
-}
-
-.logo{
-  font-size:clamp(28px,6vw,54px);
-  font-weight:900;
-  color:var(--orange);
-  margin:0 0 12px;
-  text-shadow:0 2px 8px #0008
-}
-
-.sub{
-  font-size:18px;
-  color:#fff;
-  margin-bottom:30px
-}
-
-.app{
   width:100%;
-  flex-direction:column
-}
 
-header{
-  background:var(--navy);
-  color:white;
-  padding:14px 22px;
+  min-height:100vh;
+  min-height:100dvh;
+
   display:flex;
   align-items:center;
+  justify-content:center;
+
+  padding:
+    max(24px, env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom))
+    max(18px, env(safe-area-inset-left));
+
+  background:var(--navy);
+
+  overflow:hidden;
+
+}
+
+
+.welcome .box{
+
+  width:min(920px, 100%);
+
+  max-width:100%;
+
+  text-align:center;
+
+  padding:
+    clamp(30px, 6vw, 65px)
+    clamp(16px, 5vw, 55px);
+
+  margin:auto;
+
+  overflow:hidden;
+
+}
+
+
+/* =========================================================
+   WELCOME TITLE
+========================================================= */
+
+.welcome .logo{
+
+  width:100%;
+  max-width:100%;
+
+  margin:0 auto;
+
+  color:white;
+
+  font-size:
+    clamp(34px, 6vw, 68px);
+
+  line-height:1.08;
+
+  font-weight:900;
+
+  letter-spacing:
+    clamp(.2px, .15vw, 1.2px);
+
+  text-align:center;
+
+  text-shadow:
+    0 4px 0 rgba(0,0,0,.12),
+    0 0 18px rgba(255,255,255,.14);
+
+}
+
+
+.welcome .logo .welcome-small{
+
+  display:block;
+
+  width:100%;
+
+  color:#fff;
+
+  font-size:
+    clamp(25px, 4vw, 48px);
+
+  margin-bottom:
+    clamp(8px, 1.5vw, 14px);
+
+}
+
+
+.welcome .logo .welcome-main{
+
+  display:block;
+
+  width:100%;
+
+  color:var(--orange);
+
+  font-size:
+    clamp(34px, 6vw, 68px);
+
+}
+
+
+/*
+  Desktop:
+  HENRY ENGLISH CLASS stays on one line
+  when there is enough room.
+*/
+
+.welcome-main .mobile-break{
+  display:none;
+}
+
+
+/* =========================================================
+   WELCOME SUBTITLE
+========================================================= */
+
+.welcome .sub{
+
+  width:100%;
+  max-width:760px;
+
+  margin:
+    clamp(22px, 4vw, 34px)
+    auto
+    clamp(22px, 4vw, 34px);
+
+  color:#fff;
+
+  font-size:
+    clamp(16px, 2.5vw, 25px);
+
+  line-height:1.35;
+
+  text-align:center;
+
+}
+
+
+/* =========================================================
+   WELCOME MUSIC TEXT
+========================================================= */
+
+.welcome-sound{
+
+  color:#fff;
+
+  font-size:
+    clamp(14px, 2vw, 19px);
+
+  margin:
+    0 auto
+    clamp(24px, 4vw, 35px);
+
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+
+  width:100%;
+
+  min-height:100vh;
+  min-height:100dvh;
+
+  flex-direction:column;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+
+  width:100%;
+
+  background:var(--navy);
+  color:white;
+
+  padding:
+    13px
+    max(16px, env(safe-area-inset-right))
+    13px
+    max(16px, env(safe-area-inset-left));
+
+  display:flex;
+
+  align-items:center;
   justify-content:space-between;
+
   gap:12px;
+
   position:sticky;
   top:0;
-  z-index:5
+
+  z-index:50;
+
 }
+
 
 header strong{
-  font-size:18px
+
+  min-width:0;
+
+  font-size:
+    clamp(15px, 2vw, 20px);
+
+  line-height:1.2;
+
 }
+
+
+#langBadge{
+
+  flex:none;
+
+  font-size:12px;
+
+  font-weight:800;
+
+  border:1px solid rgba(255,255,255,.35);
+
+  border-radius:999px;
+
+  padding:5px 9px;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
 
 main{
-  width:min(1100px,100%);
+
+  width:100%;
+
+  max-width:1120px;
+
   margin:0 auto;
-  padding:24px 16px 45px;
-  flex:1
+
+  padding:
+    clamp(16px, 3vw, 28px)
+    clamp(14px, 3vw, 22px)
+    50px;
+
+  flex:1;
+
+  min-width:0;
+
 }
+
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .title{
+
+  width:100%;
+
   text-align:center;
+
   color:var(--navy);
-  font-size:clamp(25px,4vw,38px);
-  margin:10px 0 25px
+
+  font-size:
+    clamp(24px, 4vw, 40px);
+
+  line-height:1.15;
+
+  margin:
+    8px auto
+    clamp(20px, 4vw, 30px);
+
 }
+
+
+/* =========================================================
+   PANEL
+========================================================= */
 
 .panel{
+
+  width:100%;
+
   background:var(--card);
-  border-radius:22px;
-  padding:24px;
-  box-shadow:0 10px 30px #0000000c;
-  border:1px solid var(--line)
+
+  border-radius:
+    clamp(16px, 3vw, 24px);
+
+  padding:
+    clamp(16px, 4vw, 28px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.06);
+
+  border:1px solid var(--line);
+
+  min-width:0;
+
 }
+
+
+/* =========================================================
+   CARDS
+========================================================= */
 
 .cards{
+
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px
+
+  grid-template-columns:
+    repeat(3, minmax(0,1fr));
+
+  gap:
+    clamp(12px, 2vw, 20px);
+
 }
+
 
 .menu{
-  background:white;
+
+  width:100%;
+
+  min-width:0;
+
+  background:#fff;
+
   border:2px solid var(--line);
-  border-radius:22px;
-  padding:25px 18px;
-  min-height:190px;
-  transition:.18s
+
+  border-radius:
+    clamp(16px, 3vw, 23px);
+
+  padding:
+    clamp(18px, 3vw, 28px)
+    clamp(14px, 2vw, 20px);
+
+  min-height:
+    clamp(160px, 22vw, 195px);
+
+  transition:.18s;
+
+  overflow:hidden;
+
 }
+
 
 .menu:hover{
+
   transform:translateY(-3px);
-  border-color:var(--orange)
+
+  border-color:var(--orange);
+
 }
+
 
 .menu h2{
-  margin:10px 0 6px;
-  color:var(--navy)
+
+  margin:
+    10px 0 6px;
+
+  color:var(--navy);
+
+  font-size:
+    clamp(18px, 2.5vw, 25px);
+
+  line-height:1.2;
+
 }
+
 
 .menu p{
+
   margin:0;
-  color:var(--muted)
+
+  color:var(--muted);
+
+  font-size:
+    clamp(13px, 1.7vw, 16px);
+
 }
 
+
 .ico{
-  font-size:48px
+
+  font-size:
+    clamp(38px, 6vw, 52px);
+
 }
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .primary,
 .control,
 .back,
 .unit,
 .opt{
-  border-radius:14px;
-  padding:12px 18px;
-  font-weight:800
+
+  border-radius:
+    clamp(11px, 2vw, 15px);
+
+  padding:
+    11px 17px;
+
+  font-weight:800;
+
 }
+
 
 .primary{
+
   background:var(--navy);
-  color:#fff
+
+  color:#fff;
+
 }
+
 
 .primary.orange{
-  background:var(--orange)
+
+  background:var(--orange);
+
 }
+
 
 .back{
+
   background:#fff;
+
   color:var(--navy);
+
   border:1px solid var(--line);
-  margin-bottom:15px
+
+  margin-bottom:15px;
+
 }
+
+
+/* =========================================================
+   WELCOME BUTTON
+========================================================= */
+
+.welcome .primary{
+
+  min-width:
+    clamp(220px, 55vw, 400px);
+
+  padding:
+    clamp(14px, 3vw, 19px)
+    clamp(18px, 4vw, 28px);
+
+  font-size:
+    clamp(16px, 2.5vw, 22px);
+
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
 
 .row{
+
   display:flex;
+
   align-items:center;
+
+  justify-content:flex-start;
+
   gap:12px;
-  flex-wrap:wrap
+
+  flex-wrap:wrap;
+
 }
 
-.muted{
-  color:var(--muted)
-}
+
+/* =========================================================
+   GRID – UNIT
+========================================================= */
 
 .grid{
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin:18px 0
+
+  grid-template-columns:
+    repeat(4, minmax(0,1fr));
+
+  gap:
+    clamp(8px, 1.5vw, 13px);
+
+  margin:
+    18px 0;
+
 }
+
 
 .unit{
+
+  width:100%;
+
+  min-width:0;
+
   background:#fff;
+
   border:2px solid var(--line);
+
   color:var(--navy);
-  min-height:72px
+
+  min-height:
+    clamp(64px, 8vw, 78px);
+
+  padding:
+    10px 7px;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
 }
+
 
 .unit small{
+
   display:block;
+
   color:var(--muted);
+
   font-weight:600;
+
   margin-top:5px;
-  font-size:11px
+
+  font-size:
+    clamp(9px, 1.1vw, 12px);
+
+  line-height:1.2;
+
+  overflow:hidden;
+
 }
 
+
 .unit.sel{
+
   background:#fff3ea;
-  border-color:var(--orange)
+
+  border-color:var(--orange);
+
 }
+
+
+/* =========================================================
+   WORD CARD
+========================================================= */
 
 .wordCard,
 .speakWrap{
+
+  width:100%;
+
+  max-width:800px;
+
+  margin:0 auto;
+
   text-align:center;
-  max-width:780px;
-  margin:auto
+
 }
+
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
 
 .bar{
-  height:9px;
+
+  width:100%;
+
+  height:8px;
+
   background:#e8ebf2;
+
   border-radius:99px;
+
   overflow:hidden;
-  margin:14px 0 22px
+
+  margin:
+    14px 0 22px;
+
 }
+
 
 .bar i{
+
   display:block;
+
   height:100%;
-  background:var(--orange)
+
+  background:var(--orange);
+
 }
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
 
 .image{
-  height:260px;
-  border:2px dashed #cfd5e2;
-  border-radius:22px;
+
+  width:100%;
+
+  max-width:570px;
+
+  height:
+    clamp(190px, 35vw, 270px);
+
+  border:
+    2px dashed #cfd5e2;
+
+  border-radius:
+    clamp(16px, 3vw, 23px);
+
   background:#fafbfe;
+
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
+
   justify-content:center;
-  margin:15px auto;
-  max-width:560px
+
+  margin:
+    15px auto;
+
+  overflow:hidden;
+
 }
+
 
 .pic{
-  font-size:100px;
-  line-height:1
+
+  font-size:
+    clamp(68px, 12vw, 105px);
+
+  line-height:1;
+
 }
+
 
 .label{
+
   font-size:11px;
+
   color:#98a2b3;
+
   margin-top:12px;
+
   text-transform:uppercase;
-  letter-spacing:.5px
+
+  letter-spacing:.5px;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  max-width:90%;
+
 }
+
+
+/* =========================================================
+   WORD
+========================================================= */
 
 .word{
-  font-size:42px;
+
+  width:100%;
+
+  font-size:
+    clamp(30px, 5vw, 44px);
+
+  line-height:1.15;
+
   font-weight:900;
+
   color:var(--navy);
-  margin-top:12px
+
+  margin-top:12px;
+
+  overflow-wrap:anywhere;
+
 }
+
 
 .ipa{
-  font-size:22px;
+
+  font-size:
+    clamp(18px, 3vw, 23px);
+
   color:var(--orange);
-  margin:6px
+
+  margin:7px;
+
 }
+
 
 .meaning{
-  font-size:20px;
-  color:var(--muted)
+
+  font-size:
+    clamp(17px, 2.5vw, 21px);
+
+  color:var(--muted);
+
 }
+
+
+/* =========================================================
+   SPEAKER
+========================================================= */
 
 .speaker{
-  width:58px;
-  height:58px;
+
+  width:
+    clamp(50px, 10vw, 60px);
+
+  height:
+    clamp(50px, 10vw, 60px);
+
   border-radius:50%;
+
   background:var(--navy);
+
   color:white;
-  font-size:26px;
-  margin:16px 0
+
+  font-size:
+    clamp(23px, 4vw, 28px);
+
+  margin:16px 0;
+
+  flex:none;
+
 }
+
 
 .speaker.play{
-  transform:scale(1.08)
+
+  transform:scale(1.08);
+
 }
+
+
+/* =========================================================
+   MEMORY
+========================================================= */
 
 .memoryIntro{
+
   text-align:center;
-  margin-bottom:20px
+
+  margin-bottom:20px;
+
 }
+
 
 .modeRules{
+
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr));
+
   gap:12px;
-  margin-top:18px
+
+  margin-top:18px;
+
 }
+
 
 .rule{
+
   border:1px solid var(--line);
+
   border-radius:16px;
+
   padding:16px;
-  background:#fbfcff
+
+  background:#fbfcff;
+
+  line-height:1.45;
+
 }
+
 
 .rule b{
+
   display:block;
+
   color:var(--navy);
-  margin-bottom:6px
+
+  margin-bottom:6px;
+
 }
+
+
+/* =========================================================
+   SPEAKING
+========================================================= */
 
 .questionNo{
+
   font-weight:900;
+
   color:var(--orange);
+
   text-transform:uppercase;
-  letter-spacing:.4px
+
+  letter-spacing:.4px;
+
+  line-height:1.4;
+
 }
+
 
 .timer{
-  font-size:42px;
+
+  font-size:
+    clamp(34px, 7vw, 44px);
+
   font-weight:900;
+
   color:var(--orange);
-  height:58px;
-  margin:10px
+
+  min-height:58px;
+
+  margin:10px;
+
 }
+
 
 .qtext{
-  font-size:30px;
+
+  width:100%;
+
+  font-size:
+    clamp(23px, 4vw, 31px);
+
+  line-height:1.25;
+
   font-weight:900;
+
   color:var(--navy);
-  margin:18px 0
+
+  margin:18px 0;
+
+  overflow-wrap:anywhere;
+
 }
+
 
 .answer{
-  font-size:26px;
+
+  width:100%;
+
+  font-size:
+    clamp(20px, 3.5vw, 27px);
+
+  line-height:1.3;
+
   font-weight:900;
+
   color:var(--green);
-  margin:18px
+
+  margin:18px auto;
+
+  overflow-wrap:anywhere;
+
 }
+
 
 .hidden{
+
   visibility:hidden;
-  opacity:0
+
+  opacity:0;
+
 }
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
 
 .controls{
+
   display:flex;
+
   justify-content:center;
+
   flex-wrap:wrap;
+
   gap:9px;
-  margin-top:24px
+
+  margin-top:24px;
+
 }
+
 
 .control{
+
   background:white;
+
   border:1px solid var(--line);
-  color:var(--navy)
+
+  color:var(--navy);
+
 }
+
 
 .control:disabled{
+
   opacity:.45;
-  cursor:not-allowed
+
+  cursor:not-allowed;
+
 }
+
+
+/* =========================================================
+   MEMORY OPTIONS
+========================================================= */
 
 .opts{
+
+  width:100%;
+
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-top:20px
+
+  grid-template-columns:
+    repeat(3, minmax(0,1fr));
+
+  gap:
+    clamp(9px, 2vw, 15px);
+
+  margin-top:20px;
+
 }
+
 
 .opt{
+
+  width:100%;
+
+  min-width:0;
+
   background:#fff;
+
   border:2px solid var(--line);
-  min-height:100px;
+
+  min-height:
+    clamp(85px, 15vw, 125px);
+
   color:var(--navy);
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   gap:8px;
-  flex-direction:column
+
+  flex-direction:column;
+
+  overflow:hidden;
+
 }
+
 
 .opt:hover:not(:disabled){
-  border-color:var(--orange)
+
+  border-color:var(--orange);
+
 }
+
 
 .opt.correct{
+
   border-color:var(--green);
+
   background:#ecfdf3;
-  color:var(--green)
+
+  color:var(--green);
+
 }
+
 
 .opt.wrong{
+
   border-color:var(--red);
+
   background:#fef2f2;
-  color:var(--red)
+
+  color:var(--red);
+
 }
+
 
 .opt .pic{
-  font-size:58px
+
+  font-size:
+    clamp(45px, 9vw, 68px);
+
 }
 
-.result{
-  font-weight:900;
-  font-size:20px;
-  margin-top:14px;
-  min-height:28px
-}
-
-.finish{
-  max-width:650px;
-  margin:70px auto;
-  text-align:center
-}
-
-.finish h1{
-  color:var(--navy)
-}
-
-.memoryImageOnly .label{
-  display:none
-}
-
-.memoryImageOnly .image{
-  margin-bottom:20px
-}
-
-.memoryChoices .opt{
-  min-height:120px
-}
-
-.memoryChoices .opt .pic{
-  font-size:65px
-}
 
 .memoryWordChoices .opt{
-  min-height:85px;
-  font-size:22px
+
+  min-height:
+    clamp(65px, 10vw, 90px);
+
+  font-size:
+    clamp(17px, 3vw, 23px);
+
 }
 
-@media(max-width:800px){
 
-  .cards,
-  .modeRules{
-    grid-template-columns:1fr
+/* =========================================================
+   RESULT
+========================================================= */
+
+.result{
+
+  font-weight:900;
+
+  font-size:
+    clamp(17px, 3vw, 21px);
+
+  margin-top:14px;
+
+  min-height:28px;
+
+}
+
+
+/* =========================================================
+   FINISH
+========================================================= */
+
+.finish{
+
+  width:100%;
+
+  max-width:680px;
+
+  margin:
+    clamp(35px, 8vw, 70px)
+    auto;
+
+  text-align:center;
+
+}
+
+
+.finish h1{
+
+  color:var(--navy);
+
+  font-size:
+    clamp(26px, 5vw, 38px);
+
+}
+
+
+/* =========================================================
+   MEMORY IMAGE ONLY
+========================================================= */
+
+.memoryImageOnly .label{
+
+  display:none;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:900px){
+
+  .cards{
+
+    grid-template-columns:
+      repeat(2, minmax(0,1fr));
+
   }
 
   .grid{
-    grid-template-columns:repeat(2,1fr)
+
+    grid-template-columns:
+      repeat(4, minmax(0,1fr));
+
   }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+  main{
+
+    padding:
+      15px
+      12px
+      35px;
+
+  }
+
+
+  header{
+
+    padding:
+      12px 14px;
+
+  }
+
+
+  .cards{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .menu{
+
+    min-height:150px;
+
+  }
+
+
+  .grid{
+
+    grid-template-columns:
+      repeat(2, minmax(0,1fr));
+
+  }
+
+
+  .modeRules{
+
+    grid-template-columns:1fr;
+
+  }
+
 
   .opts{
-    grid-template-columns:1fr
+
+    grid-template-columns:1fr;
+
   }
 
-  .word{
-    font-size:34px
+
+  .opt{
+
+    min-height:90px;
+
   }
 
-  .qtext{
-    font-size:24px
+
+  .welcome{
+
+    align-items:center;
+
+    padding:
+      20px 12px;
+
   }
+
+
+  .welcome .box{
+
+    padding:
+      25px 8px;
+
+  }
+
+
+  /*
+    IMPORTANT:
+    On phones the main title is allowed to wrap.
+  */
+
+  .welcome .logo{
+
+    font-size:
+      clamp(32px, 10vw, 46px);
+
+    line-height:1.08;
+
+    letter-spacing:0;
+
+  }
+
+
+  .welcome .logo .welcome-small{
+
+    font-size:
+      clamp(24px, 7vw, 34px);
+
+    margin-bottom:10px;
+
+  }
+
+
+  .welcome .logo .welcome-main{
+
+    font-size:
+      clamp(32px, 9.5vw, 45px);
+
+    white-space:normal;
+
+    overflow-wrap:normal;
+
+    word-break:normal;
+
+  }
+
+
+  /*
+    Break "CLASS" onto a second line
+    on small screens.
+  */
+
+  .welcome-main .mobile-break{
+
+    display:block;
+
+  }
+
+
+  .welcome .sub{
+
+    font-size:
+      clamp(15px, 4.5vw, 20px);
+
+    line-height:1.35;
+
+    margin:
+      22px auto;
+
+  }
+
+
+  .welcome-sound{
+
+    font-size:
+      clamp(14px, 4vw, 17px);
+
+  }
+
+
+  .welcome .primary{
+
+    width:
+      min(100%, 340px);
+
+  }
+
 
   .image{
-    height:220px
+
+    height:
+      clamp(180px, 55vw, 225px);
+
   }
+
+
+  .pic{
+
+    font-size:
+      clamp(65px, 20vw, 90px);
+
+  }
+
+
+  .controls{
+
+    flex-direction:column;
+
+    width:100%;
+
+  }
+
+
+  .controls .control{
+
+    width:100%;
+
+  }
+
+
+  .row .primary{
+
+    width:100%;
+
+  }
+
 }
 
-.logo span{
-  display:block;
-  white-space:nowrap
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:380px){
+
+  .welcome .logo .welcome-small{
+
+    font-size:25px;
+
+  }
+
+
+  .welcome .logo .welcome-main{
+
+    font-size:32px;
+
+  }
+
+
+  .welcome .sub{
+
+    font-size:15px;
+
+  }
+
+
+  .welcome .box{
+
+    padding:
+      20px 5px;
+
+  }
+
+
+  .unit{
+
+    font-size:14px;
+
+  }
+
+
+  .unit small{
+
+    font-size:9px;
+
+  }
+
 }
 
-.welcome .logo{
-  width:100%;
-  max-width:900px;
-  margin:0 auto 24px;
-  text-align:center;
-  font-size:clamp(38px,5vw,68px);
-  line-height:1.08;
-  font-weight:900;
-  letter-spacing:1px;
-  text-shadow:
-    0 4px 0 rgba(0,0,0,.12),
-    0 0 18px rgba(255,255,255,.14)
+
+/* =========================================================
+   SAFE AREA – MODERN PHONES
+========================================================= */
+
+@supports(padding:max(0px)){
+
+  .welcome{
+
+    padding-left:
+      max(12px, env(safe-area-inset-left));
+
+    padding-right:
+      max(12px, env(safe-area-inset-right));
+
+    padding-top:
+      max(18px, env(safe-area-inset-top));
+
+    padding-bottom:
+      max(18px, env(safe-area-inset-bottom));
+
+  }
+
+
+  header{
+
+    padding-left:
+      max(14px, env(safe-area-inset-left));
+
+    padding-right:
+      max(14px, env(safe-area-inset-right));
+
+  }
+
 }
 
-.welcome .logo span{
-  display:block;
-  width:100%;
-  white-space:nowrap;
-  text-align:center
+
+/* =========================================================
+   PREVENT HORIZONTAL OVERFLOW FROM LONG CONTENT
+========================================================= */
+
+h1,
+h2,
+h3,
+p,
+span,
+div{
+
+  overflow-wrap:break-word;
+
 }
 
-.welcome .logo span:first-child{
-  font-size:.72em;
-  margin-bottom:10px;
-  color:#fff
+
+img,
+svg,
+video,
+canvas{
+
+  max-width:100%;
+  height:auto;
+
 }
 
-.welcome .logo span:last-child{
-  font-size:1em;
-  color:#FF6600
-}
 </style>
+
 </head>
+
 
 <body>
 
-<section id="welcome" class="screen active welcome">
+
+<!-- =======================================================
+     WELCOME
+======================================================== -->
+
+<section
+  id="welcome"
+  class="screen active welcome"
+>
 
   <div class="box">
 
+
     <h1 class="logo">
-      <span>WELCOME TO</span>
-      <span>HENRY ENGLISH CLASS</span>
+
+      <span class="welcome-small">
+        WELCOME TO
+      </span>
+
+
+      <span class="welcome-main">
+
+        HENRY ENGLISH
+        <span class="mobile-break">CLASS</span>
+
+      </span>
+
     </h1>
 
+
     <div class="sub">
-      GLOBAL SUCCESS 1 • ENGLISH LEARNING SYSTEM
+
+      GLOBAL SUCCESS 1 • ENGLISH
+      <br class="desktop-soft-break">
+      LEARNING SYSTEM
+
     </div>
 
-    <div style="color:#fff;font-size:15px;margin:-12px 0 22px">
+
+    <div class="welcome-sound">
+
       🎵 Fun English sounds
+
     </div>
 
-    <button class="primary orange"
-            onclick="startWelcome()">
+
+    <button
+      class="primary orange"
+      onclick="startWelcome()"
+    >
+
       🚀 START / BẮT ĐẦU
+
     </button>
+
 
   </div>
 
 </section>
 
 
-<section id="app" class="screen app">
+
+<!-- =======================================================
+     APP
+======================================================== -->
+
+<section
+  id="app"
+  class="screen app"
+>
+
 
 <header>
 
   <strong id="brand">
     HENRY ENGLISH
   </strong>
+
 
   <span id="langBadge">
     VI
@@ -561,7 +1646,9 @@ main{
 
 <main id="main"></main>
 
+
 </section>
+
 
 
 <script>
@@ -573,114 +1660,114 @@ main{
 const vocabData={
 
 "1":[
-{"word":"ball","ipa":"bɔːl","meaning":"quả bóng"},
-{"word":"bike","ipa":"baɪk","meaning":"xe đạp"},
-{"word":"book","ipa":"bʊk","meaning":"quyển sách"}
+ {word:"ball",ipa:"bɔːl",meaning:"quả bóng"},
+ {word:"bike",ipa:"baɪk",meaning:"xe đạp"},
+ {word:"book",ipa:"bʊk",meaning:"quyển sách"}
 ],
 
 "2":[
-{"word":"cake","ipa":"keɪk","meaning":"bánh"},
-{"word":"car","ipa":"kɑː","meaning":"ô tô"},
-{"word":"cat","ipa":"kæt","meaning":"con mèo"},
-{"word":"cup","ipa":"kʌp","meaning":"cái cốc"}
+ {word:"cake",ipa:"keɪk",meaning:"bánh"},
+ {word:"car",ipa:"kɑː",meaning:"ô tô"},
+ {word:"cat",ipa:"kæt",meaning:"con mèo"},
+ {word:"cup",ipa:"kʌp",meaning:"cái cốc"}
 ],
 
 "3":[
-{"word":"apple","ipa":"ˈæpəl","meaning":"quả táo"},
-{"word":"bag","ipa":"bæɡ","meaning":"cái túi"},
-{"word":"can","ipa":"kæn","meaning":"cái lon"},
-{"word":"hat","ipa":"hæt","meaning":"cái mũ"}
+ {word:"apple",ipa:"ˈæpəl",meaning:"quả táo"},
+ {word:"bag",ipa:"bæɡ",meaning:"cái túi"},
+ {word:"can",ipa:"kæn",meaning:"cái lon"},
+ {word:"hat",ipa:"hæt",meaning:"cái mũ"}
 ],
 
 "4":[
-{"word":"desk","ipa":"desk","meaning":"bàn học"},
-{"word":"dog","ipa":"dɒɡ","meaning":"con chó"},
-{"word":"door","ipa":"dɔː","meaning":"cánh cửa"},
-{"word":"duck","ipa":"dʌk","meaning":"con vịt"}
+ {word:"desk",ipa:"desk",meaning:"bàn học"},
+ {word:"dog",ipa:"dɒɡ",meaning:"con chó"},
+ {word:"door",ipa:"dɔː",meaning:"cánh cửa"},
+ {word:"duck",ipa:"dʌk",meaning:"con vịt"}
 ],
 
 "5":[
-{"word":"chicken","ipa":"ˈtʃɪkɪn","meaning":"thịt gà"},
-{"word":"chips","ipa":"tʃɪps","meaning":"khoai tây chiên"},
-{"word":"fish","ipa":"fɪʃ","meaning":"cá"},
-{"word":"milk","ipa":"mɪlk","meaning":"sữa"}
+ {word:"chicken",ipa:"ˈtʃɪkɪn",meaning:"thịt gà"},
+ {word:"chips",ipa:"tʃɪps",meaning:"khoai tây chiên"},
+ {word:"fish",ipa:"fɪʃ",meaning:"cá"},
+ {word:"milk",ipa:"mɪlk",meaning:"sữa"}
 ],
 
 "6":[
-{"word":"bell","ipa":"bel","meaning":"cái chuông"},
-{"word":"pen","ipa":"pen","meaning":"bút mực"},
-{"word":"pencil","ipa":"ˈpensəl","meaning":"bút chì"},
-{"word":"red","ipa":"red","meaning":"màu đỏ"}
+ {word:"bell",ipa:"bel",meaning:"cái chuông"},
+ {word:"pen",ipa:"pen",meaning:"bút mực"},
+ {word:"pencil",ipa:"ˈpensəl",meaning:"bút chì"},
+ {word:"red",ipa:"red",meaning:"màu đỏ"}
 ],
 
 "7":[
-{"word":"garden","ipa":"ˈɡɑːdən","meaning":"khu vườn"},
-{"word":"gate","ipa":"ɡeɪt","meaning":"cái cổng"},
-{"word":"girl","ipa":"ɡɜːl","meaning":"cô gái"},
-{"word":"goat","ipa":"ɡəʊt","meaning":"con dê"}
+ {word:"garden",ipa:"ˈɡɑːdən",meaning:"khu vườn"},
+ {word:"gate",ipa:"ɡeɪt",meaning:"cái cổng"},
+ {word:"girl",ipa:"ɡɜːl",meaning:"cô gái"},
+ {word:"goat",ipa:"ɡəʊt",meaning:"con dê"}
 ],
 
 "8":[
-{"word":"hair","ipa":"heə","meaning":"tóc"},
-{"word":"hand","ipa":"hænd","meaning":"bàn tay"},
-{"word":"head","ipa":"hed","meaning":"đầu"},
-{"word":"horse","ipa":"hɔːs","meaning":"con ngựa"}
+ {word:"hair",ipa:"heə",meaning:"tóc"},
+ {word:"hand",ipa:"hænd",meaning:"bàn tay"},
+ {word:"head",ipa:"hed",meaning:"đầu"},
+ {word:"horse",ipa:"hɔːs",meaning:"con ngựa"}
 ],
 
 "9":[
-{"word":"clock","ipa":"klɒk","meaning":"đồng hồ"},
-{"word":"lock","ipa":"lɒk","meaning":"ổ khóa"},
-{"word":"mop","ipa":"mɒp","meaning":"cây lau nhà"},
-{"word":"pot","ipa":"pɒt","meaning":"cái nồi"}
+ {word:"clock",ipa:"klɒk",meaning:"đồng hồ"},
+ {word:"lock",ipa:"lɒk",meaning:"ổ khóa"},
+ {word:"mop",ipa:"mɒp",meaning:"cây lau nhà"},
+ {word:"pot",ipa:"pɒt",meaning:"cái nồi"}
 ],
 
 "10":[
-{"word":"mango","ipa":"ˈmæŋɡəʊ","meaning":"quả xoài"},
-{"word":"monkey","ipa":"ˈmʌŋki","meaning":"con khỉ"},
-{"word":"mother","ipa":"ˈmʌðə","meaning":"mẹ"},
-{"word":"mouse","ipa":"maʊs","meaning":"con chuột"}
+ {word:"mango",ipa:"ˈmæŋɡəʊ",meaning:"quả xoài"},
+ {word:"monkey",ipa:"ˈmʌŋki",meaning:"con khỉ"},
+ {word:"mother",ipa:"ˈmʌðə",meaning:"mẹ"},
+ {word:"mouse",ipa:"maʊs",meaning:"con chuột"}
 ],
 
 "11":[
-{"word":"bus","ipa":"bʌs","meaning":"xe buýt"},
-{"word":"running","ipa":"ˈrʌnɪŋ","meaning":"đang chạy"},
-{"word":"sun","ipa":"sʌn","meaning":"mặt trời"},
-{"word":"truck","ipa":"trʌk","meaning":"xe tải"}
+ {word:"bus",ipa:"bʌs",meaning:"xe buýt"},
+ {word:"running",ipa:"ˈrʌnɪŋ",meaning:"đang chạy"},
+ {word:"sun",ipa:"sʌn",meaning:"mặt trời"},
+ {word:"truck",ipa:"trʌk",meaning:"xe tải"}
 ],
 
 "12":[
-{"word":"lake","ipa":"leɪk","meaning":"hồ"},
-{"word":"leaf","ipa":"liːf","meaning":"chiếc lá"},
-{"word":"lemons","ipa":"ˈlemənz","meaning":"những quả chanh"},
-{"word":"lamp","ipa":"læmp","meaning":"đèn"}
+ {word:"lake",ipa:"leɪk",meaning:"hồ"},
+ {word:"leaf",ipa:"liːf",meaning:"chiếc lá"},
+ {word:"lemons",ipa:"ˈlemənz",meaning:"những quả chanh"},
+ {word:"lamp",ipa:"læmp",meaning:"đèn"}
 ],
 
 "13":[
-{"word":"bananas","ipa":"bəˈnɑːnəz","meaning":"những quả chuối"},
-{"word":"Nick","ipa":"nɪk","meaning":"Nick"},
-{"word":"noodles","ipa":"ˈnuːdlz","meaning":"mì"},
-{"word":"nuts","ipa":"nʌts","meaning":"các loại hạt"}
+ {word:"bananas",ipa:"bəˈnɑːnəz",meaning:"những quả chuối"},
+ {word:"Nick",ipa:"nɪk",meaning:"Nick"},
+ {word:"noodles",ipa:"ˈnuːdlz",meaning:"mì"},
+ {word:"nuts",ipa:"nʌts",meaning:"các loại hạt"}
 ],
 
 "14":[
-{"word":"teddy bear","ipa":"ˈtedi beə","meaning":"gấu bông"},
-{"word":"tiger","ipa":"ˈtaɪɡə","meaning":"con hổ"},
-{"word":"top","ipa":"tɒp","meaning":"con quay"},
-{"word":"turtle","ipa":"ˈtɜːtl","meaning":"con rùa"}
+ {word:"teddy bear",ipa:"ˈtedi beə",meaning:"gấu bông"},
+ {word:"tiger",ipa:"ˈtaɪɡə",meaning:"con hổ"},
+ {word:"top",ipa:"tɒp",meaning:"con quay"},
+ {word:"turtle",ipa:"ˈtɜːtl",meaning:"con rùa"}
 ],
 
 "15":[
-{"word":"face","ipa":"feɪs","meaning":"khuôn mặt"},
-{"word":"father","ipa":"ˈfɑːðə","meaning":"bố"},
-{"word":"foot","ipa":"fʊt","meaning":"bàn chân"},
-{"word":"football","ipa":"ˈfʊtbɔːl","meaning":"bóng đá"}
+ {word:"face",ipa:"feɪs",meaning:"khuôn mặt"},
+ {word:"father",ipa:"ˈfɑːðə",meaning:"bố"},
+ {word:"foot",ipa:"fʊt",meaning:"bàn chân"},
+ {word:"football",ipa:"ˈfʊtbɔːl",meaning:"bóng đá"}
 ],
 
 "16":[
-{"word":"washing","ipa":"ˈwɒʃɪŋ","meaning":"đang rửa"},
-{"word":"water","ipa":"ˈwɔːtə","meaning":"nước"},
-{"word":"window","ipa":"ˈwɪndəʊ","meaning":"cửa sổ"},
-{"word":"Wendy","ipa":"ˈwendi","meaning":"Wendy"}
+ {word:"washing",ipa:"ˈwɒʃɪŋ",meaning:"đang rửa"},
+ {word:"water",ipa:"ˈwɔːtə",meaning:"nước"},
+ {word:"window",ipa:"ˈwɪndəʊ",meaning:"cửa sổ"},
+ {word:"Wendy",ipa:"ˈwendi",meaning:"Wendy"}
 ]
 
 };
@@ -713,7 +1800,7 @@ const unitTitles={
 
 
 /* =========================================================
-   IMAGE / EMOJI DATA
+   IMAGE / EMOJI
 ========================================================= */
 
 const IMG={
@@ -794,334 +1881,303 @@ const IMG={
 "leaves":"🍃🍃",
 "toy bus":"🚌",
 "sports":"🏅"
+
 };
 
 
 /* =========================================================
    SPEAKING DATA
-   16 UNITS × 15 QUESTIONS
+   16 × 15 = 240 QUESTIONS
 ========================================================= */
 
 const speakingData={
 
 "1":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a ball.","image":"Ball"},
-{"question":"Is it a ball?","answer":"Yes, it is.","image":"Ball"},
-{"question":"Is it a bike?","answer":"No, it isn’t.","image":"Ball"},
-{"question":"What’s this?","answer":"It’s a book.","image":"Book"},
-{"question":"Is it a book?","answer":"Yes, it is.","image":"Book"},
-{"question":"What do you have?","answer":"I have a ball.","image":"Ball"},
-{"question":"Do you like balls?","answer":"Yes, I do.","image":"Ball"},
-{"question":"What colour is the ball?","answer":"It’s red.","image":"Red ball"},
-{"question":"What do you like?","answer":"I like balls.","image":"Ball"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a ball.",image:"Ball"},
+ {question:"Is it a ball?",answer:"Yes, it is.",image:"Ball"},
+ {question:"Is it a bike?",answer:"No, it isn’t.",image:"Ball"},
+ {question:"What’s this?",answer:"It’s a book.",image:"Book"},
+ {question:"Is it a book?",answer:"Yes, it is.",image:"Book"},
+ {question:"What do you have?",answer:"I have a ball.",image:"Ball"},
+ {question:"Do you like balls?",answer:"Yes, I do.",image:"Ball"},
+ {question:"What colour is the ball?",answer:"It’s red.",image:"Red ball"},
+ {question:"What do you like?",answer:"I like balls.",image:"Ball"}
 ],
 
 "2":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a cake.","image":"Cake"},
-{"question":"Is it a cake?","answer":"Yes, it is.","image":"Cake"},
-{"question":"What’s this?","answer":"It’s a cup.","image":"Cup"},
-{"question":"Is it a cup?","answer":"Yes, it is.","image":"Cup"},
-{"question":"Do you like cake?","answer":"Yes, I do.","image":"Cake"},
-{"question":"Do you like milk?","answer":"Yes, I do.","image":"Milk"},
-{"question":"What do you have?","answer":"I have a cup.","image":"Cup"},
-{"question":"What do you like?","answer":"I like cake.","image":"Cake"},
-{"question":"Is it milk?","answer":"Yes, it is.","image":"Milk"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a cake.",image:"Cake"},
+ {question:"Is it a cake?",answer:"Yes, it is.",image:"Cake"},
+ {question:"What’s this?",answer:"It’s a cup.",image:"Cup"},
+ {question:"Is it a cup?",answer:"Yes, it is.",image:"Cup"},
+ {question:"Do you like cake?",answer:"Yes, I do.",image:"Cake"},
+ {question:"Do you like milk?",answer:"Yes, I do.",image:"Milk"},
+ {question:"What do you have?",answer:"I have a cup.",image:"Cup"},
+ {question:"What do you like?",answer:"I like cake.",image:"Cake"},
+ {question:"Is it milk?",answer:"Yes, it is.",image:"Milk"}
 ],
 
 "3":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s an apple.","image":"Apple"},
-{"question":"Is it an apple?","answer":"Yes, it is.","image":"Apple"},
-{"question":"What’s this?","answer":"It’s a bag.","image":"Bag"},
-{"question":"Is it a bag?","answer":"Yes, it is.","image":"Bag"},
-{"question":"What colour is it?","answer":"It’s red.","image":"Apple"},
-{"question":"Do you like apples?","answer":"Yes, I do.","image":"Apples"},
-{"question":"Do you have a bag?","answer":"Yes, I do.","image":"Bag"},
-{"question":"What do you have?","answer":"I have a bag.","image":"Bag"},
-{"question":"What do you like?","answer":"I like apples.","image":"Apples"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s an apple.",image:"Apple"},
+ {question:"Is it an apple?",answer:"Yes, it is.",image:"Apple"},
+ {question:"What’s this?",answer:"It’s a bag.",image:"Bag"},
+ {question:"Is it a bag?",answer:"Yes, it is.",image:"Bag"},
+ {question:"What colour is it?",answer:"It’s red.",image:"Apple"},
+ {question:"Do you like apples?",answer:"Yes, I do.",image:"Apples"},
+ {question:"Do you have a bag?",answer:"Yes, I do.",image:"Bag"},
+ {question:"What do you have?",answer:"I have a bag.",image:"Bag"},
+ {question:"What do you like?",answer:"I like apples.",image:"Apples"}
 ],
 
 "4":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a desk.","image":"Desk"},
-{"question":"What’s this?","answer":"It’s a dog.","image":"Dog"},
-{"question":"Is it a dog?","answer":"Yes, it is.","image":"Dog"},
-{"question":"Is it a duck?","answer":"No, it isn’t.","image":"Dog"},
-{"question":"What is this?","answer":"It’s a door.","image":"Door"},
-{"question":"Do you like dogs?","answer":"Yes, I do.","image":"Dog"},
-{"question":"Do you have a desk?","answer":"Yes, I do.","image":"Desk"},
-{"question":"What do you have?","answer":"I have a desk.","image":"Desk"},
-{"question":"Is it your desk?","answer":"Yes, it is.","image":"Desk"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a desk.",image:"Desk"},
+ {question:"What’s this?",answer:"It’s a dog.",image:"Dog"},
+ {question:"Is it a dog?",answer:"Yes, it is.",image:"Dog"},
+ {question:"Is it a duck?",answer:"No, it isn’t.",image:"Dog"},
+ {question:"What is this?",answer:"It’s a door.",image:"Door"},
+ {question:"Do you like dogs?",answer:"Yes, I do.",image:"Dog"},
+ {question:"Do you have a desk?",answer:"Yes, I do.",image:"Desk"},
+ {question:"What do you have?",answer:"I have a desk.",image:"Desk"},
+ {question:"Is it your desk?",answer:"Yes, it is.",image:"Desk"}
 ],
 
 "5":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a fish.","image":"Fish"},
-{"question":"What’s this?","answer":"It’s chicken.","image":"Chicken"},
-{"question":"Do you like fish?","answer":"Yes, I do.","image":"Fish"},
-{"question":"Do you like chicken?","answer":"Yes, I do.","image":"Chicken"},
-{"question":"Do you like chips?","answer":"Yes, I do.","image":"Chips"},
-{"question":"What do you like?","answer":"I like chips.","image":"Chips"},
-{"question":"Is it fish?","answer":"Yes, it is.","image":"Fish"},
-{"question":"What food do you like?","answer":"I like chicken.","image":"Chicken"},
-{"question":"What do you have?","answer":"I have chips.","image":"Chips"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a fish.",image:"Fish"},
+ {question:"What’s this?",answer:"It’s chicken.",image:"Chicken"},
+ {question:"Do you like fish?",answer:"Yes, I do.",image:"Fish"},
+ {question:"Do you like chicken?",answer:"Yes, I do.",image:"Chicken"},
+ {question:"Do you like chips?",answer:"Yes, I do.",image:"Chips"},
+ {question:"What do you like?",answer:"I like chips.",image:"Chips"},
+ {question:"Is it fish?",answer:"Yes, it is.",image:"Fish"},
+ {question:"What food do you like?",answer:"I like chicken.",image:"Chicken"},
+ {question:"What do you have?",answer:"I have chips.",image:"Chips"}
 ],
 
 "6":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a pen.","image":"Pen"},
-{"question":"What’s this?","answer":"It’s a pencil.","image":"Pencil"},
-{"question":"Is it a pencil?","answer":"Yes, it is.","image":"Pencil"},
-{"question":"Is it a book?","answer":"No, it isn’t.","image":"Pencil"},
-{"question":"What is this?","answer":"It’s a bell.","image":"Bell"},
-{"question":"What colour is it?","answer":"It’s red.","image":"Red"},
-{"question":"Do you have a pen?","answer":"Yes, I do.","image":"Pen"},
-{"question":"What do you have?","answer":"I have a pencil.","image":"Pencil"},
-{"question":"Is this your pen?","answer":"Yes, it is.","image":"Pen"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a pen.",image:"Pen"},
+ {question:"What’s this?",answer:"It’s a pencil.",image:"Pencil"},
+ {question:"Is it a pencil?",answer:"Yes, it is.",image:"Pencil"},
+ {question:"Is it a book?",answer:"No, it isn’t.",image:"Pencil"},
+ {question:"What is this?",answer:"It’s a bell.",image:"Bell"},
+ {question:"What colour is it?",answer:"It’s red.",image:"Red"},
+ {question:"Do you have a pen?",answer:"Yes, I do.",image:"Pen"},
+ {question:"What do you have?",answer:"I have a pencil.",image:"Pencil"},
+ {question:"Is this your pen?",answer:"Yes, it is.",image:"Pen"}
 ],
 
 "7":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a garden.","image":"Garden"},
-{"question":"What’s this?","answer":"It’s a gate.","image":"Gate"},
-{"question":"Who is she?","answer":"She’s a girl.","image":"Girl"},
-{"question":"What is it?","answer":"It’s a goat.","image":"Goat"},
-{"question":"Is it a goat?","answer":"Yes, it is.","image":"Goat"},
-{"question":"Do you like goats?","answer":"Yes, I do.","image":"Goat"},
-{"question":"Is this a garden?","answer":"Yes, it is.","image":"Garden"},
-{"question":"Do you have a garden?","answer":"Yes, I do.","image":"Garden"},
-{"question":"What do you like?","answer":"I like goats.","image":"Goat"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a garden.",image:"Garden"},
+ {question:"What’s this?",answer:"It’s a gate.",image:"Gate"},
+ {question:"Who is she?",answer:"She’s a girl.",image:"Girl"},
+ {question:"What is it?",answer:"It’s a goat.",image:"Goat"},
+ {question:"Is it a goat?",answer:"Yes, it is.",image:"Goat"},
+ {question:"Do you like goats?",answer:"Yes, I do.",image:"Goat"},
+ {question:"Is this a garden?",answer:"Yes, it is.",image:"Garden"},
+ {question:"Do you have a garden?",answer:"Yes, I do.",image:"Garden"},
+ {question:"What do you like?",answer:"I like goats.",image:"Goat"}
 ],
 
 "8":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a hand.","image":"Hand"},
-{"question":"What’s this?","answer":"It’s a head.","image":"Head"},
-{"question":"What is this?","answer":"It’s hair.","image":"Hair"},
-{"question":"Who is he?","answer":"He’s a boy.","image":"Nam"},
-{"question":"What is it?","answer":"It’s a horse.","image":"Horse"},
-{"question":"Is it a horse?","answer":"Yes, it is.","image":"Horse"},
-{"question":"Is it a dog?","answer":"No, it isn’t.","image":"Horse"},
-{"question":"Do you like horses?","answer":"Yes, I do.","image":"Horse"},
-{"question":"What do you like?","answer":"I like horses.","image":"Horse"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a hand.",image:"Hand"},
+ {question:"What’s this?",answer:"It’s a head.",image:"Head"},
+ {question:"What is this?",answer:"It’s hair.",image:"Hair"},
+ {question:"Who is he?",answer:"He’s a boy.",image:"Nam"},
+ {question:"What is it?",answer:"It’s a horse.",image:"Horse"},
+ {question:"Is it a horse?",answer:"Yes, it is.",image:"Horse"},
+ {question:"Is it a dog?",answer:"No, it isn’t.",image:"Horse"},
+ {question:"Do you like horses?",answer:"Yes, I do.",image:"Horse"},
+ {question:"What do you like?",answer:"I like horses.",image:"Horse"}
 ],
 
 "9":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a clock.","image":"Clock"},
-{"question":"What’s this?","answer":"It’s a lock.","image":"Lock"},
-{"question":"What is it?","answer":"It’s a mop.","image":"Mop"},
-{"question":"What is this?","answer":"It’s a pot.","image":"Pot"},
-{"question":"Is it a clock?","answer":"Yes, it is.","image":"Clock"},
-{"question":"Is it a lock?","answer":"Yes, it is.","image":"Lock"},
-{"question":"Do you like this pot?","answer":"Yes, I do.","image":"Pot"},
-{"question":"What do you have?","answer":"I have a clock.","image":"Clock"},
-{"question":"What do you like?","answer":"I like this pot.","image":"Pot"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a clock.",image:"Clock"},
+ {question:"What’s this?",answer:"It’s a lock.",image:"Lock"},
+ {question:"What is it?",answer:"It’s a mop.",image:"Mop"},
+ {question:"What is this?",answer:"It’s a pot.",image:"Pot"},
+ {question:"Is it a clock?",answer:"Yes, it is.",image:"Clock"},
+ {question:"Is it a lock?",answer:"Yes, it is.",image:"Lock"},
+ {question:"Do you like this pot?",answer:"Yes, I do.",image:"Pot"},
+ {question:"What do you have?",answer:"I have a clock.",image:"Clock"},
+ {question:"What do you like?",answer:"I like this pot.",image:"Pot"}
 ],
 
 "10":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What animal is this?","answer":"It’s a monkey.","image":"Monkey"},
-{"question":"What’s this?","answer":"It’s a mouse.","image":"Mouse"},
-{"question":"Is it a monkey?","answer":"Yes, it is.","image":"Monkey"},
-{"question":"Is it a mouse?","answer":"Yes, it is.","image":"Mouse"},
-{"question":"Do you like monkeys?","answer":"Yes, I do.","image":"Monkey"},
-{"question":"Do you like mice?","answer":"Yes, I do.","image":"Mouse"},
-{"question":"What animal do you like?","answer":"I like monkeys.","image":"Monkey"},
-{"question":"What animal is your favorite?","answer":"Monkeys are my favorite.","image":"Monkey"},
-{"question":"What do you like?","answer":"I like monkeys.","image":"Monkey"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What animal is this?",answer:"It’s a monkey.",image:"Monkey"},
+ {question:"What’s this?",answer:"It’s a mouse.",image:"Mouse"},
+ {question:"Is it a monkey?",answer:"Yes, it is.",image:"Monkey"},
+ {question:"Is it a mouse?",answer:"Yes, it is.",image:"Mouse"},
+ {question:"Do you like monkeys?",answer:"Yes, I do.",image:"Monkey"},
+ {question:"Do you like mice?",answer:"Yes, I do.",image:"Mouse"},
+ {question:"What animal do you like?",answer:"I like monkeys.",image:"Monkey"},
+ {question:"What animal is your favorite?",answer:"Monkeys are my favorite.",image:"Monkey"},
+ {question:"What do you like?",answer:"I like monkeys.",image:"Monkey"}
 ],
 
 "11":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a bus.","image":"Bus"},
-{"question":"What’s this?","answer":"It’s a truck.","image":"Truck"},
-{"question":"Is it a bus?","answer":"Yes, it is.","image":"Bus"},
-{"question":"Is it a truck?","answer":"Yes, it is.","image":"Truck"},
-{"question":"What do you see?","answer":"I see a bus.","image":"Bus"},
-{"question":"Do you like buses?","answer":"Yes, I do.","image":"Bus"},
-{"question":"Do you like trucks?","answer":"Yes, I do.","image":"Truck"},
-{"question":"What do you like?","answer":"I like buses.","image":"Bus"},
-{"question":"What do you have?","answer":"I have a toy bus.","image":"Toy bus"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a bus.",image:"Bus"},
+ {question:"What’s this?",answer:"It’s a truck.",image:"Truck"},
+ {question:"Is it a bus?",answer:"Yes, it is.",image:"Bus"},
+ {question:"Is it a truck?",answer:"Yes, it is.",image:"Truck"},
+ {question:"What do you see?",answer:"I see a bus.",image:"Bus"},
+ {question:"Do you like buses?",answer:"Yes, I do.",image:"Bus"},
+ {question:"Do you like trucks?",answer:"Yes, I do.",image:"Truck"},
+ {question:"What do you like?",answer:"I like buses.",image:"Bus"},
+ {question:"What do you have?",answer:"I have a toy bus.",image:"Toy bus"}
 ],
 
 "12":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a lake.","image":"Lake"},
-{"question":"What’s this?","answer":"It’s a leaf.","image":"Leaf"},
-{"question":"Is it a lake?","answer":"Yes, it is.","image":"Lake"},
-{"question":"Is it a leaf?","answer":"Yes, it is.","image":"Leaf"},
-{"question":"Do you like the lake?","answer":"Yes, I do.","image":"Lake"},
-{"question":"Do you like leaves?","answer":"Yes, I do.","image":"Leaf"},
-{"question":"What do you see?","answer":"I see a leaf.","image":"Leaf"},
-{"question":"What do you like?","answer":"I like the lake.","image":"Lake"},
-{"question":"What is your favorite place?","answer":"The lake is my favorite place.","image":"Lake"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a lake.",image:"Lake"},
+ {question:"What’s this?",answer:"It’s a leaf.",image:"Leaf"},
+ {question:"Is it a lake?",answer:"Yes, it is.",image:"Lake"},
+ {question:"Is it a leaf?",answer:"Yes, it is.",image:"Leaf"},
+ {question:"Do you like the lake?",answer:"Yes, I do.",image:"Lake"},
+ {question:"Do you like leaves?",answer:"Yes, I do.",image:"Leaf"},
+ {question:"What do you see?",answer:"I see a leaf.",image:"Leaf"},
+ {question:"What do you like?",answer:"I like the lake.",image:"Lake"},
+ {question:"What is your favorite place?",answer:"The lake is my favorite place.",image:"Lake"}
 ],
 
 "13":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a banana.","image":"Bananas"},
-{"question":"What’s this?","answer":"It’s noodles.","image":"Noodles"},
-{"question":"Is it a banana?","answer":"Yes, it is.","image":"Bananas"},
-{"question":"Do you like bananas?","answer":"Yes, I do.","image":"Bananas"},
-{"question":"Do you like noodles?","answer":"Yes, I do.","image":"Noodles"},
-{"question":"What do you like?","answer":"I like noodles.","image":"Noodles"},
-{"question":"What do you have?","answer":"I have noodles.","image":"Noodles"},
-{"question":"What food do you like?","answer":"I like bananas.","image":"Bananas"},
-{"question":"Is it noodles?","answer":"Yes, it is.","image":"Noodles"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a banana.",image:"Bananas"},
+ {question:"What’s this?",answer:"It’s noodles.",image:"Noodles"},
+ {question:"Is it a banana?",answer:"Yes, it is.",image:"Bananas"},
+ {question:"Do you like bananas?",answer:"Yes, I do.",image:"Bananas"},
+ {question:"Do you like noodles?",answer:"Yes, I do.",image:"Noodles"},
+ {question:"What do you like?",answer:"I like noodles.",image:"Noodles"},
+ {question:"What do you have?",answer:"I have noodles.",image:"Noodles"},
+ {question:"What food do you like?",answer:"I like bananas.",image:"Bananas"},
+ {question:"Is it noodles?",answer:"Yes, it is.",image:"Noodles"}
 ],
 
 "14":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a teddy bear.","image":"Teddy bear"},
-{"question":"What’s this?","answer":"It’s a tiger.","image":"Tiger"},
-{"question":"What is it?","answer":"It’s a turtle.","image":"Turtle"},
-{"question":"Is it a tiger?","answer":"Yes, it is.","image":"Tiger"},
-{"question":"Is it a teddy bear?","answer":"No, it isn’t.","image":"Tiger"},
-{"question":"Do you like teddy bears?","answer":"Yes, I do.","image":"Teddy bear"},
-{"question":"What toy do you like?","answer":"I like teddy bears.","image":"Teddy bear"},
-{"question":"What toy do you have?","answer":"I have a teddy bear.","image":"Teddy bear"},
-{"question":"What is your favorite toy?","answer":"My favorite toy is a teddy bear.","image":"Teddy bear"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a teddy bear.",image:"Teddy bear"},
+ {question:"What’s this?",answer:"It’s a tiger.",image:"Tiger"},
+ {question:"What is it?",answer:"It’s a turtle.",image:"Turtle"},
+ {question:"Is it a tiger?",answer:"Yes, it is.",image:"Tiger"},
+ {question:"Is it a teddy bear?",answer:"No, it isn’t.",image:"Tiger"},
+ {question:"Do you like teddy bears?",answer:"Yes, I do.",image:"Teddy bear"},
+ {question:"What toy do you like?",answer:"I like teddy bears.",image:"Teddy bear"},
+ {question:"What toy do you have?",answer:"I have a teddy bear.",image:"Teddy bear"},
+ {question:"What is your favorite toy?",answer:"My favorite toy is a teddy bear.",image:"Teddy bear"}
 ],
 
 "15":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"What is this?","answer":"It’s a football.","image":"Football"},
-{"question":"What’s this?","answer":"It’s a foot.","image":"Foot"},
-{"question":"Who is he?","answer":"He’s my father.","image":"Father"},
-{"question":"Is this a football?","answer":"Yes, it is.","image":"Football"},
-{"question":"Do you like football?","answer":"Yes, I do.","image":"Football"},
-{"question":"Do you like sports?","answer":"Yes, I do.","image":"Sports"},
-{"question":"What do you like?","answer":"I like football.","image":"Football"},
-{"question":"Who is your father?","answer":"He’s my dad.","image":"Father"},
-{"question":"What is your favorite sport?","answer":"Football is my favorite sport.","image":"Football"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"What is this?",answer:"It’s a football.",image:"Football"},
+ {question:"What’s this?",answer:"It’s a foot.",image:"Foot"},
+ {question:"Who is he?",answer:"He’s my father.",image:"Father"},
+ {question:"Is this a football?",answer:"Yes, it is.",image:"Football"},
+ {question:"Do you like football?",answer:"Yes, I do.",image:"Football"},
+ {question:"Do you like sports?",answer:"Yes, I do.",image:"Sports"},
+ {question:"What do you like?",answer:"I like football.",image:"Football"},
+ {question:"Who is your father?",answer:"He’s my dad.",image:"Father"},
+ {question:"What is your favorite sport?",answer:"Football is my favorite sport.",image:"Football"}
 ],
 
 "16":[
-
-{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam"},
-{"question":"How old are you?","answer":"I’m six years old.","image":"Nam"},
-{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam"},
-{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom"},
-{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book"},
-{"question":"Do you like English?","answer":"Yes, I do.","image":"English class"},
-{"question":"Where are you?","answer":"I’m at home.","image":"House"},
-{"question":"What is this?","answer":"It’s water.","image":"Water"},
-{"question":"What’s this?","answer":"It’s a window.","image":"Window"},
-{"question":"Is it a window?","answer":"Yes, it is.","image":"Window"},
-{"question":"Do you like water?","answer":"Yes, I do.","image":"Water"},
-{"question":"What do you have?","answer":"I have water.","image":"Water"},
-{"question":"What do you see?","answer":"I see a window.","image":"Window"},
-{"question":"Do you like your home?","answer":"Yes, I do.","image":"House"},
-{"question":"What is your favorite place at home?","answer":"My favorite place is my room.","image":"Room"}
-
+ {question:"What’s your name?",answer:"My name is Nam.",image:"Nam"},
+ {question:"How old are you?",answer:"I’m six years old.",image:"Nam"},
+ {question:"Where are you from?",answer:"I’m from Vietnam.",image:"Vietnam"},
+ {question:"What grade are you in?",answer:"I’m in grade 1.",image:"Grade 1 classroom"},
+ {question:"What is your favorite subject?",answer:"My favorite subject is English.",image:"English book"},
+ {question:"Do you like English?",answer:"Yes, I do.",image:"English class"},
+ {question:"Where are you?",answer:"I’m at home.",image:"House"},
+ {question:"What is this?",answer:"It’s water.",image:"Water"},
+ {question:"What’s this?",answer:"It’s a window.",image:"Window"},
+ {question:"Is it a window?",answer:"Yes, it is.",image:"Window"},
+ {question:"Do you like water?",answer:"Yes, I do.",image:"Water"},
+ {question:"What do you have?",answer:"I have water.",image:"Water"},
+ {question:"What do you see?",answer:"I see a window.",image:"Window"},
+ {question:"Do you like your home?",answer:"Yes, I do.",image:"House"},
+ {question:"What is your favorite place at home?",answer:"My favorite place is my room.",image:"Room"}
 ]
 
 };
@@ -1134,53 +2190,51 @@ const speakingData={
 const T={
 
 vi:{
-vocab:'Từ vựng',
-memory:'Ghi nhớ',
-speak:'Luyện nói',
+ vocab:"Từ vựng",
+ memory:"Ghi nhớ",
+ speak:"Luyện nói",
 
-pron:'Nhìn hình → phát âm',
-write:'Nhìn chữ → đọc to',
-react:'Nhìn chữ → chọn hình',
-pictureWord:'Nhìn hình → chọn chữ',
+ pron:"Nhìn hình → phát âm",
+ write:"Nhìn chữ → đọc to",
+ react:"Nhìn chữ → chọn hình",
+ pictureWord:"Nhìn hình → chọn chữ",
 
-start:'Bắt đầu',
-back:'← Quay lại',
-next:'Tiếp theo →',
+ start:"Bắt đầu",
+ back:"← Quay lại",
+ next:"Tiếp theo →",
 
-units:'Danh sách Unit',
-sel:'đã chọn',
+ units:"Danh sách Unit",
+ sel:"đã chọn",
 
-answer:'Đáp án',
-correct:'✓ Chính xác!',
-wrong:'✗ Chưa đúng',
+ answer:"Đáp án",
+ correct:"✓ Chính xác!",
+ wrong:"✗ Chưa đúng",
 
-great:'🎉 HOÀN THÀNH!',
-home:'Trang chủ'
+ great:"🎉 HOÀN THÀNH!"
 },
 
 en:{
-vocab:'Vocabulary',
-memory:'Memory',
-speak:'Speaking Practice',
+ vocab:"Vocabulary",
+ memory:"Memory",
+ speak:"Speaking Practice",
 
-pron:'Picture → Pronunciation',
-write:'Word → Say It',
-react:'Word → Choose Picture',
-pictureWord:'Picture → Choose Word',
+ pron:"Picture → Pronunciation",
+ write:"Word → Say It",
+ react:"Word → Choose Picture",
+ pictureWord:"Picture → Choose Word",
 
-start:'Start',
-back:'← Back',
-next:'Next →',
+ start:"Start",
+ back:"← Back",
+ next:"Next →",
 
-units:'Units',
-sel:'selected',
+ units:"Units",
+ sel:"selected",
 
-answer:'Answer',
-correct:'✓ Correct!',
-wrong:'✗ Try again',
+ answer:"Answer",
+ correct:"✓ Correct!",
+ wrong:"✗ Try again",
 
-great:'🎉 GREAT JOB!',
-home:'Home'
+ great:"🎉 GREAT JOB!"
 }
 
 };
@@ -1190,20 +2244,26 @@ home:'Home'
    GLOBAL VARIABLES
 ========================================================= */
 
-let lang='vi';
+let lang="vi";
 
 let selected=[];
+
 let list=[];
+
 let idx=0;
-let mode='';
+
+let mode="";
 
 let timer=null;
+
 let delay=null;
 
 let score=0;
 
 let speakingSelected=[];
+
 let speakingList=[];
+
 let speakingIndex=0;
 
 
@@ -1213,9 +2273,23 @@ let speakingIndex=0;
 
 const $=id=>document.getElementById(id);
 
-const main=$('main');
+const main=$("main");
 
-const t=k=>T[lang][k]||k;
+const t=k=>
+  T[lang][k]||k;
+
+
+/* =========================================================
+   START
+========================================================= */
+
+function startWelcome(){
+
+  playWelcomeMusic();
+
+  language();
+
+}
 
 
 /* =========================================================
@@ -1224,38 +2298,57 @@ const t=k=>T[lang][k]||k;
 
 function language(){
 
-  stopWelcomeMusic();
-
   clearAll();
 
-  $('welcome').classList.remove('active');
+  $("welcome")
+    .classList
+    .remove("active");
 
-  $('app').classList.add('active');
+  $("app")
+    .classList
+    .add("active");
+
 
   main.innerHTML=`
 
-  <div class="panel"
-       style="max-width:700px;margin:55px auto;text-align:center">
+  <div
+    class="panel"
+    style="
+      max-width:700px;
+      margin:55px auto;
+      text-align:center
+    "
+  >
 
     <h1 class="title">
-      Choose your language / Chọn ngôn ngữ
+
+      Choose your language
+      /
+      Chọn ngôn ngữ
+
     </h1>
 
-    <div class="row"
-         style="justify-content:center">
 
-      <button class="primary orange"
-              onclick="setLang('vi')">
+    <div
+      class="row"
+      style="
+        justify-content:center
+      "
+    >
 
+      <button
+        class="primary orange"
+        onclick="setLang('vi')"
+      >
         🇻🇳 Tiếng Việt
-
       </button>
 
-      <button class="primary"
-              onclick="setLang('en')">
 
+      <button
+        class="primary"
+        onclick="setLang('en')"
+      >
         🇬🇧 English
-
       </button>
 
     </div>
@@ -1282,12 +2375,14 @@ function home(){
 
   clearAll();
 
-  $('brand').textContent=
-    lang==='vi'
-    ?'HENRY ENGLISH – LỚP 1'
-    :'HENRY ENGLISH – GRADE 1';
 
-  $('langBadge').textContent=
+  $("brand").textContent=
+    lang==="vi"
+    ?"HENRY ENGLISH – LỚP 1"
+    :"HENRY ENGLISH – GRADE 1";
+
+
+  $("langBadge").textContent=
     lang.toUpperCase();
 
 
@@ -1296,9 +2391,9 @@ function home(){
   <h1 class="title">
 
     ${
-      lang==='vi'
-      ?'HENRY ENGLISH – LỚP 1'
-      :'HENRY ENGLISH – GRADE 1'
+      lang==="vi"
+      ?"HENRY ENGLISH – LỚP 1"
+      :"HENRY ENGLISH – GRADE 1"
     }
 
   </h1>
@@ -1307,15 +2402,17 @@ function home(){
   <div class="cards">
 
 
-    <button class="menu vocab"
-            onclick="vocabUnits()">
+    <button
+      class="menu vocab"
+      onclick="vocabUnits()"
+    >
 
       <div class="ico">
         📚
       </div>
 
       <h2>
-        ${t('vocab')}
+        ${t("vocab")}
       </h2>
 
       <p>
@@ -1325,15 +2422,17 @@ function home(){
     </button>
 
 
-    <button class="menu memory"
-            onclick="memoryMenu()">
+    <button
+      class="menu memory"
+      onclick="memoryMenu()"
+    >
 
       <div class="ico">
         🧠
       </div>
 
       <h2>
-        ${t('memory')}
+        ${t("memory")}
       </h2>
 
       <p>
@@ -1343,15 +2442,17 @@ function home(){
     </button>
 
 
-    <button class="menu speak"
-            onclick="speakUnits()">
+    <button
+      class="menu speak"
+      onclick="speakUnits()"
+    >
 
       <div class="ico">
         🗣️
       </div>
 
       <h2>
-        ${t('speak')}
+        ${t("speak")}
       </h2>
 
       <p>
@@ -1370,28 +2471,25 @@ function home(){
    UNIT BUTTONS
 ========================================================= */
 
-function units(onSelect=true){
+function units(){
 
-  let s='<div class="grid">';
+  let html="";
 
 
   for(let i=1;i<=16;i++){
 
-    s+=`
+    html+=`
 
     <button
       class="unit"
       id="u${i}"
-      onclick="${
-        onSelect
-        ?`toggleUnit(${i})`
-        :`startSpeak(${i})`
-      }">
+      onclick="toggleUnit(${i})"
+    >
 
       UNIT ${i}
 
       <small>
-        ${esc(unitTitles[i]||'')}
+        ${esc(unitTitles[i])}
       </small>
 
     </button>`;
@@ -1399,13 +2497,13 @@ function units(onSelect=true){
   }
 
 
-  return s+'</div>';
+  return html;
 
 }
 
 
 /* =========================================================
-   VOCABULARY MENU
+   VOCABULARY UNIT MENU
 ========================================================= */
 
 function vocabUnits(){
@@ -1417,44 +2515,56 @@ function vocabUnits(){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="home()">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="home()"
+  >
+    ${t("back")}
   </button>
 
 
   <div class="panel">
 
     <h2>
-      ${t('vocab')} – ${t('units')}
+      ${t("vocab")} – ${t("units")}
     </h2>
 
 
     <p class="muted">
-      Chọn Unit để xem và nghe từ vựng.
+
+      ${
+        lang==="vi"
+        ?"Chọn một hoặc nhiều Unit để học từ vựng."
+        :"Choose one or more Units."
+      }
+
     </p>
 
 
-    ${units(true)}
+    <div class="grid">
+
+      ${units()}
+
+    </div>
 
 
     <div class="row">
 
-      <button class="primary orange"
-              onclick="startVocab()">
+      <button
+        class="primary orange"
+        onclick="startVocab()"
+      >
 
-        ${t('start')}
+        ${t("start")}
 
       </button>
 
 
-      <span id="count"
-            class="muted">
-
-        0 ${t('sel')}
-
+      <span
+        id="count"
+        class="muted"
+      >
+        0 ${t("sel")}
       </span>
 
     </div>
@@ -1465,36 +2575,41 @@ function vocabUnits(){
 
 
 /* =========================================================
-   TOGGLE VOCAB UNIT
+   TOGGLE UNIT
 ========================================================= */
 
 function toggleUnit(i){
 
-  const e=$('u'+i);
+  const e=$("u"+i);
 
 
   if(selected.includes(i)){
 
     selected=
-      selected.filter(x=>x!==i);
+      selected.filter(
+        x=>x!==i
+      );
 
-    e.classList.remove('sel');
+    e.classList.remove("sel");
 
   }else{
 
     selected.push(i);
 
-    e.classList.add('sel');
+    e.classList.add("sel");
 
   }
 
 
-  const count=$('count');
+  const count=$("count");
+
 
   if(count){
 
     count.textContent=
-      selected.length+' '+t('sel');
+      selected.length+
+      " "+
+      t("sel");
 
   }
 
@@ -1502,7 +2617,7 @@ function toggleUnit(i){
 
 
 /* =========================================================
-   START VOCABULARY
+   START VOCAB
 ========================================================= */
 
 function startVocab(){
@@ -1512,9 +2627,13 @@ function startVocab(){
 
   list=
     selected.flatMap(
-      u=>vocabData[u].map(
-        x=>({...x,unit:u})
-      )
+      u=>
+        vocabData[u].map(
+          x=>({
+            ...x,
+            unit:u
+          })
+        )
     );
 
 
@@ -1526,7 +2645,7 @@ function startVocab(){
 
 
 /* =========================================================
-   SHOW VOCABULARY
+   SHOW VOCAB
 ========================================================= */
 
 function showVocab(){
@@ -1548,11 +2667,11 @@ function showVocab(){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="vocabUnits()">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="vocabUnits()"
+  >
+    ${t("back")}
   </button>
 
 
@@ -1563,16 +2682,20 @@ function showVocab(){
 
       UNIT ${x.unit}
 
-      • ${idx+1}/${list.length}
+      •
+
+      ${idx+1}/${list.length}
 
     </div>
 
 
     <div class="bar">
 
-      <i style="
-        width:${(idx+1)/list.length*100}%
-      "></i>
+      <i
+        style="
+          width:${(idx+1)/list.length*100}%
+        "
+      ></i>
 
     </div>
 
@@ -1580,46 +2703,54 @@ function showVocab(){
     <div class="image">
 
       <div class="pic">
+
         ${icon(x.word)}
-      </div>
 
-
-      <div class="label">
-        IMAGE: ${esc(x.word)}
       </div>
 
     </div>
 
 
     <div class="word">
+
       ${esc(x.word)}
+
     </div>
 
 
     <div class="ipa">
+
       ${esc(x.ipa)}
+
     </div>
 
 
     <div class="meaning">
+
       ${esc(x.meaning)}
+
     </div>
 
 
-    <button class="speaker"
-            onclick="sayWordOnce()">
-
+    <button
+      class="speaker"
+      onclick="sayWordOnce()"
+    >
       🔊
-
     </button>
 
 
     <div>
 
-      <button class="primary orange"
-              onclick="idx++;showVocab()">
+      <button
+        class="primary orange"
+        onclick="
+          idx++;
+          showVocab();
+        "
+      >
 
-        ${t('next')}
+        ${t("next")}
 
       </button>
 
@@ -1656,11 +2787,11 @@ function memoryMenu(){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="home()">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="home()"
+  >
+    ${t("back")}
   </button>
 
 
@@ -1670,15 +2801,16 @@ function memoryMenu(){
     <div class="memoryIntro">
 
       <h2>
-        🧠 ${t('memory')}
+        🧠 ${t("memory")}
       </h2>
+
 
       <p class="muted">
 
         ${
-          lang==='vi'
-          ?'Bốn chế độ ghi nhớ.'
-          :'Four memory modes.'
+          lang==="vi"
+          ?"Bốn chế độ ghi nhớ."
+          :"Four memory modes."
         }
 
       </p>
@@ -1689,57 +2821,65 @@ function memoryMenu(){
     <div class="cards">
 
 
-      <button class="menu speak"
-              onclick="memoryUnits('pron')">
+      <button
+        class="menu"
+        onclick="memoryUnits('pron')"
+      >
 
         <div class="ico">
           👀
         </div>
 
         <h2>
-          ${t('pron')}
+          ${t("pron")}
         </h2>
 
       </button>
 
 
-      <button class="menu vocab"
-              onclick="memoryUnits('write')">
+      <button
+        class="menu"
+        onclick="memoryUnits('write')"
+      >
 
         <div class="ico">
           🔊
         </div>
 
         <h2>
-          ${t('write')}
+          ${t("write")}
         </h2>
 
       </button>
 
 
-      <button class="menu memory"
-              onclick="memoryUnits('react')">
+      <button
+        class="menu"
+        onclick="memoryUnits('react')"
+      >
 
         <div class="ico">
           👀
         </div>
 
         <h2>
-          ${t('react')}
+          ${t("react")}
         </h2>
 
       </button>
 
 
-      <button class="menu memory"
-              onclick="memoryUnits('pictureWord')">
+      <button
+        class="menu"
+        onclick="memoryUnits('pictureWord')"
+      >
 
         <div class="ico">
           🖼️
         </div>
 
         <h2>
-          ${t('pictureWord')}
+          ${t("pictureWord")}
         </h2>
 
       </button>
@@ -1757,11 +2897,10 @@ function memoryMenu(){
           👀 Nhìn hình → phát âm
         </b>
 
-        ${
-          lang==='vi'
-          ?'Chỉ hiện hình. 5 giây tự đọc. Hệ thống đọc từ đúng, chờ 1,5 giây rồi chuyển từ.'
-          :'Picture only. 5 seconds to say it. The system says the word, waits 1.5 seconds, then moves on.'
-        }
+        Chỉ hiện hình.
+        5 giây tự đọc.
+        Hệ thống đọc từ đúng,
+        chờ 1,5 giây rồi chuyển từ.
 
       </div>
 
@@ -1772,11 +2911,10 @@ function memoryMenu(){
           🔊 Nhìn chữ → đọc to
         </b>
 
-        ${
-          lang==='vi'
-          ?'Hiện từ. 5 giây tự đọc. Hệ thống đọc từ đúng, chờ 1,5 giây rồi chuyển từ.'
-          :'Show the word. 5 seconds to say it. The system says it, waits 1.5 seconds, then moves on.'
-        }
+        Hiện từ.
+        5 giây tự đọc.
+        Hệ thống đọc từ đúng,
+        chờ 1,5 giây rồi chuyển từ.
 
       </div>
 
@@ -1787,11 +2925,8 @@ function memoryMenu(){
           👀 Nhìn chữ → chọn hình
         </b>
 
-        ${
-          lang==='vi'
-          ?'Hiện từ và 3 hình không chữ. Đúng xanh, sai đỏ và chỉ hình đúng.'
-          :'Show the word and 3 pictures without labels. Correct is green; wrong is red and the correct picture is shown.'
-        }
+        Hiện từ và 3 hình
+        không có chữ.
 
       </div>
 
@@ -1802,11 +2937,8 @@ function memoryMenu(){
           🖼️ Nhìn hình → chọn chữ
         </b>
 
-        ${
-          lang==='vi'
-          ?'Chỉ hiện hình và 3 lựa chọn từ. Đúng xanh, sai đỏ và chỉ đáp án đúng.'
-          :'Show only the picture and 3 word choices. Correct is green; wrong is red and the correct word is shown.'
-        }
+        Chỉ hiện hình
+        và 3 lựa chọn từ.
 
       </div>
 
@@ -1834,46 +2966,48 @@ function memoryUnits(m){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="memoryMenu()">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="memoryMenu()"
+  >
+    ${t("back")}
   </button>
 
 
   <div class="panel">
 
-
     <h2>
-      ${t(m)} – ${t('units')}
+      ${t(m)} – ${t("units")}
     </h2>
 
 
-    ${units(true)}
+    <div class="grid">
+
+      ${units()}
+
+    </div>
 
 
     <div class="row">
 
+      <button
+        class="primary orange"
+        onclick="startMemory()"
+      >
 
-      <button class="primary orange"
-              onclick="startMemory()">
-
-        ${t('start')}
+        ${t("start")}
 
       </button>
 
 
-      <span id="count"
-            class="muted">
-
-        0 ${t('sel')}
-
+      <span
+        id="count"
+        class="muted"
+      >
+        0 ${t("sel")}
       </span>
 
-
     </div>
-
 
   </div>`;
 
@@ -1891,9 +3025,13 @@ function startMemory(){
 
   list=
     selected.flatMap(
-      u=>vocabData[u].map(
-        x=>({...x,unit:u})
-      )
+      u=>
+        vocabData[u].map(
+          x=>({
+            ...x,
+            unit:u
+          })
+        )
     );
 
 
@@ -1904,36 +3042,23 @@ function startMemory(){
   score=0;
 
 
-  if(mode==='pron'){
-
+  if(mode==="pron")
     showPicturePronunciation();
 
-  }
-
-  else if(mode==='write'){
-
+  else if(mode==="write")
     showWordPronunciation();
 
-  }
-
-  else if(mode==='react'){
-
+  else if(mode==="react")
     showWordChoosePicture();
 
-  }
-
-  else if(mode==='pictureWord'){
-
+  else if(mode==="pictureWord")
     showPictureChooseWord();
-
-  }
 
 }
 
 
 /* =========================================================
    MEMORY 1
-   PICTURE → PRONUNCIATION
 ========================================================= */
 
 function showPicturePronunciation(){
@@ -1955,30 +3080,37 @@ function showPicturePronunciation(){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="memoryUnits('pron')">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="memoryUnits('pron')"
+  >
+    ${t("back")}
   </button>
 
 
-  <div class="panel wordCard memoryImageOnly">
+  <div
+    class="panel wordCard memoryImageOnly"
+  >
 
 
     <div class="questionNo">
 
-      ${t('pron')}
-      • ${idx+1}/${list.length}
+      ${t("pron")}
+
+      •
+
+      ${idx+1}/${list.length}
 
     </div>
 
 
     <div class="bar">
 
-      <i style="
-        width:${(idx+1)/list.length*100}%
-      "></i>
+      <i
+        style="
+          width:${(idx+1)/list.length*100}%
+        "
+      ></i>
 
     </div>
 
@@ -1994,27 +3126,24 @@ function showPicturePronunciation(){
 
     <p class="muted">
 
-      ${
-        lang==='vi'
-        ?'Hãy nhìn hình và tự đọc từ.'
-        :'Look at the picture and say the word.'
-      }
+      Hãy nhìn hình
+      và tự đọc từ.
 
     </p>
 
 
-    <div id="timer"
-         class="timer">
-
+    <div
+      id="timer"
+      class="timer"
+    >
       5
-
     </div>
 
 
-    <div id="memoryStatus"
-         class="answer hidden">
-
-    </div>
+    <div
+      id="memoryStatus"
+      class="answer hidden"
+    ></div>
 
 
   </div>`;
@@ -2029,7 +3158,7 @@ function startPicturePronTimer(x){
 
   let n=5;
 
-  const e=$('timer');
+  const e=$("timer");
 
 
   timer=setInterval(()=>{
@@ -2037,11 +3166,8 @@ function startPicturePronTimer(x){
     n--;
 
 
-    if(e){
-
+    if(e)
       e.textContent=n;
-
-    }
 
 
     if(n<=0){
@@ -2057,16 +3183,17 @@ function startPicturePronTimer(x){
       );
 
 
-      if($('memoryStatus')){
+      const status=
+        $("memoryStatus");
 
-        $('memoryStatus')
-          .classList
-          .remove('hidden');
 
-        $('memoryStatus').textContent=
-          lang==='vi'
-          ?'🔊 '+x.word
-          :'🔊 '+x.word;
+      if(status){
+
+        status.classList.remove("hidden");
+
+        status.textContent=
+          "🔊 "+
+          x.word;
 
       }
 
@@ -2088,7 +3215,6 @@ function startPicturePronTimer(x){
 
 /* =========================================================
    MEMORY 2
-   WORD → PRONUNCIATION
 ========================================================= */
 
 function showWordPronunciation(){
@@ -2110,11 +3236,11 @@ function showWordPronunciation(){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="memoryUnits('write')">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="memoryUnits('write')"
+  >
+    ${t("back")}
   </button>
 
 
@@ -2123,17 +3249,22 @@ function showWordPronunciation(){
 
     <div class="questionNo">
 
-      ${t('write')}
-      • ${idx+1}/${list.length}
+      ${t("write")}
+
+      •
+
+      ${idx+1}/${list.length}
 
     </div>
 
 
     <div class="bar">
 
-      <i style="
-        width:${(idx+1)/list.length*100}%
-      "></i>
+      <i
+        style="
+          width:${(idx+1)/list.length*100}%
+        "
+      ></i>
 
     </div>
 
@@ -2147,27 +3278,23 @@ function showWordPronunciation(){
 
     <p class="muted">
 
-      ${
-        lang==='vi'
-        ?'Hãy tự đọc từ trong 5 giây.'
-        :'Say the word yourself in 5 seconds.'
-      }
+      Hãy tự đọc từ trong 5 giây.
 
     </p>
 
 
-    <div id="timer"
-         class="timer">
-
+    <div
+      id="timer"
+      class="timer"
+    >
       5
-
     </div>
 
 
-    <div id="memoryStatus"
-         class="answer hidden">
-
-    </div>
+    <div
+      id="memoryStatus"
+      class="answer hidden"
+    ></div>
 
 
   </div>`;
@@ -2182,7 +3309,7 @@ function startWordPronTimer(x){
 
   let n=5;
 
-  const e=$('timer');
+  const e=$("timer");
 
 
   timer=setInterval(()=>{
@@ -2190,11 +3317,8 @@ function startWordPronTimer(x){
     n--;
 
 
-    if(e){
-
+    if(e)
       e.textContent=n;
-
-    }
 
 
     if(n<=0){
@@ -2210,16 +3334,17 @@ function startWordPronTimer(x){
       );
 
 
-      if($('memoryStatus')){
+      const status=
+        $("memoryStatus");
 
-        $('memoryStatus')
-          .classList
-          .remove('hidden');
 
-        $('memoryStatus').textContent=
-          lang==='vi'
-          ?'🔊 '+x.word
-          :'🔊 '+x.word;
+      if(status){
+
+        status.classList.remove("hidden");
+
+        status.textContent=
+          "🔊 "+
+          x.word;
 
       }
 
@@ -2241,7 +3366,6 @@ function startWordPronTimer(x){
 
 /* =========================================================
    MEMORY 3
-   WORD → CHOOSE PICTURE
 ========================================================= */
 
 function showWordChoosePicture(){
@@ -2266,30 +3390,37 @@ function showWordChoosePicture(){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="memoryUnits('react')">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="memoryUnits('react')"
+  >
+    ${t("back")}
   </button>
 
 
-  <div class="panel wordCard memoryChoices">
+  <div
+    class="panel wordCard memoryChoices"
+  >
 
 
     <div class="questionNo">
 
-      ${t('react')}
-      • ${idx+1}/${list.length}
+      ${t("react")}
+
+      •
+
+      ${idx+1}/${list.length}
 
     </div>
 
 
     <div class="bar">
 
-      <i style="
-        width:${(idx+1)/list.length*100}%
-      "></i>
+      <i
+        style="
+          width:${(idx+1)/list.length*100}%
+        "
+      ></i>
 
     </div>
 
@@ -2303,11 +3434,7 @@ function showWordChoosePicture(){
 
     <p class="muted">
 
-      ${
-        lang==='vi'
-        ?'Chọn hình đúng.'
-        :'Choose the correct picture.'
-      }
+      Chọn hình đúng.
 
     </p>
 
@@ -2326,8 +3453,8 @@ function showWordChoosePicture(){
               '${attr(c.word)}',
               '${attr(x.word)}'
             )
-          ">
-
+          "
+        >
 
           <span class="pic">
 
@@ -2335,19 +3462,18 @@ function showWordChoosePicture(){
 
           </span>
 
-
         </button>
 
-      `).join('')}
+      `).join("")}
 
 
     </div>
 
 
-    <div id="result"
-         class="result">
-
-    </div>
+    <div
+      id="result"
+      class="result"
+    ></div>
 
 
   </div>`;
@@ -2361,12 +3487,12 @@ function answerPictureChoice(
   correct
 ){
 
-  const result=$('result');
+  const result=$("result");
 
 
   if(
     !result ||
-    result.dataset.done==='1'
+    result.dataset.done==="1"
   ){
 
     return;
@@ -2374,43 +3500,39 @@ function answerPictureChoice(
   }
 
 
-  result.dataset.done='1';
+  result.dataset.done="1";
 
 
   document
-    .querySelectorAll('.opt')
-    .forEach(b=>{
-      b.disabled=true;
-    });
+    .querySelectorAll(".opt")
+    .forEach(
+      b=>b.disabled=true
+    );
 
 
-  const ok=
-    val===correct;
-
-
-  if(ok){
+  if(val===correct){
 
     score++;
 
-    btn.classList.add('correct');
+    btn.classList.add("correct");
 
     result.textContent=
-      t('correct');
+      t("correct");
 
   }else{
 
-    btn.classList.add('wrong');
+    btn.classList.add("wrong");
 
 
     document
-      .querySelectorAll('.opt')
+      .querySelectorAll(".opt")
       .forEach(b=>{
 
         if(
           b.dataset.word===correct
         ){
 
-          b.classList.add('correct');
+          b.classList.add("correct");
 
         }
 
@@ -2418,7 +3540,7 @@ function answerPictureChoice(
 
 
     result.textContent=
-      t('wrong');
+      t("wrong");
 
   }
 
@@ -2442,7 +3564,6 @@ function answerPictureChoice(
 
 /* =========================================================
    MEMORY 4
-   PICTURE → CHOOSE WORD
 ========================================================= */
 
 function showPictureChooseWord(){
@@ -2467,30 +3588,37 @@ function showPictureChooseWord(){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="memoryUnits('pictureWord')">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="memoryUnits('pictureWord')"
+  >
+    ${t("back")}
   </button>
 
 
-  <div class="panel wordCard memoryImageOnly memoryWordChoices">
+  <div
+    class="panel wordCard memoryImageOnly memoryWordChoices"
+  >
 
 
     <div class="questionNo">
 
-      ${t('pictureWord')}
-      • ${idx+1}/${list.length}
+      ${t("pictureWord")}
+
+      •
+
+      ${idx+1}/${list.length}
 
     </div>
 
 
     <div class="bar">
 
-      <i style="
-        width:${(idx+1)/list.length*100}%
-      "></i>
+      <i
+        style="
+          width:${(idx+1)/list.length*100}%
+        "
+      ></i>
 
     </div>
 
@@ -2508,11 +3636,7 @@ function showPictureChooseWord(){
 
     <p class="muted">
 
-      ${
-        lang==='vi'
-        ?'Chọn từ đúng.'
-        :'Choose the correct word.'
-      }
+      Chọn từ đúng.
 
     </p>
 
@@ -2531,28 +3655,23 @@ function showPictureChooseWord(){
               '${attr(c.word)}',
               '${attr(x.word)}'
             )
-          ">
+          "
+        >
 
-
-          <span>
-
-            ${esc(c.word)}
-
-          </span>
-
+          ${esc(c.word)}
 
         </button>
 
-      `).join('')}
+      `).join("")}
 
 
     </div>
 
 
-    <div id="result"
-         class="result">
-
-    </div>
+    <div
+      id="result"
+      class="result"
+    ></div>
 
 
   </div>`;
@@ -2566,12 +3685,12 @@ function answerWordChoice(
   correct
 ){
 
-  const result=$('result');
+  const result=$("result");
 
 
   if(
     !result ||
-    result.dataset.done==='1'
+    result.dataset.done==="1"
   ){
 
     return;
@@ -2579,43 +3698,39 @@ function answerWordChoice(
   }
 
 
-  result.dataset.done='1';
+  result.dataset.done="1";
 
 
   document
-    .querySelectorAll('.opt')
-    .forEach(b=>{
-      b.disabled=true;
-    });
+    .querySelectorAll(".opt")
+    .forEach(
+      b=>b.disabled=true
+    );
 
 
-  const ok=
-    val===correct;
-
-
-  if(ok){
+  if(val===correct){
 
     score++;
 
-    btn.classList.add('correct');
+    btn.classList.add("correct");
 
     result.textContent=
-      t('correct');
+      t("correct");
 
   }else{
 
-    btn.classList.add('wrong');
+    btn.classList.add("wrong");
 
 
     document
-      .querySelectorAll('.opt')
+      .querySelectorAll(".opt")
       .forEach(b=>{
 
         if(
           b.dataset.word===correct
         ){
 
-          b.classList.add('correct');
+          b.classList.add("correct");
 
         }
 
@@ -2623,7 +3738,7 @@ function answerWordChoice(
 
 
     result.textContent=
-      t('wrong');
+      t("wrong");
 
   }
 
@@ -2660,7 +3775,7 @@ function finishMemory(){
 
 
     <h1>
-      ${t('great')}
+      ${t("great")}
     </h1>
 
 
@@ -2669,9 +3784,9 @@ function finishMemory(){
       ${idx}
 
       ${
-        lang==='vi'
-        ?' từ đã hoàn thành.'
-        :' words completed.'
+        lang==="vi"
+        ?" từ đã hoàn thành."
+        :" words completed."
       }
 
     </p>
@@ -2685,19 +3800,19 @@ function finishMemory(){
     </p>
 
 
-    <button class="primary"
-            onclick="startMemory()">
-
+    <button
+      class="primary"
+      onclick="startMemory()"
+    >
       🔄 REPLAY
-
     </button>
 
 
-    <button class="primary orange"
-            onclick="memoryUnits('${mode}')">
-
-      ${t('units')}
-
+    <button
+      class="primary orange"
+      onclick="memoryUnits('${mode}')"
+    >
+      ${t("units")}
     </button>
 
 
@@ -2707,33 +3822,8 @@ function finishMemory(){
 
 
 /* =========================================================
-   SPEAKING PRACTICE
+   SPEAKING UNIT MENU
 ========================================================= */
-
-/*
-  LOGIC:
-
-  1 UNIT
-  → đủ 15 câu.
-
-  2 UNIT trở lên
-  → gom toàn bộ câu hỏi.
-
-  Nếu question giống nhau
-  → chỉ giữ lại 1 câu.
-
-  Ví dụ:
-
-  Unit 1:
-  What’s your name?
-
-  Unit 2:
-  What’s your name?
-
-  Khi chọn Unit 1 + Unit 2:
-  → What’s your name? chỉ xuất hiện 1 lần.
-*/
-
 
 function speakUnits(){
 
@@ -2744,11 +3834,11 @@ function speakUnits(){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="home()">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="home()"
+  >
+    ${t("back")}
   </button>
 
 
@@ -2756,16 +3846,16 @@ function speakUnits(){
 
 
     <h2>
-      ${t('speak')}
+      ${t("speak")}
     </h2>
 
 
     <p class="muted">
 
       ${
-        lang==='vi'
-        ?'Chọn một hoặc nhiều Unit. Nếu các Unit có câu hỏi giống nhau, mỗi câu chỉ xuất hiện một lần.'
-        :'Choose one or more Units. If Units contain the same question, each question appears only once.'
+        lang==="vi"
+        ?"Chọn một hoặc nhiều Unit. Nếu các Unit có câu hỏi giống nhau, mỗi câu chỉ xuất hiện một lần."
+        :"Choose one or more Units. Duplicate questions appear only once."
       }
 
     </p>
@@ -2786,20 +3876,19 @@ function speakUnits(){
           <button
             class="unit"
             id="su${u}"
-            onclick="toggleSpeakUnit(${u})">
+            onclick="toggleSpeakUnit(${u})"
+          >
 
             UNIT ${u}
 
             <small>
-              ${esc(unitTitles[u]||'')}
+              ${esc(unitTitles[u])}
             </small>
 
-          </button>
-
-          `;
+          </button>`;
 
         }
-      ).join('')}
+      ).join("")}
 
 
     </div>
@@ -2808,19 +3897,21 @@ function speakUnits(){
     <div class="row">
 
 
-      <button class="primary orange"
-              onclick="startSelectedSpeak()">
+      <button
+        class="primary orange"
+        onclick="startSelectedSpeak()"
+      >
 
-        ${t('start')}
+        ${t("start")}
 
       </button>
 
 
-      <span id="speakCount"
-            class="muted">
-
-        0 ${t('sel')}
-
+      <span
+        id="speakCount"
+        class="muted"
+      >
+        0 ${t("sel")}
       </span>
 
 
@@ -2838,7 +3929,7 @@ function speakUnits(){
 
 function toggleSpeakUnit(i){
 
-  const e=$('su'+i);
+  const e=$("su"+i);
 
 
   if(
@@ -2850,27 +3941,27 @@ function toggleSpeakUnit(i){
         x=>x!==i
       );
 
-    e.classList.remove('sel');
+    e.classList.remove("sel");
 
   }else{
 
     speakingSelected.push(i);
 
-    e.classList.add('sel');
+    e.classList.add("sel");
 
   }
 
 
   const count=
-    $('speakCount');
+    $("speakCount");
 
 
   if(count){
 
     count.textContent=
       speakingSelected.length+
-      ' '+
-      t('sel');
+      " "+
+      t("sel");
 
   }
 
@@ -2892,10 +3983,6 @@ function startSelectedSpeak(){
 
   let combined=[];
 
-
-  /*
-    Gom câu hỏi theo thứ tự Unit.
-  */
 
   speakingSelected.forEach(u=>{
 
@@ -2926,21 +4013,16 @@ function startSelectedSpeak(){
 
 
   /*
-    =====================================
-    LỌC CÂU HỎI TRÙNG
-    =====================================
-
-    Không phân biệt chữ hoa / chữ thường.
-
-    Ví dụ:
+    ========================================================
+    FILTER DUPLICATE QUESTIONS
+    ========================================================
 
     "What's your name?"
-
-    và
-
     "what's your name?"
 
-    được xem là cùng một câu.
+    are treated as the same question.
+
+    The FIRST occurrence is kept.
   */
 
   const seenQuestions=
@@ -2975,20 +4057,13 @@ function startSelectedSpeak(){
   speakingIndex=0;
 
 
-  if(!speakingList.length){
-
-    return;
-
-  }
-
-
   showSpeak();
 
 }
 
 
 /* =========================================================
-   START ONE UNIT DIRECTLY
+   START ONE UNIT
 ========================================================= */
 
 function startSpeak(u){
@@ -3001,15 +4076,17 @@ function startSpeak(u){
 
   speakingList=
     (speakingData[u]||[])
-    .map((q,index)=>({
+    .map(
+      (q,index)=>({
 
-      ...q,
+        ...q,
 
-      unit:u,
+        unit:u,
 
-      originalIndex:index
+        originalIndex:index
 
-    }));
+      })
+    );
 
 
   speakingIndex=0;
@@ -3021,7 +4098,7 @@ function startSpeak(u){
 
 
 /* =========================================================
-   SHOW SPEAKING QUESTION
+   SHOW SPEAKING
 ========================================================= */
 
 function showSpeak(){
@@ -3050,11 +4127,11 @@ function showSpeak(){
 
   main.innerHTML=`
 
-  <button class="back"
-          onclick="speakUnits()">
-
-    ${t('back')}
-
+  <button
+    class="back"
+    onclick="speakUnits()"
+  >
+    ${t("back")}
   </button>
 
 
@@ -3063,31 +4140,29 @@ function showSpeak(){
 
     <div class="questionNo">
 
-      ${t('speak')}
+      ${t("speak")}
 
       •
 
       ${speakingIndex+1}/
       ${speakingList.length}
 
-      ${
-        q.unit
-        ?` • UNIT ${q.unit}`
-        :''
-      }
+      • UNIT ${q.unit}
 
     </div>
 
 
     <div class="bar">
 
-      <i style="
-        width:${
-          (speakingIndex+1)/
-          speakingList.length*
-          100
-        }%
-      "></i>
+      <i
+        style="
+          width:${
+            (speakingIndex+1)/
+            speakingList.length*
+            100
+          }%
+        "
+      ></i>
 
     </div>
 
@@ -3103,23 +4178,6 @@ function showSpeak(){
 
       </div>
 
-
-      ${
-        q.image
-        ?`
-
-        <div class="label">
-
-          IMAGE:
-          ${esc(q.image)}
-
-        </div>
-
-        `
-        :''
-      }
-
-
     </div>
 
 
@@ -3130,88 +4188,86 @@ function showSpeak(){
     </div>
 
 
-    <button class="speaker"
-            onclick="replayQ()">
-
+    <button
+      class="speaker"
+      onclick="replayQ()"
+    >
       🔊
-
     </button>
 
 
     <div class="muted">
 
       ${
-        lang==='vi'
-        ?'Hãy tự trả lời. Đáp án mẫu chỉ xuất hiện sau 4 giây.'
-        :'Answer yourself. The model answer appears only after 4 seconds.'
+        lang==="vi"
+        ?"Hãy tự trả lời. Đáp án mẫu xuất hiện sau 4 giây."
+        :"Answer yourself. The model answer appears after 4 seconds."
       }
 
     </div>
 
 
-    <div id="timer"
-         class="timer">
-
+    <div
+      id="timer"
+      class="timer"
+    >
       4
-
     </div>
 
 
-    <div id="answer"
-         class="answer hidden">
-
-      ${t('answer')}
-
-    </div>
+    <div
+      id="answer"
+      class="answer hidden"
+    ></div>
 
 
     <div class="controls">
 
 
-      <button class="control"
-              onclick="backSpeak()"
-              ${
-                speakingIndex===0
-                ?'disabled'
-                :''
-              }>
-
+      <button
+        class="control"
+        onclick="backSpeak()"
+        ${
+          speakingIndex===0
+          ?"disabled"
+          :""
+        }
+      >
         ← Back
-
       </button>
 
 
-      <button class="control"
-              onclick="replayQ()">
-
+      <button
+        class="control"
+        onclick="replayQ()"
+      >
         🔊 Replay Question
-
       </button>
 
 
-      <button class="control"
-              onclick="replayA()">
-
+      <button
+        class="control"
+        onclick="replayA()"
+      >
         🔊 Replay Answer
-
       </button>
 
 
-      <button id="next"
-              class="control next"
-              disabled
-              onclick="nextSpeak()">
-
+      <button
+        id="next"
+        class="control"
+        disabled
+        onclick="nextSpeak()"
+      >
         ⏭ Next
-
       </button>
 
 
-      <button class="control"
-              onclick="speakUnits()">
-
-        🏠 ${t('units')}
-
+      <button
+        class="control"
+        onclick="speakUnits()"
+      >
+        🏠 ${t("units")}
       </button>
 
 
@@ -3240,7 +4296,7 @@ function startSpeakTimer(q){
 
   let n=4;
 
-  const e=$('timer');
+  const e=$("timer");
 
 
   timer=setInterval(()=>{
@@ -3272,14 +4328,14 @@ function startSpeakTimer(q){
 
 
 /* =========================================================
-   SHOW SPEAKING ANSWER
+   SHOW ANSWER
 ========================================================= */
 
 function showSpeakAnswer(q){
 
-  const a=$('answer');
+  const a=$("answer");
 
-  const next=$('next');
+  const next=$("next");
 
 
   if(!a || !next){
@@ -3289,12 +4345,12 @@ function showSpeakAnswer(q){
   }
 
 
-  a.classList.remove('hidden');
+  a.classList.remove("hidden");
 
 
   a.textContent=
-    t('answer')+
-    ': '+
+    t("answer")+
+    ": "+
     q.answer;
 
 
@@ -3337,12 +4393,13 @@ function replayQ(){
 
 function replayA(){
 
+  const a=$("answer");
+
+
   if(
     timer===null &&
-    $('answer') &&
-    !$('answer')
-      .classList
-      .contains('hidden') &&
+    a &&
+    !a.classList.contains("hidden") &&
     speakingList &&
     speakingList[speakingIndex]
   ){
@@ -3359,13 +4416,17 @@ function replayA(){
 
 
 /* =========================================================
-   NEXT SPEAKING QUESTION
+   NEXT
 ========================================================= */
 
 function nextSpeak(){
 
+  const next=$("next");
+
+
   if(
-    $('next')?.disabled
+    next &&
+    next.disabled
   ){
 
     return;
@@ -3392,7 +4453,7 @@ function nextSpeak(){
 
 
 /* =========================================================
-   BACK SPEAKING QUESTION
+   BACK
 ========================================================= */
 
 function backSpeak(){
@@ -3429,14 +4490,14 @@ function finishSpeak(){
 
 
     <h1>
-      ${t('great')}
+      ${t("great")}
     </h1>
 
 
     <p>
 
       ${
-        lang==='vi'
+        lang==="vi"
         ?`Bạn đã hoàn thành ${total} câu hỏi.`
         :`You completed ${total} questions.`
       }
@@ -3451,7 +4512,7 @@ function finishSpeak(){
       <p class="muted">
 
         ${
-          lang==='vi'
+          lang==="vi"
           ?`Đã chọn ${speakingSelected.length} Unit. Các câu hỏi trùng đã được loại bỏ.`
           :`${speakingSelected.length} Units selected. Duplicate questions were removed.`
         }
@@ -3459,23 +4520,23 @@ function finishSpeak(){
       </p>
 
       `
-      :''
+      :""
     }
 
 
-    <button class="primary"
-            onclick="startSelectedSpeak()">
-
+    <button
+      class="primary"
+      onclick="startSelectedSpeak()"
+    >
       🔄 REPLAY
-
     </button>
 
 
-    <button class="primary orange"
-            onclick="speakUnits()">
-
-      ${t('units')}
-
+    <button
+      class="primary orange"
+      onclick="speakUnits()"
+    >
+      ${t("units")}
     </button>
 
 
@@ -3492,60 +4553,60 @@ function getSpeakingImage(q){
 
   const text=
     (
-      (q.answer||'')+
-      ' '+
-      (q.question||'')
+      (q.answer||"")+
+      " "+
+      (q.question||"")
     ).toLowerCase();
 
 
   const keys=[
 
-    'ball',
-    'bike',
-    'book',
-    'cake',
-    'cup',
-    'milk',
-    'apple',
-    'bag',
-    'desk',
-    'dog',
-    'duck',
-    'door',
-    'fish',
-    'chicken',
-    'chips',
-    'pen',
-    'pencil',
-    'bell',
-    'garden',
-    'gate',
-    'girl',
-    'goat',
-    'hand',
-    'head',
-    'hair',
-    'horse',
-    'clock',
-    'lock',
-    'mop',
-    'pot',
-    'monkey',
-    'mouse',
-    'bus',
-    'truck',
-    'lake',
-    'leaf',
-    'banana',
-    'noodles',
-    'teddy bear',
-    'tiger',
-    'turtle',
-    'football',
-    'foot',
-    'father',
-    'water',
-    'window'
+    "teddy bear",
+    "football",
+    "chicken",
+    "noodles",
+    "monkey",
+    "mouse",
+    "horse",
+    "turtle",
+    "garden",
+    "window",
+    "water",
+    "pencil",
+    "apple",
+    "banana",
+    "ball",
+    "bike",
+    "book",
+    "cake",
+    "cup",
+    "milk",
+    "bag",
+    "desk",
+    "dog",
+    "duck",
+    "door",
+    "fish",
+    "chips",
+    "pen",
+    "bell",
+    "gate",
+    "girl",
+    "goat",
+    "hand",
+    "head",
+    "hair",
+    "clock",
+    "lock",
+    "mop",
+    "pot",
+    "bus",
+    "truck",
+    "lake",
+    "leaf",
+    "tiger",
+    "foot",
+    "father"
 
   ];
 
@@ -3565,7 +4626,219 @@ function getSpeakingImage(q){
   }
 
 
-  return 'english class';
+  return "english class";
+
+}
+
+
+/* =========================================================
+   MEMORY CHOICES
+========================================================= */
+
+function makeChoices(x,n){
+
+  let pool=
+    list.filter(
+      a=>a.word!==x.word
+    );
+
+
+  shuffle(pool);
+
+
+  return shuffle([
+
+    x,
+
+    ...pool.slice(0,n)
+
+  ]);
+
+}
+
+
+/* =========================================================
+   TEXT TO SPEECH
+========================================================= */
+
+function speak(
+  text,
+  rate=.75
+){
+
+  if(
+    !("speechSynthesis" in window)
+  ){
+
+    return;
+
+  }
+
+
+  speechSynthesis.cancel();
+
+
+  const u=
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+
+  u.lang="en-GB";
+
+  u.rate=rate;
+
+  u.pitch=1;
+
+
+  speechSynthesis.speak(u);
+
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+function icon(x){
+
+  const k=
+    String(x)
+      .toLowerCase()
+      .trim();
+
+
+  if(IMG[k]){
+
+    return IMG[k];
+
+  }
+
+
+  for(
+    const z in IMG
+  ){
+
+    if(
+      k.includes(z)
+    ){
+
+      return IMG[z];
+
+    }
+
+  }
+
+
+  return "🖼️";
+
+}
+
+
+/* =========================================================
+   SHUFFLE
+========================================================= */
+
+function shuffle(a){
+
+  for(
+    let i=a.length-1;
+    i>0;
+    i--
+  ){
+
+    const j=
+      Math.floor(
+        Math.random()*
+        (i+1)
+      );
+
+
+    [
+      a[i],
+      a[j]
+    ]=[
+      a[j],
+      a[i]
+    ];
+
+  }
+
+
+  return a;
+
+}
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+function esc(x){
+
+  return String(x)
+    .replace(
+      /[&<>"']/g,
+      m=>({
+
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+
+      }[m])
+    );
+
+}
+
+
+/* =========================================================
+   ATTRIBUTE ESCAPE
+========================================================= */
+
+function attr(x){
+
+  return esc(x)
+    .replace(
+      /`/g,
+      "&#96;"
+    );
+
+}
+
+
+/* =========================================================
+   CLEAR ALL
+========================================================= */
+
+function clearAll(){
+
+  if(timer){
+
+    clearInterval(timer);
+
+    timer=null;
+
+  }
+
+
+  if(delay){
+
+    clearTimeout(delay);
+
+    delay=null;
+
+  }
+
+
+  if(
+    "speechSynthesis" in window
+  ){
+
+    speechSynthesis.cancel();
+
+  }
 
 }
 
@@ -3579,15 +4852,6 @@ let welcomeAudioCtx=null;
 let welcomeMusicTimer=null;
 
 
-function startWelcome(){
-
-  playWelcomeMusic();
-
-  language();
-
-}
-
-
 function playWelcomeMusic(){
 
   try{
@@ -3595,7 +4859,7 @@ function playWelcomeMusic(){
     if(!welcomeAudioCtx){
 
       welcomeAudioCtx=
-        new (
+        new(
           window.AudioContext||
           window.webkitAudioContext
         )();
@@ -3605,7 +4869,7 @@ function playWelcomeMusic(){
 
     if(
       welcomeAudioCtx.state===
-      'suspended'
+      "suspended"
     ){
 
       welcomeAudioCtx.resume();
@@ -3656,7 +4920,7 @@ function playWelcomeMusic(){
           .createGain();
 
 
-      o.type='triangle';
+      o.type="triangle";
 
 
       o.frequency.value=
@@ -3744,15 +5008,15 @@ function stopWelcomeMusic(){
 
 
 /* =========================================================
-   AUTO WELCOME MUSIC
+   AUTO MUSIC
 ========================================================= */
 
 setTimeout(()=>{
 
   if(
-    $('welcome')?.
+    $("welcome")?.
       classList
-      .contains('active')
+      .contains("active")
   ){
 
     playWelcomeMusic();
@@ -3760,217 +5024,6 @@ setTimeout(()=>{
   }
 
 },300);
-
-
-/* =========================================================
-   CLEAR ALL TIMERS / SPEECH
-========================================================= */
-
-function clearAll(){
-
-  if(timer){
-
-    clearInterval(timer);
-
-    timer=null;
-
-  }
-
-
-  if(delay){
-
-    clearTimeout(delay);
-
-    delay=null;
-
-  }
-
-
-  if(
-    'speechSynthesis' in window
-  ){
-
-    speechSynthesis.cancel();
-
-  }
-
-}
-
-
-/* =========================================================
-   SHUFFLE
-========================================================= */
-
-function shuffle(a){
-
-  for(
-    let i=a.length-1;
-    i>0;
-    i--
-  ){
-
-    let j=
-      Math.floor(
-        Math.random()*(i+1)
-      );
-
-
-    [
-      a[i],
-      a[j]
-    ]=[
-      a[j],
-      a[i]
-    ];
-
-  }
-
-
-  return a;
-
-}
-
-
-/* =========================================================
-   MEMORY CHOICES
-========================================================= */
-
-function makeChoices(x,n){
-
-  let pool=
-    list.filter(
-      a=>a.word!==x.word
-    );
-
-
-  shuffle(pool);
-
-
-  return shuffle([
-
-    x,
-
-    ...pool.slice(0,n)
-
-  ]);
-
-}
-
-
-/* =========================================================
-   TEXT TO SPEECH
-========================================================= */
-
-function speak(
-  text,
-  rate=.75
-){
-
-  if(
-    !('speechSynthesis' in window)
-  ){
-
-    return;
-
-  }
-
-
-  speechSynthesis.cancel();
-
-
-  const u=
-    new SpeechSynthesisUtterance(
-      text
-    );
-
-
-  u.lang='en-GB';
-
-  u.rate=rate;
-
-  u.pitch=1;
-
-
-  speechSynthesis.speak(u);
-
-}
-
-
-/* =========================================================
-   ICON
-========================================================= */
-
-function icon(x){
-
-  let k=
-    String(x)
-      .toLowerCase()
-      .trim();
-
-
-  if(IMG[k]){
-
-    return IMG[k];
-
-  }
-
-
-  for(
-    let z in IMG
-  ){
-
-    if(
-      k.includes(z)
-    ){
-
-      return IMG[z];
-
-    }
-
-  }
-
-
-  return '🖼️';
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function esc(x){
-
-  return String(x)
-    .replace(
-      /[&<>"']/g,
-      m=>({
-
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        '"':'&quot;',
-        "'":'&#39;'
-
-      }[m])
-    );
-
-}
-
-
-/* =========================================================
-   ESCAPE ATTRIBUTE
-========================================================= */
-
-function attr(x){
-
-  return esc(x)
-    .replace(
-      /`/g,
-      '&#96;'
-    );
-
-}
 
 </script>
 
