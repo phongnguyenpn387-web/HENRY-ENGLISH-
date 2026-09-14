@@ -4,381 +4,3619 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Henry English Class – Grade 1</title>
+
 <style>
-:root{--navy:#000055;--orange:#FF6600;--green:#16a34a;--red:#dc2626;--bg:#f4f7fb;--ink:#182033;--card:#fff;--muted:#667085;--line:#d9deea}
-*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)} button{font:inherit;cursor:pointer;border:0} .screen{display:none;min-height:100vh} .active{display:flex}
-.welcome{align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-left)) max(24px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-right));background:var(--navy)}
-.welcome .box{width:min(900px,100%);text-align:center;background:transparent;border-radius:28px;padding:48px 28px;box-shadow:none} .logo{font-size:clamp(28px,6vw,54px);font-weight:900;color:var(--orange);margin:0 0 12px;text-shadow:0 2px 8px #0008} .logo span:first-child{color:#fff} .logo span:last-child{color:var(--orange)} .welcome-line{display:block!important;width:100%;white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important} .sub{font-size:18px;color:#fff;margin-bottom:30px}
-.app{width:100%;flex-direction:column} header{background:var(--navy);color:white;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:5} header strong{font-size:18px} main{width:min(1100px,100%);margin:0 auto;padding:24px 16px 45px;flex:1}
-.title{text-align:center;color:var(--navy);font-size:clamp(25px,4vw,38px);margin:10px 0 25px} .panel{background:var(--card);border-radius:22px;padding:24px;box-shadow:0 10px 30px #0000000c;border:1px solid var(--line)}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
-.menuGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;width:100%;max-width:1180px;margin:0 auto;align-items:stretch}
-.memoryGrid{grid-template-columns:repeat(6,minmax(0,1fr));max-width:1180px}
-.memoryGrid .menu{grid-column:span 2}
-.memoryGrid .menu:nth-child(4){grid-column:2 / span 2}
-.memoryGrid .menu:nth-child(5){grid-column:4 / span 2}
-.menu{background:white;border:2px solid var(--line);border-radius:22px;padding:25px 18px;min-height:190px;transition:.18s;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.menu:hover{transform:translateY(-3px);border-color:var(--orange)} .menu h2{margin:10px 0 6px;color:var(--navy);line-height:1.2} .menu p{margin:0;color:var(--muted)} .ico{font-size:48px;line-height:1;display:flex;align-items:center;justify-content:center;min-height:58px}
-.memoryGrid .menu{min-height:210px}
-
-.primary,.control,.back,.unit,.opt{border-radius:14px;padding:12px 18px;font-weight:800} .primary{background:var(--navy);color:#fff} .primary.orange{background:var(--orange)} .back{background:#fff;color:var(--navy);border:1px solid var(--line);margin-bottom:15px} .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap} .muted{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0} .unit{background:#fff;border:2px solid var(--line);color:var(--navy);min-height:72px} .unit small{display:block;color:var(--muted);font-weight:600;margin-top:5px;font-size:11px} .unit.sel{background:#fff3ea;border-color:var(--orange)}
-.wordCard,.speakWrap{text-align:center;max-width:780px;margin:auto} .bar{height:9px;background:#e8ebf2;border-radius:99px;overflow:hidden;margin:14px 0 22px} .bar i{display:block;height:100%;background:var(--orange)} .image{height:260px;border:2px dashed #cfd5e2;border-radius:22px;background:#fafbfe;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:15px auto;max-width:560px} .pic{font-size:100px;line-height:1} .label{font-size:11px;color:#98a2b3;margin-top:12px;text-transform:uppercase;letter-spacing:.5px} .word{font-size:42px;font-weight:900;color:var(--navy);margin-top:12px} .ipa{font-size:22px;color:var(--orange);margin:6px} .meaning{font-size:20px;color:var(--muted)} .speaker{width:58px;height:58px;border-radius:50%;background:var(--navy);color:white;font-size:26px;margin:16px 0} .speaker.play{transform:scale(1.08)}
-.memoryIntro{text-align:center;margin-bottom:20px} .modeRules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px} .rule{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fbfcff} .rule b{display:block;color:var(--navy);margin-bottom:6px}
-.questionNo{font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.4px} .timer{font-size:42px;font-weight:900;color:var(--orange);height:58px;margin:10px} .qtext{font-size:30px;font-weight:900;color:var(--navy);margin:18px 0} .answer{font-size:26px;font-weight:900;color:var(--green);margin:18px} .hidden{visibility:hidden;opacity:0}.memoryChoices .opt{min-height:150px}.memoryChoices .opt .pic{font-size:78px}.memoryChoices .opt.correct{box-shadow:0 0 0 4px #16a34a55}.memoryChoices .opt.wrong{box-shadow:0 0 0 4px #dc262655}.memorySilentImage{height:320px}.memorySilentImage .pic{font-size:150px}.memoryFeedback{min-height:30px;font-weight:900;font-size:20px} .controls{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:24px} .control{background:white;border:1px solid var(--line);color:var(--navy)} .control:disabled{opacity:.45;cursor:not-allowed}
-.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px} .opt{background:#fff;border:2px solid var(--line);min-height:100px;color:var(--navy);display:flex;align-items:center;justify-content:center;gap:8px;flex-direction:column} .opt:hover:not(:disabled){border-color:var(--orange)} .opt.correct{border-color:var(--green);background:#ecfdf3;color:var(--green)} .opt.wrong{border-color:var(--red);background:#fef2f2;color:var(--red)} .opt .pic{font-size:48px} .result{font-weight:900;font-size:20px;margin-top:14px;min-height:28px} .finish{max-width:650px;margin:70px auto;text-align:center} .finish h1{color:var(--navy)}
-@media(max-width:800px){
-  .welcome{padding:16px;min-height:100dvh;overflow:hidden}
-  .welcome .box{width:100%;max-width:520px;padding:30px 14px}
-  .welcome .logo{font-size:clamp(36px,11vw,62px);line-height:1.05;letter-spacing:0;margin-bottom:20px}
-  .welcome .logo span{display:block!important;white-space:normal!important;width:100%;overflow-wrap:normal;word-break:normal}
-  .welcome .logo span:first-child{font-size:.62em;margin-bottom:12px}
-  .welcome .logo span:last-child{font-size:1em;max-width:100%;margin:auto}
-  .welcome .sub{font-size:clamp(15px,4.2vw,19px);line-height:1.35;margin:0 auto 24px;max-width:390px}
-  .welcome .primary{width:min(100%,330px);min-height:58px;padding:14px 18px;font-size:17px}
-  header{padding:12px 14px} header strong{font-size:16px}
-  main{padding:18px 12px 35px}
-  .panel{padding:18px 14px;border-radius:18px}
-  .cards{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-  .unit{min-height:76px;padding:10px 6px;font-size:14px}
-  .unit small{font-size:9px;line-height:1.2}
-  .opts{grid-template-columns:1fr}
-  .word{font-size:32px;overflow-wrap:anywhere}
-  .qtext{font-size:23px;line-height:1.3}
-  .answer{font-size:22px;line-height:1.35}
-  .image{height:210px;width:100%}
-  .memorySilentImage{height:260px}
-  .memorySilentImage .pic{font-size:120px}
-  .pic{font-size:84px}
-  .logo span{display:block}
-}
-@media(max-width:380px){
-  .welcome .logo{font-size:34px}
-  .welcome .logo span:first-child{font-size:22px}
-  .welcome .sub{font-size:14px}
-  .welcome .primary{font-size:16px}
+:root{
+  --navy:#000055;
+  --orange:#FF6600;
+  --green:#16a34a;
+  --red:#dc2626;
+  --bg:#f4f7fb;
+  --ink:#182033;
+  --card:#fff;
+  --muted:#667085;
+  --line:#d9deea;
 }
 
+*{box-sizing:border-box}
 
-@media (max-width:900px){
-  main{width:min(100%,900px)}
-  .menuGrid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
-  .memoryGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .memoryGrid .menu,.memoryGrid .menu:nth-child(4),.memoryGrid .menu:nth-child(5){grid-column:auto}
-}
-@media (max-width:700px){main{padding:14px 10px 28px}.cards{grid-template-columns:1fr 1fr}.menuGrid{gap:12px}.menu{min-height:145px;padding:16px 10px}.memoryGrid .menu{min-height:150px}.menu h2{font-size:16px}.ico{font-size:38px;min-height:42px}.grid{grid-template-columns:repeat(2,1fr)}.opts{grid-template-columns:1fr}.image{height:220px}.memorySilentImage{height:250px}.memorySilentImage .pic{font-size:120px}.word{font-size:34px}}
-@media (max-width:520px){.menuGrid,.memoryGrid{grid-template-columns:1fr;max-width:440px}.memoryGrid .menu,.memoryGrid .menu:nth-child(4),.memoryGrid .menu:nth-child(5){grid-column:auto}.cards{grid-template-columns:1fr}.memoryGrid .menu{min-height:135px}}
-
-@media (orientation:landscape) and (max-height:600px){header{padding:8px 14px}main{padding:10px 14px 18px}.panel{padding:14px}.cards{grid-template-columns:repeat(3,1fr)}.memoryGrid{grid-template-columns:repeat(6,minmax(0,1fr));max-width:1100px}.memoryGrid .menu{grid-column:span 2;min-height:110px}.memoryGrid .menu:nth-child(4){grid-column:2 / span 2}.memoryGrid .menu:nth-child(5){grid-column:4 / span 2}.menu{min-height:110px;padding:10px}.ico{font-size:30px;min-height:34px}.menu h2{font-size:14px}.image{height:150px}.memorySilentImage{height:170px}.memorySilentImage .pic{font-size:90px}.word{font-size:30px}.timer{font-size:34px;margin:4px}.bar{margin:8px 0 12px}}
-
-/* ===== POLISHED INTERNAL SCREENS ===== */
-#app{background:linear-gradient(180deg,#f7f9fd 0%,#eef3fa 100%)}
-#app main{width:min(1240px,100%);padding:28px 24px 56px}
-#app .title{margin:12px 0 30px;line-height:1.12}
-#app .back{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:10px 22px;border-radius:16px;font-size:18px;box-shadow:0 4px 14px #0000000a}
-#app .panel{border-radius:26px;padding:28px;box-shadow:0 14px 36px #24324b12;border:1px solid #dfe4ef}
-#app .menuGrid{width:min(1080px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;align-items:stretch}
-#app .memoryGrid{grid-template-columns:repeat(6,minmax(0,1fr))}
-#app .memoryGrid .menu{grid-column:span 2}
-#app .memoryGrid .menu:nth-child(4){grid-column:2 / span 2}
-#app .memoryGrid .menu:nth-child(5){grid-column:4 / span 2}
-#app .menuGrid .menu{min-height:205px;padding:26px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;box-shadow:0 8px 24px #24324b0b}
-#app .menuGrid .menu .ico{font-size:56px;line-height:1}
-#app .menuGrid .menu h2{margin:0;font-size:clamp(19px,2.1vw,27px);line-height:1.2}
-#app .menuGrid .menu p{margin:0}
-#app .grid{width:min(100%,920px);margin:24px auto;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-#app .unit{min-height:82px;border-radius:16px;box-shadow:0 4px 12px #24324b08;transition:transform .16s,box-shadow .16s,border-color .16s}
-#app .unit:hover{transform:translateY(-2px);box-shadow:0 8px 18px #24324b12}
-#app .row{justify-content:center}
-#app .wordCard{width:min(900px,100%)}
-#app .wordCard .image{box-shadow:inset 0 0 0 1px #fff}
-#app .opts{width:min(900px,100%);margin-left:auto;margin-right:auto}
-#app .controls{max-width:1000px;margin-left:auto;margin-right:auto}
-@media(max-width:900px){
-  #app main{padding:22px 16px 44px}
-  #app .memoryGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-  #app .memoryGrid .menu{grid-column:span 2}
-  #app .memoryGrid .menu:nth-child(4){grid-column:1 / span 2}
-  #app .memoryGrid .menu:nth-child(5){grid-column:3 / span 2}
-  #app .menuGrid .menu{min-height:175px}
-  #app .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
-}
-@media(max-width:700px){
-  #app main{padding:16px 12px 32px}
-  #app .title{font-size:clamp(27px,8vw,36px);margin:8px 0 22px}
-  #app .back{min-height:46px;padding:9px 17px;font-size:16px}
-  #app .panel{padding:20px 14px;border-radius:20px}
-  #app .memoryGrid{grid-template-columns:1fr 1fr;gap:11px}
-  #app .memoryGrid .menu,.#app .memoryGrid .menu:nth-child(4),#app .memoryGrid .menu:nth-child(5){grid-column:auto}
-  #app .menuGrid .menu{min-height:145px;padding:16px 8px;border-radius:18px}
-  #app .menuGrid .menu .ico{font-size:40px}
-  #app .menuGrid .menu h2{font-size:clamp(14px,4vw,18px)}
-  #app .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-  #app .unit{min-height:72px}
-}
-@media(orientation:landscape) and (max-height:600px){
-  #app main{padding:12px 18px 24px}
-  #app .title{margin:4px 0 14px}
-  #app .memoryGrid{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
-  #app .memoryGrid .menu{grid-column:span 2}
-  #app .memoryGrid .menu:nth-child(4){grid-column:2 / span 2}
-  #app .memoryGrid .menu:nth-child(5){grid-column:4 / span 2}
-  #app .menuGrid .menu{min-height:125px;padding:10px 8px}
-  #app .menuGrid .menu .ico{font-size:32px}
-  #app .menuGrid .menu h2{font-size:14px}
+html{
+  scroll-behavior:smooth;
 }
 
-
-/* ===== VIBRANT CHILD-FRIENDLY REDESIGN (FUNCTIONS UNCHANGED) ===== */
-#app{
-  position:relative;
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
   overflow-x:hidden;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+  border:0;
+  -webkit-tap-highlight-color:transparent;
+}
+
+button:active{
+  transform:scale(.96)!important;
+}
+
+.screen{
+  display:none;
+  min-height:100vh;
+}
+
+.active{
+  display:flex;
+}
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome{
+  align-items:center;
+  justify-content:center;
+  padding:24px max(16px,env(safe-area-inset-left))
+           max(24px,env(safe-area-inset-bottom))
+           max(16px,env(safe-area-inset-right));
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,166,0,.16),transparent 22%),
+    radial-gradient(circle at 80% 75%,rgba(86,104,255,.16),transparent 25%),
+    linear-gradient(135deg,#000055,#08086d,#17117d);
+  position:relative;
+  overflow:hidden;
+}
+
+.welcome:before,
+.welcome:after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.welcome:before{
+  width:260px;
+  height:260px;
+  left:-100px;
+  top:-80px;
+  background:rgba(255,166,0,.08);
+}
+
+.welcome:after{
+  width:330px;
+  height:330px;
+  right:-140px;
+  bottom:-120px;
+  background:rgba(99,102,241,.12);
+}
+
+.welcome .box{
+  width:min(900px,100%);
+  text-align:center;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:34px;
+  padding:55px 28px;
+  box-shadow:0 25px 80px rgba(0,0,0,.25);
+  position:relative;
+  z-index:1;
+  animation:welcomeIn .7s ease both;
+}
+
+@keyframes welcomeIn{
+  from{opacity:0;transform:translateY(25px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.logo{
+  font-size:clamp(28px,6vw,54px);
+  font-weight:900;
+  color:var(--orange);
+  margin:0 0 12px;
+  text-shadow:0 3px 14px rgba(0,0,0,.35);
+}
+
+.logo span:first-child{
+  color:#fff;
+}
+
+.logo span:last-child{
+  color:var(--orange);
+}
+
+.welcome-line{
+  display:block!important;
+  width:100%;
+  white-space:normal!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+}
+
+.sub{
+  font-size:18px;
+  color:#fff;
+  margin-bottom:30px;
+  opacity:.9;
+}
+
+.welcome .primary{
+  min-width:240px;
+  font-size:18px;
+  padding:16px 28px;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+  width:100%;
+  flex-direction:column;
   background:
     radial-gradient(circle at 8% 14%,rgba(255,193,92,.22),transparent 19%),
     radial-gradient(circle at 92% 18%,rgba(116,179,255,.18),transparent 22%),
     radial-gradient(circle at 14% 88%,rgba(255,142,178,.13),transparent 18%),
     linear-gradient(180deg,#f8fbff 0%,#edf4ff 48%,#f8f3ff 100%);
+  position:relative;
 }
-#app::before,#app::after{content:'';position:fixed;z-index:0;pointer-events:none;border-radius:999px;filter:blur(.2px)}
-#app::before{width:180px;height:180px;left:-70px;top:120px;background:rgba(255,214,126,.18)}
-#app::after{width:220px;height:220px;right:-95px;bottom:35px;background:rgba(148,196,255,.18)}
-#app header,#app main{position:relative;z-index:1}
-#app header{
-  min-height:72px;
-  padding:13px clamp(18px,4vw,42px);
+
+.app:before,
+.app:after{
+  content:"";
+  position:fixed;
+  z-index:0;
+  pointer-events:none;
+  border-radius:999px;
+}
+
+.app:before{
+  width:180px;
+  height:180px;
+  left:-70px;
+  top:120px;
+  background:rgba(255,214,126,.18);
+}
+
+.app:after{
+  width:220px;
+  height:220px;
+  right:-95px;
+  bottom:35px;
+  background:rgba(148,196,255,.18);
+}
+
+header{
   background:linear-gradient(105deg,#07075d 0%,#101078 48%,#28208d 100%);
+  color:white;
+  padding:13px clamp(18px,4vw,42px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  min-height:72px;
   box-shadow:0 8px 28px rgba(10,13,80,.20);
   border-bottom:1px solid rgba(255,255,255,.12);
 }
-#app header strong{font-size:clamp(16px,2vw,22px);letter-spacing:.5px}
-#langBadge{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:38px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);font-weight:900;letter-spacing:.7px}
-#app main{min-height:calc(100vh - 72px)}
-#app .title{
-  color:#10135f;
+
+header strong{
+  font-size:clamp(16px,2vw,22px);
+  letter-spacing:.5px;
+}
+
+#langBadge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:44px;
+  height:38px;
+  padding:0 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.22);
   font-weight:900;
-  letter-spacing:.2px;
+  letter-spacing:.7px;
+}
+
+main{
+  width:min(1240px,100%);
+  margin:0 auto;
+  padding:28px 24px 56px;
+  flex:1;
+  position:relative;
+  z-index:1;
+}
+
+/* =========================
+   PAGE TRANSITION
+========================= */
+
+#main.page-enter{
+  animation:pageEnter .35s ease both;
+}
+
+@keyframes pageEnter{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.title{
+  text-align:center;
+  color:#10135f;
+  font-size:clamp(25px,4vw,38px);
+  margin:12px 0 30px;
+  font-weight:900;
+  line-height:1.12;
   text-shadow:0 2px 0 rgba(255,255,255,.8);
 }
-#app .title::after{content:'';display:block;width:68px;height:6px;margin:12px auto 0;border-radius:99px;background:linear-gradient(90deg,#ffbd3f,#ff6f7f,#7467e8)}
-#app .back{
-  background:rgba(255,255,255,.88);
-  backdrop-filter:blur(8px);
-  border:1px solid #dbe3f1;
-  color:#12175f;
-  box-shadow:0 8px 20px rgba(28,48,85,.10);
-  transition:transform .16s,box-shadow .16s,background .16s;
+
+.title:after{
+  content:"";
+  display:block;
+  width:68px;
+  height:6px;
+  margin:12px auto 0;
+  border-radius:99px;
+  background:linear-gradient(90deg,#ffbd3f,#ff6f7f,#7467e8);
 }
-#app .back:hover{transform:translateX(-2px);box-shadow:0 12px 24px rgba(28,48,85,.15);background:#fff}
-#app .panel{
+
+/* =========================
+   PANEL
+========================= */
+
+.panel{
   position:relative;
   overflow:hidden;
   background:rgba(255,255,255,.94);
   border:1px solid rgba(208,219,239,.9);
+  border-radius:26px;
+  padding:28px;
   box-shadow:0 18px 45px rgba(40,64,106,.12);
+  animation:cardIn .35s ease both;
 }
-#app .panel::before{content:'';position:absolute;left:0;top:0;width:100%;height:5px;background:linear-gradient(90deg,#ffbd3f 0%,#ff7d72 32%,#6f78ec 66%,#55c69b 100%)}
-#app .panel h2{color:#12165f;font-size:clamp(23px,3vw,32px);margin-top:4px;text-align:center}
-#app .muted{color:#66718b}
-#app .primary{
-  border-radius:16px;
-  padding:13px 22px;
-  background:linear-gradient(135deg,#17136d,#3731a4);
-  box-shadow:0 8px 18px rgba(39,31,128,.22);
-  transition:transform .16s,box-shadow .16s,filter .16s;
-}
-#app .primary.orange{background:linear-gradient(135deg,#ff9f1c,#ff6b35);box-shadow:0 8px 18px rgba(255,112,53,.25)}
-#app .primary:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 12px 24px rgba(39,31,128,.25)}
-#app .primary:active,#app .control:active,#app .unit:active,#app .opt:active{transform:scale(.98)}
 
-/* Main category cards */
-#app .cards{width:min(1120px,100%);margin:0 auto;gap:24px}
-#app .cards .menu{
-  position:relative;overflow:hidden;min-height:260px;
-  border:0;border-radius:28px;
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(10px) scale(.99);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.panel:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:5px;
+  background:linear-gradient(
+    90deg,
+    #ffbd3f 0%,
+    #ff7d72 32%,
+    #6f78ec 66%,
+    #55c69b 100%
+  );
+}
+
+.panel h2{
+  color:#12165f;
+  font-size:clamp(23px,3vw,32px);
+  margin-top:4px;
+  text-align:center;
+}
+
+.muted{
+  color:#66718b;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary,
+.control,
+.back,
+.unit,
+.opt{
+  border-radius:15px;
+  font-weight:800;
+  transition:
+    transform .16s,
+    box-shadow .16s,
+    filter .16s,
+    border-color .16s;
+}
+
+.primary{
+  background:linear-gradient(135deg,#17136d,#3731a4);
+  color:#fff;
+  padding:13px 22px;
+  box-shadow:0 8px 18px rgba(39,31,128,.22);
+}
+
+.primary.orange{
+  background:linear-gradient(135deg,#ff9f1c,#ff6b35);
+  box-shadow:0 8px 18px rgba(255,112,53,.25);
+}
+
+.primary:hover{
+  transform:translateY(-3px);
+  filter:brightness(1.05);
+  box-shadow:0 13px 25px rgba(39,31,128,.28);
+}
+
+.primary.orange:hover{
+  box-shadow:0 13px 25px rgba(255,112,53,.3);
+}
+
+.back{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:10px 22px;
+  margin-bottom:15px;
+  background:rgba(255,255,255,.9);
+  color:#12175f;
+  border:1px solid #dbe3f1;
+  box-shadow:0 8px 20px rgba(28,48,85,.1);
+}
+
+.back:hover{
+  transform:translateX(-3px);
+  background:#fff;
+}
+
+.control{
+  background:#fff;
+  border:1.5px solid #dce4f0;
+  color:#10165f;
+  padding:12px 17px;
+  box-shadow:0 5px 12px rgba(43,62,99,.08);
+}
+
+.control:hover:not(:disabled){
+  transform:translateY(-2px);
+  border-color:#8d84ec;
+  box-shadow:0 10px 18px rgba(73,69,164,.13);
+}
+
+.control:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   MAIN CARDS
+========================= */
+
+.cards{
+  width:min(1120px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+}
+
+.cards .menu{
+  position:relative;
+  overflow:hidden;
+  min-height:260px;
+  border:0;
+  border-radius:28px;
   background:linear-gradient(145deg,#fff 0%,#f8fbff 100%);
   box-shadow:0 16px 36px rgba(38,60,99,.14);
   padding:30px 20px 24px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transition:
+    transform .2s,
+    box-shadow .2s;
 }
-#app .cards .menu::before{content:'';position:absolute;width:140px;height:140px;border-radius:50%;top:-72px;right:-52px;background:rgba(255,184,62,.14)}
-#app .cards .menu::after{content:'';position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:58px;height:6px;border-radius:99px;background:linear-gradient(90deg,#ffc342,#ff8c55)}
-#app .cards .menu.memory::before{background:rgba(132,115,245,.14)}
-#app .cards .menu.memory::after{background:linear-gradient(90deg,#786cf0,#b276ef)}
-#app .cards .menu.speak::before{background:rgba(67,197,161,.14)}
-#app .cards .menu.speak::after{background:linear-gradient(90deg,#40c6a0,#50a7df)}
-#app .cards .menu:hover{transform:translateY(-8px);box-shadow:0 24px 44px rgba(38,60,99,.20)}
-#app .cards .menu .ico{font-size:64px;min-height:74px;filter:drop-shadow(0 7px 6px rgba(27,40,80,.12));position:relative;z-index:1}
-#app .cards .menu h2{font-size:clamp(24px,2.5vw,32px);margin:12px 0 8px;position:relative;z-index:1}
-#app .cards .menu p{font-weight:700;color:#7a849c;position:relative;z-index:1}
 
-/* Memory menu: colorful but balanced */
-#app .menuGrid .menu{
-  position:relative;overflow:hidden;border:2px solid transparent;border-radius:26px;
-  background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#ffd35d,#ffad72,#9cb8ff) border-box;
+.cards .menu:before{
+  content:"";
+  position:absolute;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  top:-72px;
+  right:-52px;
+  background:rgba(255,184,62,.14);
+}
+
+.cards .menu:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  width:58px;
+  height:6px;
+  border-radius:99px;
+  background:linear-gradient(90deg,#ffc342,#ff8c55);
+}
+
+.cards .memory:before{
+  background:rgba(132,115,245,.14);
+}
+
+.cards .memory:after{
+  background:linear-gradient(90deg,#786cf0,#b276ef);
+}
+
+.cards .speak:before{
+  background:rgba(67,197,161,.14);
+}
+
+.cards .speak:after{
+  background:linear-gradient(90deg,#40c6a0,#50a7df);
+}
+
+.cards .menu:hover{
+  transform:translateY(-8px);
+  box-shadow:0 24px 44px rgba(38,60,99,.20);
+}
+
+.cards .menu .ico{
+  font-size:64px;
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  filter:drop-shadow(0 7px 6px rgba(27,40,80,.12));
+  position:relative;
+  z-index:1;
+  animation:floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+
+.cards .menu h2{
+  font-size:clamp(24px,2.5vw,32px);
+  margin:12px 0 8px;
+  color:#141a63;
+  position:relative;
+  z-index:1;
+}
+
+.cards .menu p{
+  font-weight:700;
+  color:#7a849c;
+  position:relative;
+  z-index:1;
+}
+
+/* =========================
+   MEMORY MENU
+========================= */
+
+.menuGrid{
+  width:min(1080px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:18px;
+}
+
+.memoryGrid .menu{
+  grid-column:span 2;
+}
+
+.memoryGrid .menu:nth-child(4){
+  grid-column:2 / span 2;
+}
+
+.memoryGrid .menu:nth-child(5){
+  grid-column:4 / span 2;
+}
+
+.menuGrid .menu{
+  position:relative;
+  overflow:hidden;
+  min-height:205px;
+  padding:26px 18px;
+  border:2px solid transparent;
+  border-radius:26px;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    linear-gradient(135deg,#ffd35d,#ffad72,#9cb8ff) border-box;
   box-shadow:0 14px 30px rgba(38,60,99,.11);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:10px;
+  transition:.2s;
 }
-#app .menuGrid .menu::before{content:'';position:absolute;width:95px;height:95px;border-radius:50%;top:-44px;right:-38px;background:rgba(255,205,83,.13)}
-#app .menuGrid .menu:nth-child(2)::before{background:rgba(101,164,255,.13)}
-#app .menuGrid .menu:nth-child(3)::before{background:rgba(146,108,245,.13)}
-#app .menuGrid .menu:nth-child(4)::before{background:rgba(70,194,148,.13)}
-#app .menuGrid .menu:nth-child(5)::before{background:rgba(244,104,159,.13)}
-#app .menuGrid .menu::after{content:'';width:52px;height:5px;border-radius:99px;background:#ffb23d;position:absolute;bottom:19px;left:50%;transform:translateX(-50%)}
-#app .menuGrid .menu:nth-child(2)::after{background:#6198ed}
-#app .menuGrid .menu:nth-child(3)::after{background:#8e72e9}
-#app .menuGrid .menu:nth-child(4)::after{background:#49b98a}
-#app .menuGrid .menu:nth-child(5)::after{background:#ed6b9f}
-#app .menuGrid .menu:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 21px 38px rgba(38,60,99,.17)}
-#app .menuGrid .menu h2{color:#141a63;font-weight:900}
 
-/* Unit selection */
-#app .grid{padding:6px}
-#app .unit{
-  position:relative;overflow:hidden;background:linear-gradient(145deg,#fff,#f7faff);
-  border:1.5px solid #dce5f4;color:#151b66;font-weight:900;
+.menuGrid .menu:before{
+  content:"";
+  position:absolute;
+  width:95px;
+  height:95px;
+  border-radius:50%;
+  top:-44px;
+  right:-38px;
+  background:rgba(255,205,83,.13);
 }
-#app .unit::before{content:'';position:absolute;width:48px;height:48px;border-radius:50%;right:-20px;top:-20px;background:rgba(255,190,71,.13)}
-#app .unit:nth-child(3n)::before{background:rgba(117,129,237,.12)}
-#app .unit:nth-child(3n+2)::before{background:rgba(70,194,148,.12)}
-#app .unit.sel{background:linear-gradient(145deg,#fff6e7,#fff);border-color:#ff9b39;box-shadow:0 10px 22px rgba(255,154,57,.18)}
-#app .unit small{color:#778198}
 
-/* Learning / quiz cards */
-#app .wordCard,#app .speakWrap{background:rgba(255,255,255,.96)}
-#app .questionNo{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:7px 14px;border-radius:999px;background:#fff4df;color:#d87900;font-size:13px;box-shadow:inset 0 0 0 1px #ffe0a5}
-#app .bar{height:12px;background:#edf1f8;border-radius:99px;padding:2px;box-shadow:inset 0 2px 5px rgba(45,65,100,.08)}
-#app .bar i{border-radius:99px;background:linear-gradient(90deg,#ffbd3f,#ff7b65,#7b73e9)}
-#app .image{
-  border:2px solid #e3e9f5;border-style:solid;
-  background:radial-gradient(circle at 50% 35%,#fff 0%,#f5f8ff 65%,#edf3ff 100%);
+.menuGrid .menu:nth-child(2):before{
+  background:rgba(101,164,255,.13);
+}
+
+.menuGrid .menu:nth-child(3):before{
+  background:rgba(146,108,245,.13);
+}
+
+.menuGrid .menu:nth-child(4):before{
+  background:rgba(70,194,148,.13);
+}
+
+.menuGrid .menu:nth-child(5):before{
+  background:rgba(244,104,159,.13);
+}
+
+.menuGrid .menu:after{
+  content:"";
+  width:52px;
+  height:5px;
+  border-radius:99px;
+  background:#ffb23d;
+  position:absolute;
+  bottom:19px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.menuGrid .menu:nth-child(2):after{background:#6198ed}
+.menuGrid .menu:nth-child(3):after{background:#8e72e9}
+.menuGrid .menu:nth-child(4):after{background:#49b98a}
+.menuGrid .menu:nth-child(5):after{background:#ed6b9f}
+
+.menuGrid .menu:hover{
+  transform:translateY(-5px) scale(1.01);
+  box-shadow:0 21px 38px rgba(38,60,99,.17);
+}
+
+.menuGrid .menu .ico{
+  font-size:56px;
+  line-height:1;
+}
+
+.menuGrid .menu h2{
+  color:#141a63;
+  font-weight:900;
+  margin:0;
+}
+
+/* =========================
+   UNIT GRID
+========================= */
+
+.grid{
+  width:min(100%,920px);
+  margin:24px auto;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+
+.unit{
+  position:relative;
+  overflow:hidden;
+  min-height:82px;
+  padding:12px 10px;
+  background:linear-gradient(145deg,#fff,#f7faff);
+  border:1.5px solid #dce5f4;
+  color:#151b66;
+  box-shadow:0 4px 12px #24324b08;
+}
+
+.unit:before{
+  content:"";
+  position:absolute;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  right:-20px;
+  top:-20px;
+  background:rgba(255,190,71,.13);
+}
+
+.unit:nth-child(3n):before{
+  background:rgba(117,129,237,.12);
+}
+
+.unit:nth-child(3n+2):before{
+  background:rgba(70,194,148,.12);
+}
+
+.unit:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(36,50,75,.12);
+  border-color:#9d94ef;
+}
+
+.unit.sel{
+  background:linear-gradient(145deg,#fff6e7,#fff);
+  border-color:#ff9b39;
+  box-shadow:0 10px 22px rgba(255,154,57,.18);
+}
+
+.unit small{
+  display:block;
+  color:#778198;
+  font-weight:600;
+  margin-top:5px;
+  font-size:11px;
+  line-height:1.2;
+}
+
+/* =========================
+   WORD / SPEAKING
+========================= */
+
+.wordCard,
+.speakWrap{
+  text-align:center;
+  max-width:900px;
+  margin:auto;
+}
+
+.questionNo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  padding:7px 14px;
+  border-radius:999px;
+  background:#fff4df;
+  color:#d87900;
+  font-size:13px;
+  font-weight:900;
+  box-shadow:inset 0 0 0 1px #ffe0a5;
+}
+
+.bar{
+  height:12px;
+  background:#edf1f8;
+  border-radius:99px;
+  padding:2px;
+  overflow:hidden;
+  margin:14px 0 22px;
+  box-shadow:inset 0 2px 5px rgba(45,65,100,.08);
+}
+
+.bar i{
+  display:block;
+  height:100%;
+  border-radius:99px;
+  background:linear-gradient(90deg,#ffbd3f,#ff7b65,#7b73e9);
+  transition:width .35s ease;
+}
+
+.image{
+  height:260px;
+  border:2px solid #e3e9f5;
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 50% 35%,#fff 0%,#f5f8ff 65%,#edf3ff 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin:15px auto;
+  max-width:560px;
   box-shadow:0 12px 28px rgba(44,67,109,.09);
 }
-#app .image .pic{filter:drop-shadow(0 10px 7px rgba(36,50,85,.13))}
-#app .word{color:#121866;text-shadow:0 2px 0 #fff}
-#app .ipa{display:inline-block;padding:6px 14px;border-radius:999px;background:#fff2e7;color:#ef741e;font-weight:800}
-#app .meaning{font-weight:700;color:#65708b}
-#app .speaker{background:linear-gradient(145deg,#17136d,#4038af);box-shadow:0 10px 20px rgba(43,35,137,.25);border:3px solid #fff;transition:transform .16s}
-#app .speaker:hover{transform:scale(1.08)}
-#app .timer{display:inline-flex;align-items:center;justify-content:center;min-width:86px;height:86px;padding:0 20px;border-radius:50%;background:linear-gradient(145deg,#fff9ee,#fff);border:5px solid #ffe0a5;color:#f18b18;box-shadow:0 10px 25px rgba(243,154,41,.18)}
-#app .memoryFeedback{color:#23247a;font-size:21px}
 
-/* Answer choices and controls */
-#app .opts{gap:18px}
-#app .opt{
-  border:2px solid #e0e7f2;border-radius:22px;background:linear-gradient(145deg,#fff,#f9fbff);
-  box-shadow:0 8px 20px rgba(43,62,99,.08);font-weight:900;transition:transform .16s,border-color .16s,box-shadow .16s;
+.pic{
+  font-size:100px;
+  line-height:1;
+  filter:drop-shadow(0 10px 7px rgba(36,50,85,.13));
+  animation:picPop .35s ease both;
 }
-#app .opt:hover:not(:disabled){transform:translateY(-3px);border-color:#8c83ed;box-shadow:0 14px 25px rgba(84,76,180,.14)}
-#app .opt.correct{background:linear-gradient(145deg,#effdf5,#fff);border-color:#32bd7b}
-#app .opt.wrong{background:linear-gradient(145deg,#fff2f2,#fff);border-color:#f06f70}
-#app .control{background:#fff;border:1.5px solid #dce4f0;border-radius:15px;box-shadow:0 5px 12px rgba(43,62,99,.08);transition:transform .16s,border-color .16s,box-shadow .16s}
-#app .control:hover:not(:disabled){transform:translateY(-2px);border-color:#8d84ec;box-shadow:0 10px 18px rgba(73,69,164,.13)}
-#app .finish{padding:36px 24px;border-radius:30px;background:linear-gradient(145deg,#fff,#f7faff);box-shadow:0 20px 45px rgba(43,62,99,.13)}
-#app .finish h1{font-size:clamp(32px,5vw,50px)}
+
+@keyframes picPop{
+  from{
+    opacity:0;
+    transform:scale(.75) rotate(-4deg);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) rotate(0);
+  }
+}
+
+.label{
+  font-size:11px;
+  color:#98a2b3;
+  margin-top:12px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.word{
+  font-size:42px;
+  font-weight:900;
+  color:#121866;
+  margin-top:12px;
+  text-shadow:0 2px 0 #fff;
+  animation:wordIn .3s ease both;
+}
+
+@keyframes wordIn{
+  from{opacity:0;transform:translateY(7px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.ipa{
+  display:inline-block;
+  font-size:22px;
+  color:#ef741e;
+  margin:8px;
+  padding:6px 14px;
+  border-radius:999px;
+  background:#fff2e7;
+  font-weight:800;
+}
+
+.meaning{
+  font-size:20px;
+  color:#65708b;
+  font-weight:700;
+}
+
+.speaker{
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#17136d,#4038af);
+  color:white;
+  font-size:27px;
+  margin:16px 0;
+  box-shadow:0 10px 20px rgba(43,35,137,.25);
+  border:3px solid #fff;
+  transition:transform .16s,box-shadow .16s;
+}
+
+.speaker:hover{
+  transform:scale(1.09);
+  box-shadow:0 14px 26px rgba(43,35,137,.32);
+}
+
+.speaker.play{
+  transform:scale(1.1);
+}
+
+/* =========================
+   TIMER
+========================= */
+
+.timer{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:86px;
+  height:86px;
+  padding:0 20px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#fff9ee,#fff);
+  border:5px solid #ffe0a5;
+  color:#f18b18;
+  font-size:42px;
+  font-weight:900;
+  box-shadow:0 10px 25px rgba(243,154,41,.18);
+  transition:
+    transform .15s,
+    border-color .15s,
+    color .15s;
+}
+
+.timer.tick{
+  animation:timerTick .18s ease;
+}
+
+.timer.last{
+  color:#dc2626;
+  border-color:#ffb0b0;
+  background:#fff5f5;
+}
+
+@keyframes timerTick{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+  100%{transform:scale(1)}
+}
+
+/* =========================
+   ANSWERS
+========================= */
+
+.qtext{
+  font-size:30px;
+  font-weight:900;
+  color:#10165f;
+  margin:18px 0;
+  line-height:1.3;
+  animation:questionIn .35s ease both;
+}
+
+@keyframes questionIn{
+  from{opacity:0;transform:translateX(12px)}
+  to{opacity:1;transform:translateX(0)}
+}
+
+.answer{
+  font-size:26px;
+  font-weight:900;
+  color:var(--green);
+  margin:18px;
+  line-height:1.35;
+}
+
+.answer.reveal{
+  animation:answerReveal .45s ease both;
+}
+
+@keyframes answerReveal{
+  0%{
+    opacity:0;
+    transform:translateY(15px) scale(.94);
+  }
+  60%{
+    transform:translateY(-3px) scale(1.02);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.hidden{
+  visibility:hidden;
+  opacity:0;
+}
+
+.memoryFeedback{
+  min-height:30px;
+  font-weight:900;
+  font-size:20px;
+  color:#23247a;
+  margin-top:10px;
+}
+
+.feedbackGood{
+  color:#16a34a!important;
+  animation:feedbackPop .35s ease;
+}
+
+.feedbackBad{
+  color:#dc2626!important;
+  animation:feedbackPop .35s ease;
+}
+
+@keyframes feedbackPop{
+  0%{transform:scale(.85);opacity:0}
+  70%{transform:scale(1.08)}
+  100%{transform:scale(1);opacity:1}
+}
+
+/* =========================
+   OPTIONS
+========================= */
+
+.opts{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  width:min(900px,100%);
+  margin:20px auto;
+}
+
+.opt{
+  min-height:100px;
+  background:linear-gradient(145deg,#fff,#f9fbff);
+  border:2px solid #e0e7f2;
+  color:#10165f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex-direction:column;
+  box-shadow:0 8px 20px rgba(43,62,99,.08);
+}
+
+.opt:hover:not(:disabled){
+  transform:translateY(-4px);
+  border-color:#8c83ed;
+  box-shadow:0 14px 25px rgba(84,76,180,.14);
+}
+
+.opt.correct{
+  background:linear-gradient(145deg,#effdf5,#fff);
+  border-color:#32bd7b;
+  color:#16a34a;
+  animation:correctPop .4s ease;
+}
+
+.opt.wrong{
+  background:linear-gradient(145deg,#fff2f2,#fff);
+  border-color:#f06f70;
+  color:#dc2626;
+  animation:wrongShake .4s ease;
+}
+
+@keyframes correctPop{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.06)}
+  100%{transform:scale(1)}
+}
+
+@keyframes wrongShake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-7px)}
+  75%{transform:translateX(7px)}
+}
+
+.opt .pic{
+  font-size:78px;
+}
+
+.result{
+  font-weight:900;
+  font-size:20px;
+  margin-top:14px;
+  min-height:28px;
+}
+
+.controls{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:24px;
+}
+
+/* =========================
+   MEMORY
+========================= */
+
+.memorySilentImage{
+  height:320px;
+}
+
+.memorySilentImage .pic{
+  font-size:150px;
+}
+
+.memoryChoices .opt{
+  min-height:150px;
+}
+
+.finish{
+  max-width:650px;
+  margin:70px auto;
+  text-align:center;
+  padding:36px 24px;
+  border-radius:30px;
+  background:linear-gradient(145deg,#fff,#f7faff);
+  box-shadow:0 20px 45px rgba(43,62,99,.13);
+}
+
+.finish h1{
+  color:#10165f;
+  font-size:clamp(32px,5vw,50px);
+}
+
+.finish button{
+  margin:5px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+  main{
+    padding:22px 16px 44px;
+  }
+
+  .memoryGrid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:14px;
+  }
+
+  .memoryGrid .menu{
+    grid-column:span 2;
+  }
+
+  .memoryGrid .menu:nth-child(4){
+    grid-column:1 / span 2;
+  }
+
+  .memoryGrid .menu:nth-child(5){
+    grid-column:3 / span 2;
+  }
+
+  .grid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:11px;
+  }
+}
 
 @media(max-width:700px){
-  #app header{min-height:62px;padding:10px 14px}
-  #app main{min-height:calc(100vh - 62px)}
-  #app .cards{gap:15px}
-  #app .cards .menu{min-height:185px;border-radius:22px;padding:20px 12px 20px}
-  #app .cards .menu .ico{font-size:48px;min-height:54px}
-  #app .cards .menu h2{font-size:20px}
-  #app .cards .menu p{font-size:12px}
-  #app .menuGrid .menu{border-radius:20px}
-  #app .opts{gap:11px}
-  #app .timer{min-width:70px;height:70px;font-size:34px;border-width:4px}
-}
-@media(max-width:520px){
-  #app .cards{grid-template-columns:1fr}
-  #app .cards .menu{min-height:155px}
-  #app .cards .menu::after{bottom:13px}
+  header{
+    min-height:62px;
+    padding:10px 14px;
+  }
+
+  main{
+    padding:16px 12px 32px;
+  }
+
+  .cards{
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+  }
+
+  .cards .menu{
+    min-height:185px;
+    border-radius:22px;
+    padding:20px 12px;
+  }
+
+  .cards .menu .ico{
+    font-size:48px;
+    min-height:54px;
+  }
+
+  .cards .menu h2{
+    font-size:20px;
+  }
+
+  .cards .menu p{
+    font-size:12px;
+  }
+
+  .menuGrid{
+    grid-template-columns:1fr 1fr;
+    gap:11px;
+  }
+
+  .menuGrid .menu,
+  .memoryGrid .menu,
+  .memoryGrid .menu:nth-child(4),
+  .memoryGrid .menu:nth-child(5){
+    grid-column:auto;
+  }
+
+  .menuGrid .menu{
+    min-height:145px;
+    padding:16px 8px;
+    border-radius:20px;
+  }
+
+  .menuGrid .menu .ico{
+    font-size:40px;
+  }
+
+  .menuGrid .menu h2{
+    font-size:clamp(14px,4vw,18px);
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+  }
+
+  .unit{
+    min-height:72px;
+  }
+
+  .opts{
+    grid-template-columns:1fr;
+    gap:11px;
+  }
+
+  .image{
+    height:220px;
+  }
+
+  .memorySilentImage{
+    height:250px;
+  }
+
+  .memorySilentImage .pic{
+    font-size:120px;
+  }
+
+  .pic{
+    font-size:84px;
+  }
+
+  .word{
+    font-size:34px;
+  }
+
+  .qtext{
+    font-size:23px;
+  }
+
+  .answer{
+    font-size:22px;
+  }
+
+  .timer{
+    min-width:70px;
+    height:70px;
+    font-size:34px;
+    border-width:4px;
+  }
 }
 
+@media(max-width:520px){
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .cards .menu{
+    min-height:155px;
+  }
+
+  .menuGrid{
+    grid-template-columns:1fr;
+    max-width:440px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .memoryGrid{
+    grid-template-columns:1fr;
+  }
+
+  .menuGrid .menu{
+    min-height:135px;
+  }
+
+  .welcome .box{
+    padding:38px 18px;
+  }
+
+  .welcome .logo{
+    font-size:clamp(36px,11vw,62px);
+    line-height:1.05;
+  }
+
+  .welcome .logo span{
+    display:block!important;
+  }
+
+  .welcome .logo span:first-child{
+    font-size:.62em;
+    margin-bottom:12px;
+  }
+
+  .welcome .sub{
+    font-size:15px;
+    line-height:1.35;
+  }
+
+  .welcome .primary{
+    width:min(100%,330px);
+    min-height:58px;
+  }
+}
+
+@media(max-width:380px){
+  .welcome .logo{
+    font-size:34px;
+  }
+
+  .welcome .logo span:first-child{
+    font-size:22px;
+  }
+
+  .welcome .sub{
+    font-size:14px;
+  }
+}
+
+@media(orientation:landscape) and (max-height:600px){
+  header{
+    padding:8px 14px;
+  }
+
+  main{
+    padding:12px 18px 24px;
+  }
+
+  .cards{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .cards .menu{
+    min-height:125px;
+    padding:10px;
+  }
+
+  .cards .menu .ico{
+    font-size:32px;
+    min-height:34px;
+  }
+
+  .cards .menu h2{
+    font-size:14px;
+  }
+
+  .memoryGrid{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+  }
+
+  .memoryGrid .menu{
+    grid-column:span 2;
+  }
+
+  .memoryGrid .menu:nth-child(4){
+    grid-column:2 / span 2;
+  }
+
+  .memoryGrid .menu:nth-child(5){
+    grid-column:4 / span 2;
+  }
+
+  .image{
+    height:150px;
+  }
+
+  .memorySilentImage{
+    height:170px;
+  }
+
+  .memorySilentImage .pic{
+    font-size:90px;
+  }
+
+  .word{
+    font-size:30px;
+  }
+
+  .timer{
+    font-size:34px;
+    margin:4px;
+  }
+}
 </style>
 </head>
-<body>
-<section id="welcome" class="screen active welcome"><div class="box"><h1 class="logo"><span class="welcome-line">WELCOME TO</span><span class="welcome-line">HENRY ENGLISH CLASS</span></h1><div class="sub">GRADE 1 • ENGLISH LEARNING SYSTEM</div>
-<button class="primary orange" onclick="startWelcome()">🚀 START / BẮT ĐẦU</button></div></section>
-<section id="app" class="screen app"><header><strong id="brand">HENRY ENGLISH</strong><span id="langBadge">VI</span></header><main id="main"></main></section>
-<script>
-const vocabData={"1":[{"word":"ball","ipa":"bɔːl","meaning":"quả bóng"},{"word":"bike","ipa":"baɪk","meaning":"xe đạp"},{"word":"book","ipa":"bʊk","meaning":"quyển sách"}],"2":[{"word":"cake","ipa":"keɪk","meaning":"bánh"},{"word":"car","ipa":"kɑː","meaning":"ô tô"},{"word":"cat","ipa":"kæt","meaning":"con mèo"},{"word":"cup","ipa":"kʌp","meaning":"cái cốc"}],"3":[{"word":"apple","ipa":"ˈæpəl","meaning":"quả táo"},{"word":"bag","ipa":"bæɡ","meaning":"cái túi"},{"word":"can","ipa":"kæn","meaning":"cái lon"},{"word":"hat","ipa":"hæt","meaning":"cái mũ"}],"4":[{"word":"desk","ipa":"desk","meaning":"bàn học"},{"word":"dog","ipa":"dɒɡ","meaning":"con chó"},{"word":"door","ipa":"dɔː","meaning":"cánh cửa"},{"word":"duck","ipa":"dʌk","meaning":"con vịt"}],"5":[{"word":"chicken","ipa":"ˈtʃɪkɪn","meaning":"thịt gà"},{"word":"chips","ipa":"tʃɪps","meaning":"khoai tây chiên"},{"word":"fish","ipa":"fɪʃ","meaning":"cá"},{"word":"milk","ipa":"mɪlk","meaning":"sữa"}],"6":[{"word":"bell","ipa":"bel","meaning":"cái chuông"},{"word":"pen","ipa":"pen","meaning":"bút mực"},{"word":"pencil","ipa":"ˈpensəl","meaning":"bút chì"},{"word":"red","ipa":"red","meaning":"màu đỏ"}],"7":[{"word":"garden","ipa":"ˈɡɑːdən","meaning":"khu vườn"},{"word":"gate","ipa":"ɡeɪt","meaning":"cái cổng"},{"word":"girl","ipa":"ɡɜːl","meaning":"cô gái"},{"word":"goat","ipa":"ɡəʊt","meaning":"con dê"}],"8":[{"word":"hair","ipa":"heə","meaning":"tóc"},{"word":"hand","ipa":"hænd","meaning":"bàn tay"},{"word":"head","ipa":"hed","meaning":"đầu"},{"word":"horse","ipa":"hɔːs","meaning":"con ngựa"}],"9":[{"word":"clock","ipa":"klɒk","meaning":"đồng hồ"},{"word":"lock","ipa":"lɒk","meaning":"ổ khóa"},{"word":"mop","ipa":"mɒp","meaning":"cây lau nhà"},{"word":"pot","ipa":"pɒt","meaning":"cái nồi"}],"10":[{"word":"mango","ipa":"ˈmæŋɡəʊ","meaning":"quả xoài"},{"word":"monkey","ipa":"ˈmʌŋki","meaning":"con khỉ"},{"word":"mother","ipa":"ˈmʌðə","meaning":"mẹ"},{"word":"mouse","ipa":"maʊs","meaning":"con chuột"}],"11":[{"word":"bus","ipa":"bʌs","meaning":"xe buýt"},{"word":"running","ipa":"ˈrʌnɪŋ","meaning":"đang chạy"},{"word":"sun","ipa":"sʌn","meaning":"mặt trời"},{"word":"truck","ipa":"trʌk","meaning":"xe tải"}],"12":[{"word":"lake","ipa":"leɪk","meaning":"hồ"},{"word":"leaf","ipa":"liːf","meaning":"chiếc lá"},{"word":"lemons","ipa":"ˈlemənz","meaning":"những quả chanh"},{"word":"lamp","ipa":"læmp","meaning":"đèn"}],"13":[{"word":"bananas","ipa":"bəˈnɑːnəz","meaning":"những quả chuối"},{"word":"Nick","ipa":"nɪk","meaning":"Nick"},{"word":"noodles","ipa":"ˈnuːdlz","meaning":"mì"},{"word":"nuts","ipa":"nʌts","meaning":"các loại hạt"}],"14":[{"word":"teddy bear","ipa":"ˈtedi beə","meaning":"gấu bông"},{"word":"tiger","ipa":"ˈtaɪɡə","meaning":"con hổ"},{"word":"top","ipa":"tɒp","meaning":"con quay"},{"word":"turtle","ipa":"ˈtɜːtl","meaning":"con rùa"}],"15":[{"word":"face","ipa":"feɪs","meaning":"khuôn mặt"},{"word":"father","ipa":"ˈfɑːðə","meaning":"bố"},{"word":"foot","ipa":"fʊt","meaning":"bàn chân"},{"word":"football","ipa":"ˈfʊtbɔːl","meaning":"bóng đá"}],"16":[{"word":"washing","ipa":"ˈwɒʃɪŋ","meaning":"đang rửa"},{"word":"water","ipa":"ˈwɔːtə","meaning":"nước"},{"word":"window","ipa":"ˈwɪndəʊ","meaning":"cửa sổ"},{"word":"Wendy","ipa":"ˈwendi","meaning":"Wendy"}]}, speakingData={"1":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a ball.","image":"Ball**"},{"question":"Is it a ball?","answer":"Yes, it is.","image":"Ball**"},{"question":"Is it a bike?","answer":"No, it isn’t.","image":"Ball**"},{"question":"What’s this?","answer":"It’s a book.","image":"Book**"},{"question":"Is it a book?","answer":"Yes, it is.","image":"Book**"},{"question":"What do you have?","answer":"I have a ball.","image":"Ball**"},{"question":"Do you like balls?","answer":"Yes, I do.","image":"Ball**"},{"question":"What colour is the ball?","answer":"It’s red.","image":"Red ball**"},{"question":"What do you like?","answer":"I like balls.","image":"Ball**"}],"2":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a cake.","image":"Cake**"},{"question":"Is it a cake?","answer":"Yes, it is.","image":"Cake**"},{"question":"What’s this?","answer":"It’s a cup.","image":"Cup**"},{"question":"Is it a cup?","answer":"Yes, it is.","image":"Cup**"},{"question":"Do you like cake?","answer":"Yes, I do.","image":"Cake**"},{"question":"Do you like milk?","answer":"Yes, I do.","image":"Milk**"},{"question":"What do you have?","answer":"I have a cup.","image":"Cup**"},{"question":"What do you like?","answer":"I like cake.","image":"Cake**"},{"question":"Is it milk?","answer":"Yes, it is.","image":"Milk**"}],"3":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s an apple.","image":"Apple**"},{"question":"Is it an apple?","answer":"Yes, it is.","image":"Apple**"},{"question":"What’s this?","answer":"It’s a bag.","image":"Bag**"},{"question":"Is it a bag?","answer":"Yes, it is.","image":"Bag**"},{"question":"What colour is it?","answer":"It’s red.","image":"Red apple**"},{"question":"Do you like apples?","answer":"Yes, I do.","image":"Apples**"},{"question":"Do you have a bag?","answer":"Yes, I do.","image":"Bag**"},{"question":"What do you have?","answer":"I have a bag.","image":"Bag**"},{"question":"What do you like?","answer":"I like apples.","image":"Apples**"}],"4":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a desk.","image":"Desk**"},{"question":"What’s this?","answer":"It’s a dog.","image":"Dog**"},{"question":"Is it a dog?","answer":"Yes, it is.","image":"Dog**"},{"question":"Is it a duck?","answer":"No, it isn’t.","image":"Dog**"},{"question":"What is this?","answer":"It’s a door.","image":"Door**"},{"question":"Do you like dogs?","answer":"Yes, I do.","image":"Dog**"},{"question":"Do you have a desk?","answer":"Yes, I do.","image":"Desk**"},{"question":"What do you have?","answer":"I have a desk.","image":"Desk**"},{"question":"Is it your desk?","answer":"Yes, it is.","image":"Desk**"}],"5":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a fish.","image":"Fish**"},{"question":"What’s this?","answer":"It’s chicken.","image":"Chicken**"},{"question":"Do you like fish?","answer":"Yes, I do.","image":"Fish**"},{"question":"Do you like chicken?","answer":"Yes, I do.","image":"Chicken**"},{"question":"Do you like chips?","answer":"Yes, I do.","image":"Chips**"},{"question":"What do you like?","answer":"I like chips.","image":"Chips**"},{"question":"Is it fish?","answer":"Yes, it is.","image":"Fish**"},{"question":"What food do you like?","answer":"I like chicken.","image":"Chicken**"},{"question":"What do you have?","answer":"I have chips.","image":"Chips**"}],"6":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a pen.","image":"Pen**"},{"question":"What’s this?","answer":"It’s a pencil.","image":"Pencil**"},{"question":"Is it a pencil?","answer":"Yes, it is.","image":"Pencil**"},{"question":"Is it a book?","answer":"No, it isn’t.","image":"Pencil**"},{"question":"What is this?","answer":"It’s a bell.","image":"Bell**"},{"question":"What colour is it?","answer":"It’s red.","image":"Red bell**"},{"question":"Do you have a pen?","answer":"Yes, I do.","image":"Pen**"},{"question":"What do you have?","answer":"I have a pencil.","image":"Pencil**"},{"question":"Is this your pen?","answer":"Yes, it is.","image":"Pen**"}],"7":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a garden.","image":"Garden**"},{"question":"What’s this?","answer":"It’s a gate.","image":"Gate**"},{"question":"Who is she?","answer":"She’s a girl.","image":"Girl**"},{"question":"What is it?","answer":"It’s a goat.","image":"Goat**"},{"question":"Is it a goat?","answer":"Yes, it is.","image":"Goat**"},{"question":"Do you like goats?","answer":"Yes, I do.","image":"Goat**"},{"question":"Is this a garden?","answer":"Yes, it is.","image":"Garden**"},{"question":"Do you have a garden?","answer":"Yes, I do.","image":"Garden**"},{"question":"What do you like?","answer":"I like goats.","image":"Goat**"}],"8":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a hand.","image":"Hand**"},{"question":"What’s this?","answer":"It’s a head.","image":"Head**"},{"question":"What is this?","answer":"It’s hair.","image":"Hair**"},{"question":"Who is he?","answer":"He’s a boy.","image":"Boy**"},{"question":"What is it?","answer":"It’s a horse.","image":"Horse**"},{"question":"Is it a horse?","answer":"Yes, it is.","image":"Horse**"},{"question":"Is it a dog?","answer":"No, it isn’t.","image":"Horse**"},{"question":"Do you like horses?","answer":"Yes, I do.","image":"Horse**"},{"question":"What do you like?","answer":"I like horses.","image":"Horse**"}],"9":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a clock.","image":"Clock**"},{"question":"What’s this?","answer":"It’s a lock.","image":"Lock**"},{"question":"What is it?","answer":"It’s a mop.","image":"Mop**"},{"question":"What is this?","answer":"It’s a pot.","image":"Pot**"},{"question":"Is it a clock?","answer":"Yes, it is.","image":"Clock**"},{"question":"Is it a lock?","answer":"Yes, it is.","image":"Lock**"},{"question":"Do you like this pot?","answer":"Yes, I do.","image":"Pot**"},{"question":"What do you have?","answer":"I have a clock.","image":"Clock**"},{"question":"What do you like?","answer":"I like this pot.","image":"Pot**"}],"10":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What animal is this?","answer":"It’s a monkey.","image":"Monkey**"},{"question":"What’s this?","answer":"It’s a mouse.","image":"Mouse**"},{"question":"Is it a monkey?","answer":"Yes, it is.","image":"Monkey**"},{"question":"Is it a mouse?","answer":"Yes, it is.","image":"Mouse**"},{"question":"Do you like monkeys?","answer":"Yes, I do.","image":"Monkey**"},{"question":"Do you like mice?","answer":"Yes, I do.","image":"Mouse**"},{"question":"What animal do you like?","answer":"I like monkeys.","image":"Monkey**"},{"question":"What animal is your favorite?","answer":"Monkeys are my favorite.","image":"Monkey**"},{"question":"What do you like?","answer":"I like monkeys.","image":"Monkey**"}],"11":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a bus.","image":"Bus**"},{"question":"What’s this?","answer":"It’s a truck.","image":"Truck**"},{"question":"Is it a bus?","answer":"Yes, it is.","image":"Bus**"},{"question":"Is it a truck?","answer":"Yes, it is.","image":"Truck**"},{"question":"What do you see?","answer":"I see a bus.","image":"Bus**"},{"question":"Do you like buses?","answer":"Yes, I do.","image":"Bus**"},{"question":"Do you like trucks?","answer":"Yes, I do.","image":"Truck**"},{"question":"What do you like?","answer":"I like buses.","image":"Bus**"},{"question":"What do you have?","answer":"I have a toy bus.","image":"Toy bus**"}],"12":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a lake.","image":"Lake**"},{"question":"What’s this?","answer":"It’s a leaf.","image":"Leaf**"},{"question":"Is it a lake?","answer":"Yes, it is.","image":"Lake**"},{"question":"Is it a leaf?","answer":"Yes, it is.","image":"Leaf**"},{"question":"Do you like the lake?","answer":"Yes, I do.","image":"Lake**"},{"question":"Do you like leaves?","answer":"Yes, I do.","image":"Leaves**"},{"question":"What do you see?","answer":"I see a leaf.","image":"Leaf**"},{"question":"What do you like?","answer":"I like the lake.","image":"Lake**"},{"question":"What is your favorite place?","answer":"The lake is my favorite place.","image":"Lake**"}],"13":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a banana.","image":"Banana**"},{"question":"What’s this?","answer":"It’s noodles.","image":"Noodles**"},{"question":"Is it a banana?","answer":"Yes, it is.","image":"Banana**"},{"question":"Do you like bananas?","answer":"Yes, I do.","image":"Bananas**"},{"question":"Do you like noodles?","answer":"Yes, I do.","image":"Noodles**"},{"question":"What do you like?","answer":"I like noodles.","image":"Noodles**"},{"question":"What do you have?","answer":"I have noodles.","image":"Noodles**"},{"question":"What food do you like?","answer":"I like bananas.","image":"Banana**"},{"question":"Is it noodles?","answer":"Yes, it is.","image":"Noodles**"}],"14":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a teddy bear.","image":"Teddy bear**"},{"question":"What’s this?","answer":"It’s a tiger.","image":"Tiger**"},{"question":"What is it?","answer":"It’s a turtle.","image":"Turtle**"},{"question":"Is it a tiger?","answer":"Yes, it is.","image":"Tiger**"},{"question":"Is it a teddy bear?","answer":"No, it isn’t.","image":"Tiger**"},{"question":"Do you like teddy bears?","answer":"Yes, I do.","image":"Teddy bear**"},{"question":"What toy do you like?","answer":"I like teddy bears.","image":"Teddy bear**"},{"question":"What toy do you have?","answer":"I have a teddy bear.","image":"Teddy bear**"},{"question":"What is your favorite toy?","answer":"My favorite toy is a teddy bear.","image":"Teddy bear**"}],"15":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"What is this?","answer":"It’s a football.","image":"Football**"},{"question":"What’s this?","answer":"It’s a foot.","image":"Foot**"},{"question":"Who is he?","answer":"He’s my father.","image":"Father**"},{"question":"Is this a football?","answer":"Yes, it is.","image":"Football**"},{"question":"Do you like football?","answer":"Yes, I do.","image":"Football**"},{"question":"Do you like sports?","answer":"Yes, I do.","image":"Sports**"},{"question":"What do you like?","answer":"I like football.","image":"Football**"},{"question":"Who is your father?","answer":"He’s my dad.","image":"Father**"},{"question":"What is your favorite sport?","answer":"Football is my favorite sport.","image":"Football**"}],"16":[{"question":"What’s your name?","answer":"My name is Nam.","image":"Nam**"},{"question":"How old are you?","answer":"I’m six years old.","image":"Nam**"},{"question":"Where are you from?","answer":"I’m from Vietnam.","image":"Vietnam**"},{"question":"What grade are you in?","answer":"I’m in grade 1.","image":"Grade 1 classroom**"},{"question":"What is your favorite subject?","answer":"My favorite subject is English.","image":"English book**"},{"question":"Do you like English?","answer":"Yes, I do.","image":"English class**"},{"question":"Where are you?","answer":"I’m at home.","image":"House**"},{"question":"What is this?","answer":"It’s water.","image":"Water**"},{"question":"What’s this?","answer":"It’s a window.","image":"Window**"},{"question":"Is it a window?","answer":"Yes, it is.","image":"Window**"},{"question":"Do you like water?","answer":"Yes, I do.","image":"Water**"},{"question":"What do you have?","answer":"I have water.","image":"Water**"},{"question":"What do you see?","answer":"I see a window.","image":"Window**"},{"question":"Do you like your home?","answer":"Yes, I do.","image":"House**"},{"question":"What is your favorite place at home?","answer":"My favorite place is my room.","image":"Room**"}]}, unitTitles={"1":"IN THE SCHOOL PLAYGROUND","2":"IN THE DINING ROOM","3":"AT THE STREET MARKET","4":"IN THE BEDROOM","5":"AT THE FISH AND CHIP SHOP","6":"IN THE CLASSROOM","7":"IN THE GARDEN","8":"IN THE PARK","9":"IN THE SHOP","10":"AT THE ZOO","11":"AT THE BUS STOP","12":"AT THE LAKE","13":"IN THE SCHOOL CANTEEN","14":"IN THE TOY SHOP","15":"AT THE FOOTBALL MATCH","16":"AT HOME"}, IMG={"ball":"⚽","bike":"🚲","book":"📘","cake":"🍰","car":"🚗","cat":"🐱","cup":"🥤","apple":"🍎","banana":"🍌","bag":"👜","boy":"👦","can":"🥫","hat":"🧢","desk":"🪑","dog":"🐶","door":"🚪","duck":"🦆","chicken":"🐔","chips":"🍟","fish":"🐟","milk":"🥛","bell":"🔔","pen":"🖊️","pencil":"✏️","red":"🔴","garden":"🌳","gate":"🚪","girl":"👧","goat":"🐐","hair":"💇","hand":"✋","head":"🙂","horse":"🐴","clock":"🕐","lock":"🔒","mop":"🧹","pot":"🍲","mango":"🥭","monkey":"🐒","mother":"👩","mouse":"🐭","bus":"🚌","running":"🏃","sun":"☀️","truck":"🚚","lake":"🏞️","leaf":"🍃","lemons":"🍋","lamp":"💡","bananas":"🍌","nick":"👦","noodles":"🍜","nuts":"🥜","teddy bear":"🧸","tiger":"🐯","top":"🪀","turtle":"🐢","face":"🙂","father":"👨","foot":"🦶","football":"⚽","washing":"🧼","water":"💧","window":"🪟","wendy":"👧","house":"🏠","room":"🛏️","vietnam":"🇻🇳","grade 1 classroom":"🏫","english book":"📕","english class":"📚","nam":"👦","red ball":"🔴⚽","red bell":"🔔","red apple":"🍎","apples":"🍎🍎","leaves":"🍃🍃","toy bus":"🚌","sports":"🏅"};
-const T={vi:{vocab:'Từ vựng',memory:'Ghi nhớ',speak:'Luyện nói',look:'Nhìn chữ chọn hình',hear:'Hình → chữ đọc to',pron:'Phát âm',write:'Chữ viết',react:'Phản xạ',start:'Bắt đầu',back:'← Quay lại',next:'Tiếp theo →',units:'Danh sách Unit',sel:'đã chọn',answer:'Đáp án',correct:'✓ Chính xác!',wrong:'✗ Chưa đúng',great:'🎉 HOÀN THÀNH!',home:'Trang chủ'},en:{vocab:'Vocabulary',memory:'Memory',speak:'Speaking Practice',look:'Look → Picture',hear:'Picture → Speak',pron:'Pronunciation',write:'Writing',react:'Reaction',start:'Start',back:'← Back',next:'Next →',units:'Units',sel:'selected',answer:'Answer',correct:'✓ Correct!',wrong:'✗ Try again',great:'🎉 GREAT JOB!',home:'Home'}};
-let lang='vi',selected=[],list=[],idx=0,mode='',timer=null,delay=null,step=0,score=0,sUnit=1,speakingIndex=0,pronIndex=0;
 
-const $=id=>document.getElementById(id), main=$('main'); const t=k=>T[lang][k]||k;
-// Âm thanh phản hồi khi chạm/click tất cả nút (không phải nhạc nền)
-let clickAudioCtx=null;
-function playClickSound(){
+<body>
+
+<section id="welcome" class="screen active welcome">
+  <div class="box">
+    <h1 class="logo">
+      <span class="welcome-line">WELCOME TO</span>
+      <span class="welcome-line">HENRY ENGLISH CLASS</span>
+    </h1>
+
+    <div class="sub">
+      GRADE 1 • ENGLISH LEARNING SYSTEM
+    </div>
+
+    <button class="primary orange" onclick="startWelcome()">
+      🚀 START / BẮT ĐẦU
+    </button>
+  </div>
+</section>
+
+<section id="app" class="screen app">
+  <header>
+    <strong id="brand">HENRY ENGLISH</strong>
+    <span id="langBadge">VI</span>
+  </header>
+
+  <main id="main"></main>
+</section>
+
+<script>
+
+/* =========================================================
+   VOCABULARY DATA
+========================================================= */
+
+const vocabData={
+"1":[
+ {word:"ball",ipa:"bɔːl",meaning:"quả bóng"},
+ {word:"bike",ipa:"baɪk",meaning:"xe đạp"},
+ {word:"book",ipa:"bʊk",meaning:"quyển sách"}
+],
+"2":[
+ {word:"cake",ipa:"keɪk",meaning:"bánh"},
+ {word:"car",ipa:"kɑː",meaning:"ô tô"},
+ {word:"cat",ipa:"kæt",meaning:"con mèo"},
+ {word:"cup",ipa:"kʌp",meaning:"cái cốc"}
+],
+"3":[
+ {word:"apple",ipa:"ˈæpəl",meaning:"quả táo"},
+ {word:"bag",ipa:"bæɡ",meaning:"cái túi"},
+ {word:"can",ipa:"kæn",meaning:"cái lon"},
+ {word:"hat",ipa:"hæt",meaning:"cái mũ"}
+],
+"4":[
+ {word:"desk",ipa:"desk",meaning:"bàn học"},
+ {word:"dog",ipa:"dɒɡ",meaning:"con chó"},
+ {word:"door",ipa:"dɔː",meaning:"cánh cửa"},
+ {word:"duck",ipa:"dʌk",meaning:"con vịt"}
+],
+"5":[
+ {word:"chicken",ipa:"ˈtʃɪkɪn",meaning:"thịt gà"},
+ {word:"chips",ipa:"tʃɪps",meaning:"khoai tây chiên"},
+ {word:"fish",ipa:"fɪʃ",meaning:"cá"},
+ {word:"milk",ipa:"mɪlk",meaning:"sữa"}
+],
+"6":[
+ {word:"bell",ipa:"bel",meaning:"cái chuông"},
+ {word:"pen",ipa:"pen",meaning:"bút mực"},
+ {word:"pencil",ipa:"ˈpensəl",meaning:"bút chì"},
+ {word:"red",ipa:"red",meaning:"màu đỏ"}
+],
+"7":[
+ {word:"garden",ipa:"ˈɡɑːdən",meaning:"khu vườn"},
+ {word:"gate",ipa:"ɡeɪt",meaning:"cái cổng"},
+ {word:"girl",ipa:"ɡɜːl",meaning:"cô gái"},
+ {word:"goat",ipa:"ɡəʊt",meaning:"con dê"}
+],
+"8":[
+ {word:"hair",ipa:"heə",meaning:"tóc"},
+ {word:"hand",ipa:"hænd",meaning:"bàn tay"},
+ {word:"head",ipa:"hed",meaning:"đầu"},
+ {word:"horse",ipa:"hɔːs",meaning:"con ngựa"}
+],
+"9":[
+ {word:"clock",ipa:"klɒk",meaning:"đồng hồ"},
+ {word:"lock",ipa:"lɒk",meaning:"ổ khóa"},
+ {word:"mop",ipa:"mɒp",meaning:"cây lau nhà"},
+ {word:"pot",ipa:"pɒt",meaning:"cái nồi"}
+],
+"10":[
+ {word:"mango",ipa:"ˈmæŋɡəʊ",meaning:"quả xoài"},
+ {word:"monkey",ipa:"ˈmʌŋki",meaning:"con khỉ"},
+ {word:"mother",ipa:"ˈmʌðə",meaning:"mẹ"},
+ {word:"mouse",ipa:"maʊs",meaning:"con chuột"}
+],
+"11":[
+ {word:"bus",ipa:"bʌs",meaning:"xe buýt"},
+ {word:"running",ipa:"ˈrʌnɪŋ",meaning:"đang chạy"},
+ {word:"sun",ipa:"sʌn",meaning:"mặt trời"},
+ {word:"truck",ipa:"trʌk",meaning:"xe tải"}
+],
+"12":[
+ {word:"lake",ipa:"leɪk",meaning:"hồ"},
+ {word:"leaf",ipa:"liːf",meaning:"chiếc lá"},
+ {word:"lemons",ipa:"ˈlemənz",meaning:"những quả chanh"},
+ {word:"lamp",ipa:"læmp",meaning:"đèn"}
+],
+"13":[
+ {word:"bananas",ipa:"bəˈnɑːnəz",meaning:"những quả chuối"},
+ {word:"Nick",ipa:"nɪk",meaning:"Nick"},
+ {word:"noodles",ipa:"ˈnuːdlz",meaning:"mì"},
+ {word:"nuts",ipa:"nʌts",meaning:"các loại hạt"}
+],
+"14":[
+ {word:"teddy bear",ipa:"ˈtedi beə",meaning:"gấu bông"},
+ {word:"tiger",ipa:"ˈtaɪɡə",meaning:"con hổ"},
+ {word:"top",ipa:"tɒp",meaning:"con quay"},
+ {word:"turtle",ipa:"ˈtɜːtl",meaning:"con rùa"}
+],
+"15":[
+ {word:"face",ipa:"feɪs",meaning:"khuôn mặt"},
+ {word:"father",ipa:"ˈfɑːðə",meaning:"bố"},
+ {word:"foot",ipa:"fʊt",meaning:"bàn chân"},
+ {word:"football",ipa:"ˈfʊtbɔːl",meaning:"bóng đá"}
+],
+"16":[
+ {word:"washing",ipa:"ˈwɒʃɪŋ",meaning:"đang rửa"},
+ {word:"water",ipa:"ˈwɔːtə",meaning:"nước"},
+ {word:"window",ipa:"ˈwɪndəʊ",meaning:"cửa sổ"},
+ {word:"Wendy",ipa:"ˈwendi",meaning:"Wendy"}
+]
+};
+
+/* =========================================================
+   SPEAKING DATA
+========================================================= */
+
+const speakingData={
+
+"1":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a ball.","Ball"],
+["Is it a ball?","Yes, it is.","Ball"],
+["Is it a bike?","No, it isn’t.","Ball"],
+["What’s this?","It’s a book.","Book"],
+["Is it a book?","Yes, it is.","Book"],
+["What do you have?","I have a ball.","Ball"],
+["Do you like balls?","Yes, I do.","Ball"],
+["What colour is the ball?","It’s red.","Red ball"],
+["What do you like?","I like balls.","Ball"]
+],
+
+"2":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a cake.","Cake"],
+["Is it a cake?","Yes, it is.","Cake"],
+["What’s this?","It’s a cup.","Cup"],
+["Is it a cup?","Yes, it is.","Cup"],
+["Do you like cake?","Yes, I do.","Cake"],
+["Do you like milk?","Yes, I do.","Milk"],
+["What do you have?","I have a cup.","Cup"],
+["What do you like?","I like cake.","Cake"],
+["Is it milk?","Yes, it is.","Milk"]
+],
+
+"3":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s an apple.","Apple"],
+["Is it an apple?","Yes, it is.","Apple"],
+["What’s this?","It’s a bag.","Bag"],
+["Is it a bag?","Yes, it is.","Bag"],
+["What colour is it?","It’s red.","Red apple"],
+["Do you like apples?","Yes, I do.","Apples"],
+["Do you have a bag?","Yes, I do.","Bag"],
+["What do you have?","I have a bag.","Bag"],
+["What do you like?","I like apples.","Apples"]
+],
+
+"4":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a desk.","Desk"],
+["What’s this?","It’s a dog.","Dog"],
+["Is it a dog?","Yes, it is.","Dog"],
+["Is it a duck?","No, it isn’t.","Dog"],
+["What is this?","It’s a door.","Door"],
+["Do you like dogs?","Yes, I do.","Dog"],
+["Do you have a desk?","Yes, I do.","Desk"],
+["What do you have?","I have a desk.","Desk"],
+["Is it your desk?","Yes, it is.","Desk"]
+],
+
+"5":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a fish.","Fish"],
+["What’s this?","It’s chicken.","Chicken"],
+["Do you like fish?","Yes, I do.","Fish"],
+["Do you like chicken?","Yes, I do.","Chicken"],
+["Do you like chips?","Yes, I do.","Chips"],
+["What do you like?","I like chips.","Chips"],
+["Is it fish?","Yes, it is.","Fish"],
+["What food do you like?","I like chicken.","Chicken"],
+["What do you have?","I have chips.","Chips"]
+],
+
+"6":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a pen.","Pen"],
+["What’s this?","It’s a pencil.","Pencil"],
+["Is it a pencil?","Yes, it is.","Pencil"],
+["Is it a book?","No, it isn’t.","Pencil"],
+["What is this?","It’s a bell.","Bell"],
+["What colour is it?","It’s red.","Red bell"],
+["Do you have a pen?","Yes, I do.","Pen"],
+["What do you have?","I have a pencil.","Pencil"],
+["Is this your pen?","Yes, it is.","Pen"]
+],
+
+"7":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a garden.","Garden"],
+["What’s this?","It’s a gate.","Gate"],
+["Who is she?","She’s a girl.","Girl"],
+["What is it?","It’s a goat.","Goat"],
+["Is it a goat?","Yes, it is.","Goat"],
+["Do you like goats?","Yes, I do.","Goat"],
+["Is this a garden?","Yes, it is.","Garden"],
+["Do you have a garden?","Yes, I do.","Garden"],
+["What do you like?","I like goats.","Goat"]
+],
+
+"8":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a hand.","Hand"],
+["What’s this?","It’s a head.","Head"],
+["What is this?","It’s hair.","Hair"],
+["Who is he?","He’s a boy.","Boy"],
+["What is it?","It’s a horse.","Horse"],
+["Is it a horse?","Yes, it is.","Horse"],
+["Is it a dog?","No, it isn’t.","Horse"],
+["Do you like horses?","Yes, I do.","Horse"],
+["What do you like?","I like horses.","Horse"]
+],
+
+"9":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a clock.","Clock"],
+["What’s this?","It’s a lock.","Lock"],
+["What is it?","It’s a mop.","Mop"],
+["What is this?","It’s a pot.","Pot"],
+["Is it a clock?","Yes, it is.","Clock"],
+["Is it a lock?","Yes, it is.","Lock"],
+["Do you like this pot?","Yes, I do.","Pot"],
+["What do you have?","I have a clock.","Clock"],
+["What do you like?","I like this pot.","Pot"]
+],
+
+"10":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What animal is this?","It’s a monkey.","Monkey"],
+["What’s this?","It’s a mouse.","Mouse"],
+["Is it a monkey?","Yes, it is.","Monkey"],
+["Is it a mouse?","Yes, it is.","Mouse"],
+["Do you like monkeys?","Yes, I do.","Monkey"],
+["Do you like mice?","Yes, I do.","Mouse"],
+["What animal do you like?","I like monkeys.","Monkey"],
+["What animal is your favorite?","Monkeys are my favorite.","Monkey"],
+["What do you like?","I like monkeys.","Monkey"]
+],
+
+"11":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a bus.","Bus"],
+["What’s this?","It’s a truck.","Truck"],
+["Is it a bus?","Yes, it is.","Bus"],
+["Is it a truck?","Yes, it is.","Truck"],
+["What do you see?","I see a bus.","Bus"],
+["Do you like buses?","Yes, I do.","Bus"],
+["Do you like trucks?","Yes, I do.","Truck"],
+["What do you like?","I like buses.","Bus"],
+["What do you have?","I have a toy bus.","Toy bus"]
+],
+
+"12":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a lake.","Lake"],
+["What’s this?","It’s a leaf.","Leaf"],
+["Is it a lake?","Yes, it is.","Lake"],
+["Is it a leaf?","Yes, it is.","Leaf"],
+["Do you like the lake?","Yes, I do.","Lake"],
+["Do you like leaves?","Yes, I do.","Leaves"],
+["What do you see?","I see a leaf.","Leaf"],
+["What do you like?","I like the lake.","Lake"],
+["What is your favorite place?","The lake is my favorite place.","Lake"]
+],
+
+"13":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a banana.","Banana"],
+["What’s this?","It’s noodles.","Noodles"],
+["Is it a banana?","Yes, it is.","Banana"],
+["Do you like bananas?","Yes, I do.","Bananas"],
+["Do you like noodles?","Yes, I do.","Noodles"],
+["What do you like?","I like noodles.","Noodles"],
+["What do you have?","I have noodles.","Noodles"],
+["What food do you like?","I like bananas.","Banana"],
+["Is it noodles?","Yes, it is.","Noodles"]
+],
+
+"14":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a teddy bear.","Teddy bear"],
+["What’s this?","It’s a tiger.","Tiger"],
+["What is it?","It’s a turtle.","Turtle"],
+["Is it a tiger?","Yes, it is.","Tiger"],
+["Is it a teddy bear?","No, it isn’t.","Tiger"],
+["Do you like teddy bears?","Yes, I do.","Teddy bear"],
+["What toy do you like?","I like teddy bears.","Teddy bear"],
+["What toy do you have?","I have a teddy bear.","Teddy bear"],
+["What is your favorite toy?","My favorite toy is a teddy bear.","Teddy bear"]
+],
+
+"15":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["What is this?","It’s a football.","Football"],
+["What’s this?","It’s a foot.","Foot"],
+["Who is he?","He’s my father.","Father"],
+["Is this a football?","Yes, it is.","Football"],
+["Do you like football?","Yes, I do.","Football"],
+["Do you like sports?","Yes, I do.","Sports"],
+["What do you like?","I like football.","Football"],
+["Who is your father?","He’s my dad.","Father"],
+["What is your favorite sport?","Football is my favorite sport.","Football"]
+],
+
+"16":[
+["What’s your name?","My name is Nam.","Nam"],
+["How old are you?","I’m six years old.","Nam"],
+["Where are you from?","I’m from Vietnam.","Vietnam"],
+["What grade are you in?","I’m in grade 1.","Grade 1 classroom"],
+["What is your favorite subject?","My favorite subject is English.","English book"],
+["Do you like English?","Yes, I do.","English class"],
+["Where are you?","I’m at home.","House"],
+["What is this?","It’s water.","Water"],
+["What’s this?","It’s a window.","Window"],
+["Is it a window?","Yes, it is.","Window"],
+["Do you like water?","Yes, I do.","Water"],
+["What do you have?","I have water.","Water"],
+["What do you see?","I see a window.","Window"],
+["Do you like your home?","Yes, I do.","House"],
+["What is your favorite place at home?","My favorite place is my room.","Room"]
+]
+};
+
+/* =========================================================
+   UNIT TITLES
+========================================================= */
+
+const unitTitles={
+"1":"IN THE SCHOOL PLAYGROUND",
+"2":"IN THE DINING ROOM",
+"3":"AT THE STREET MARKET",
+"4":"IN THE BEDROOM",
+"5":"AT THE FISH AND CHIP SHOP",
+"6":"IN THE CLASSROOM",
+"7":"IN THE GARDEN",
+"8":"IN THE PARK",
+"9":"IN THE SHOP",
+"10":"AT THE ZOO",
+"11":"AT THE BUS STOP",
+"12":"AT THE LAKE",
+"13":"IN THE SCHOOL CANTEEN",
+"14":"IN THE TOY SHOP",
+"15":"AT THE FOOTBALL MATCH",
+"16":"AT HOME"
+};
+
+/* =========================================================
+   IMAGE / EMOJI
+========================================================= */
+
+const IMG={
+"ball":"⚽",
+"bike":"🚲",
+"book":"📘",
+"cake":"🍰",
+"car":"🚗",
+"cat":"🐱",
+"cup":"🥤",
+"apple":"🍎",
+"banana":"🍌",
+"bag":"👜",
+"boy":"👦",
+"can":"🥫",
+"hat":"🧢",
+"desk":"🪑",
+"dog":"🐶",
+"door":"🚪",
+"duck":"🦆",
+"chicken":"🐔",
+"chips":"🍟",
+"fish":"🐟",
+"milk":"🥛",
+"bell":"🔔",
+"pen":"🖊️",
+"pencil":"✏️",
+"red":"🔴",
+"garden":"🌳",
+"gate":"🚪",
+"girl":"👧",
+"goat":"🐐",
+"hair":"💇",
+"hand":"✋",
+"head":"🙂",
+"horse":"🐴",
+"clock":"🕐",
+"lock":"🔒",
+"mop":"🧹",
+"pot":"🍲",
+"mango":"🥭",
+"monkey":"🐒",
+"mother":"👩",
+"mouse":"🐭",
+"bus":"🚌",
+"running":"🏃",
+"sun":"☀️",
+"truck":"🚚",
+"lake":"🏞️",
+"leaf":"🍃",
+"lemons":"🍋",
+"lamp":"💡",
+"bananas":"🍌",
+"nick":"👦",
+"noodles":"🍜",
+"nuts":"🥜",
+"teddy bear":"🧸",
+"tiger":"🐯",
+"top":"🪀",
+"turtle":"🐢",
+"face":"🙂",
+"father":"👨",
+"foot":"🦶",
+"football":"⚽",
+"washing":"🧼",
+"water":"💧",
+"window":"🪟",
+"wendy":"👧",
+"house":"🏠",
+"room":"🛏️",
+"vietnam":"🇻🇳",
+"grade 1 classroom":"🏫",
+"english book":"📕",
+"english class":"📚",
+"nam":"👦",
+"red ball":"🔴⚽",
+"red bell":"🔔",
+"red apple":"🍎",
+"apples":"🍎🍎",
+"leaves":"🍃🍃",
+"toy bus":"🚌",
+"sports":"🏅"
+};
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+const T={
+vi:{
+vocab:"Từ vựng",
+memory:"Ghi nhớ",
+speak:"Luyện nói",
+look:"Nhìn chữ chọn hình",
+hear:"Hình → chữ đọc to",
+pron:"Phát âm",
+write:"Chữ viết",
+react:"Phản xạ",
+start:"Bắt đầu",
+back:"← Quay lại",
+next:"Tiếp theo →",
+units:"Danh sách Unit",
+sel:"đã chọn",
+answer:"Đáp án",
+correct:"✓ Chính xác!",
+wrong:"✗ Chưa đúng",
+great:"🎉 HOÀN THÀNH!",
+home:"Trang chủ"
+},
+en:{
+vocab:"Vocabulary",
+memory:"Memory",
+speak:"Speaking Practice",
+look:"Look → Picture",
+hear:"Picture → Speak",
+pron:"Pronunciation",
+write:"Writing",
+react:"Reaction",
+start:"Start",
+back:"← Back",
+next:"Next →",
+units:"Units",
+sel:"selected",
+answer:"Answer",
+correct:"✓ Correct!",
+wrong:"✗ Try again",
+great:"🎉 GREAT JOB!",
+home:"Home"
+}
+};
+
+let lang="vi",
+selected=[],
+list=[],
+idx=0,
+mode="",
+timer=null,
+delay=null,
+score=0,
+speakingSelected=[],
+speakingList=[],
+speakingIndex=0;
+
+const $=id=>document.getElementById(id);
+const main=$("main");
+const t=k=>T[lang][k]||k;
+
+/* =========================================================
+   SOUND ENGINE
+========================================================= */
+
+let audioCtx=null;
+
+function getAudio(){
   try{
-    clickAudioCtx=clickAudioCtx||new (window.AudioContext||window.webkitAudioContext)();
-    if(clickAudioCtx.state==='suspended') clickAudioCtx.resume();
-    const o=clickAudioCtx.createOscillator(), g=clickAudioCtx.createGain();
-    o.type='sine'; o.frequency.setValueAtTime(620,clickAudioCtx.currentTime);
-    o.frequency.exponentialRampToValueAtTime(820,clickAudioCtx.currentTime+.055);
-    g.gain.setValueAtTime(.045,clickAudioCtx.currentTime);
-    g.gain.exponentialRampToValueAtTime(.001,clickAudioCtx.currentTime+.09);
-    o.connect(g); g.connect(clickAudioCtx.destination); o.start(); o.stop(clickAudioCtx.currentTime+.095);
+    audioCtx=audioCtx||
+      new(window.AudioContext||window.webkitAudioContext)();
+
+    if(audioCtx.state==="suspended"){
+      audioCtx.resume();
+    }
+
+    return audioCtx;
+  }catch(e){
+    return null;
+  }
+}
+
+function tone(freq=600,duration=.08,type="sine",volume=.045,endFreq=null){
+  try{
+    const ctx=getAudio();
+    if(!ctx)return;
+
+    const now=ctx.currentTime;
+    const osc=ctx.createOscillator();
+    const gain=ctx.createGain();
+
+    osc.type=type;
+    osc.frequency.setValueAtTime(freq,now);
+
+    if(endFreq){
+      osc.frequency.exponentialRampToValueAtTime(
+        endFreq,
+        now+duration
+      );
+    }
+
+    gain.gain.setValueAtTime(volume,now);
+    gain.gain.exponentialRampToValueAtTime(
+      .001,
+      now+duration
+    );
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now+duration+.01);
   }catch(e){}
 }
-document.addEventListener('click',e=>{if(e.target.closest('button')) playClickSound();},true);
 
-function language(){stopSpeechOnly();$('welcome').classList.remove('active');$('app').classList.add('active');main.innerHTML=`<div class="panel" style="max-width:700px;margin:55px auto;text-align:center"><h1 class="title">Choose your language / Chọn ngôn ngữ</h1><div class="row" style="justify-content:center"><button class="primary orange" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button><button class="primary" onclick="setLang('en')">🇬🇧 English</button></div></div>`}
-function setLang(x){lang=x;home()}
-function home(){clearAll();$('brand').textContent=lang==='vi'?'HENRY ENGLISH – LỚP 1':'HENRY ENGLISH – GRADE 1';$('langBadge').textContent=lang.toUpperCase();main.innerHTML=`<h1 class="title">${lang==='vi'?'HENRY ENGLISH – LỚP 1':'HENRY ENGLISH – GRADE 1'}</h1><div class="cards"><button class="menu vocab" onclick="vocabUnits()"><div class="ico">📚</div><h2>${t('vocab')}</h2><p>GRADE 1</p></button><button class="menu memory" onclick="memoryMenu()"><div class="ico">🧠</div><h2>${t('memory')}</h2><p>${t('pron')} • ${t('write')} • ${t('react')}</p></button><button class="menu speak" onclick="speakUnits()"><div class="ico">🗣️</div><h2>${t('speak')}</h2><p>15 questions / Unit</p></button></div>`}
-function units(onSelect=true){let s='<div class="grid">';for(let i=1;i<=16;i++)s+=`<button class="unit" id="u${i}" onclick="${onSelect?`toggleUnit(${i})`:`startSpeak(${i})`}">UNIT ${i}<small>${esc(unitTitles[i]||'')}</small></button>`;return s+'</div>'}
-function vocabUnits(){clearAll();selected=[];main.innerHTML=`<button class="back" onclick="home()">${t('back')}</button><div class="panel"><h2>${t('vocab')} – ${t('units')}</h2><p class="muted">Chọn Unit để xem và nghe từ vựng.</p>${units(true)}<div class="row"><button class="primary orange" onclick="startVocab()">${t('start')}</button><span id="count" class="muted">0 ${t('sel')}</span></div></div>`}
-function toggleUnit(i){const e=$('u'+i);if(selected.includes(i)){selected=selected.filter(x=>x!==i);e.classList.remove('sel')}else{selected.push(i);e.classList.add('sel')}$('count').textContent=selected.length+' '+t('sel')}
-function startVocab(){if(!selected.length)return;list=selected.flatMap(u=>vocabData[u].map(x=>({...x,unit:u})));idx=0;showVocab()}
-function showVocab(){clearAll();if(idx>=list.length){vocabUnits();return}let x=list[idx];main.innerHTML=`<button class="back" onclick="vocabUnits()">${t('back')}</button><div class="panel wordCard"><div class="questionNo">UNIT ${x.unit} • ${idx+1}/${list.length}</div><div class="bar"><i style="width:${(idx+1)/list.length*100}%"></i></div><div class="image"><div class="pic">${icon(x.word)}</div><div class="label">IMAGE: ${esc(x.word)}</div></div><div class="word">${esc(x.word)}</div><div class="ipa">${esc(x.ipa)}</div><div class="meaning">${esc(x.meaning)}</div><button class="speaker" onclick="sayWordOnce()">🔊</button><div><button class="primary orange" onclick="idx++;showVocab()">${t('next')}</button></div></div>`}
-function sayWordOnce(){speak(list[idx].word,.7)}
+/* Nút bấm */
+
+function playClickSound(){
+  tone(620,.07,"sine",.045,820);
+}
+
+/* Tick đồng hồ */
+
+function playTickSound(finalTick=false){
+  if(finalTick){
+    tone(420,.13,"square",.055,260);
+  }else{
+    tone(760,.055,"sine",.035,680);
+  }
+}
+
+/* Hết giờ */
+
+function playTimeUpSound(){
+  setTimeout(()=>tone(520,.10,"sine",.055,520),0);
+  setTimeout(()=>tone(420,.10,"sine",.05,420),130);
+  setTimeout(()=>tone(300,.18,"sine",.055,250),260);
+}
+
+/* Đúng */
+
+function playCorrectSound(){
+  tone(660,.09,"sine",.05,820);
+  setTimeout(()=>tone(880,.15,"sine",.055,1040),100);
+}
+
+/* Sai */
+
+function playWrongSound(){
+  tone(260,.16,"sawtooth",.035,190);
+}
+
+/* Hoàn thành */
+
+function playFinishSound(){
+  tone(660,.1,"sine",.05,760);
+  setTimeout(()=>tone(780,.1,"sine",.05,900),110);
+  setTimeout(()=>tone(980,.22,"sine",.06,1150),220);
+}
+
+/* Mọi nút đều có âm thanh */
+
+document.addEventListener(
+  "click",
+  e=>{
+    const btn=e.target.closest("button");
+    if(btn && !btn.disabled){
+      playClickSound();
+    }
+  },
+  true
+);
+
+/* =========================================================
+   TIMER SOUND
+========================================================= */
+
+function startCountdown(seconds,elementId,onFinish){
+  clearTimerOnly();
+
+  let n=seconds;
+  const e=$(elementId);
+
+  if(e){
+    e.textContent=n;
+    e.classList.remove("last");
+  }
+
+  timer=setInterval(()=>{
+    n--;
+
+    if(e){
+      e.textContent=n;
+
+      e.classList.remove("tick");
+      void e.offsetWidth;
+      e.classList.add("tick");
+
+      if(n<=2){
+        e.classList.add("last");
+      }
+    }
+
+    playTickSound(n<=2);
+
+    if(n<=0){
+      clearTimerOnly();
+      playTimeUpSound();
+
+      if(typeof onFinish==="function"){
+        setTimeout(onFinish,180);
+      }
+    }
+  },1000);
+}
+
+function clearTimerOnly(){
+  if(timer){
+    clearInterval(timer);
+    timer=null;
+  }
+}
+
+/* =========================================================
+   PAGE ANIMATION
+========================================================= */
+
+function animatePage(){
+  main.classList.remove("page-enter");
+  void main.offsetWidth;
+  main.classList.add("page-enter");
+}
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+function language(){
+  stopSpeechOnly();
+
+  $("welcome").classList.remove("active");
+  $("app").classList.add("active");
+
+  main.innerHTML=`
+    <div class="panel"
+         style="max-width:700px;margin:55px auto;text-align:center">
+      <h1 class="title">
+        Choose your language / Chọn ngôn ngữ
+      </h1>
+
+      <div class="row">
+        <button class="primary orange"
+                onclick="setLang('vi')">
+          🇻🇳 Tiếng Việt
+        </button>
+
+        <button class="primary"
+                onclick="setLang('en')">
+          🇬🇧 English
+        </button>
+      </div>
+    </div>
+  `;
+
+  animatePage();
+}
+
+function setLang(x){
+  lang=x;
+  playClickSound();
+  home();
+}
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function home(){
+  clearAll();
+
+  $("brand").textContent=
+    lang==="vi"
+      ?"HENRY ENGLISH – LỚP 1"
+      :"HENRY ENGLISH – GRADE 1";
+
+  $("langBadge").textContent=lang.toUpperCase();
+
+  main.innerHTML=`
+    <h1 class="title">
+      ${lang==="vi"
+        ?"HENRY ENGLISH – LỚP 1"
+        :"HENRY ENGLISH – GRADE 1"}
+    </h1>
+
+    <div class="cards">
+
+      <button class="menu vocab"
+              onclick="vocabUnits()">
+        <div class="ico">📚</div>
+        <h2>${t("vocab")}</h2>
+        <p>GRADE 1</p>
+      </button>
+
+      <button class="menu memory"
+              onclick="memoryMenu()">
+        <div class="ico">🧠</div>
+        <h2>${t("memory")}</h2>
+        <p>
+          ${t("pron")} • ${t("write")} • ${t("react")}
+        </p>
+      </button>
+
+      <button class="menu speak"
+              onclick="speakUnits()">
+        <div class="ico">🗣️</div>
+        <h2>${t("speak")}</h2>
+        <p>15 questions / Unit</p>
+      </button>
+
+    </div>
+  `;
+
+  animatePage();
+}
+
+/* =========================================================
+   UNIT SELECTOR
+========================================================= */
+
+function units(){
+  let s='<div class="grid">';
+
+  for(let i=1;i<=16;i++){
+    s+=`
+      <button class="unit"
+              id="u${i}"
+              onclick="toggleUnit(${i})">
+        UNIT ${i}
+        <small>${esc(unitTitles[i]||"")}</small>
+      </button>
+    `;
+  }
+
+  return s+"</div>";
+}
+
+function vocabUnits(){
+  clearAll();
+  selected=[];
+
+  main.innerHTML=`
+    <button class="back" onclick="home()">
+      ${t("back")}
+    </button>
+
+    <div class="panel">
+      <h2>${t("vocab")} – ${t("units")}</h2>
+
+      <p class="muted">
+        Chọn Unit để xem và nghe từ vựng.
+      </p>
+
+      ${units()}
+
+      <div class="row">
+        <button class="primary orange"
+                onclick="startVocab()">
+          ${t("start")}
+        </button>
+
+        <span id="count" class="muted">
+          0 ${t("sel")}
+        </span>
+      </div>
+    </div>
+  `;
+
+  animatePage();
+}
+
+function toggleUnit(i){
+  const e=$("u"+i);
+
+  if(selected.includes(i)){
+    selected=selected.filter(x=>x!==i);
+    e.classList.remove("sel");
+  }else{
+    selected.push(i);
+    e.classList.add("sel");
+  }
+
+  $("count").textContent=
+    selected.length+" "+t("sel");
+}
+
+/* =========================================================
+   VOCABULARY
+========================================================= */
+
+function startVocab(){
+  if(!selected.length)return;
+
+  list=selected.flatMap(
+    u=>vocabData[u].map(
+      x=>({...x,unit:u})
+    )
+  );
+
+  idx=0;
+  showVocab();
+}
+
+function showVocab(){
+  clearAll();
+
+  if(idx>=list.length){
+    vocabUnits();
+    return;
+  }
+
+  const x=list[idx];
+
+  main.innerHTML=`
+    <button class="back" onclick="vocabUnits()">
+      ${t("back")}
+    </button>
+
+    <div class="panel wordCard">
+
+      <div class="questionNo">
+        UNIT ${x.unit} • ${idx+1}/${list.length}
+      </div>
+
+      <div class="bar">
+        <i style="width:${(idx+1)/list.length*100}%"></i>
+      </div>
+
+      <div class="image">
+        <div class="pic">${icon(x.word)}</div>
+        <div class="label">
+          IMAGE: ${esc(x.word)}
+        </div>
+      </div>
+
+      <div class="word">
+        ${esc(x.word)}
+      </div>
+
+      <div class="ipa">
+        ${esc(x.ipa)}
+      </div>
+
+      <div class="meaning">
+        ${esc(x.meaning)}
+      </div>
+
+      <button class="speaker"
+              onclick="sayWordOnce()">
+        🔊
+      </button>
+
+      <div>
+        <button class="primary orange"
+                onclick="idx++;showVocab()">
+          ${t("next")}
+        </button>
+      </div>
+
+    </div>
+  `;
+
+  animatePage();
+}
+
+function sayWordOnce(){
+  const btn=document.querySelector(".speaker");
+
+  if(btn){
+    btn.classList.add("play");
+    setTimeout(()=>btn.classList.remove("play"),250);
+  }
+
+  speak(list[idx].word,.7);
+}
+
+/* =========================================================
+   MEMORY MENU
+========================================================= */
 
 function memoryMenu(){
-main.innerHTML=`<button class="back" onclick="home()">${t('back')}</button><h1 class="title">🧠 ${t('memory')}</h1><div class="menuGrid memoryGrid" aria-label="Các bài luyện ghi nhớ">
-<button class="menu memory" onclick="memoryUnits('listenRepeat')"><div class="ico">🔊</div><h2>⭐ ${lang==='vi'?'Nghe và lặp lại':'Listen and repeat'}</h2></button>
-<button class="menu memory" onclick="memoryUnits('picturePron')"><div class="ico">👀</div><h2>${lang==='vi'?'Nhìn hình - phát âm':'Picture - Pronunciation'}</h2></button>
-<button class="menu memory" onclick="memoryUnits('wordPron')"><div class="ico">🔊</div><h2>${lang==='vi'?'Nhìn chữ - phát âm':'Word - Pronunciation'}</h2></button>
-<button class="menu memory" onclick="memoryUnits('wordPicture')"><div class="ico">🖼️</div><h2>${lang==='vi'?'Nhìn chữ → chọn hình':'Word → Choose picture'}</h2></button>
-<button class="menu speak" onclick="memoryUnits('pictureWord')"><div class="ico">✍️</div><h2>${lang==='vi'?'Nhìn hình → chọn chữ':'Picture → Choose word'}</h2></button>
-</div>`}
-function memoryUnits(m){clearAll();mode=m;selected=[];main.innerHTML=`<button class="back" onclick="memoryMenu()">${t('back')}</button><div class="panel"><h2>${memoryTitle(m)} – ${t('units')}</h2><p class="muted">${lang==='vi'?'Chọn một hoặc nhiều Unit rồi bấm Bắt đầu.':'Choose one or more Units, then press Start.'}</p>${units(true)}<div class="row"><button class="primary orange" onclick="startMemory()">${t('start')}</button><span id="count" class="muted">0 ${t('sel')}</span></div></div>`}
-function memoryTitle(m){return ({listenRepeat:'⭐ 🔊 '+(lang==='vi'?'Nghe và lặp lại':'Listen and repeat'),picturePron:'👀 '+(lang==='vi'?'Nhìn hình - phát âm':'Picture - Pronunciation'),wordPron:'🔊 '+(lang==='vi'?'Nhìn chữ - phát âm':'Word - Pronunciation'),wordPicture:'🖼️ '+(lang==='vi'?'Nhìn chữ → chọn hình':'Word → Choose picture'),pictureWord:'✍️ '+(lang==='vi'?'Nhìn hình → chọn chữ':'Picture → Choose word')})[m]}
-function startMemory(){if(!selected.length)return;list=selected.flatMap(u=>vocabData[u].map(x=>({...x,unit:u})));shuffle(list);idx=0;score=0;if(mode==='picturePron')showPicturePronunciation();else if(mode==='wordPron')showWordPronunciation();else if(mode==='wordPicture')showWordChoosePicture();else if(mode==='pictureWord')showPictureChooseWord();else showListenRepeat()}
-function showListenRepeat(){clearAll();if(idx>=list.length){finishMemory();return}let x=list[idx];main.innerHTML=`<button class="back" onclick="memoryUnits('listenRepeat')">${t('back')}</button><div class="panel wordCard"><div class="questionNo">🔊 ${lang==='vi'?'Nghe 3 lần → đọc lại 4 giây':'Listen 3 times → repeat 4 seconds'} • ${idx+1}/${list.length}</div><div class="bar"><i style="width:${(idx+1)/list.length*100}%"></i></div><div class="image memorySilentImage"><div class="pic">${icon(x.word)}</div></div><div class="word">${esc(x.word)}</div><div id="listenStatus" class="memoryFeedback">🔊 1 / 3</div><div id="timer" class="timer"></div></div>`;playWordThreeTimes(x.word)}
-function playWordThreeTimes(word){let count=0;const status=$('listenStatus');function once(){if(count>=3){if(status)status.textContent=lang==='vi'?'⏱ Hãy đọc lại!':'⏱ Your turn!';startListenRepeatCountdown();return}count++;if(status)status.textContent='🔊 '+count+' / 3';speak(word,.7);delay=setTimeout(once,1400)}once()}
-function startListenRepeatCountdown(){let n=4,e=$('timer');if(e)e.textContent=n;timer=setInterval(()=>{n--;if(e)e.textContent=n;if(n<=0){clearInterval(timer);timer=null;idx++;showListenRepeat()}},1000)}
-function showPicturePronunciation(){clearAll();if(idx>=list.length){finishMemory();return}let x=list[idx];main.innerHTML=`<button class="back" onclick="memoryUnits('picturePron')">${t('back')}</button><div class="panel wordCard"><div class="questionNo">👀 ${lang==='vi'?'Nhìn hình → phát âm':'Picture → Pronunciation'} • ${idx+1}/${list.length}</div><div class="bar"><i style="width:${(idx+1)/list.length*100}%"></i></div><div class="image memorySilentImage"><div class="pic">${icon(x.word)}</div></div><p class="muted">${lang==='vi'?'Hãy tự đọc từ trong đầu hoặc đọc thành tiếng.':'Read the word silently or say it aloud.'}</p><div id="timer" class="timer">5</div><div id="result" class="memoryFeedback"></div></div>`;startPicturePronTimer(x)}
-function startPicturePronTimer(x){let n=5,e=$('timer');timer=setInterval(()=>{n--;if(e)e.textContent=n;if(n<=0){clearInterval(timer);timer=null;speak(x.word,.7);if($('result'))$('result').textContent='🔊 '+x.word;delay=setTimeout(()=>{idx++;showPicturePronunciation()},1500)}},1000)}
-function showWordPronunciation(){clearAll();if(idx>=list.length){finishMemory();return}let x=list[idx];main.innerHTML=`<button class="back" onclick="memoryUnits('wordPron')">${t('back')}</button><div class="panel wordCard"><div class="questionNo">🔊 ${lang==='vi'?'Nhìn chữ → đọc to':'Word → Pronunciation'} • ${idx+1}/${list.length}</div><div class="bar"><i style="width:${(idx+1)/list.length*100}%"></i></div><div class="word">${esc(x.word)}</div><p class="muted">${lang==='vi'?'Hãy tự đọc từ.':'Read the word yourself.'}</p><div id="timer" class="timer">5</div><div id="result" class="memoryFeedback"></div></div>`;startWordPronTimer(x)}
-function startWordPronTimer(x){let n=5,e=$('timer');timer=setInterval(()=>{n--;if(e)e.textContent=n;if(n<=0){clearInterval(timer);timer=null;speak(x.word,.7);if($('result'))$('result').textContent='🔊 '+x.word;delay=setTimeout(()=>{idx++;showWordPronunciation()},1500)}},1000)}
-function showWordChoosePicture(){clearAll();if(idx>=list.length){finishMemory();return}let x=list[idx],choices=makeChoices(x,2);main.innerHTML=`<button class="back" onclick="memoryUnits('wordPicture')">${t('back')}</button><div class="panel wordCard"><div class="questionNo">📝 ${lang==='vi'?'Nhìn chữ → chọn hình':'Word → Picture'} • ${idx+1}/${list.length}</div><div class="bar"><i style="width:${(idx+1)/list.length*100}%"></i></div><div class="word">${esc(x.word)}</div><p class="muted">${lang==='vi'?'Chọn hình đúng.':'Choose the correct picture.'}</p><div class="opts memoryChoices">${choices.map(c=>`<button class="opt" aria-label="${attr(c.word)}" onclick="memoryChoiceAnswer(this,'${attr(c.word)}','${attr(x.word)}','wordPicture')"><span class="pic">${icon(c.word)}</span></button>`).join('')}</div><div id="result" class="memoryFeedback"></div></div>`}
-function showPictureChooseWord(){clearAll();if(idx>=list.length){finishMemory();return}let x=list[idx],choices=makeChoices(x,2);main.innerHTML=`<button class="back" onclick="memoryUnits('pictureWord')">${t('back')}</button><div class="panel wordCard"><div class="questionNo">🖼️ ${lang==='vi'?'Nhìn hình → chọn chữ':'Picture → Word'} • ${idx+1}/${list.length}</div><div class="bar"><i style="width:${(idx+1)/list.length*100}%"></i></div><div class="image memorySilentImage"><div class="pic">${icon(x.word)}</div></div><p class="muted">${lang==='vi'?'Chọn từ đúng.':'Choose the correct word.'}</p><div class="opts">${choices.map(c=>`<button class="opt" aria-label="${attr(c.word)}" onclick="memoryChoiceAnswer(this,'${attr(c.word)}','${attr(x.word)}','pictureWord')"><span>${esc(c.word)}</span></button>`).join('')}</div><div id="result" class="memoryFeedback"></div></div>`}
-function memoryChoiceAnswer(btn,val,correct,nextMode){if(btn.disabled)return;let ok=val===correct;if(ok)score++;document.querySelectorAll('.opt').forEach(b=>b.disabled=true);btn.classList.add(ok?'correct':'wrong');if(!ok)document.querySelectorAll('.opt').forEach(b=>{if(b.getAttribute('aria-label')===correct)b.classList.add('correct')});if($('result'))$('result').textContent=ok?t('correct'):t('wrong');speak(correct,.7);delay=setTimeout(()=>{idx++;if(nextMode==='wordPicture')showWordChoosePicture();else showPictureChooseWord()},1500)}
-function finishMemory(){clearAll();main.innerHTML=`<div class="panel finish"><h1>${t('great')}</h1><p>${idx} ${lang==='vi'?'từ đã hoàn thành.':'words completed.'}</p><p>Score: ${score}/${list.length}</p><button class="primary" onclick="startMemory()">🔄 REPLAY</button><button class="primary orange" onclick="memoryUnits('${mode}')">${t('units')}</button></div>`}
-function makeChoices(x,n){let pool=list.filter(a=>a.word!==x.word);shuffle(pool);return shuffle([x,...pool.slice(0,n)])}
 
-// ===== SPEAKING PRACTICE =====
-let speakingSelected=[],speakingList=[];
-function speakUnits(){clearAll();speakingSelected=[];main.innerHTML=`<button class="back" onclick="home()">${t('back')}</button><div class="panel"><h2>${t('speak')}</h2><p class="muted">${lang==='vi'?'Chọn một hoặc nhiều Unit. Nếu chọn từ 2 Unit trở lên, câu hỏi trùng nhau chỉ xuất hiện 1 lần.':'Choose one or more Units. When 2 or more Units are selected, duplicate questions appear only once.'}</p>${unitsSpeak()}<div class="row"><button class="primary orange" onclick="startSelectedSpeak()">${t('start')}</button><span id="speakCount" class="muted">0 ${t('sel')}</span></div></div>`}
-function unitsSpeak(){let s='<div class="grid">';for(let i=1;i<=16;i++)s+=`<button class="unit" id="su${i}" onclick="toggleSpeakUnit(${i})">UNIT ${i}<small>${esc(unitTitles[i]||'')}</small></button>`;return s+'</div>'}
-function toggleSpeakUnit(i){const e=$('su'+i);if(speakingSelected.includes(i)){speakingSelected=speakingSelected.filter(x=>x!==i);e.classList.remove('sel')}else{speakingSelected.push(i);e.classList.add('sel')}if($('speakCount'))$('speakCount').textContent=speakingSelected.length+' '+t('sel')}
-function startSelectedSpeak(){if(!speakingSelected.length)return;clearAll();let combined=speakingSelected.flatMap(u=>(speakingData[u]||[]).map(q=>({...q,unit:u})));const seen=new Set();speakingList=combined.filter(q=>{const key=q.question.trim().toLowerCase();if(seen.has(key))return false;seen.add(key);return true});speakingIndex=0;showSpeak()}
-function startSpeak(u){speakingSelected=[u];startSelectedSpeak()}
-function showSpeak(){clearAll();if(speakingIndex>=speakingList.length){finishSpeak();return}let q=speakingList[speakingIndex];main.innerHTML=`<button class="back" onclick="speakUnits()">${t('back')}</button><div class="panel speakWrap"><div class="questionNo">UNIT ${q.unit} • QUESTION ${speakingIndex+1}/${speakingList.length}</div><div class="bar"><i style="width:${(speakingIndex+1)/speakingList.length*100}%"></i></div><div class="image"><div class="pic">${icon(q.image||q.answer)}</div><div class="label">IMAGE</div></div><div class="qtext">${esc(q.question)}</div><button class="speaker" onclick="replayQ()">🔊</button><div class="muted">${lang==='vi'?'Hãy tự trả lời. Đáp án mẫu chỉ xuất hiện sau 4 giây.':'Answer yourself. The model answer appears after 4 seconds.'}</div><div id="timer" class="timer">4</div><div id="answer" class="answer hidden">${t('answer')}</div><div class="controls"><button class="control" onclick="backSpeak()" ${speakingIndex===0?'disabled':''}>← Back</button><button class="control" onclick="replayQ()">🔊 Replay Question</button><button class="control" onclick="replayA()">🔊 Replay Answer</button><button id="next" class="control next" disabled onclick="nextSpeak()">⏭ Next</button><button class="control" onclick="speakUnits()">🏠 ${t('units')}</button></div></div>`;startSpeakTimer(q);speak(q.question,.72)}
-function startSpeakTimer(q){let n=4,e=$('timer');timer=setInterval(()=>{n--;if(e)e.textContent=n;if(n<=0){clearInterval(timer);timer=null;showSpeakAnswer(q)}},1000)}
-function showSpeakAnswer(q){let a=$('answer'),next=$('next');if(!a||!next)return;a.classList.remove('hidden');a.textContent=t('answer')+': '+q.answer;next.disabled=false;speak(q.answer,.72)}
-function replayQ(){if(speakingList[speakingIndex])speak(speakingList[speakingIndex].question,.72)}
-function replayA(){if(timer===null&&speakingList[speakingIndex]&&$('answer')&&!$('answer').classList.contains('hidden'))speak(speakingList[speakingIndex].answer,.72)}
-function nextSpeak(){if($('next')?.disabled)return;if(speakingIndex<speakingList.length-1){speakingIndex++;showSpeak()}else finishSpeak()}
-function backSpeak(){if(speakingIndex>0){speakingIndex--;showSpeak()}}
-function finishSpeak(){clearAll();main.innerHTML=`<div class="panel finish"><h1>${t('great')}</h1><p>${speakingSelected.length>1?speakingSelected.length+' Units':('Unit '+speakingSelected[0])} – ${speakingList.length} ${lang==='vi'?'câu':'questions'}</p><button class="primary" onclick="startSelectedSpeak()">🔄 REPLAY</button><button class="primary orange" onclick="speakUnits()">${t('units')}</button></div>`}
+  clearAll();
 
-function startWelcome(){language()}
-function stopSpeechOnly(){if('speechSynthesis'in window)speechSynthesis.cancel()}
-function clearAll(){if(timer){clearInterval(timer);timer=null}if(delay){clearTimeout(delay);delay=null}stopSpeechOnly()}
-function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function speak(text,rate=.75){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(text);u.lang='en-GB';u.rate=rate;u.pitch=1;speechSynthesis.speak(u)}
-function icon(x){let k=String(x).toLowerCase().trim();if(IMG[k])return IMG[k];for(let z in IMG)if(k.includes(z))return IMG[z];return '🖼️'}
-function esc(x){return String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function attr(x){return esc(x).replace(/`/g,'&#96;')}
+  main.innerHTML=`
+
+    <button class="back" onclick="home()">
+      ${t("back")}
+    </button>
+
+    <h1 class="title">
+      🧠 ${t("memory")}
+    </h1>
+
+    <div class="menuGrid memoryGrid">
+
+      <button class="menu memory"
+              onclick="memoryUnits('listenRepeat')">
+        <div class="ico">🔊</div>
+        <h2>
+          ⭐ ${lang==="vi"
+            ?"Nghe và lặp lại"
+            :"Listen and repeat"}
+        </h2>
+      </button>
+
+      <button class="menu memory"
+              onclick="memoryUnits('picturePron')">
+        <div class="ico">👀</div>
+        <h2>
+          ${lang==="vi"
+            ?"Nhìn hình - phát âm"
+            :"Picture - Pronunciation"}
+        </h2>
+      </button>
+
+      <button class="menu memory"
+              onclick="memoryUnits('wordPron')">
+        <div class="ico">🔊</div>
+        <h2>
+          ${lang==="vi"
+            ?"Nhìn chữ - phát âm"
+            :"Word - Pronunciation"}
+        </h2>
+      </button>
+
+      <button class="menu memory"
+              onclick="memoryUnits('wordPicture')">
+        <div class="ico">🖼️</div>
+        <h2>
+          ${lang==="vi"
+            ?"Nhìn chữ → chọn hình"
+            :"Word → Choose picture"}
+        </h2>
+      </button>
+
+      <button class="menu speak"
+              onclick="memoryUnits('pictureWord')">
+        <div class="ico">✍️</div>
+        <h2>
+          ${lang==="vi"
+            ?"Nhìn hình → chọn chữ"
+            :"Picture → Choose word"}
+        </h2>
+      </button>
+
+    </div>
+  `;
+
+  animatePage();
+}
+
+function memoryTitle(m){
+
+  return({
+    listenRepeat:
+      "⭐ 🔊 "+(
+        lang==="vi"
+          ?"Nghe và lặp lại"
+          :"Listen and repeat"
+      ),
+
+    picturePron:
+      "👀 "+(
+        lang==="vi"
+          ?"Nhìn hình - phát âm"
+          :"Picture - Pronunciation"
+      ),
+
+    wordPron:
+      "🔊 "+(
+        lang==="vi"
+          ?"Nhìn chữ - phát âm"
+          :"Word - Pronunciation"
+      ),
+
+    wordPicture:
+      "🖼️ "+(
+        lang==="vi"
+          ?"Nhìn chữ → chọn hình"
+          :"Word → Choose picture"
+      ),
+
+    pictureWord:
+      "✍️ "+(
+        lang==="vi"
+          ?"Nhìn hình → chọn chữ"
+          :"Picture → Choose word"
+      )
+  })[m];
+}
+
+/* =========================================================
+   MEMORY UNIT
+========================================================= */
+
+function memoryUnits(m){
+
+  clearAll();
+  mode=m;
+  selected=[];
+
+  main.innerHTML=`
+
+    <button class="back"
+            onclick="memoryMenu()">
+      ${t("back")}
+    </button>
+
+    <div class="panel">
+
+      <h2>
+        ${memoryTitle(m)} – ${t("units")}
+      </h2>
+
+      <p class="muted">
+        ${lang==="vi"
+          ?"Chọn một hoặc nhiều Unit rồi bấm Bắt đầu."
+          :"Choose one or more Units, then press Start."}
+      </p>
+
+      ${units()}
+
+      <div class="row">
+
+        <button class="primary orange"
+                onclick="startMemory()">
+          ${t("start")}
+        </button>
+
+        <span id="count" class="muted">
+          0 ${t("sel")}
+        </span>
+
+      </div>
+
+    </div>
+  `;
+
+  animatePage();
+}
+
+function startMemory(){
+
+  if(!selected.length)return;
+
+  list=selected.flatMap(
+    u=>vocabData[u].map(
+      x=>({...x,unit:u})
+    )
+  );
+
+  shuffle(list);
+  idx=0;
+  score=0;
+
+  if(mode==="picturePron")
+    showPicturePronunciation();
+
+  else if(mode==="wordPron")
+    showWordPronunciation();
+
+  else if(mode==="wordPicture")
+    showWordChoosePicture();
+
+  else if(mode==="pictureWord")
+    showPictureChooseWord();
+
+  else
+    showListenRepeat();
+}
+
+/* =========================================================
+   LISTEN AND REPEAT
+========================================================= */
+
+function showListenRepeat(){
+
+  clearAll();
+
+  if(idx>=list.length){
+    finishMemory();
+    return;
+  }
+
+  const x=list[idx];
+
+  main.innerHTML=`
+
+    <button class="back"
+            onclick="memoryUnits('listenRepeat')">
+      ${t("back")}
+    </button>
+
+    <div class="panel wordCard">
+
+      <div class="questionNo">
+        🔊
+        ${lang==="vi"
+          ?"Nghe 3 lần → đọc lại 4 giây"
+          :"Listen 3 times → repeat 4 seconds"}
+        • ${idx+1}/${list.length}
+      </div>
+
+      <div class="bar">
+        <i style="width:${(idx+1)/list.length*100}%"></i>
+      </div>
+
+      <div class="image memorySilentImage">
+        <div class="pic">${icon(x.word)}</div>
+      </div>
+
+      <div class="word">
+        ${esc(x.word)}
+      </div>
+
+      <div id="listenStatus"
+           class="memoryFeedback">
+        🔊 1 / 3
+      </div>
+
+      <div id="timer" class="timer"></div>
+
+    </div>
+  `;
+
+  animatePage();
+  playWordThreeTimes(x.word);
+}
+
+function playWordThreeTimes(word){
+
+  let count=0;
+  const status=$("listenStatus");
+
+  function once(){
+
+    if(count>=3){
+
+      if(status){
+        status.textContent=
+          lang==="vi"
+            ?"⏱ Hãy đọc lại!"
+            :"⏱ Your turn!";
+      }
+
+      startListenRepeatCountdown();
+      return;
+    }
+
+    count++;
+
+    if(status){
+      status.textContent="🔊 "+count+" / 3";
+    }
+
+    speak(word,.7);
+
+    delay=setTimeout(once,1400);
+  }
+
+  once();
+}
+
+function startListenRepeatCountdown(){
+
+  startCountdown(
+    4,
+    "timer",
+    ()=>{
+      idx++;
+      showListenRepeat();
+    }
+  );
+}
+
+/* =========================================================
+   PICTURE PRONUNCIATION
+========================================================= */
+
+function showPicturePronunciation(){
+
+  clearAll();
+
+  if(idx>=list.length){
+    finishMemory();
+    return;
+  }
+
+  const x=list[idx];
+
+  main.innerHTML=`
+
+    <button class="back"
+            onclick="memoryUnits('picturePron')">
+      ${t("back")}
+    </button>
+
+    <div class="panel wordCard">
+
+      <div class="questionNo">
+        👀
+        ${lang==="vi"
+          ?"Nhìn hình → phát âm"
+          :"Picture → Pronunciation"}
+        • ${idx+1}/${list.length}
+      </div>
+
+      <div class="bar">
+        <i style="width:${(idx+1)/list.length*100}%"></i>
+      </div>
+
+      <div class="image memorySilentImage">
+        <div class="pic">${icon(x.word)}</div>
+      </div>
+
+      <p class="muted">
+        ${lang==="vi"
+          ?"Hãy tự đọc từ trong đầu hoặc đọc thành tiếng."
+          :"Read the word silently or say it aloud."}
+      </p>
+
+      <div id="timer" class="timer">5</div>
+
+      <div id="result"
+           class="memoryFeedback">
+      </div>
+
+    </div>
+  `;
+
+  animatePage();
+
+  startCountdown(
+    5,
+    "timer",
+    ()=>{
+      speak(x.word,.7);
+
+      if($("result")){
+        $("result").textContent="🔊 "+x.word;
+        $("result").classList.add("feedbackGood");
+      }
+
+      delay=setTimeout(()=>{
+        idx++;
+        showPicturePronunciation();
+      },1500);
+    }
+  );
+}
+
+/* =========================================================
+   WORD PRONUNCIATION
+========================================================= */
+
+function showWordPronunciation(){
+
+  clearAll();
+
+  if(idx>=list.length){
+    finishMemory();
+    return;
+  }
+
+  const x=list[idx];
+
+  main.innerHTML=`
+
+    <button class="back"
+            onclick="memoryUnits('wordPron')">
+      ${t("back")}
+    </button>
+
+    <div class="panel wordCard">
+
+      <div class="questionNo">
+        🔊
+        ${lang==="vi"
+          ?"Nhìn chữ → đọc to"
+          :"Word → Pronunciation"}
+        • ${idx+1}/${list.length}
+      </div>
+
+      <div class="bar">
+        <i style="width:${(idx+1)/list.length*100}%"></i>
+      </div>
+
+      <div class="word">
+        ${esc(x.word)}
+      </div>
+
+      <p class="muted">
+        ${lang==="vi"
+          ?"Hãy tự đọc từ."
+          :"Read the word yourself."}
+      </p>
+
+      <div id="timer" class="timer">5</div>
+
+      <div id="result"
+           class="memoryFeedback">
+      </div>
+
+    </div>
+  `;
+
+  animatePage();
+
+  startCountdown(
+    5,
+    "timer",
+    ()=>{
+      speak(x.word,.7);
+
+      if($("result")){
+        $("result").textContent="🔊 "+x.word;
+        $("result").classList.add("feedbackGood");
+      }
+
+      delay=setTimeout(()=>{
+        idx++;
+        showWordPronunciation();
+      },1500);
+    }
+  );
+}
+
+/* =========================================================
+   WORD → PICTURE
+========================================================= */
+
+function showWordChoosePicture(){
+
+  clearAll();
+
+  if(idx>=list.length){
+    finishMemory();
+    return;
+  }
+
+  const x=list[idx];
+  const choices=makeChoices(x,2);
+
+  main.innerHTML=`
+
+    <button class="back"
+            onclick="memoryUnits('wordPicture')">
+      ${t("back")}
+    </button>
+
+    <div class="panel wordCard">
+
+      <div class="questionNo">
+        📝
+        ${lang==="vi"
+          ?"Nhìn chữ → chọn hình"
+          :"Word → Picture"}
+        • ${idx+1}/${list.length}
+      </div>
+
+      <div class="bar">
+        <i style="width:${(idx+1)/list.length*100}%"></i>
+      </div>
+
+      <div class="word">
+        ${esc(x.word)}
+      </div>
+
+      <p class="muted">
+        ${lang==="vi"
+          ?"Chọn hình đúng."
+          :"Choose the correct picture."}
+      </p>
+
+      <div class="opts memoryChoices">
+
+        ${choices.map(c=>`
+          <button
+            class="opt"
+            aria-label="${attr(c.word)}"
+            onclick="memoryChoiceAnswer(
+              this,
+              '${attr(c.word)}',
+              '${attr(x.word)}',
+              'wordPicture'
+            )">
+
+            <span class="pic">
+              ${icon(c.word)}
+            </span>
+
+          </button>
+        `).join("")}
+
+      </div>
+
+      <div id="result"
+           class="memoryFeedback">
+      </div>
+
+    </div>
+  `;
+
+  animatePage();
+}
+
+/* =========================================================
+   PICTURE → WORD
+========================================================= */
+
+function showPictureChooseWord(){
+
+  clearAll();
+
+  if(idx>=list.length){
+    finishMemory();
+    return;
+  }
+
+  const x=list[idx];
+  const choices=makeChoices(x,2);
+
+  main.innerHTML=`
+
+    <button class="back"
+            onclick="memoryUnits('pictureWord')">
+      ${t("back")}
+    </button>
+
+    <div class="panel wordCard">
+
+      <div class="questionNo">
+        🖼️
+        ${lang==="vi"
+          ?"Nhìn hình → chọn chữ"
+          :"Picture → Word"}
+        • ${idx+1}/${list.length}
+      </div>
+
+      <div class="bar">
+        <i style="width:${(idx+1)/list.length*100}%"></i>
+      </div>
+
+      <div class="image memorySilentImage">
+        <div class="pic">
+          ${icon(x.word)}
+        </div>
+      </div>
+
+      <p class="muted">
+        ${lang==="vi"
+          ?"Chọn từ đúng."
+          :"Choose the correct word."}
+      </p>
+
+      <div class="opts">
+
+        ${choices.map(c=>`
+          <button
+            class="opt"
+            aria-label="${attr(c.word)}"
+            onclick="memoryChoiceAnswer(
+              this,
+              '${attr(c.word)}',
+              '${attr(x.word)}',
+              'pictureWord'
+            )">
+
+            <span>${esc(c.word)}</span>
+
+          </button>
+        `).join("")}
+
+      </div>
+
+      <div id="result"
+           class="memoryFeedback">
+      </div>
+
+    </div>
+  `;
+
+  animatePage();
+}
+
+/* =========================================================
+   MEMORY ANSWER
+========================================================= */
+
+function memoryChoiceAnswer(
+  btn,
+  val,
+  correct,
+  nextMode
+){
+
+  if(btn.disabled)return;
+
+  const ok=val===correct;
+
+  if(ok){
+    score++;
+    playCorrectSound();
+  }else{
+    playWrongSound();
+  }
+
+  document
+    .querySelectorAll(".opt")
+    .forEach(b=>b.disabled=true);
+
+  btn.classList.add(
+    ok?"correct":"wrong"
+  );
+
+  if(!ok){
+
+    document
+      .querySelectorAll(".opt")
+      .forEach(b=>{
+
+        if(
+          b.getAttribute("aria-label")
+          ===correct
+        ){
+          b.classList.add("correct");
+        }
+
+      });
+  }
+
+  if($("result")){
+
+    $("result").textContent=
+      ok?t("correct"):t("wrong");
+
+    $("result").className=
+      "memoryFeedback "+
+      (ok?"feedbackGood":"feedbackBad");
+  }
+
+  speak(correct,.7);
+
+  delay=setTimeout(()=>{
+
+    idx++;
+
+    if(nextMode==="wordPicture"){
+      showWordChoosePicture();
+    }else{
+      showPictureChooseWord();
+    }
+
+  },1500);
+}
+
+/* =========================================================
+   MEMORY FINISH
+========================================================= */
+
+function finishMemory(){
+
+  clearAll();
+  playFinishSound();
+
+  main.innerHTML=`
+
+    <div class="panel finish">
+
+      <h1>${t("great")}</h1>
+
+      <p>
+        ${idx}
+        ${lang==="vi"
+          ?"từ đã hoàn thành."
+          :"words completed."}
+      </p>
+
+      <p>
+        Score: ${score}/${list.length}
+      </p>
+
+      <button class="primary"
+              onclick="startMemory()">
+        🔄 REPLAY
+      </button>
+
+      <button class="primary orange"
+              onclick="memoryUnits('${mode}')">
+        ${t("units")}
+      </button>
+
+    </div>
+  `;
+
+  animatePage();
+}
+
+/* =========================================================
+   CHOICES
+========================================================= */
+
+function makeChoices(x,n){
+
+  let pool=list.filter(
+    a=>a.word!==x.word
+  );
+
+  shuffle(pool);
+
+  return shuffle([
+    x,
+    ...pool.slice(0,n)
+  ]);
+}
+
+/* =========================================================
+   SPEAKING
+========================================================= */
+
+function speakUnits(){
+
+  clearAll();
+  speakingSelected=[];
+
+  main.innerHTML=`
+
+    <button class="back"
+            onclick="home()">
+      ${t("back")}
+    </button>
+
+    <div class="panel">
+
+      <h2>${t("speak")}</h2>
+
+      <p class="muted">
+        ${lang==="vi"
+          ?"Chọn một hoặc nhiều Unit. Nếu chọn từ 2 Unit trở lên, câu hỏi trùng nhau chỉ xuất hiện 1 lần."
+          :"Choose one or more Units. When 2 or more Units are selected, duplicate questions appear only once."}
+      </p>
+
+      ${unitsSpeak()}
+
+      <div class="row">
+
+        <button class="primary orange"
+                onclick="startSelectedSpeak()">
+          ${t("start")}
+        </button>
+
+        <span id="speakCount"
+              class="muted">
+          0 ${t("sel")}
+        </span>
+
+      </div>
+
+    </div>
+  `;
+
+  animatePage();
+}
+
+function unitsSpeak(){
+
+  let s='<div class="grid">';
+
+  for(let i=1;i<=16;i++){
+
+    s+=`
+      <button class="unit"
+              id="su${i}"
+              onclick="toggleSpeakUnit(${i})">
+
+        UNIT ${i}
+
+        <small>
+          ${esc(unitTitles[i]||"")}
+        </small>
+
+      </button>
+    `;
+  }
+
+  return s+"</div>";
+}
+
+function toggleSpeakUnit(i){
+
+  const e=$("su"+i);
+
+  if(speakingSelected.includes(i)){
+
+    speakingSelected=
+      speakingSelected.filter(
+        x=>x!==i
+      );
+
+    e.classList.remove("sel");
+
+  }else{
+
+    speakingSelected.push(i);
+    e.classList.add("sel");
+  }
+
+  if($("speakCount")){
+
+    $("speakCount").textContent=
+      speakingSelected.length+
+      " "+
+      t("sel");
+  }
+}
+
+function startSelectedSpeak(){
+
+  if(!speakingSelected.length)return;
+
+  clearAll();
+
+  let combined=
+    speakingSelected.flatMap(
+      u=>
+        (speakingData[u]||[])
+        .map(q=>({
+          question:q[0],
+          answer:q[1],
+          image:q[2],
+          unit:u
+        }))
+    );
+
+  const seen=new Set();
+
+  speakingList=
+    combined.filter(q=>{
+
+      const key=
+        q.question
+          .trim()
+          .toLowerCase();
+
+      if(seen.has(key)){
+        return false;
+      }
+
+      seen.add(key);
+      return true;
+    });
+
+  speakingIndex=0;
+
+  showSpeak();
+}
+
+function startSpeak(u){
+
+  speakingSelected=[u];
+  startSelectedSpeak();
+}
+
+/* =========================================================
+   SPEAKING QUESTION
+========================================================= */
+
+function showSpeak(){
+
+  clearAll();
+
+  if(
+    speakingIndex>=
+    speakingList.length
+  ){
+    finishSpeak();
+    return;
+  }
+
+  const q=
+    speakingList[speakingIndex];
+
+  main.innerHTML=`
+
+    <button class="back"
+            onclick="speakUnits()">
+      ${t("back")}
+    </button>
+
+    <div class="panel speakWrap">
+
+      <div class="questionNo">
+        UNIT ${q.unit}
+        • QUESTION
+        ${speakingIndex+1}/${speakingList.length}
+      </div>
+
+      <div class="bar">
+        <i style="
+          width:${
+            (speakingIndex+1)/
+            speakingList.length*
+            100
+          }%
+        "></i>
+      </div>
+
+      <div class="image">
+
+        <div class="pic">
+          ${icon(q.image||q.answer)}
+        </div>
+
+        <div class="label">
+          IMAGE
+        </div>
+
+      </div>
+
+      <div class="qtext">
+        ${esc(q.question)}
+      </div>
+
+      <button class="speaker"
+              onclick="replayQ()">
+        🔊
+      </button>
+
+      <div class="muted">
+        ${lang==="vi"
+          ?"Hãy tự trả lời. Đáp án mẫu chỉ xuất hiện sau 4 giây."
+          :"Answer yourself. The model answer appears after 4 seconds."}
+      </div>
+
+      <div id="timer"
+           class="timer">
+        4
+      </div>
+
+      <div id="answer"
+           class="answer hidden">
+        ${t("answer")}
+      </div>
+
+      <div class="controls">
+
+        <button class="control"
+                onclick="backSpeak()"
+                ${speakingIndex===0?"disabled":""}>
+          ← Back
+        </button>
+
+        <button class="control"
+                onclick="replayQ()">
+          🔊 Replay Question
+        </button>
+
+        <button class="control"
+                onclick="replayA()">
+          🔊 Replay Answer
+        </button>
+
+        <button id="next"
+                class="control next"
+                disabled
+                onclick="nextSpeak()">
+          ⏭ Next
+        </button>
+
+        <button class="control"
+                onclick="speakUnits()">
+          🏠 ${t("units")}
+        </button>
+
+      </div>
+
+    </div>
+  `;
+
+  animatePage();
+
+  startSpeakTimer(q);
+
+  speak(q.question,.72);
+}
+
+function startSpeakTimer(q){
+
+  startCountdown(
+    4,
+    "timer",
+    ()=>{
+      showSpeakAnswer(q);
+    }
+  );
+}
+
+function showSpeakAnswer(q){
+
+  const a=$("answer");
+  const next=$("next");
+
+  if(!a||!next)return;
+
+  a.classList.remove("hidden");
+
+  a.classList.add("reveal");
+
+  a.textContent=
+    t("answer")+": "+q.answer;
+
+  next.disabled=false;
+
+  speak(q.answer,.72);
+}
+
+function replayQ(){
+
+  if(
+    speakingList[speakingIndex]
+  ){
+    speak(
+      speakingList[speakingIndex]
+        .question,
+      .72
+    );
+  }
+}
+
+function replayA(){
+
+  if(
+    timer===null &&
+    speakingList[speakingIndex] &&
+    $("answer") &&
+    !$("answer").classList.contains("hidden")
+  ){
+
+    speak(
+      speakingList[speakingIndex]
+        .answer,
+      .72
+    );
+  }
+}
+
+function nextSpeak(){
+
+  if($("next")?.disabled)return;
+
+  if(
+    speakingIndex<
+    speakingList.length-1
+  ){
+
+    speakingIndex++;
+    showSpeak();
+
+  }else{
+
+    finishSpeak();
+  }
+}
+
+function backSpeak(){
+
+  if(speakingIndex>0){
+
+    speakingIndex--;
+    showSpeak();
+
+  }
+}
+
+/* =========================================================
+   SPEAKING FINISH
+========================================================= */
+
+function finishSpeak(){
+
+  clearAll();
+  playFinishSound();
+
+  main.innerHTML=`
+
+    <div class="panel finish">
+
+      <h1>${t("great")}</h1>
+
+      <p>
+        ${
+          speakingSelected.length>1
+            ?speakingSelected.length+" Units"
+            :"Unit "+speakingSelected[0]
+        }
+
+        –
+        ${speakingList.length}
+
+        ${lang==="vi"
+          ?"câu"
+          :"questions"}
+      </p>
+
+      <button class="primary"
+              onclick="startSelectedSpeak()">
+        🔄 REPLAY
+      </button>
+
+      <button class="primary orange"
+              onclick="speakUnits()">
+        ${t("units")}
+      </button>
+
+    </div>
+  `;
+
+  animatePage();
+}
+
+/* =========================================================
+   GENERAL FUNCTIONS
+========================================================= */
+
+function startWelcome(){
+  language();
+}
+
+function stopSpeechOnly(){
+
+  if(
+    "speechSynthesis"
+    in window
+  ){
+    speechSynthesis.cancel();
+  }
+}
+
+function clearAll(){
+
+  clearTimerOnly();
+
+  if(delay){
+    clearTimeout(delay);
+    delay=null;
+  }
+
+  stopSpeechOnly();
+}
+
+function shuffle(a){
+
+  for(
+    let i=a.length-1;
+    i>0;
+    i--
+  ){
+
+    let j=
+      Math.floor(
+        Math.random()*(i+1)
+      );
+
+    [
+      a[i],
+      a[j]
+    ]=[
+      a[j],
+      a[i]
+    ];
+  }
+
+  return a;
+}
+
+function speak(
+  text,
+  rate=.75
+){
+
+  if(
+    !("speechSynthesis" in window)
+  )return;
+
+  speechSynthesis.cancel();
+
+  const u=
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+  u.lang="en-GB";
+  u.rate=rate;
+  u.pitch=1;
+
+  speechSynthesis.speak(u);
+}
+
+function icon(x){
+
+  const k=
+    String(x)
+      .toLowerCase()
+      .trim();
+
+  if(IMG[k]){
+    return IMG[k];
+  }
+
+  for(
+    let z in IMG
+  ){
+
+    if(
+      k.includes(z)
+    ){
+      return IMG[z];
+    }
+  }
+
+  return "🖼️";
+}
+
+function esc(x){
+
+  return String(x)
+    .replace(
+      /[&<>"']/g,
+      m=>({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[m])
+    );
+}
+
+function attr(x){
+
+  return esc(x)
+    .replace(
+      /`/g,
+      "&#96;"
+    );
+}
+
 </script>
+
 </body>
 </html>
